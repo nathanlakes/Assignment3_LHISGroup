@@ -15,7 +15,7 @@ namespace Assignment3_LHISGroup
         public MainWindow()
         {
             InitializeComponent();
-            Database db = new Database("nathan", "abcd", "=.\\SQLExpress", "yes", "main", 30);
+            DbController db = new DbController();
         }
     }
 }
