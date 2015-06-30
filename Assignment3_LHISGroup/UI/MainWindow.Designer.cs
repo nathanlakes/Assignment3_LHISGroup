@@ -49,6 +49,7 @@
             this.ManageWeddingsButton.TabIndex = 0;
             this.ManageWeddingsButton.Text = "Manage Weddings";
             this.ManageWeddingsButton.UseVisualStyleBackColor = false;
+            this.ManageWeddingsButton.Click += new System.EventHandler(this.ManageWeddingsButton_Click);
             // 
             // ManageClientsButton
             // 
@@ -59,6 +60,7 @@
             this.ManageClientsButton.TabIndex = 2;
             this.ManageClientsButton.Text = "Manage Clients";
             this.ManageClientsButton.UseVisualStyleBackColor = false;
+            this.ManageClientsButton.Click += new System.EventHandler(this.ManageClientsButton_Click);
             // 
             // ManageSuppliersButton
             // 
@@ -80,6 +82,7 @@
             this.ManageStaffButton.TabIndex = 6;
             this.ManageStaffButton.Text = "Manage Staff";
             this.ManageStaffButton.UseVisualStyleBackColor = false;
+            this.ManageStaffButton.Click += new System.EventHandler(this.ManageStaffButton_Click);
             // 
             // NewClientButton
             // 
@@ -131,6 +134,7 @@
             this.ManageTasksButton.TabIndex = 4;
             this.ManageTasksButton.Text = "Manage Tasks";
             this.ManageTasksButton.UseVisualStyleBackColor = false;
+            this.ManageTasksButton.Click += new System.EventHandler(this.ManageTasksButton_Click);
             // 
             // NewTaskButton
             // 

@@ -44,8 +44,32 @@ namespace Assignment3_LHISGroup
 
         private void ManageSuppliersButton_Click(object sender, EventArgs e)
         {
-            Assignment3_LHISGroup.UI.ManageSuppliersWindow manageSuppliersWin = new Assignment3_LHISGroup.UI.ManageSuppliersWindow();
+            UI.ManageSuppliersWindow manageSuppliersWin = new UI.ManageSuppliersWindow();
             manageSuppliersWin.Visible = true;
+        }
+
+        private void ManageStaffButton_Click(object sender, EventArgs e)
+        {
+            UI.ManageStaffWindow manageStaffWin = new UI.ManageStaffWindow();
+            manageStaffWin.Visible = true;
+        }
+
+        private void ManageTasksButton_Click(object sender, EventArgs e)
+        {
+            UI.ManageTasksWindow manageTasksWin = new UI.ManageTasksWindow();
+            manageTasksWin.Visible = true;
+        }
+
+        private void ManageClientsButton_Click(object sender, EventArgs e)
+        {
+            UI.ManageClientsWindow manageClientsWin = new UI.ManageClientsWindow();
+            manageClientsWin.Visible = true;
+        }
+
+        private void ManageWeddingsButton_Click(object sender, EventArgs e)
+        {
+            UI.ManageWeddingsWindow manageWeddingsWin = new UI.ManageWeddingsWindow();
+            manageWeddingsWin.Visible = true;
         }
     }
 }
