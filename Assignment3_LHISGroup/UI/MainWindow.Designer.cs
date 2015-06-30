@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ManageEventsButton = new System.Windows.Forms.Button();
+            this.ManageWeddingsButton = new System.Windows.Forms.Button();
             this.ManageClientsButton = new System.Windows.Forms.Button();
             this.ManageSuppliersButton = new System.Windows.Forms.Button();
             this.ManageStaffButton = new System.Windows.Forms.Button();
             this.NewClientButton = new System.Windows.Forms.Button();
-            this.NewEventButton = new System.Windows.Forms.Button();
+            this.NewWeddingButton = new System.Windows.Forms.Button();
             this.NewStaffButton = new System.Windows.Forms.Button();
             this.NewSupplierButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // ManageEventsButton
+            // ManageWeddingsButton
             // 
-            this.ManageEventsButton.BackColor = System.Drawing.Color.White;
-            this.ManageEventsButton.Location = new System.Drawing.Point(60, 26);
-            this.ManageEventsButton.Name = "ManageEventsButton";
-            this.ManageEventsButton.Size = new System.Drawing.Size(183, 63);
-            this.ManageEventsButton.TabIndex = 0;
-            this.ManageEventsButton.Text = "Manage Events";
-            this.ManageEventsButton.UseVisualStyleBackColor = false;
+            this.ManageWeddingsButton.BackColor = System.Drawing.Color.White;
+            this.ManageWeddingsButton.Location = new System.Drawing.Point(60, 26);
+            this.ManageWeddingsButton.Name = "ManageWeddingsButton";
+            this.ManageWeddingsButton.Size = new System.Drawing.Size(183, 63);
+            this.ManageWeddingsButton.TabIndex = 0;
+            this.ManageWeddingsButton.Text = "Manage Weddings";
+            this.ManageWeddingsButton.UseVisualStyleBackColor = false;
             // 
             // ManageClientsButton
             // 
@@ -90,15 +90,15 @@
             this.NewClientButton.Text = "New Client";
             this.NewClientButton.UseVisualStyleBackColor = false;
             // 
-            // NewEventButton
+            // NewWeddingButton
             // 
-            this.NewEventButton.BackColor = System.Drawing.Color.White;
-            this.NewEventButton.Location = new System.Drawing.Point(275, 26);
-            this.NewEventButton.Name = "NewEventButton";
-            this.NewEventButton.Size = new System.Drawing.Size(183, 63);
-            this.NewEventButton.TabIndex = 5;
-            this.NewEventButton.Text = "New Event";
-            this.NewEventButton.UseVisualStyleBackColor = false;
+            this.NewWeddingButton.BackColor = System.Drawing.Color.White;
+            this.NewWeddingButton.Location = new System.Drawing.Point(275, 26);
+            this.NewWeddingButton.Name = "NewWeddingButton";
+            this.NewWeddingButton.Size = new System.Drawing.Size(183, 63);
+            this.NewWeddingButton.TabIndex = 5;
+            this.NewWeddingButton.Text = "New Wedding";
+            this.NewWeddingButton.UseVisualStyleBackColor = false;
             // 
             // NewStaffButton
             // 
@@ -128,12 +128,12 @@
             this.ClientSize = new System.Drawing.Size(534, 486);
             this.Controls.Add(this.NewSupplierButton);
             this.Controls.Add(this.NewStaffButton);
-            this.Controls.Add(this.NewEventButton);
+            this.Controls.Add(this.NewWeddingButton);
             this.Controls.Add(this.NewClientButton);
             this.Controls.Add(this.ManageStaffButton);
             this.Controls.Add(this.ManageSuppliersButton);
             this.Controls.Add(this.ManageClientsButton);
-            this.Controls.Add(this.ManageEventsButton);
+            this.Controls.Add(this.ManageWeddingsButton);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainWindow";
             this.Text = "Start Screen";
@@ -143,12 +143,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button ManageEventsButton;
+        private System.Windows.Forms.Button ManageWeddingsButton;
         private System.Windows.Forms.Button ManageClientsButton;
         private System.Windows.Forms.Button ManageSuppliersButton;
         private System.Windows.Forms.Button ManageStaffButton;
         private System.Windows.Forms.Button NewClientButton;
-        private System.Windows.Forms.Button NewEventButton;
+        private System.Windows.Forms.Button NewWeddingButton;
         private System.Windows.Forms.Button NewStaffButton;
         private System.Windows.Forms.Button NewSupplierButton;
     }

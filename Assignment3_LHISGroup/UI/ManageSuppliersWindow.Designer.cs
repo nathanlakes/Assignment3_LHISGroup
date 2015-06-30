@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SuppliersDataGridView = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SuppliersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // SuppliersDataGridView
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(921, 299);
-            this.dataGridView1.TabIndex = 0;
+            this.SuppliersDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.SuppliersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SuppliersDataGridView.Location = new System.Drawing.Point(12, 12);
+            this.SuppliersDataGridView.Name = "SuppliersDataGridView";
+            this.SuppliersDataGridView.RowTemplate.Height = 28;
+            this.SuppliersDataGridView.Size = new System.Drawing.Size(921, 299);
+            this.SuppliersDataGridView.TabIndex = 0;
             // 
             // button1
             // 
@@ -72,17 +72,17 @@
             this.ClientSize = new System.Drawing.Size(945, 416);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.SuppliersDataGridView);
             this.Name = "ManageSuppliersWindow";
             this.Text = "Manage Suppliers";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SuppliersDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView SuppliersDataGridView;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }
