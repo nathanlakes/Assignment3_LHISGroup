@@ -1,0 +1,9 @@
+c:\users\nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Assignment3_LHISGroup.exe.config
+c:\users\nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Assignment3_LHISGroup.exe
+c:\users\nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Assignment3_LHISGroup.pdb
+c:\users\nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.csprojResolveAssemblyReference.cache
+c:\users\nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.MainWindow.resources
+c:\users\nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.Properties.Resources.resources
+c:\users\nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.csproj.GenerateResource.Cache
+c:\users\nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.exe
+c:\users\nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.pdb
