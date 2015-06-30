@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assignment3_LHISGroup
 {
-    namespace Support_Classes
-    { 
+
         class Supplier
         {
             private string companyName;
@@ -75,5 +74,4 @@ namespace Assignment3_LHISGroup
             }
      
         }
-    }
 }
