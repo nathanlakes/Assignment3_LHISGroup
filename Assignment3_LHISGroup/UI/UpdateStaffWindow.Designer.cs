@@ -42,6 +42,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox5
@@ -55,7 +56,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(49, 383);
+            this.checkBox1.Location = new System.Drawing.Point(49, 372);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(129, 24);
             this.checkBox1.TabIndex = 28;
@@ -165,12 +166,23 @@
             this.button1.Text = "Update";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(49, 443);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(138, 58);
+            this.button4.TabIndex = 30;
+            this.button4.Text = "Staff Report";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
             // UpdateStaffWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(581, 552);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBox4);
@@ -208,5 +220,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button4;
     }
 }

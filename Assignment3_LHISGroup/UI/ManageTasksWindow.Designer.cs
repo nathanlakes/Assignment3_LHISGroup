@@ -72,7 +72,7 @@
             this.DeleteWeddingButton.Name = "DeleteWeddingButton";
             this.DeleteWeddingButton.Size = new System.Drawing.Size(131, 43);
             this.DeleteWeddingButton.TabIndex = 3;
-            this.DeleteWeddingButton.Text = "Delete Wedding";
+            this.DeleteWeddingButton.Text = "Delete Task";
             this.DeleteWeddingButton.UseVisualStyleBackColor = false;
             // 
             // ManageTasksWindow
