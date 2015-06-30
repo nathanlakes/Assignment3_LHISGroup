@@ -29,6 +29,7 @@ namespace Assignment3_LHISGroup
             }
             catch (Exception e)
             {
+                e.GetHashCode();
                 Console.WriteLine("Error with Connection String.");
             }
             
@@ -54,7 +55,7 @@ namespace Assignment3_LHISGroup
 
                 db.Close();
             }
-            catch (Exception e) {}
+            catch (Exception e) { e.GetHashCode(); }
             
             
 

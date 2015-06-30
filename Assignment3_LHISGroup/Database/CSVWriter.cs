@@ -10,6 +10,9 @@ namespace Assignment3_LHISGroup
      *   
      *   
      */
+
+
+    
     class CSVWriter
     {
         public CSVWriter()
@@ -44,6 +47,8 @@ namespace Assignment3_LHISGroup
          * a string array of the relevent data for writing to the
          * outfile
          */
+       
+        /*
         private string[] getData(Quotation q)
         {
             string[] data = new string[]{
@@ -69,12 +74,15 @@ namespace Assignment3_LHISGroup
 
             return data;
         }
+        */
+
 
         /*
          * Writes all quotations in the database to an output file. 
          * isExport = true: Writes to the Desk
          * isExport = false: Writes to My Documents, thus storing the database
          */
+        /*
         public void WriteAllToCSV(Database db, Boolean isExport)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -127,10 +135,15 @@ namespace Assignment3_LHISGroup
             } // Close StreamWriter
 
         }
+        */
+
+
 
         /*
          * Writes a quote to a CSV on the desktop
          */
+
+        /*
         public void WriteRecordToCSV(Quotation quote)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -167,15 +180,20 @@ namespace Assignment3_LHISGroup
                 }
             }
         }
+        */
+
+
 
         /*
          * Will take a list of Quotation objects and write them
          * to a CSV
          */
+        /*
         public void WriteListToCSV(List<Quotation> list)
         {
             Database db = new Database(list);
             WriteAllToCSV(db, true);
         }
+        */
     }
 }

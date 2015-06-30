@@ -8,7 +8,7 @@ namespace Assignment3_LHISGroup.Support_Classes
 {
     class Staff
     {
-        enum Status { active, inactive };
+        public enum Status { active, inactive };
 
 
         private string firstname;

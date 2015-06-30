@@ -59,18 +59,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CSVWriter.cs" />
-    <Compile Include="DbController.cs" />
-    <Compile Include="MainWindow.cs">
+    <Compile Include="Database\CSVWriter.cs" />
+    <Compile Include="Database\DbController.cs" />
+    <Compile Include="Support Classes\Staff.cs" />
+    <Compile Include="Support Classes\Task.cs" />
+    <Compile Include="UI\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="UI\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Supplier.cs" />
-    <EmbeddedResource Include="MainWindow.resx">
+    <Compile Include="Support Classes\Supplier.cs" />
+    <EmbeddedResource Include="UI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -113,10 +115,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model.mdf">
+    <Content Include="Database\Model.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Model_log.ldf">
+    <Content Include="Database\Model_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Model.mdf</DependentUpon>
     </Content>
