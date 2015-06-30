@@ -67,6 +67,7 @@
             this.ManageSuppliersButton.TabIndex = 2;
             this.ManageSuppliersButton.Text = "Manage Suppliers";
             this.ManageSuppliersButton.UseVisualStyleBackColor = false;
+            this.ManageSuppliersButton.Click += new System.EventHandler(this.ManageSuppliersButton_Click);
             // 
             // ManageStaffButton
             // 

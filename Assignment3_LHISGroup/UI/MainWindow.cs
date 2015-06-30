@@ -41,5 +41,11 @@ namespace Assignment3_LHISGroup
            
 
         }
+
+        private void ManageSuppliersButton_Click(object sender, EventArgs e)
+        {
+            Assignment3_LHISGroup.UI.ManageSuppliersWindow manageSuppliersWin = new Assignment3_LHISGroup.UI.ManageSuppliersWindow();
+            manageSuppliersWin.Visible = true;
+        }
     }
 }
