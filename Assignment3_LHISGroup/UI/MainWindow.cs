@@ -23,8 +23,7 @@ namespace Assignment3_LHISGroup
             // DEBUGGING
             try
             {
-                Support_Classes.Staff s = new Support_Classes.Staff("Me", "Me", "nl@mail.com", "0888548", "goat",
-                        Support_Classes.Staff.Status.active);
+                Support_Classes.Staff s = new Support_Classes.Staff("Me", "Me", "nl@mail.com", "0888548", "goat", true);
 
                 Support_Classes.Task t = new Support_Classes.Task("moo", "moo",
                         Support_Classes.Task.Priority.high, new DateTime(2016, 5, 20), s);
@@ -70,6 +69,12 @@ namespace Assignment3_LHISGroup
         {
             UI.ManageWeddingsWindow manageWeddingsWin = new UI.ManageWeddingsWindow();
             manageWeddingsWin.Visible = true;
+        }
+
+        private void NewStaffButton_Click(object sender, EventArgs e)
+        {
+            UI.NewStaffWindow newStaffWin = new UI.NewStaffWindow();
+            newStaffWin.Visible = true;
         }
     }
 }

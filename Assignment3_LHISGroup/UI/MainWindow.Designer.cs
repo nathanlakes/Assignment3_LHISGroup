@@ -114,6 +114,7 @@
             this.NewStaffButton.TabIndex = 7;
             this.NewStaffButton.Text = "New Staff";
             this.NewStaffButton.UseVisualStyleBackColor = false;
+            this.NewStaffButton.Click += new System.EventHandler(this.NewStaffButton_Click);
             // 
             // NewSupplierButton
             // 

@@ -104,6 +104,12 @@
     <Compile Include="UI\ManageWeddingsWindow.Designer.cs">
       <DependentUpon>ManageWeddingsWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\NewStaffWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewStaffWindow.Designer.cs">
+      <DependentUpon>NewStaffWindow.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ManageWeddingsWindow.resx">
       <DependentUpon>ManageWeddingsWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewStaffWindow.resx">
+      <DependentUpon>NewStaffWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

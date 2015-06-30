@@ -8,24 +8,22 @@ namespace Assignment3_LHISGroup.Support_Classes
 {
     class Staff
     {
-        public enum Status { active, inactive };
-
 
         private string firstname;
         private string surname;
         private string email;
         private string phone;
         private string notes;
-        private Status status; 
+        private bool active; 
 
-        public Staff(string firstn, string surn, string email, string ph, string note, Status stat)
+        public Staff(string firstn, string surn, string email, string ph, string note, bool status)
         {
-            firstname = firstn;
-            surname = surn;
+            this.firstname = firstn;
+            this.surname = surn;
             this.email = email;
-            phone = ph;
-            notes = note;
-            status = stat;
+            this.phone = ph;
+            this.notes = note;
+            this.active = status;
         }
 
         public string FirstName
@@ -52,10 +50,10 @@ namespace Assignment3_LHISGroup.Support_Classes
             set { notes = value; }
         }
        
-        public Status StaffStatus
+        public bool StaffStatus
         {
-            get { return status; }
-            set { status = value; }
+            get { return active; }
+            set { active = value; }
         }
 
     }
