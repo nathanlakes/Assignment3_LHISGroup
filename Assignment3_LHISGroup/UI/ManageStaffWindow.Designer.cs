@@ -38,10 +38,10 @@
             // 
             this.StaffDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.StaffDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StaffDataGridView.Location = new System.Drawing.Point(34, 26);
+            this.StaffDataGridView.Location = new System.Drawing.Point(12, 12);
             this.StaffDataGridView.Name = "StaffDataGridView";
             this.StaffDataGridView.RowTemplate.Height = 28;
-            this.StaffDataGridView.Size = new System.Drawing.Size(649, 212);
+            this.StaffDataGridView.Size = new System.Drawing.Size(701, 226);
             this.StaffDataGridView.TabIndex = 0;
             // 
             // AddStaffButton
@@ -53,6 +53,7 @@
             this.AddStaffButton.TabIndex = 1;
             this.AddStaffButton.Text = "Add Staff";
             this.AddStaffButton.UseVisualStyleBackColor = false;
+            this.AddStaffButton.Click += new System.EventHandler(this.AddStaffButton_Click);
             // 
             // button1
             // 
@@ -63,6 +64,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Update Staff";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ManageStaffWindow
             // 

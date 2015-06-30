@@ -43,38 +43,38 @@ namespace Assignment3_LHISGroup
 
         private void ManageSuppliersButton_Click(object sender, EventArgs e)
         {
-            UI.ManageSuppliersWindow manageSuppliersWin = new UI.ManageSuppliersWindow();
-            manageSuppliersWin.Visible = true;
+            UI.ManageSuppliersWindow win = new UI.ManageSuppliersWindow();
+            win.Visible = true;
         }
 
         private void ManageStaffButton_Click(object sender, EventArgs e)
         {
-            UI.ManageStaffWindow manageStaffWin = new UI.ManageStaffWindow();
-            manageStaffWin.Visible = true;
+            UI.ManageStaffWindow win = new UI.ManageStaffWindow();
+            win.Visible = true;
         }
 
         private void ManageTasksButton_Click(object sender, EventArgs e)
         {
-            UI.ManageTasksWindow manageTasksWin = new UI.ManageTasksWindow();
-            manageTasksWin.Visible = true;
+            UI.ManageTasksWindow win = new UI.ManageTasksWindow();
+            win.Visible = true;
         }
 
         private void ManageClientsButton_Click(object sender, EventArgs e)
         {
-            UI.ManageClientsWindow manageClientsWin = new UI.ManageClientsWindow();
-            manageClientsWin.Visible = true;
+            UI.ManageClientsWindow win = new UI.ManageClientsWindow();
+            win.Visible = true;
         }
 
         private void ManageWeddingsButton_Click(object sender, EventArgs e)
         {
-            UI.ManageWeddingsWindow manageWeddingsWin = new UI.ManageWeddingsWindow();
-            manageWeddingsWin.Visible = true;
+            UI.ManageWeddingsWindow win = new UI.ManageWeddingsWindow();
+            win.Visible = true;
         }
 
         private void NewStaffButton_Click(object sender, EventArgs e)
         {
-            UI.NewStaffWindow newStaffWin = new UI.NewStaffWindow();
-            newStaffWin.Visible = true;
+            UI.NewStaffWindow win = new UI.NewStaffWindow();
+            win.Visible = true;
         }
     }
 }

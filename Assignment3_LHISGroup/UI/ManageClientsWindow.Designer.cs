@@ -38,10 +38,10 @@
             // 
             this.ClientsDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.ClientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ClientsDataGridView.Location = new System.Drawing.Point(54, 29);
+            this.ClientsDataGridView.Location = new System.Drawing.Point(12, 12);
             this.ClientsDataGridView.Name = "ClientsDataGridView";
             this.ClientsDataGridView.RowTemplate.Height = 28;
-            this.ClientsDataGridView.Size = new System.Drawing.Size(588, 210);
+            this.ClientsDataGridView.Size = new System.Drawing.Size(665, 227);
             this.ClientsDataGridView.TabIndex = 0;
             // 
             // AddClientButton

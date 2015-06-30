@@ -16,5 +16,17 @@ namespace Assignment3_LHISGroup.UI
         {
             InitializeComponent();
         }
+
+        private void AddStaffButton_Click(object sender, EventArgs e)
+        {
+            UI.NewStaffWindow win = new UI.NewStaffWindow();
+            win.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UI.UpdateStaffWindow win = new UI.UpdateStaffWindow();
+            win.Visible = true;
+        }
     }
 }

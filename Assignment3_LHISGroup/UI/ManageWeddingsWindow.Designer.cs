@@ -39,10 +39,10 @@
             // 
             this.WeddingsDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.WeddingsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WeddingsDataGridView.Location = new System.Drawing.Point(126, 32);
+            this.WeddingsDataGridView.Location = new System.Drawing.Point(12, 12);
             this.WeddingsDataGridView.Name = "WeddingsDataGridView";
             this.WeddingsDataGridView.RowTemplate.Height = 28;
-            this.WeddingsDataGridView.Size = new System.Drawing.Size(612, 235);
+            this.WeddingsDataGridView.Size = new System.Drawing.Size(813, 255);
             this.WeddingsDataGridView.TabIndex = 0;
             // 
             // AddWeddingButton
