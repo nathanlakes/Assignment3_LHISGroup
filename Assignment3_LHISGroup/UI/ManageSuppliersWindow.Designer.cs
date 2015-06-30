@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.SuppliersDataGridView = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.AddSupplierButton = new System.Windows.Forms.Button();
+            this.UpdateSupplierbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SuppliersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,34 +44,36 @@
             this.SuppliersDataGridView.Size = new System.Drawing.Size(921, 299);
             this.SuppliersDataGridView.TabIndex = 0;
             // 
-            // button1
+            // AddSupplierButton
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(204, 351);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 36);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Add Supplier";
-            this.button1.UseVisualStyleBackColor = false;
+            this.AddSupplierButton.BackColor = System.Drawing.Color.White;
+            this.AddSupplierButton.Location = new System.Drawing.Point(204, 351);
+            this.AddSupplierButton.Name = "AddSupplierButton";
+            this.AddSupplierButton.Size = new System.Drawing.Size(149, 36);
+            this.AddSupplierButton.TabIndex = 1;
+            this.AddSupplierButton.Text = "Add Supplier";
+            this.AddSupplierButton.UseVisualStyleBackColor = false;
+            this.AddSupplierButton.Click += new System.EventHandler(this.AddSupplierButton_Click);
             // 
-            // button2
+            // UpdateSupplierbutton
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(515, 351);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 35);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Update Supplier";
-            this.button2.UseVisualStyleBackColor = false;
+            this.UpdateSupplierbutton.BackColor = System.Drawing.Color.White;
+            this.UpdateSupplierbutton.Location = new System.Drawing.Point(515, 351);
+            this.UpdateSupplierbutton.Name = "UpdateSupplierbutton";
+            this.UpdateSupplierbutton.Size = new System.Drawing.Size(158, 35);
+            this.UpdateSupplierbutton.TabIndex = 2;
+            this.UpdateSupplierbutton.Text = "Update Supplier";
+            this.UpdateSupplierbutton.UseVisualStyleBackColor = false;
+            this.UpdateSupplierbutton.Click += new System.EventHandler(this.UpdateSupplierbutton_Click);
             // 
             // ManageSuppliersWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(945, 416);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.UpdateSupplierbutton);
+            this.Controls.Add(this.AddSupplierButton);
             this.Controls.Add(this.SuppliersDataGridView);
             this.Name = "ManageSuppliersWindow";
             this.Text = "Manage Suppliers";
@@ -83,7 +85,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView SuppliersDataGridView;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button AddSupplierButton;
+        private System.Windows.Forms.Button UpdateSupplierbutton;
     }
 }

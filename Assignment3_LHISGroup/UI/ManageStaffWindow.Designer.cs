@@ -30,7 +30,7 @@
         {
             this.StaffDataGridView = new System.Windows.Forms.DataGridView();
             this.AddStaffButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.UpdateStaffButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.StaffDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,14 +57,14 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(423, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 41);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Update Staff";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.UpdateStaffButton.BackColor = System.Drawing.Color.White;
+            this.UpdateStaffButton.Location = new System.Drawing.Point(423, 276);
+            this.UpdateStaffButton.Name = "button1";
+            this.UpdateStaffButton.Size = new System.Drawing.Size(174, 41);
+            this.UpdateStaffButton.TabIndex = 2;
+            this.UpdateStaffButton.Text = "Update Staff";
+            this.UpdateStaffButton.UseVisualStyleBackColor = false;
+            this.UpdateStaffButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // ManageStaffWindow
             // 
@@ -72,7 +72,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(725, 362);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.UpdateStaffButton);
             this.Controls.Add(this.AddStaffButton);
             this.Controls.Add(this.StaffDataGridView);
             this.Name = "ManageStaffWindow";
@@ -86,6 +86,6 @@
 
         private System.Windows.Forms.DataGridView StaffDataGridView;
         private System.Windows.Forms.Button AddStaffButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button UpdateStaffButton;
     }
 }

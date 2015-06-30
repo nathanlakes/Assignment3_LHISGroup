@@ -110,6 +110,12 @@
     <Compile Include="UI\NewStaffWindow.Designer.cs">
       <DependentUpon>NewStaffWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\NewSupplierWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewSupplierWindow.Designer.cs">
+      <DependentUpon>NewSupplierWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NewTaskWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,12 @@
     </Compile>
     <Compile Include="UI\UpdateStaffWindow.Designer.cs">
       <DependentUpon>UpdateStaffWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UpdateSupplierWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UpdateSupplierWindow.Designer.cs">
+      <DependentUpon>UpdateSupplierWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UpdateTaskWindow.cs">
       <SubType>Form</SubType>
@@ -158,11 +170,17 @@
     <EmbeddedResource Include="UI\NewStaffWindow.resx">
       <DependentUpon>NewStaffWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewSupplierWindow.resx">
+      <DependentUpon>NewSupplierWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\NewTaskWindow.resx">
       <DependentUpon>NewTaskWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UpdateStaffWindow.resx">
       <DependentUpon>UpdateStaffWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UpdateSupplierWindow.resx">
+      <DependentUpon>UpdateSupplierWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UpdateTaskWindow.resx">
       <DependentUpon>UpdateTaskWindow.cs</DependentUpon>

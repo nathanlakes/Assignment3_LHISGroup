@@ -19,11 +19,11 @@ namespace Assignment3_LHISGroup.Support_Classes
 
             public Supplier(string name, string addr, string cont, string email, string phNum, int creditTerms)
             {
-                companyName = name;
-                address = addr;
-                contactPerson = cont;
+                this.companyName = name;
+                this.address = addr;
+                this.contactPerson = cont;
                 this.email = email;
-                phoneNumber = phNum;
+                this.phoneNumber = phNum;
                 this.creditTerms = creditTerms;
             }
 

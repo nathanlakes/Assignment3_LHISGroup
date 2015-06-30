@@ -82,5 +82,11 @@ namespace Assignment3_LHISGroup
             UI.NewTaskWindow win = new UI.NewTaskWindow();
             win.Visible = true;
         }
+
+        private void NewSupplierButton_Click(object sender, EventArgs e)
+        {
+            UI.NewSupplierWindow win = new UI.NewSupplierWindow();
+            win.Visible = true;
+        }
     }
 }
