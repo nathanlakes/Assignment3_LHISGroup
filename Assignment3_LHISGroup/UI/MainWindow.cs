@@ -76,5 +76,11 @@ namespace Assignment3_LHISGroup
             UI.NewStaffWindow win = new UI.NewStaffWindow();
             win.Visible = true;
         }
+
+        private void NewTaskButton_Click(object sender, EventArgs e)
+        {
+            UI.NewTaskWindow win = new UI.NewTaskWindow();
+            win.Visible = true;
+        }
     }
 }

@@ -54,6 +54,7 @@
             this.AddTaskButton.TabIndex = 1;
             this.AddTaskButton.Text = "Add Task";
             this.AddTaskButton.UseVisualStyleBackColor = false;
+            this.AddTaskButton.Click += new System.EventHandler(this.AddTaskButton_Click);
             // 
             // UpdateTaskButton
             // 
@@ -64,6 +65,7 @@
             this.UpdateTaskButton.TabIndex = 2;
             this.UpdateTaskButton.Text = "Update Task";
             this.UpdateTaskButton.UseVisualStyleBackColor = false;
+            this.UpdateTaskButton.Click += new System.EventHandler(this.UpdateTaskButton_Click);
             // 
             // DeleteWeddingButton
             // 

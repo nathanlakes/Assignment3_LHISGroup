@@ -16,5 +16,17 @@ namespace Assignment3_LHISGroup.UI
         {
             InitializeComponent();
         }
+
+        private void AddTaskButton_Click(object sender, EventArgs e)
+        {
+            UI.NewTaskWindow win = new UI.NewTaskWindow();
+            win.Visible = true;
+        }
+
+        private void UpdateTaskButton_Click(object sender, EventArgs e)
+        {
+            UI.UpdateTaskWindow win = new UI.UpdateTaskWindow();
+            win.Visible = true;
+        }
     }
 }

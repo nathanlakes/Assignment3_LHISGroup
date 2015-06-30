@@ -146,6 +146,7 @@
             this.NewTaskButton.TabIndex = 5;
             this.NewTaskButton.Text = "New Task";
             this.NewTaskButton.UseVisualStyleBackColor = false;
+            this.NewTaskButton.Click += new System.EventHandler(this.NewTaskButton_Click);
             // 
             // MainWindow
             // 

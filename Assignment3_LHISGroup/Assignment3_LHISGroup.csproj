@@ -110,11 +110,23 @@
     <Compile Include="UI\NewStaffWindow.Designer.cs">
       <DependentUpon>NewStaffWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\NewTaskWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewTaskWindow.Designer.cs">
+      <DependentUpon>NewTaskWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UpdateStaffWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\UpdateStaffWindow.Designer.cs">
       <DependentUpon>UpdateStaffWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UpdateTaskWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UpdateTaskWindow.Designer.cs">
+      <DependentUpon>UpdateTaskWindow.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -146,8 +158,14 @@
     <EmbeddedResource Include="UI\NewStaffWindow.resx">
       <DependentUpon>NewStaffWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewTaskWindow.resx">
+      <DependentUpon>NewTaskWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UpdateStaffWindow.resx">
       <DependentUpon>UpdateStaffWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UpdateTaskWindow.resx">
+      <DependentUpon>UpdateTaskWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

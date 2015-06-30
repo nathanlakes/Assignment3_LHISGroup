@@ -14,7 +14,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         private string taskName;
         private string description;
         private Priority priority;
-        private DateTime completeBy;
+        private DateTime completeByDate;
         private DateTime completionDate;
         private Staff assignedTo;
 
@@ -24,7 +24,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             taskName = task;
             description = desc;
             priority = prior;
-            completeBy = compBy;
+            completeByDate = compBy;
             completionDate = new DateTime();
             assignedTo = assigned;
         }
@@ -49,7 +49,7 @@ namespace Assignment3_LHISGroup.Support_Classes
 
         public DateTime CompleteBy
         {
-            get { return completeBy.Date; }
+            get { return completeByDate.Date; }
             set 
             {
                 DateTime today = DateTime.Now.Date;
@@ -63,7 +63,7 @@ namespace Assignment3_LHISGroup.Support_Classes
                 }
                 else 
                 {
-                    completeBy = cb;
+                    completeByDate = cb;
                 }
             
             }
