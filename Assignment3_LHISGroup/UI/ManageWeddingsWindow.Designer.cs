@@ -54,6 +54,7 @@
             this.AddWeddingButton.TabIndex = 1;
             this.AddWeddingButton.Text = "Add Wedding";
             this.AddWeddingButton.UseVisualStyleBackColor = false;
+            this.AddWeddingButton.Click += new System.EventHandler(this.AddWeddingButton_Click);
             // 
             // UpdateWeddingButton
             // 
@@ -64,6 +65,7 @@
             this.UpdateWeddingButton.TabIndex = 2;
             this.UpdateWeddingButton.Text = "Update Wedding";
             this.UpdateWeddingButton.UseVisualStyleBackColor = false;
+            this.UpdateWeddingButton.Click += new System.EventHandler(this.UpdateWeddingButton_Click);
             // 
             // DeleteWeddingButton
             // 

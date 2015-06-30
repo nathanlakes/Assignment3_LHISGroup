@@ -16,5 +16,17 @@ namespace Assignment3_LHISGroup.UI
         {
             InitializeComponent();
         }
+
+        private void AddClientButton_Click(object sender, EventArgs e)
+        {
+            UI.NewClientWindow win = new UI.NewClientWindow();
+            win.Visible = true;
+        }
+
+        private void UpdateClientButton_Click(object sender, EventArgs e)
+        {
+            UI.UpdateClientWindow win = new UI.UpdateClientWindow();
+            win.Visible = true;
+        }
     }
 }

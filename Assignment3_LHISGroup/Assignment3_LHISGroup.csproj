@@ -104,6 +104,12 @@
     <Compile Include="UI\ManageWeddingsWindow.Designer.cs">
       <DependentUpon>ManageWeddingsWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\NewClientWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewClientWindow.Designer.cs">
+      <DependentUpon>NewClientWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\NewStaffWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,18 @@
     <Compile Include="UI\NewTaskWindow.Designer.cs">
       <DependentUpon>NewTaskWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\NewWeddingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\NewWeddingWindow.Designer.cs">
+      <DependentUpon>NewWeddingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UpdateClientWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UpdateClientWindow.Designer.cs">
+      <DependentUpon>UpdateClientWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UpdateStaffWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +157,12 @@
     </Compile>
     <Compile Include="UI\UpdateTaskWindow.Designer.cs">
       <DependentUpon>UpdateTaskWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UpdateWeddingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UpdateWeddingWindow.Designer.cs">
+      <DependentUpon>UpdateWeddingWindow.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -167,6 +191,9 @@
     <EmbeddedResource Include="UI\ManageWeddingsWindow.resx">
       <DependentUpon>ManageWeddingsWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewClientWindow.resx">
+      <DependentUpon>NewClientWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\NewStaffWindow.resx">
       <DependentUpon>NewStaffWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +203,12 @@
     <EmbeddedResource Include="UI\NewTaskWindow.resx">
       <DependentUpon>NewTaskWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\NewWeddingWindow.resx">
+      <DependentUpon>NewWeddingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UpdateClientWindow.resx">
+      <DependentUpon>UpdateClientWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UpdateStaffWindow.resx">
       <DependentUpon>UpdateStaffWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UpdateTaskWindow.resx">
       <DependentUpon>UpdateTaskWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UpdateWeddingWindow.resx">
+      <DependentUpon>UpdateWeddingWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

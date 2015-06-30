@@ -53,6 +53,7 @@
             this.AddClientButton.TabIndex = 1;
             this.AddClientButton.Text = "Add Client";
             this.AddClientButton.UseVisualStyleBackColor = false;
+            this.AddClientButton.Click += new System.EventHandler(this.AddClientButton_Click);
             // 
             // UpdateClientButton
             // 
@@ -63,6 +64,7 @@
             this.UpdateClientButton.TabIndex = 2;
             this.UpdateClientButton.Text = "Update Client";
             this.UpdateClientButton.UseVisualStyleBackColor = false;
+            this.UpdateClientButton.Click += new System.EventHandler(this.UpdateClientButton_Click);
             // 
             // ManageClientsWindow
             // 
@@ -74,7 +76,7 @@
             this.Controls.Add(this.AddClientButton);
             this.Controls.Add(this.ClientsDataGridView);
             this.Name = "ManageClientsWindow";
-            this.Text = "ManageClientsWindow";
+            this.Text = "Manage Clients";
             ((System.ComponentModel.ISupportInitialize)(this.ClientsDataGridView)).EndInit();
             this.ResumeLayout(false);
 

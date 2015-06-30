@@ -16,5 +16,17 @@ namespace Assignment3_LHISGroup.UI
         {
             InitializeComponent();
         }
+
+        private void AddWeddingButton_Click(object sender, EventArgs e)
+        {
+            UI.NewWeddingWindow win = new UI.NewWeddingWindow();
+            win.Visible = true;
+        }
+
+        private void UpdateWeddingButton_Click(object sender, EventArgs e)
+        {
+            UI.UpdateWeddingWindow win = new UI.UpdateWeddingWindow();
+            win.Visible = true;
+        }
     }
 }
