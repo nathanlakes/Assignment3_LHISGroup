@@ -8,10 +8,7 @@ namespace Assignment3_LHISGroup.Support_Classes
 {
     class Client
     {
-        public enum Gender { male, female };
-
         private string name;
-        private Gender gender;
         private string contactPerson;
         private string address;
         private string mobile;
@@ -20,11 +17,10 @@ namespace Assignment3_LHISGroup.Support_Classes
         private Client engagedTo;
 
 
-        public Client(string name, Gender gend, string contact, string address, string mobile,
+        public Client(string name, string contact, string address, string mobile,
             string homeph, string email, Client engagedTo)
         {
             this.name = name;
-            this.gender = gend;
             this.contactPerson = contact;
             this.address = address;
             this.mobile = mobile;
@@ -38,12 +34,6 @@ namespace Assignment3_LHISGroup.Support_Classes
         {
             get { return name; }
             set { name = value; }
-        }
-
-        public Gender ClientGender
-        {
-            get { return gender; }
-            set { gender = value; }
         }
 
         public string ContactPerson

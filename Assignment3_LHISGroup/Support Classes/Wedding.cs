@@ -11,16 +11,18 @@ namespace Assignment3_LHISGroup.Support_Classes
         public enum Status { Underway, Finished, OnHold, Cancelled, InPreparation };
 
         private string title;
-        private Client c1;
-        private Client c2;
+        private Client client1;
+        private Client client2;
         private DateTime startDate;
         private DateTime eventDate;
+        private Staff weddingPlanner;
 
-        public Wedding(string title, Client c1, Client c2, DateTime startDate, DateTime eventDate)
+        public Wedding(string title, Client c1, Client c2, Staff staff, DateTime startDate, DateTime eventDate)
         {
             this.title = title;
-            this.c1 = c1;
-            this.c2 = c2;
+            this.client1 = c1;
+            this.client2 = c2;
+            this.weddingPlanner = staff;
             this.startDate = startDate;
             this.eventDate = eventDate;
         }

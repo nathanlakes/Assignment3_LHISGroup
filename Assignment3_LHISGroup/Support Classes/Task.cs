@@ -10,7 +10,7 @@ namespace Assignment3_LHISGroup.Support_Classes
     {
         public enum Priority { low, med, high };
 
-
+        
         private string taskName;
         private string description;
         private Priority priority;
