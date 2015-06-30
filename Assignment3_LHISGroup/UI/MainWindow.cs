@@ -21,13 +21,25 @@ namespace Assignment3_LHISGroup
 
 
             // DEBUGGING
-            Support_Classes.Staff s = new Support_Classes.Staff("Me", "Me", "nl@mail.com", "0888548", "goat",
-                Support_Classes.Staff.Status.active);
+            try
+            {
+                Support_Classes.Staff s = new Support_Classes.Staff("Me", "Me", "nl@mail.com", "0888548", "goat",
+                        Support_Classes.Staff.Status.active);
 
-            Support_Classes.Task t = new Support_Classes.Task("moo", "moo",
-                Support_Classes.Task.Priority.high, new DateTime(2015, 5, 20), s);
+                Support_Classes.Task t = new Support_Classes.Task("moo", "moo",
+                        Support_Classes.Task.Priority.high, new DateTime(2016, 5, 20), s);
 
-            Console.WriteLine(t.CompletionDate);
+                t.CompletionDate = new DateTime(2015, 07, 20);
+
+                Console.WriteLine( t.CompletionDate );
+
+            }
+            catch (Exception e) 
+            {
+                Console.WriteLine( e.ToString() ); 
+            }
+           
+
         }
     }
 }

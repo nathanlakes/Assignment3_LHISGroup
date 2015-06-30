@@ -18,14 +18,14 @@ namespace Assignment3_LHISGroup.Support_Classes
         private string notes;
         private Status status; 
 
-        public Staff(string fn, string sn, string em, string ph, string not, Status s)
+        public Staff(string firstn, string surn, string email, string ph, string note, Status stat)
         {
-            firstname = fn;
-            surname = sn;
-            email = em;
+            firstname = firstn;
+            surname = surn;
+            this.email = email;
             phone = ph;
-            notes = not;
-            status = s;
+            notes = note;
+            status = stat;
         }
 
         public string FirstName
