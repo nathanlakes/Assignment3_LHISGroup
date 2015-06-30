@@ -94,6 +94,7 @@
             this.NewClientButton.TabIndex = 3;
             this.NewClientButton.Text = "New Client";
             this.NewClientButton.UseVisualStyleBackColor = false;
+            this.NewClientButton.Click += new System.EventHandler(this.NewClientButton_Click);
             // 
             // NewWeddingButton
             // 
@@ -104,6 +105,7 @@
             this.NewWeddingButton.TabIndex = 1;
             this.NewWeddingButton.Text = "New Wedding";
             this.NewWeddingButton.UseVisualStyleBackColor = false;
+            this.NewWeddingButton.Click += new System.EventHandler(this.NewWeddingButton_Click);
             // 
             // NewStaffButton
             // 

@@ -38,7 +38,6 @@ namespace Assignment3_LHISGroup
                 Console.WriteLine( e.ToString() ); 
             }
            
-
         }
 
         private void ManageSuppliersButton_Click(object sender, EventArgs e)
@@ -86,6 +85,18 @@ namespace Assignment3_LHISGroup
         private void NewSupplierButton_Click(object sender, EventArgs e)
         {
             UI.NewSupplierWindow win = new UI.NewSupplierWindow();
+            win.Visible = true;
+        }
+
+        private void NewWeddingButton_Click(object sender, EventArgs e)
+        {
+            UI.NewWeddingWindow win = new UI.NewWeddingWindow();
+            win.Visible = true;
+        }
+
+        private void NewClientButton_Click(object sender, EventArgs e)
+        {
+            UI.NewClientWindow win = new UI.NewClientWindow();
             win.Visible = true;
         }
     }
