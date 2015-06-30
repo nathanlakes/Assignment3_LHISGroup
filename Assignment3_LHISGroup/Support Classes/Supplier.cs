@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Assignment3_LHISGroup
+namespace Assignment3_LHISGroup.Support_Classes
 {
 
         class Supplier
