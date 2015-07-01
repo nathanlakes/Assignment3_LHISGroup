@@ -9,7 +9,7 @@ namespace Assignment3_LHISGroup.Support_Classes
     /**
      *   An employee of the Wedding Planning busines.
      */
-    class Staff
+    public class Staff
     {
         public enum Active { active, inactive }
 

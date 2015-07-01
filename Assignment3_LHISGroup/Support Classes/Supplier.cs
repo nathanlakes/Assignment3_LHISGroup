@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Assignment3_LHISGroup.Support_Classes
 {
 
-        class Supplier
+        public class Supplier
         {
             private string companyName;
             private string address;

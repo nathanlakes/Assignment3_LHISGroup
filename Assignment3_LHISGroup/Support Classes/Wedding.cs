@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment3_LHISGroup.Support_Classes
 {
-    class Wedding
+    public class Wedding
     {
         public enum Status { Underway, Finished, OnHold, Cancelled, InPreparation };
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment3_LHISGroup.Support_Classes
 {
-    class Client
+    public class Client
     {
         private string firstname;
         private string surname;

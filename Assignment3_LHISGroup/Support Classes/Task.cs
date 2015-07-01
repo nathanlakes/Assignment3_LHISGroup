@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment3_LHISGroup.Support_Classes
 {
-    class Task
+    public class Task
     {
         public enum Priority { low, med, high };
         

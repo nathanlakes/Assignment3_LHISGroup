@@ -20,8 +20,21 @@ namespace Assignment3_LHISGroup
         public MainWindow()
         {
             InitializeComponent();
-            db = new DbController();  // Creates a DB controller to be used by the UI classes. 
+            db = new DbController();        // Creates a DB controller to be used by the UI classes. 
+            nathanDebug();                  // Code to debug Db in dev. cycle.
             
+        }
+
+        // Used for DB Debugging purposes, NL to clean up
+        private void nathanDebug()
+        {
+            Staff s1 = new Staff("Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "can't work sundays",
+                Staff.Active.active);
+
+            Support_Classes.Task t1 = new Support_Classes.Task("Set table at venue", "Set 12 tables", 
+                Support_Classes.Task.Priority.high, new DateTime(2015, 12, 12), s1);
+
+            db.AddPersonToTask(t1, s1);
         }
 
         private void ManageSuppliersButton_Click(object sender, EventArgs e)
