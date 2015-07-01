@@ -42,7 +42,7 @@ namespace Assignment3_LHISGroup
          *   Adds a given Staff Member to a task and writes to the database.
          *   Nb. Task cannot be made without it being assigned to somebody.
          */
-        public bool AddTask(Support_Classes.Task t)
+        public bool AddTask(Support_Classes.Task t) 
         {
             Staff s = t.AssignedTo;
 
@@ -251,17 +251,22 @@ namespace Assignment3_LHISGroup
                "SELECT firstname FROM Staff WHERE firstname = '" + s.FirstName + "' AND surname = '" +
                s.Surname + "' AND phone = '" + s.Phone + "'", db);
 
-            using (var myReader = testStaff.ExecuteReader())
+            try
             {
-                if (myReader.Read())
+                using (var myReader = testStaff.ExecuteReader())
                 {
-                    return Convert.ToInt32(myReader["Id"].ToString());
-                }
-                else
-                {
-                    return -1;
+                    if (myReader.Read())
+                    {
+                        return Convert.ToInt32(myReader["Id"].ToString());
+                    }
                 }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return -1;
         }
 
         /**
