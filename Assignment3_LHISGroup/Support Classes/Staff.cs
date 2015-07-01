@@ -48,6 +48,12 @@ namespace Assignment3_LHISGroup.Support_Classes
             set { email = value; }
         }
 
+        public string Phone
+        {
+            get { return phone; }
+            set { phone = value; }
+        }
+
         public string Notes
         {
             get { return notes; }

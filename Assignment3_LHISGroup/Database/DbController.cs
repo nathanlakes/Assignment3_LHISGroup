@@ -43,38 +43,104 @@ namespace Assignment3_LHISGroup
          */
         public bool AddPersonToTask(Support_Classes.Task t, Staff s)
         {
-            // Check that staff exists in the database.
-            SqlCommand testStaff = new SqlCommand(
-                "SELECT firstname FROM Staff WHERE firstname = '" + s.FirstName + "' AND surname = '" +
-                s.Surname + "'", db);
+            // Check that staff exists in the database. Phone number used for cases where
+            // Staff with the same name work together. They won't have the same phone ext. 
+            // though. 
+            int staffId = getStaffId(s);
+            if (staffId == -1) throw new Exception("Staff must exist in Db.Staff, before being assigned to a task:");
 
-            int staffId;
+            string _s = ",";
+
+            String query = "INSERT INTO Task(name,description,priority,completeByDate, staffOnJob_FK) " +
+                "VALUES(" + t.TaskName + _s + t.Description + _s + t.TaskPriority + _s + 
+                t.CompleteBy.Date.ToString() + _s + staffId + ")";
+
+            SqlCommand myCommand = new SqlCommand(query, db);
+
+            int res = myCommand.ExecuteNonQuery();
+            if (res == 1) return true;  //Should only update one row
+
+            return false;
+        }
+
+        /**
+         *   Changes the Staff member assigned to a task.
+         */   
+        public bool UpdatePersonOnTask(Support_Classes.Task t, Staff s)
+        {
+            // Find ID number of staff.
+            int staffId = getStaffId(s);
+            if (staffId == -1) throw new Exception("Staff must exist in Db.Staff, before being assigned to a task:");
+
+            // Find ID of Task
+            int taskId = getTaskId(t);
+            if (taskId == -1) throw new Exception("Task does not exist.");
+
+            String query = "UPDATE Task SET staffOnJob_FK='"+ staffId +"'" +
+                "WHERE Id='"+ taskId +"'";
+
+            SqlCommand myCommand = new SqlCommand(query, db);
+
+            int res = myCommand.ExecuteNonQuery();  // Run the statement.
+
+            if (res == 1) return true;  // Should only update one row.
+            else return false;
+        }
+
+
+
+
+        //\\//\\//\\//\\//\\/
+        // PRIVATE METHODS \\
+        //\\//\\//\\//\\//\\/
+
+        /**
+         *   Checks the Staff table and returns the staff ID number if they exist.
+         *   Returns -1 if the staff member does not exist.
+         */   
+        private int getStaffId(Staff s)
+        {
+            SqlCommand testStaff = new SqlCommand(
+               "SELECT firstname FROM Staff WHERE firstname = '" + s.FirstName + "' AND surname = '" +
+               s.Surname + "' AND phone = '" + s.Phone + "'", db);
 
             using (var myReader = testStaff.ExecuteReader())
             {
-                if ( myReader.Read() )
+                if (myReader.Read())
                 {
-                    staffId = Convert.ToInt32( myReader["Id"].ToString() );
-
+                    return Convert.ToInt32(myReader["Id"].ToString());
                 }
                 else
                 {
-                    throw new Exception("Add staff member to Db.Staff before assigning them to a task.");
+                    return -1;
                 }
             }
-           
-
-
-
-            //String query = "INSERT INTO Task(id,username,password,email) VALUES(@id,@username,@password, @email)";
-            //SqlCommand myCommand = new SqlCommand(query, db);
-
-            return true;
         }
-        
-        
-        
-        
+
+        /**
+         *   Checks the Task table and returns the Task Id number if it exists.
+         *   Returns -1 if the Task does not exist.
+         */
+        private int getTaskId(Support_Classes.Task t)
+        {
+            SqlCommand testTask = new SqlCommand(
+               "SELECT Id FROM Task WHERE name = '" + t.TaskName + 
+                    "' AND description = '" + t.Description + "'", db);
+
+            using (var myReader = testTask.ExecuteReader())
+            {
+                if (myReader.Read())
+                {
+                    return Convert.ToInt32(myReader["Id"].ToString());
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
+
+
         /**
          *   Used for debugging purposes
          */   
