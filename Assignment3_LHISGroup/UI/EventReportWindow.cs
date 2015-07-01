@@ -12,9 +12,13 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class EventReportWindow : Form
     {
-        public EventReportWindow()
+        Form parent;
+        public EventReportWindow(Form form)
         {
             InitializeComponent();
+            parent = form;
+            parent.Hide();
+            //this.Show();
         }
 
         private void EventProgressGraphButton_Click(object sender, EventArgs e)
@@ -35,6 +39,17 @@ namespace Assignment3_LHISGroup.UI
         private void EventTaskReportButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void EventReportWindow_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void EventReportWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            parent.Show();
+            this.Dispose();
         }
     }
 }

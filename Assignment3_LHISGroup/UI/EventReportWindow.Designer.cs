@@ -90,6 +90,8 @@
             this.Controls.Add(this.EventProgressGraphButton);
             this.Name = "EventReportWindow";
             this.Text = "Event Report";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EventReportWindow_FormClosed);
+            this.Load += new System.EventHandler(this.EventReportWindow_Load);
             this.ResumeLayout(false);
 
         }
