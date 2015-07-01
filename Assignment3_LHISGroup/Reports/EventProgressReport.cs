@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment3_LHISGroup.Reports
 {
-    class EventTaskReport
+    class EventProgressReport
     {
     }
 }
