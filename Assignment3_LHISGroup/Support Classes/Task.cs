@@ -16,6 +16,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         private DateTime completeByDate;
         private DateTime completionDate;
         private Staff assignedTo;
+        private Wedding wedding;
 
 
         public Task(string task, string desc, Priority prior, DateTime compBy, Staff assigned)
@@ -99,6 +100,12 @@ namespace Assignment3_LHISGroup.Support_Classes
         {
             get { return assignedTo; }
             set { assignedTo = value; }
+        }
+
+        public Wedding Wedding
+        {
+            get { return wedding; }
+            set { wedding = value; }
         }
 
     }
