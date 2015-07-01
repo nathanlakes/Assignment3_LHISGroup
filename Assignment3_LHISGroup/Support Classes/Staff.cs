@@ -13,6 +13,7 @@ namespace Assignment3_LHISGroup.Support_Classes
     {
         public enum Active { active, inactive }
 
+        private int id;
         private string firstname;
         private string surname;
         private string email;
@@ -28,6 +29,12 @@ namespace Assignment3_LHISGroup.Support_Classes
             this.phone = ph;
             this.notes = note;
             this.active = status;
+        }
+
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
         }
 
         public string FirstName
@@ -64,6 +71,12 @@ namespace Assignment3_LHISGroup.Support_Classes
         {
             get { return active; }
             set { active = value; }
+        }
+
+        public string StatusToString()
+        {
+            if (active == Active.inactive) return "inactive";
+            else return "active";
         }
 
     }

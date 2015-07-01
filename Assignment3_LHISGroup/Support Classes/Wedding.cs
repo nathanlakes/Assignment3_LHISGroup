@@ -10,6 +10,7 @@ namespace Assignment3_LHISGroup.Support_Classes
     {
         public enum Status { Underway, Finished, OnHold, Cancelled, InPreparation };
 
+        private int id;
         private string title;
         private Client client1;
         private Client client2;
@@ -27,6 +28,11 @@ namespace Assignment3_LHISGroup.Support_Classes
             this.eventDate = eventDate;
         }
 
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public string Title
         {
             get { return title; }

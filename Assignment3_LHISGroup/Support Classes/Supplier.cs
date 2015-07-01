@@ -10,6 +10,7 @@ namespace Assignment3_LHISGroup.Support_Classes
 
         public class Supplier
         {
+            private int id;
             private string companyName;
             private string address;
             private string contactPerson;
@@ -25,6 +26,12 @@ namespace Assignment3_LHISGroup.Support_Classes
                 this.email = email;
                 this.phoneNumber = phNum;
                 this.creditTerms = creditTerms;
+            }
+
+            public int ID
+            {
+                get { return id; }
+                set { id = value; }
             }
 
             public string CompanyName

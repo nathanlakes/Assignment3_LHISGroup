@@ -8,6 +8,7 @@ namespace Assignment3_LHISGroup.Support_Classes
 {
     public class Client
     {
+        private int id;
         private string firstname;
         private string surname;
         private string contactPerson;
@@ -31,6 +32,11 @@ namespace Assignment3_LHISGroup.Support_Classes
             this.engagedTo = engagedTo;
         }
 
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
         public string Firstname
         {

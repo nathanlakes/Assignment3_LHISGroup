@@ -9,7 +9,8 @@ namespace Assignment3_LHISGroup.Support_Classes
     public class Task
     {
         public enum Priority { low, med, high };
-        
+
+        private int id;
         private string taskName;
         private string description;
         private Priority priority;
@@ -27,6 +28,12 @@ namespace Assignment3_LHISGroup.Support_Classes
             completeByDate = compBy;
             completionDate = new DateTime();
             assignedTo = assigned;
+        }
+
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
         }
 
         public string TaskName
