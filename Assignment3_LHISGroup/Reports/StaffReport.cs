@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Assignment3_LHISGroup.Support_Classes;
 using Assignment3_LHISGroup.UI;
-using Assignment3_LHISGroup.Support_Classes.Task;
 
 namespace Assignment3_LHISGroup.Reports
 {
