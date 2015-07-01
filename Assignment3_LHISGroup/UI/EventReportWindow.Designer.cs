@@ -28,51 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.EventReportButton = new System.Windows.Forms.Button();
+            this.EventTaskReportButton = new System.Windows.Forms.Button();
+            this.EventProgressReportButton = new System.Windows.Forms.Button();
+            this.EventProgressGraphButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button4
+            // EventReportButton
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(41, 168);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(303, 39);
-            this.button4.TabIndex = 31;
-            this.button4.Text = "Event Report";
-            this.button4.UseVisualStyleBackColor = false;
+            this.EventReportButton.BackColor = System.Drawing.Color.White;
+            this.EventReportButton.Location = new System.Drawing.Point(41, 168);
+            this.EventReportButton.Name = "EventReportButton";
+            this.EventReportButton.Size = new System.Drawing.Size(303, 39);
+            this.EventReportButton.TabIndex = 31;
+            this.EventReportButton.Text = "Event Report";
+            this.EventReportButton.UseVisualStyleBackColor = false;
+            this.EventReportButton.Click += new System.EventHandler(this.EventReportButton_Click);
             // 
-            // button3
+            // EventTaskReportButton
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(41, 229);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(303, 39);
-            this.button3.TabIndex = 30;
-            this.button3.Text = "Event Task Report";
-            this.button3.UseVisualStyleBackColor = false;
+            this.EventTaskReportButton.BackColor = System.Drawing.Color.White;
+            this.EventTaskReportButton.Location = new System.Drawing.Point(41, 229);
+            this.EventTaskReportButton.Name = "EventTaskReportButton";
+            this.EventTaskReportButton.Size = new System.Drawing.Size(303, 39);
+            this.EventTaskReportButton.TabIndex = 30;
+            this.EventTaskReportButton.Text = "Event Task Report";
+            this.EventTaskReportButton.UseVisualStyleBackColor = false;
+            this.EventTaskReportButton.Click += new System.EventHandler(this.EventTaskReportButton_Click);
             // 
-            // button2
+            // EventProgressReportButton
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(41, 103);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(303, 38);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Event Progress Report";
-            this.button2.UseVisualStyleBackColor = false;
+            this.EventProgressReportButton.BackColor = System.Drawing.Color.White;
+            this.EventProgressReportButton.Location = new System.Drawing.Point(41, 103);
+            this.EventProgressReportButton.Name = "EventProgressReportButton";
+            this.EventProgressReportButton.Size = new System.Drawing.Size(303, 38);
+            this.EventProgressReportButton.TabIndex = 29;
+            this.EventProgressReportButton.Text = "Event Progress Report";
+            this.EventProgressReportButton.UseVisualStyleBackColor = false;
+            this.EventProgressReportButton.Click += new System.EventHandler(this.EventProgressReportButton_Click);
             // 
-            // button1
+            // EventProgressGraphButton
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(41, 40);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(303, 39);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Event Progress Graph";
-            this.button1.UseVisualStyleBackColor = false;
+            this.EventProgressGraphButton.BackColor = System.Drawing.Color.White;
+            this.EventProgressGraphButton.Location = new System.Drawing.Point(41, 40);
+            this.EventProgressGraphButton.Name = "EventProgressGraphButton";
+            this.EventProgressGraphButton.Size = new System.Drawing.Size(303, 39);
+            this.EventProgressGraphButton.TabIndex = 28;
+            this.EventProgressGraphButton.Text = "Event Progress Graph";
+            this.EventProgressGraphButton.UseVisualStyleBackColor = false;
+            this.EventProgressGraphButton.Click += new System.EventHandler(this.EventProgressGraphButton_Click);
             // 
             // EventReportWindow
             // 
@@ -80,10 +84,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(393, 309);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.EventReportButton);
+            this.Controls.Add(this.EventTaskReportButton);
+            this.Controls.Add(this.EventProgressReportButton);
+            this.Controls.Add(this.EventProgressGraphButton);
             this.Name = "EventReportWindow";
             this.Text = "Event Report";
             this.ResumeLayout(false);
@@ -92,9 +96,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button EventReportButton;
+        private System.Windows.Forms.Button EventTaskReportButton;
+        private System.Windows.Forms.Button EventProgressReportButton;
+        private System.Windows.Forms.Button EventProgressGraphButton;
     }
 }

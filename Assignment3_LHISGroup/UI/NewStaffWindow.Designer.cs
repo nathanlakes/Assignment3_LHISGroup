@@ -28,67 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.NotesTextBox = new System.Windows.Forms.TextBox();
+            this.ActiveStatusCheckBox = new System.Windows.Forms.CheckBox();
+            this.PhoneTextBox = new System.Windows.Forms.TextBox();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
+            this.SurnameTextBox = new System.Windows.Forms.TextBox();
+            this.FirstNameTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.CreateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox5
+            // NotesTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(206, 240);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(236, 121);
-            this.textBox5.TabIndex = 44;
+            this.NotesTextBox.Location = new System.Drawing.Point(206, 240);
+            this.NotesTextBox.Multiline = true;
+            this.NotesTextBox.Name = "NotesTextBox";
+            this.NotesTextBox.Size = new System.Drawing.Size(236, 121);
+            this.NotesTextBox.TabIndex = 44;
             // 
-            // checkBox1
+            // ActiveStatusCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(23, 370);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(129, 24);
-            this.checkBox1.TabIndex = 43;
-            this.checkBox1.Text = "Active Status";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.ActiveStatusCheckBox.AutoSize = true;
+            this.ActiveStatusCheckBox.Location = new System.Drawing.Point(23, 370);
+            this.ActiveStatusCheckBox.Name = "ActiveStatusCheckBox";
+            this.ActiveStatusCheckBox.Size = new System.Drawing.Size(129, 24);
+            this.ActiveStatusCheckBox.TabIndex = 43;
+            this.ActiveStatusCheckBox.Text = "Active Status";
+            this.ActiveStatusCheckBox.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // PhoneTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(206, 184);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(236, 26);
-            this.textBox4.TabIndex = 42;
+            this.PhoneTextBox.Location = new System.Drawing.Point(206, 184);
+            this.PhoneTextBox.Name = "PhoneTextBox";
+            this.PhoneTextBox.Size = new System.Drawing.Size(236, 26);
+            this.PhoneTextBox.TabIndex = 42;
             // 
-            // textBox3
+            // EmailTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(206, 127);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(236, 26);
-            this.textBox3.TabIndex = 41;
+            this.EmailTextBox.Location = new System.Drawing.Point(206, 127);
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(236, 26);
+            this.EmailTextBox.TabIndex = 41;
             // 
-            // textBox2
+            // SurnameTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(206, 74);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(236, 26);
-            this.textBox2.TabIndex = 40;
+            this.SurnameTextBox.Location = new System.Drawing.Point(206, 74);
+            this.SurnameTextBox.Name = "SurnameTextBox";
+            this.SurnameTextBox.Size = new System.Drawing.Size(236, 26);
+            this.SurnameTextBox.TabIndex = 40;
             // 
-            // textBox1
+            // FirstNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(206, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(236, 26);
-            this.textBox1.TabIndex = 39;
+            this.FirstNameTextBox.Location = new System.Drawing.Point(206, 26);
+            this.FirstNameTextBox.Name = "FirstNameTextBox";
+            this.FirstNameTextBox.Size = new System.Drawing.Size(236, 26);
+            this.FirstNameTextBox.TabIndex = 39;
             // 
             // label5
             // 
@@ -135,35 +135,35 @@
             this.label1.TabIndex = 34;
             this.label1.Text = "First Name";
             // 
-            // button3
+            // CancelButton
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(352, 487);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 46);
-            this.button3.TabIndex = 33;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = false;
+            this.CancelButton.BackColor = System.Drawing.Color.White;
+            this.CancelButton.Location = new System.Drawing.Point(352, 487);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(90, 46);
+            this.CancelButton.TabIndex = 33;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // ClearButton
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(206, 487);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 46);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = false;
+            this.ClearButton.BackColor = System.Drawing.Color.White;
+            this.ClearButton.Location = new System.Drawing.Point(206, 487);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(102, 46);
+            this.ClearButton.TabIndex = 32;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // CreateButton
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(206, 412);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(236, 54);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Create";
-            this.button1.UseVisualStyleBackColor = false;
+            this.CreateButton.BackColor = System.Drawing.Color.White;
+            this.CreateButton.Location = new System.Drawing.Point(206, 412);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(236, 54);
+            this.CreateButton.TabIndex = 31;
+            this.CreateButton.Text = "Create";
+            this.CreateButton.UseVisualStyleBackColor = false;
             // 
             // NewStaffWindow
             // 
@@ -171,20 +171,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(489, 571);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.NotesTextBox);
+            this.Controls.Add(this.ActiveStatusCheckBox);
+            this.Controls.Add(this.PhoneTextBox);
+            this.Controls.Add(this.EmailTextBox);
+            this.Controls.Add(this.SurnameTextBox);
+            this.Controls.Add(this.FirstNameTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.ClearButton);
+            this.Controls.Add(this.CreateButton);
             this.Name = "NewStaffWindow";
             this.Text = "New Staff";
             this.ResumeLayout(false);
@@ -194,20 +194,20 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox NotesTextBox;
+        private System.Windows.Forms.CheckBox ActiveStatusCheckBox;
+        private System.Windows.Forms.TextBox PhoneTextBox;
+        private System.Windows.Forms.TextBox EmailTextBox;
+        private System.Windows.Forms.TextBox SurnameTextBox;
+        private System.Windows.Forms.TextBox FirstNameTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button CreateButton;
 
     }
 }

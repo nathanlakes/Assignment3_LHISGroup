@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.StartDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.EventDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.StaffComboBox = new System.Windows.Forms.ComboBox();
+            this.ClientComboBox = new System.Windows.Forms.ComboBox();
+            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,52 +44,54 @@
             this.ResetButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.ReportsButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.StatusComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // dateTimePicker2
+            // StartDateTimePicker
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(201, 275);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker2.TabIndex = 23;
+            this.StartDateTimePicker.Location = new System.Drawing.Point(201, 275);
+            this.StartDateTimePicker.Name = "StartDateTimePicker";
+            this.StartDateTimePicker.Size = new System.Drawing.Size(200, 26);
+            this.StartDateTimePicker.TabIndex = 23;
             // 
-            // dateTimePicker1
+            // EventDateTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(201, 235);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker1.TabIndex = 22;
+            this.EventDateTimePicker.Location = new System.Drawing.Point(201, 235);
+            this.EventDateTimePicker.Name = "EventDateTimePicker";
+            this.EventDateTimePicker.Size = new System.Drawing.Size(200, 26);
+            this.EventDateTimePicker.TabIndex = 22;
             // 
-            // comboBox2
+            // StaffComboBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(201, 325);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 28);
-            this.comboBox2.TabIndex = 21;
+            this.StaffComboBox.FormattingEnabled = true;
+            this.StaffComboBox.Location = new System.Drawing.Point(201, 325);
+            this.StaffComboBox.Name = "StaffComboBox";
+            this.StaffComboBox.Size = new System.Drawing.Size(200, 28);
+            this.StaffComboBox.TabIndex = 21;
             // 
-            // comboBox1
+            // ClientComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(201, 71);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 28);
-            this.comboBox1.TabIndex = 20;
+            this.ClientComboBox.FormattingEnabled = true;
+            this.ClientComboBox.Location = new System.Drawing.Point(201, 71);
+            this.ClientComboBox.Name = "ClientComboBox";
+            this.ClientComboBox.Size = new System.Drawing.Size(200, 28);
+            this.ClientComboBox.TabIndex = 20;
             // 
-            // textBox2
+            // DescriptionTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(201, 124);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 83);
-            this.textBox2.TabIndex = 19;
+            this.DescriptionTextBox.Location = new System.Drawing.Point(201, 124);
+            this.DescriptionTextBox.Multiline = true;
+            this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.Size = new System.Drawing.Size(200, 83);
+            this.DescriptionTextBox.TabIndex = 19;
             // 
-            // textBox1
+            // NameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(201, 31);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 26);
-            this.textBox1.TabIndex = 18;
+            this.NameTextBox.Location = new System.Drawing.Point(201, 31);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(200, 26);
+            this.NameTextBox.TabIndex = 18;
             // 
             // label6
             // 
@@ -148,7 +150,7 @@
             // CancelButton
             // 
             this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(311, 463);
+            this.CancelButton.Location = new System.Drawing.Point(311, 528);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(90, 46);
             this.CancelButton.TabIndex = 30;
@@ -158,7 +160,7 @@
             // ResetButton
             // 
             this.ResetButton.BackColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(201, 463);
+            this.ResetButton.Location = new System.Drawing.Point(201, 528);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(102, 46);
             this.ResetButton.TabIndex = 29;
@@ -168,7 +170,7 @@
             // UpdateButton
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(201, 392);
+            this.UpdateButton.Location = new System.Drawing.Point(201, 457);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(200, 54);
             this.UpdateButton.TabIndex = 28;
@@ -178,7 +180,7 @@
             // ReportsButton
             // 
             this.ReportsButton.BackColor = System.Drawing.Color.White;
-            this.ReportsButton.Location = new System.Drawing.Point(33, 407);
+            this.ReportsButton.Location = new System.Drawing.Point(35, 471);
             this.ReportsButton.Name = "ReportsButton";
             this.ReportsButton.Size = new System.Drawing.Size(109, 56);
             this.ReportsButton.TabIndex = 31;
@@ -186,22 +188,47 @@
             this.ReportsButton.UseVisualStyleBackColor = false;
             this.ReportsButton.Click += new System.EventHandler(this.ReportsButton_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(33, 387);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 20);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Status";
+            // 
+            // StatusComboBox
+            // 
+            this.StatusComboBox.FormattingEnabled = true;
+            this.StatusComboBox.Items.AddRange(new object[] {
+            "Underway",
+            "Finished",
+            "OnHold",
+            "Cancelled",
+            "InPreparation"});
+            this.StatusComboBox.Location = new System.Drawing.Point(201, 387);
+            this.StatusComboBox.Name = "StatusComboBox";
+            this.StatusComboBox.Size = new System.Drawing.Size(200, 28);
+            this.StatusComboBox.TabIndex = 33;
+            // 
             // UpdateWeddingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(450, 541);
+            this.ClientSize = new System.Drawing.Size(456, 602);
+            this.Controls.Add(this.StatusComboBox);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.ReportsButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.UpdateButton);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.StartDateTimePicker);
+            this.Controls.Add(this.EventDateTimePicker);
+            this.Controls.Add(this.StaffComboBox);
+            this.Controls.Add(this.ClientComboBox);
+            this.Controls.Add(this.DescriptionTextBox);
+            this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -217,12 +244,12 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker StartDateTimePicker;
+        private System.Windows.Forms.DateTimePicker EventDateTimePicker;
+        private System.Windows.Forms.ComboBox StaffComboBox;
+        private System.Windows.Forms.ComboBox ClientComboBox;
+        private System.Windows.Forms.TextBox DescriptionTextBox;
+        private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -233,5 +260,7 @@
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button ReportsButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox StatusComboBox;
     }
 }

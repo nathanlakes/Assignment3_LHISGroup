@@ -28,5 +28,10 @@ namespace Assignment3_LHISGroup.UI
             UI.UpdateWeddingWindow win = new UI.UpdateWeddingWindow();
             win.Visible = true;
         }
+
+        private void DeleteWeddingButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

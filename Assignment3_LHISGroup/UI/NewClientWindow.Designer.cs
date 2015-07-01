@@ -28,271 +28,342 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.CreateButton = new System.Windows.Forms.Button();
+            this.ContactSurnameTextBox = new System.Windows.Forms.TextBox();
+            this.ClientBSurnameTextBox = new System.Windows.Forms.TextBox();
+            this.ClientASurnameTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ContactRadioButton = new System.Windows.Forms.RadioButton();
+            this.ClientBRadioButton = new System.Windows.Forms.RadioButton();
+            this.ClientARadioButton = new System.Windows.Forms.RadioButton();
+            this.ContactAddressTextBox = new System.Windows.Forms.TextBox();
+            this.ContactHomePhoneTextBox = new System.Windows.Forms.TextBox();
+            this.ContactMobilePhoneTextBox = new System.Windows.Forms.TextBox();
+            this.ContactEmailTextBox = new System.Windows.Forms.TextBox();
+            this.ContactFirsNameTextBox = new System.Windows.Forms.TextBox();
+            this.ClientBAddressTextBox = new System.Windows.Forms.TextBox();
+            this.ClientBHomePhoneTextBox = new System.Windows.Forms.TextBox();
+            this.ClientBMobilePhoneTextBox = new System.Windows.Forms.TextBox();
+            this.ClientBEmailTextBox = new System.Windows.Forms.TextBox();
+            this.ClientBFirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.ClientAAddressTextBox = new System.Windows.Forms.TextBox();
+            this.ClientAHomePhoneTextBox = new System.Windows.Forms.TextBox();
+            this.ClientAMobilePhoneTextBox = new System.Windows.Forms.TextBox();
+            this.ClientAEmailTextBox = new System.Windows.Forms.TextBox();
+            this.ClientAFirstNameTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // CancelButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 115);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            this.CancelButton.BackColor = System.Drawing.Color.White;
+            this.CancelButton.Location = new System.Drawing.Point(817, 582);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(90, 46);
+            this.CancelButton.TabIndex = 28;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // ClearButton
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 155);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Email";
+            this.ClearButton.BackColor = System.Drawing.Color.White;
+            this.ClearButton.Location = new System.Drawing.Point(709, 582);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(102, 46);
+            this.ClearButton.TabIndex = 27;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // CreateButton
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(96, 206);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Mobile Phone";
+            this.CreateButton.BackColor = System.Drawing.Color.White;
+            this.CreateButton.Location = new System.Drawing.Point(709, 511);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(198, 54);
+            this.CreateButton.TabIndex = 26;
+            this.CreateButton.Text = "Create";
+            this.CreateButton.UseVisualStyleBackColor = false;
             // 
-            // label4
+            // ContactSurnameTextBox
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(96, 263);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Home Phone";
+            this.ContactSurnameTextBox.Location = new System.Drawing.Point(800, 131);
+            this.ContactSurnameTextBox.Name = "ContactSurnameTextBox";
+            this.ContactSurnameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ContactSurnameTextBox.TabIndex = 58;
             // 
-            // label5
+            // ClientBSurnameTextBox
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(96, 315);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Address";
+            this.ClientBSurnameTextBox.Location = new System.Drawing.Point(504, 131);
+            this.ClientBSurnameTextBox.Name = "ClientBSurnameTextBox";
+            this.ClientBSurnameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ClientBSurnameTextBox.TabIndex = 87;
             // 
-            // label6
+            // ClientASurnameTextBox
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(279, 42);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 20);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Client A";
+            this.ClientASurnameTextBox.Location = new System.Drawing.Point(217, 128);
+            this.ClientASurnameTextBox.Name = "ClientASurnameTextBox";
+            this.ClientASurnameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ClientASurnameTextBox.TabIndex = 86;
             // 
-            // label7
+            // label9
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(578, 42);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 20);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Client B";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(30, 131);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(74, 20);
+            this.label9.TabIndex = 85;
+            this.label9.Text = "Surname";
+            // 
+            // ContactRadioButton
+            // 
+            this.ContactRadioButton.AutoSize = true;
+            this.ContactRadioButton.Location = new System.Drawing.Point(800, 442);
+            this.ContactRadioButton.Name = "ContactRadioButton";
+            this.ContactRadioButton.Size = new System.Drawing.Size(203, 24);
+            this.ContactRadioButton.TabIndex = 84;
+            this.ContactRadioButton.TabStop = true;
+            this.ContactRadioButton.Text = "Contact is another party";
+            this.ContactRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // ClientBRadioButton
+            // 
+            this.ClientBRadioButton.AutoSize = true;
+            this.ClientBRadioButton.Location = new System.Drawing.Point(504, 443);
+            this.ClientBRadioButton.Name = "ClientBRadioButton";
+            this.ClientBRadioButton.Size = new System.Drawing.Size(164, 24);
+            this.ClientBRadioButton.TabIndex = 83;
+            this.ClientBRadioButton.TabStop = true;
+            this.ClientBRadioButton.Text = "Contact is Client B";
+            this.ClientBRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // ClientARadioButton
+            // 
+            this.ClientARadioButton.AutoSize = true;
+            this.ClientARadioButton.Location = new System.Drawing.Point(217, 444);
+            this.ClientARadioButton.Name = "ClientARadioButton";
+            this.ClientARadioButton.Size = new System.Drawing.Size(164, 24);
+            this.ClientARadioButton.TabIndex = 82;
+            this.ClientARadioButton.TabStop = true;
+            this.ClientARadioButton.Text = "Contact is Client A";
+            this.ClientARadioButton.UseVisualStyleBackColor = true;
+            // 
+            // ContactAddressTextBox
+            // 
+            this.ContactAddressTextBox.Location = new System.Drawing.Point(800, 328);
+            this.ContactAddressTextBox.Multiline = true;
+            this.ContactAddressTextBox.Name = "ContactAddressTextBox";
+            this.ContactAddressTextBox.Size = new System.Drawing.Size(211, 82);
+            this.ContactAddressTextBox.TabIndex = 81;
+            // 
+            // ContactHomePhoneTextBox
+            // 
+            this.ContactHomePhoneTextBox.Location = new System.Drawing.Point(800, 276);
+            this.ContactHomePhoneTextBox.Name = "ContactHomePhoneTextBox";
+            this.ContactHomePhoneTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ContactHomePhoneTextBox.TabIndex = 80;
+            // 
+            // ContactMobilePhoneTextBox
+            // 
+            this.ContactMobilePhoneTextBox.Location = new System.Drawing.Point(800, 219);
+            this.ContactMobilePhoneTextBox.Name = "ContactMobilePhoneTextBox";
+            this.ContactMobilePhoneTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ContactMobilePhoneTextBox.TabIndex = 79;
+            // 
+            // ContactEmailTextBox
+            // 
+            this.ContactEmailTextBox.Location = new System.Drawing.Point(800, 175);
+            this.ContactEmailTextBox.Name = "ContactEmailTextBox";
+            this.ContactEmailTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ContactEmailTextBox.TabIndex = 78;
+            // 
+            // ContactFirsNameTextBox
+            // 
+            this.ContactFirsNameTextBox.Location = new System.Drawing.Point(800, 88);
+            this.ContactFirsNameTextBox.Name = "ContactFirsNameTextBox";
+            this.ContactFirsNameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ContactFirsNameTextBox.TabIndex = 77;
+            // 
+            // ClientBAddressTextBox
+            // 
+            this.ClientBAddressTextBox.Location = new System.Drawing.Point(504, 329);
+            this.ClientBAddressTextBox.Multiline = true;
+            this.ClientBAddressTextBox.Name = "ClientBAddressTextBox";
+            this.ClientBAddressTextBox.Size = new System.Drawing.Size(211, 82);
+            this.ClientBAddressTextBox.TabIndex = 76;
+            // 
+            // ClientBHomePhoneTextBox
+            // 
+            this.ClientBHomePhoneTextBox.Location = new System.Drawing.Point(504, 277);
+            this.ClientBHomePhoneTextBox.Name = "ClientBHomePhoneTextBox";
+            this.ClientBHomePhoneTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ClientBHomePhoneTextBox.TabIndex = 75;
+            // 
+            // ClientBMobilePhoneTextBox
+            // 
+            this.ClientBMobilePhoneTextBox.Location = new System.Drawing.Point(504, 220);
+            this.ClientBMobilePhoneTextBox.Name = "ClientBMobilePhoneTextBox";
+            this.ClientBMobilePhoneTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ClientBMobilePhoneTextBox.TabIndex = 74;
+            // 
+            // ClientBEmailTextBox
+            // 
+            this.ClientBEmailTextBox.Location = new System.Drawing.Point(504, 176);
+            this.ClientBEmailTextBox.Name = "ClientBEmailTextBox";
+            this.ClientBEmailTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ClientBEmailTextBox.TabIndex = 73;
+            // 
+            // ClientBFirstNameTextBox
+            // 
+            this.ClientBFirstNameTextBox.Location = new System.Drawing.Point(504, 89);
+            this.ClientBFirstNameTextBox.Name = "ClientBFirstNameTextBox";
+            this.ClientBFirstNameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ClientBFirstNameTextBox.TabIndex = 72;
+            // 
+            // ClientAAddressTextBox
+            // 
+            this.ClientAAddressTextBox.Location = new System.Drawing.Point(217, 328);
+            this.ClientAAddressTextBox.Multiline = true;
+            this.ClientAAddressTextBox.Name = "ClientAAddressTextBox";
+            this.ClientAAddressTextBox.Size = new System.Drawing.Size(211, 82);
+            this.ClientAAddressTextBox.TabIndex = 71;
+            // 
+            // ClientAHomePhoneTextBox
+            // 
+            this.ClientAHomePhoneTextBox.Location = new System.Drawing.Point(217, 276);
+            this.ClientAHomePhoneTextBox.Name = "ClientAHomePhoneTextBox";
+            this.ClientAHomePhoneTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ClientAHomePhoneTextBox.TabIndex = 70;
+            // 
+            // ClientAMobilePhoneTextBox
+            // 
+            this.ClientAMobilePhoneTextBox.Location = new System.Drawing.Point(217, 219);
+            this.ClientAMobilePhoneTextBox.Name = "ClientAMobilePhoneTextBox";
+            this.ClientAMobilePhoneTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ClientAMobilePhoneTextBox.TabIndex = 69;
+            // 
+            // ClientAEmailTextBox
+            // 
+            this.ClientAEmailTextBox.Location = new System.Drawing.Point(217, 175);
+            this.ClientAEmailTextBox.Name = "ClientAEmailTextBox";
+            this.ClientAEmailTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ClientAEmailTextBox.TabIndex = 68;
+            // 
+            // ClientAFirstNameTextBox
+            // 
+            this.ClientAFirstNameTextBox.Location = new System.Drawing.Point(217, 88);
+            this.ClientAFirstNameTextBox.Name = "ClientAFirstNameTextBox";
+            this.ClientAFirstNameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.ClientAFirstNameTextBox.TabIndex = 67;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(878, 42);
+            this.label8.Location = new System.Drawing.Point(796, 40);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 20);
-            this.label8.TabIndex = 7;
+            this.label8.TabIndex = 66;
             this.label8.Text = "Contact";
             // 
-            // textBox1
+            // label7
             // 
-            this.textBox1.Location = new System.Drawing.Point(283, 108);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(211, 26);
-            this.textBox1.TabIndex = 8;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(500, 40);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 20);
+            this.label7.TabIndex = 65;
+            this.label7.Text = "Client B";
             // 
-            // textBox2
+            // label6
             // 
-            this.textBox2.Location = new System.Drawing.Point(283, 155);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(211, 26);
-            this.textBox2.TabIndex = 9;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(213, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 20);
+            this.label6.TabIndex = 64;
+            this.label6.Text = "Client A";
             // 
-            // textBox3
+            // label5
             // 
-            this.textBox3.Location = new System.Drawing.Point(283, 199);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(211, 26);
-            this.textBox3.TabIndex = 10;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(30, 335);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 20);
+            this.label5.TabIndex = 63;
+            this.label5.Text = "Address";
             // 
-            // textBox4
+            // label4
             // 
-            this.textBox4.Location = new System.Drawing.Point(283, 256);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(211, 26);
-            this.textBox4.TabIndex = 11;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(30, 283);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 20);
+            this.label4.TabIndex = 62;
+            this.label4.Text = "Home Phone";
             // 
-            // textBox5
+            // label3
             // 
-            this.textBox5.Location = new System.Drawing.Point(283, 308);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(211, 82);
-            this.textBox5.TabIndex = 12;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(30, 226);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 20);
+            this.label3.TabIndex = 61;
+            this.label3.Text = "Mobile Phone";
             // 
-            // textBox6
+            // label2
             // 
-            this.textBox6.Location = new System.Drawing.Point(570, 309);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(211, 82);
-            this.textBox6.TabIndex = 17;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(30, 175);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 20);
+            this.label2.TabIndex = 60;
+            this.label2.Text = "Email";
             // 
-            // textBox7
+            // label1
             // 
-            this.textBox7.Location = new System.Drawing.Point(570, 257);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(211, 26);
-            this.textBox7.TabIndex = 16;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(570, 200);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(211, 26);
-            this.textBox8.TabIndex = 15;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(570, 156);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(211, 26);
-            this.textBox9.TabIndex = 14;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(570, 109);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(211, 26);
-            this.textBox10.TabIndex = 13;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(866, 308);
-            this.textBox11.Multiline = true;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(211, 82);
-            this.textBox11.TabIndex = 22;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(866, 256);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(211, 26);
-            this.textBox12.TabIndex = 21;
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(866, 199);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(211, 26);
-            this.textBox13.TabIndex = 20;
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(866, 155);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(211, 26);
-            this.textBox14.TabIndex = 19;
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(866, 108);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(211, 26);
-            this.textBox15.TabIndex = 18;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(283, 424);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(164, 24);
-            this.radioButton1.TabIndex = 23;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Contact is Client A";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(570, 423);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(164, 24);
-            this.radioButton2.TabIndex = 24;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Contact is Client B";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(866, 422);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(203, 24);
-            this.radioButton3.TabIndex = 25;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Contact is another party";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 20);
+            this.label1.TabIndex = 59;
+            this.label1.Text = "First Name";
             // 
             // NewClientWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1147, 591);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.textBox14);
-            this.Controls.Add(this.textBox15);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1085, 660);
+            this.Controls.Add(this.ContactSurnameTextBox);
+            this.Controls.Add(this.ClientBSurnameTextBox);
+            this.Controls.Add(this.ClientASurnameTextBox);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.ContactRadioButton);
+            this.Controls.Add(this.ClientBRadioButton);
+            this.Controls.Add(this.ClientARadioButton);
+            this.Controls.Add(this.ContactAddressTextBox);
+            this.Controls.Add(this.ContactHomePhoneTextBox);
+            this.Controls.Add(this.ContactMobilePhoneTextBox);
+            this.Controls.Add(this.ContactEmailTextBox);
+            this.Controls.Add(this.ContactFirsNameTextBox);
+            this.Controls.Add(this.ClientBAddressTextBox);
+            this.Controls.Add(this.ClientBHomePhoneTextBox);
+            this.Controls.Add(this.ClientBMobilePhoneTextBox);
+            this.Controls.Add(this.ClientBEmailTextBox);
+            this.Controls.Add(this.ClientBFirstNameTextBox);
+            this.Controls.Add(this.ClientAAddressTextBox);
+            this.Controls.Add(this.ClientAHomePhoneTextBox);
+            this.Controls.Add(this.ClientAMobilePhoneTextBox);
+            this.Controls.Add(this.ClientAEmailTextBox);
+            this.Controls.Add(this.ClientAFirstNameTextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -301,6 +372,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.ClearButton);
+            this.Controls.Add(this.CreateButton);
             this.Name = "NewClientWindow";
             this.Text = "New Client";
             this.ResumeLayout(false);
@@ -310,31 +384,38 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button CreateButton;
+        private System.Windows.Forms.TextBox ContactSurnameTextBox;
+        private System.Windows.Forms.TextBox ClientBSurnameTextBox;
+        private System.Windows.Forms.TextBox ClientASurnameTextBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton ContactRadioButton;
+        private System.Windows.Forms.RadioButton ClientBRadioButton;
+        private System.Windows.Forms.RadioButton ClientARadioButton;
+        private System.Windows.Forms.TextBox ContactAddressTextBox;
+        private System.Windows.Forms.TextBox ContactHomePhoneTextBox;
+        private System.Windows.Forms.TextBox ContactMobilePhoneTextBox;
+        private System.Windows.Forms.TextBox ContactEmailTextBox;
+        private System.Windows.Forms.TextBox ContactFirsNameTextBox;
+        private System.Windows.Forms.TextBox ClientBAddressTextBox;
+        private System.Windows.Forms.TextBox ClientBHomePhoneTextBox;
+        private System.Windows.Forms.TextBox ClientBMobilePhoneTextBox;
+        private System.Windows.Forms.TextBox ClientBEmailTextBox;
+        private System.Windows.Forms.TextBox ClientBFirstNameTextBox;
+        private System.Windows.Forms.TextBox ClientAAddressTextBox;
+        private System.Windows.Forms.TextBox ClientAHomePhoneTextBox;
+        private System.Windows.Forms.TextBox ClientAMobilePhoneTextBox;
+        private System.Windows.Forms.TextBox ClientAEmailTextBox;
+        private System.Windows.Forms.TextBox ClientAFirstNameTextBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
