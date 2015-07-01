@@ -14,10 +14,13 @@ namespace Assignment3_LHISGroup
 {
     public partial class MainWindow : Form
     {
+
+        public DbController db;
+
         public MainWindow()
         {
             InitializeComponent();
-            //DbController db = new DbController()
+            db = new DbController();  // Creates a DB controller to be used by the UI classes. 
             
         }
 

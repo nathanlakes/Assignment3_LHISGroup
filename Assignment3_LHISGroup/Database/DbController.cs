@@ -22,9 +22,12 @@ namespace Assignment3_LHISGroup
         {
             try
             {
-                string connStr = "Data Source=(LocalDB)\v11.0;" + 
-                    "AttachDbFilename=Assignment3_LHISGroup/Assignment3_LHISGroup/Model.mdf;" + 
-                    "Integrated Security=True";
+                string connStr = "C:\\Users\\Nathan\\documents\\visual studio 2013\\Projects\\Assignment3_LHISGroup\\Assignment3_LHISGroup\\Database\\Model.mdf";
+                
+                
+                //string connStr = "Data Source=(LocalDB)\v11.0;" + 
+                    //"AttachDbFilename=Assignment3_LHISGroup/Assignment3_LHISGroup/Model.mdf;" + 
+                    //"Integrated Security=True";
                 db = new SqlConnection(connStr);
             }
             catch (Exception e)

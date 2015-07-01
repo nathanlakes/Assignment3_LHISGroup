@@ -8,7 +8,8 @@ namespace Assignment3_LHISGroup.Support_Classes
 {
     class Client
     {
-        private string name;
+        private string firstname;
+        private string surname;
         private string contactPerson;
         private string address;
         private string mobile;
@@ -17,10 +18,11 @@ namespace Assignment3_LHISGroup.Support_Classes
         private Client engagedTo;
 
 
-        public Client(string name, string contact, string address, string mobile,
+        public Client(string name, string surname, string contact, string address, string mobile,
             string homeph, string email, Client engagedTo)
         {
-            this.name = name;
+            this.firstname = name;
+            this.surname = surname;
             this.contactPerson = contact;
             this.address = address;
             this.mobile = mobile;
@@ -30,10 +32,16 @@ namespace Assignment3_LHISGroup.Support_Classes
         }
 
 
-        public string Name
+        public string Firstname
         {
-            get { return name; }
-            set { name = value; }
+            get { return firstname; }
+            set { firstname = value; }
+        }
+
+        public string Surname
+        {
+            get { return surname; }
+            set { surname = value; }
         }
 
         public string ContactPerson
