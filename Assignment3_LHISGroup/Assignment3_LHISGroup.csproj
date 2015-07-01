@@ -61,6 +61,11 @@
   <ItemGroup>
     <Compile Include="Database\CSVWriter.cs" />
     <Compile Include="Database\DbController.cs" />
+    <Compile Include="ModelDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Support Classes\Client.cs" />
     <Compile Include="Support Classes\Staff.cs" />
     <Compile Include="Support Classes\Task.cs" />
@@ -221,6 +226,17 @@
     <EmbeddedResource Include="UI\UpdateWeddingWindow.resx">
       <DependentUpon>UpdateWeddingWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ModelDataSet.xsc">
+      <DependentUpon>ModelDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ModelDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ModelDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ModelDataSet.xss">
+      <DependentUpon>ModelDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
