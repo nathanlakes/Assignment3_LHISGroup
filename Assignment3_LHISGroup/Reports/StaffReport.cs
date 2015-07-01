@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Assignment3_LHISGroup.Support_Classes;
 using Assignment3_LHISGroup.UI;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/develop
 
 namespace Assignment3_LHISGroup.Reports
 {

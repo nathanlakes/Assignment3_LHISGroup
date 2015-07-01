@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Assignment3_LHISGroup.UI
 {
-    public partial class UpdateWeddingWindow : Form
+    public partial class EventReportWindow : Form
     {
-        public UpdateWeddingWindow()
+        public EventReportWindow()
         {
             InitializeComponent();
-        }
-
-        private void ReportsButton_Click(object sender, EventArgs e)
-        {
-            UI.EventReportWindow win = new UI.EventReportWindow();
-            win.Visible = true;
         }
     }
 }

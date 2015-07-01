@@ -56,7 +56,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(49, 372);
+            this.checkBox1.Location = new System.Drawing.Point(27, 367);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(129, 24);
             this.checkBox1.TabIndex = 28;
@@ -139,7 +139,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(446, 484);
+            this.button3.Location = new System.Drawing.Point(356, 484);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 46);
             this.button3.TabIndex = 18;
@@ -149,7 +149,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(309, 484);
+            this.button2.Location = new System.Drawing.Point(210, 484);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(102, 46);
             this.button2.TabIndex = 17;
@@ -159,9 +159,9 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(309, 413);
+            this.button1.Location = new System.Drawing.Point(210, 409);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(227, 54);
+            this.button1.Size = new System.Drawing.Size(236, 54);
             this.button1.TabIndex = 16;
             this.button1.Text = "Update";
             this.button1.UseVisualStyleBackColor = false;
@@ -169,9 +169,9 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(49, 443);
+            this.button4.Location = new System.Drawing.Point(30, 450);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(138, 58);
+            this.button4.Size = new System.Drawing.Size(126, 58);
             this.button4.TabIndex = 30;
             this.button4.Text = "Staff Report";
             this.button4.UseVisualStyleBackColor = false;
@@ -181,7 +181,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(581, 552);
+            this.ClientSize = new System.Drawing.Size(500, 552);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.checkBox1);
@@ -198,7 +198,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "UpdateStaffWindow";
-            this.Text = "UpdateStaffWindow";
+            this.Text = "Update Staff";
             this.ResumeLayout(false);
             this.PerformLayout();
 

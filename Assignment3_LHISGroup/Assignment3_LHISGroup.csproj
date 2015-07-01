@@ -78,6 +78,12 @@
     <Compile Include="Support Classes\Staff.cs" />
     <Compile Include="Support Classes\Task.cs" />
     <Compile Include="Support Classes\Wedding.cs" />
+    <Compile Include="UI\EventReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EventReportWindow.Designer.cs">
+      <DependentUpon>EventReportWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </Compile>
     <EmbeddedResource Include="Reports\StaffReport.resx">
       <DependentUpon>StaffReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EventReportWindow.resx">
+      <DependentUpon>EventReportWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
