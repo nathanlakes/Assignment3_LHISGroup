@@ -71,6 +71,9 @@
     <Compile Include="Reports\EventTaskReport.cs" />
     <Compile Include="Reports\EventReport.cs" />
     <Compile Include="Reports\StaffReport.cs" />
+    <Compile Include="Reports\StaffReport.Designer.cs">
+      <DependentUpon>StaffReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Support Classes\Client.cs" />
     <Compile Include="Support Classes\Staff.cs" />
     <Compile Include="Support Classes\Task.cs" />
@@ -174,6 +177,9 @@
     <Compile Include="UI\UpdateWeddingWindow.Designer.cs">
       <DependentUpon>UpdateWeddingWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\StaffReport.resx">
+      <DependentUpon>StaffReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
