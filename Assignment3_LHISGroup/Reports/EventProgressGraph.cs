@@ -8,5 +8,8 @@ namespace Assignment3_LHISGroup.Reports
 {
     class EventProgressGraph
     {
+
+
+
     }
 }
