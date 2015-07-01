@@ -188,8 +188,8 @@ namespace Assignment3_LHISGroup
         }
 
         /**
-         *   @Param__id = staff member to update
-         *   @Param__s  = new staff details to update
+         *   @Param  id = staff member to update
+         *   @Param  s  = new staff details to update
          */
         public bool EditStaff(int id, Staff s)
         {
@@ -237,9 +237,9 @@ namespace Assignment3_LHISGroup
 
 
 
-        //\\//\\//\\//\\//\\/
-        // PRIVATE METHODS \\
-        //\\//\\//\\//\\//\\/
+        //\\//\\//\\//\\//\\//\\
+        //  PRIVATE  METHODS  \\
+        //\\//\\//\\//\\//\\//\\
 
         /**
          *   Checks the Staff table and returns the staff ID number if they exist.
