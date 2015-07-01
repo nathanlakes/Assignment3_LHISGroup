@@ -16,5 +16,25 @@ namespace Assignment3_LHISGroup.UI
         {
             InitializeComponent();
         }
+
+        private void EventProgressGraphButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EventProgressReportButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EventReportButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EventTaskReportButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -76,6 +76,7 @@
             this.DeleteWeddingButton.TabIndex = 3;
             this.DeleteWeddingButton.Text = "Delete Task";
             this.DeleteWeddingButton.UseVisualStyleBackColor = false;
+            this.DeleteWeddingButton.Click += new System.EventHandler(this.DeleteWeddingButton_Click);
             // 
             // ManageTasksWindow
             // 

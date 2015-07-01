@@ -33,20 +33,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.CreateButton = new System.Windows.Forms.Button();
+            this.CompanyNameTextBox = new System.Windows.Forms.TextBox();
+            this.ContactPersonTextBox = new System.Windows.Forms.TextBox();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
+            this.PhoneTextBox = new System.Windows.Forms.TextBox();
+            this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 39);
+            this.label1.Location = new System.Drawing.Point(29, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 20);
             this.label1.TabIndex = 0;
@@ -55,7 +55,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(58, 106);
+            this.label2.Location = new System.Drawing.Point(29, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(119, 20);
             this.label2.TabIndex = 1;
@@ -64,7 +64,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(58, 183);
+            this.label3.Location = new System.Drawing.Point(29, 181);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 20);
             this.label3.TabIndex = 2;
@@ -73,7 +73,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(58, 241);
+            this.label4.Location = new System.Drawing.Point(29, 239);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 20);
             this.label4.TabIndex = 3;
@@ -82,92 +82,92 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(58, 314);
+            this.label5.Location = new System.Drawing.Point(29, 312);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "Address";
             // 
-            // button3
+            // CancelButton
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(415, 522);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 46);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = false;
+            this.CancelButton.BackColor = System.Drawing.Color.White;
+            this.CancelButton.Location = new System.Drawing.Point(386, 520);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(90, 46);
+            this.CancelButton.TabIndex = 7;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // ClearButton
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(278, 522);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 46);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Clear";
-            this.button2.UseVisualStyleBackColor = false;
+            this.ClearButton.BackColor = System.Drawing.Color.White;
+            this.ClearButton.Location = new System.Drawing.Point(249, 520);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(102, 46);
+            this.ClearButton.TabIndex = 6;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // CreateButton
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(278, 451);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(227, 54);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Create";
-            this.button1.UseVisualStyleBackColor = false;
+            this.CreateButton.BackColor = System.Drawing.Color.White;
+            this.CreateButton.Location = new System.Drawing.Point(249, 449);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(227, 54);
+            this.CreateButton.TabIndex = 5;
+            this.CreateButton.Text = "Create";
+            this.CreateButton.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // CompanyNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(233, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(272, 26);
-            this.textBox1.TabIndex = 8;
+            this.CompanyNameTextBox.Location = new System.Drawing.Point(204, 30);
+            this.CompanyNameTextBox.Name = "CompanyNameTextBox";
+            this.CompanyNameTextBox.Size = new System.Drawing.Size(272, 26);
+            this.CompanyNameTextBox.TabIndex = 8;
             // 
-            // textBox2
+            // ContactPersonTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(233, 99);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(272, 26);
-            this.textBox2.TabIndex = 9;
+            this.ContactPersonTextBox.Location = new System.Drawing.Point(204, 97);
+            this.ContactPersonTextBox.Name = "ContactPersonTextBox";
+            this.ContactPersonTextBox.Size = new System.Drawing.Size(272, 26);
+            this.ContactPersonTextBox.TabIndex = 9;
             // 
-            // textBox3
+            // EmailTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(233, 177);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(272, 26);
-            this.textBox3.TabIndex = 10;
+            this.EmailTextBox.Location = new System.Drawing.Point(204, 175);
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(272, 26);
+            this.EmailTextBox.TabIndex = 10;
             // 
-            // textBox4
+            // PhoneTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(233, 234);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(272, 26);
-            this.textBox4.TabIndex = 11;
+            this.PhoneTextBox.Location = new System.Drawing.Point(204, 232);
+            this.PhoneTextBox.Name = "PhoneTextBox";
+            this.PhoneTextBox.Size = new System.Drawing.Size(272, 26);
+            this.PhoneTextBox.TabIndex = 11;
             // 
-            // textBox5
+            // AddressTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(233, 307);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(272, 89);
-            this.textBox5.TabIndex = 12;
+            this.AddressTextBox.Location = new System.Drawing.Point(204, 305);
+            this.AddressTextBox.Multiline = true;
+            this.AddressTextBox.Name = "AddressTextBox";
+            this.AddressTextBox.Size = new System.Drawing.Size(272, 89);
+            this.AddressTextBox.TabIndex = 12;
             // 
             // NewSupplierWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(578, 611);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(533, 611);
+            this.Controls.Add(this.AddressTextBox);
+            this.Controls.Add(this.PhoneTextBox);
+            this.Controls.Add(this.EmailTextBox);
+            this.Controls.Add(this.ContactPersonTextBox);
+            this.Controls.Add(this.CompanyNameTextBox);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.ClearButton);
+            this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -187,13 +187,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button CreateButton;
+        private System.Windows.Forms.TextBox CompanyNameTextBox;
+        private System.Windows.Forms.TextBox ContactPersonTextBox;
+        private System.Windows.Forms.TextBox EmailTextBox;
+        private System.Windows.Forms.TextBox PhoneTextBox;
+        private System.Windows.Forms.TextBox AddressTextBox;
     }
 }
