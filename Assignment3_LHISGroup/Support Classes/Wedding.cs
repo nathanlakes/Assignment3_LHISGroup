@@ -26,5 +26,35 @@ namespace Assignment3_LHISGroup.Support_Classes
             this.startDate = startDate;
             this.eventDate = eventDate;
         }
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
+        public Client Client1
+        {
+            get { return client1; }
+            set { client1 = value; }
+        }
+
+        public Client Client2
+        {
+            get { return client2; }
+            set { client2 = value; }
+        }
+
+        public DateTime StartDate
+        {
+            get { return startDate; }
+            set { startDate = value; }
+        }
+
+        public DateTime EventDate
+        {
+            get { return eventDate; }
+            set { eventDate = value; }
+        }
     }
 }

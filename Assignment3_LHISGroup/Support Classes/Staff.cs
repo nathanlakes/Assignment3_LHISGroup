@@ -6,17 +6,21 @@ using System.Threading.Tasks;
 
 namespace Assignment3_LHISGroup.Support_Classes
 {
+    /**
+     *   An employee of the Wedding Planning busines.
+     */
     class Staff
     {
+        public enum Active { active, inactive }
 
         private string firstname;
         private string surname;
         private string email;
         private string phone;
         private string notes;
-        private bool active; 
+        private Active active; 
 
-        public Staff(string firstn, string surn, string email, string ph, string note, bool status)
+        public Staff(string firstn, string surn, string email, string ph, string note, Active status)
         {
             this.firstname = firstn;
             this.surname = surn;
@@ -49,8 +53,8 @@ namespace Assignment3_LHISGroup.Support_Classes
             get { return notes; }
             set { notes = value; }
         }
-       
-        public bool StaffStatus
+
+        public Active StaffStatus
         {
             get { return active; }
             set { active = value; }

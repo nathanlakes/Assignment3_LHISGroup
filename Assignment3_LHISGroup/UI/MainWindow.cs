@@ -17,27 +17,8 @@ namespace Assignment3_LHISGroup
         public MainWindow()
         {
             InitializeComponent();
-            //DbController db = new DbController();
-
-
-            // DEBUGGING
-            try
-            {
-                Support_Classes.Staff s = new Support_Classes.Staff("Me", "Me", "nl@mail.com", "0888548", "goat", true);
-
-                Support_Classes.Task t = new Support_Classes.Task("moo", "moo",
-                        Support_Classes.Task.Priority.high, new DateTime(2016, 5, 20), s);
-
-                t.CompletionDate = new DateTime(2015, 07, 20);
-
-                Console.WriteLine( t.CompletionDate );
-
-            }
-            catch (Exception e) 
-            {
-                Console.WriteLine( e.ToString() ); 
-            }
-           
+            //DbController db = new DbController()
+            
         }
 
         private void ManageSuppliersButton_Click(object sender, EventArgs e)
