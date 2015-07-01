@@ -26,6 +26,7 @@ namespace Assignment3_LHISGroup
         }
 
         // Used for DB Debugging purposes, NL to clean up
+        // Do not modify or worry about the class behind, work in progress. 
         private void nathanDebug()
         {
             Staff s1 = new Staff("Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "can't work sundays",
