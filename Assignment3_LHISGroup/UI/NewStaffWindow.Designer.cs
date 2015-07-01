@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.NotesTextBox = new System.Windows.Forms.TextBox();
-            this.ActiveStatusCheckBox = new System.Windows.Forms.CheckBox();
             this.PhoneTextBox = new System.Windows.Forms.TextBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.SurnameTextBox = new System.Windows.Forms.TextBox();
@@ -51,16 +50,6 @@
             this.NotesTextBox.Name = "NotesTextBox";
             this.NotesTextBox.Size = new System.Drawing.Size(236, 121);
             this.NotesTextBox.TabIndex = 44;
-            // 
-            // ActiveStatusCheckBox
-            // 
-            this.ActiveStatusCheckBox.AutoSize = true;
-            this.ActiveStatusCheckBox.Location = new System.Drawing.Point(23, 370);
-            this.ActiveStatusCheckBox.Name = "ActiveStatusCheckBox";
-            this.ActiveStatusCheckBox.Size = new System.Drawing.Size(129, 24);
-            this.ActiveStatusCheckBox.TabIndex = 43;
-            this.ActiveStatusCheckBox.Text = "Active Status";
-            this.ActiveStatusCheckBox.UseVisualStyleBackColor = true;
             // 
             // PhoneTextBox
             // 
@@ -164,6 +153,7 @@
             this.CreateButton.TabIndex = 31;
             this.CreateButton.Text = "Create";
             this.CreateButton.UseVisualStyleBackColor = false;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // NewStaffWindow
             // 
@@ -172,7 +162,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(489, 571);
             this.Controls.Add(this.NotesTextBox);
-            this.Controls.Add(this.ActiveStatusCheckBox);
             this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.SurnameTextBox);
@@ -195,7 +184,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox NotesTextBox;
-        private System.Windows.Forms.CheckBox ActiveStatusCheckBox;
         private System.Windows.Forms.TextBox PhoneTextBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox SurnameTextBox;

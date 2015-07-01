@@ -16,5 +16,73 @@ namespace Assignment3_LHISGroup.UI
         {
             InitializeComponent();
         }
+
+
+        private void clearNewStaffForm()
+        {
+            FirstNameTextBox.Text = "";
+            SurnameTextBox.Text = "";
+            EmailTextBox.Text = "";
+            PhoneTextBox.Text = "";
+            NotesTextBox.Text = "";
+        }
+
+        private bool validateNewStaffForm()
+        {
+            if (FirstNameTextBox.Text == "" || FirstNameTextBox.Text == null)
+            {
+                MessageBox.Show("Need first name");
+                return false;
+            }
+            else if (SurnameTextBox.Text == "" || SurnameTextBox.Text == null)
+            {
+                MessageBox.Show("Need surname");
+                return false;
+            }
+            else if (EmailTextBox.Text == "" || EmailTextBox.Text == null)
+            {
+                MessageBox.Show("Need email address");
+                return false;
+            }
+            else if (!EmailTextBox.Text.Contains("@"))
+            {
+                MessageBox.Show("Invalid email address");
+                return false;
+            }
+            else if (PhoneTextBox.Text == "" || PhoneTextBox.Text == null)
+            {
+                MessageBox.Show("Need phone number");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+            if (validateNewStaffForm() == true)
+            {
+                String fn = FirstNameTextBox.Text;
+                String sn = SurnameTextBox.Text;
+                String email = EmailTextBox.Text;
+                String ph = PhoneTextBox.Text;
+                String notes = "";
+                if (NotesTextBox.Text == null)
+                {
+                    notes = "";
+                }
+                else
+                {
+                    notes = NotesTextBox.Text;
+                }
+
+                Support_Classes.Staff newStaff = new Support_Classes.Staff(fn, sn, email, ph,notes, Support_Classes.Staff.Active.active);
+                MessageBox.Show("New Staff created");
+                this.clearNewStaffForm();
+            }          
+
+        }
     }
 }
