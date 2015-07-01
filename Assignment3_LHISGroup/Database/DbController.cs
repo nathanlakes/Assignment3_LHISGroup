@@ -39,10 +39,13 @@ namespace Assignment3_LHISGroup
         }
 
         /**
-         *   Adds a given Staff Member to a task and writes to the database
+         *   Adds a given Staff Member to a task and writes to the database.
+         *   Nb. Task cannot be made without it being assigned to somebody.
          */
-        public bool AddPersonToTask(Support_Classes.Task t, Staff s)
+        public bool AddTask(Support_Classes.Task t)
         {
+            Staff s = t.AssignedTo;
+
             // Check that staff exists in the database. Phone number used for cases where
             // Staff with the same name work together. They won't have the same phone ext. 
             // though. 
@@ -87,6 +90,150 @@ namespace Assignment3_LHISGroup
             else return false;
         }
 
+
+        public bool DeleteTask(Support_Classes.Task t)
+        {
+
+            return false;
+        }
+
+        public Support_Classes.Task UpdateTask(int id)
+        {
+            
+            Support_Classes.Task t = null;
+            return t;
+        }
+
+
+        public bool AddClient(Client c)
+        {
+
+            return false; 
+        }
+
+        public bool UpdateClient(int id)
+        {
+
+            return false;
+        }
+
+        public bool DeleteClient(int id)
+        {
+
+            return false;
+        }
+
+        public List<Client> FindClients(string s)
+        {
+
+            return new List<Client>();
+        }
+
+        public bool AddWedding(Wedding w)
+        {
+
+            return false;
+        }
+
+        public bool UpdateWedding(Wedding w)
+        {
+
+            return false;
+        }
+
+        public bool DeleteWedding(Wedding w)
+        {
+        
+            return false;
+        }
+
+        public List<Wedding> FindWedding(string title)
+        {
+
+            return new List<Wedding>();
+        }
+
+
+        public bool AddSupplier(Supplier s)
+        {
+
+            return false;
+        }
+
+        
+        public bool DeleteSupplier(int id)
+        {
+
+            return false;
+        }
+
+
+        public bool UpdateSupplier(int id)
+        {
+
+            return false;
+        }
+
+        public List<Supplier> FindSupplier(string name)
+        {
+
+            return new List<Supplier>();
+        }
+
+
+        public bool AddStaff(Staff s)
+        {
+
+            return false;
+        }
+
+        /**
+         *   @Param__id = staff member to update
+         *   @Param__s  = new staff details to update
+         */
+        public bool EditStaff(int id, Staff s)
+        {
+
+            return false;
+        }
+
+        
+        public bool ChangeStaffActiveStatus(int id, Staff.Active a)
+        {
+
+            return false;
+        }
+
+        public List<Client> GetAllClients()
+        {
+
+            return new List<Client>();
+        }
+
+
+        public List<Staff> GetAllStaff()
+        {
+
+            return new List<Staff>();
+        }
+
+        public List<Supplier> GetAllSuppliers()
+        {
+
+            return new List<Supplier>();
+        }
+
+        public List<Support_Classes.Task> GetAllTasks()
+        {
+
+            return new List<Support_Classes.Task>();
+        }
+
+        public List<Wedding> GetAllWeddings()
+        {
+
+            return new List<Wedding>();
+        }
 
 
 

@@ -95,5 +95,11 @@ namespace Assignment3_LHISGroup.Support_Classes
             }
         }
 
+        public Staff AssignedTo
+        {
+            get { return assignedTo; }
+            set { assignedTo = value; }
+        }
+
     }
 }
