@@ -41,6 +41,7 @@ namespace Assignment3_LHISGroup
         /**
          *   Adds a given Staff Member to a task and writes to the database.
          *   Nb. Task cannot be made without it being assigned to somebody.
+         *   @Param  t:  The task to add.
          */
         public bool AddTask(Support_Classes.Task t) 
         {
@@ -68,6 +69,8 @@ namespace Assignment3_LHISGroup
 
         /**
          *   Changes the Staff member assigned to a task.
+         *   @Param  t: the task to update
+         *   @Param  s: the staff member to assign 't' to
          */   
         public bool UpdatePersonOnTask(Support_Classes.Task t, Staff s)
         {
@@ -90,90 +93,147 @@ namespace Assignment3_LHISGroup
             else return false;
         }
 
-
-        public bool DeleteTask(Support_Classes.Task t)
+        /**
+         *   Removes a Task from the database.
+         *   @Param  id: the primary key of the task
+         */
+        public bool DeleteTask(int id)
         {
 
             return false;
         }
 
-        public Support_Classes.Task UpdateTask(int id)
+        /**
+         *   Updates an existing task with the new values provided.
+         *   @Param  id: the primary key of the task to change
+         *   @Param  t : the new task object with updated values
+         */
+        public Support_Classes.Task UpdateTask(int id, Support_Classes.Task t)
         {
             
-            Support_Classes.Task t = null;
-            return t;
+            Support_Classes.Task tt = null;
+            return tt;
         }
 
-
+        /**
+         *   Adds a client to the database.
+         *   @Param  c: the client to add.
+         */
         public bool AddClient(Client c)
         {
 
             return false; 
         }
 
-        public bool UpdateClient(int id)
+        /**
+         *   Updates an existing client with the values provided
+         *   @Param  id: the Client to update
+         *   @Param  c : the new details of client with the given id number
+         */
+        public bool UpdateClient(int id, Client c)
         {
 
             return false;
         }
 
+        /**
+         *   Deletes a client from the database
+         *   @Param  id:  the client to delete
+         */
         public bool DeleteClient(int id)
         {
 
             return false;
         }
 
-        public List<Client> FindClients(string s)
+        /**
+         *   Finds clients matching the pattern of s
+         *   @Param name:  the partial firstname or surname to search for.
+         */
+        public List<Client> FindClients(string name)
         {
 
             return new List<Client>();
         }
 
+        /**
+         *   Adds a Wedding to the database
+         *   @Param  w: The Wedding to add
+         */
         public bool AddWedding(Wedding w)
         {
 
             return false;
         }
 
-        public bool UpdateWedding(Wedding w)
+        /**
+         *   Updates an existing wedding with new details
+         *   @Param  id: The Wedding to update
+         *   @Param   w: The new details of the wedding
+         */
+        public bool UpdateWedding(int id, Wedding w)
         {
 
             return false;
         }
 
-        public bool DeleteWedding(Wedding w)
+        /**
+         *   Deletes a Wedding from the database
+         *   @Param  id: The wedding to remove
+         */
+        public bool DeleteWedding(int id)
         {
         
             return false;
         }
 
+        /**
+         *   Finds all weddings matching a given title
+         *   @Param  title: the wedding title to find matches.
+         *   returns:  a list of all weddings that have a similar title.
+         */
         public List<Wedding> FindWedding(string title)
         {
 
             return new List<Wedding>();
         }
 
-
+        /**
+         *   Adds a supplier to the database
+         *   @Param  s: The supplier to add.
+         */
         public bool AddSupplier(Supplier s)
         {
 
             return false;
         }
 
-        
+        /**
+         *   Deletes a supplier from the database
+         *   @Param  id: The supplier to remove.
+         */
         public bool DeleteSupplier(int id)
         {
 
             return false;
         }
 
-
-        public bool UpdateSupplier(int id)
+        /**
+         *   Updates an existing supplier in the database.
+         *   @Param  id: The supplier to update
+         *   @Param   s: The updated supplier details
+         */
+        public bool UpdateSupplier(int id, Supplier s)
         {
 
             return false;
         }
 
+        /**
+         *   Finds all suppliers matching the given name.
+         *   @Param  name: The supplier name to find matches
+         *   returns: a List of all possible matches
+         */
         public List<Supplier> FindSupplier(string name)
         {
 
@@ -188,8 +248,9 @@ namespace Assignment3_LHISGroup
         }
 
         /**
-         *   @Param  id = staff member to update
-         *   @Param  s  = new staff details to update
+         *   Edits an existing staff member. 
+         *   @Param  id: staff member to update
+         *   @Param   s: the updated staff detrails
          */
         public bool EditStaff(int id, Staff s)
         {
@@ -197,38 +258,56 @@ namespace Assignment3_LHISGroup
             return false;
         }
 
-        
+        /**
+         *   Changes the ActiveStatus of a staff member
+         *   @Param  id: The staff member to update
+         *   @param   a: The active status
+         */
         public bool ChangeStaffActiveStatus(int id, Staff.Active a)
         {
 
             return false;
         }
 
+        /**
+         *   Returns a list of all clients
+         */
         public List<Client> GetAllClients()
         {
 
             return new List<Client>();
         }
 
-
+        /**
+         *   Returns a list of all staff
+         */
         public List<Staff> GetAllStaff()
         {
 
             return new List<Staff>();
         }
 
+        /**
+         *   Returns a list of all suppliers
+         */
         public List<Supplier> GetAllSuppliers()
         {
 
             return new List<Supplier>();
         }
 
+        /**
+         *   Returns a list of all tasks
+         */
         public List<Support_Classes.Task> GetAllTasks()
         {
 
             return new List<Support_Classes.Task>();
         }
 
+        /**
+         *   Returns a list of all weddings
+         */
         public List<Wedding> GetAllWeddings()
         {
 
@@ -294,7 +373,8 @@ namespace Assignment3_LHISGroup
 
 
         /**
-         *   Used for debugging purposes
+         *   Used for debugging purposes.
+         *   TODO: DELETE AFTERWARDS!!!!
          */   
         public void ShowData()
         {
@@ -317,8 +397,6 @@ namespace Assignment3_LHISGroup
             }
             catch (Exception e) { e.GetHashCode(); }
             
-            
-
         }
 
         
