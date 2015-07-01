@@ -66,6 +66,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\EventTaskReport.cs" />
+    <Compile Include="Reports\EventProgress.cs" />
+    <Compile Include="Reports\EventReport.cs" />
+    <Compile Include="Reports\StaffReport.cs" />
     <Compile Include="Support Classes\Client.cs" />
     <Compile Include="Support Classes\Staff.cs" />
     <Compile Include="Support Classes\Task.cs" />

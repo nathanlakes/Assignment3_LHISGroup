@@ -27,3 +27,29 @@ C:\Users\Nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assi
 C:\Users\CaptanSivey\Desktop\Work\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Assignment3_LHISGroup.exe.config
 C:\Users\CaptanSivey\Desktop\Work\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.exe
 C:\Users\CaptanSivey\Desktop\Work\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.pdb
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Assignment3_LHISGroup.exe.config
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.exe
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.pdb
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Database\Model.mdf
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Database\Model_log.ldf
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Assignment3_LHISGroup.exe
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Assignment3_LHISGroup.pdb
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.csprojResolveAssemblyReference.cache
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.MainWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.Properties.Resources.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.ManageClientsWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.ManageStaffWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.ManageSuppliersWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.ManageTasksWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.ManageWeddingsWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.NewClientWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.NewStaffWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.NewSupplierWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.NewTaskWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.NewWeddingWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.UpdateClientWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.UpdateStaffWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.UpdateSupplierWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.UpdateTaskWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.UpdateWeddingWindow.resources
+C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.csproj.GenerateResource.Cache
