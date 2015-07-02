@@ -105,7 +105,6 @@ namespace Assignment3_LHISGroup
         {
             UI.EventReportWindow ewin = new UI.EventReportWindow(this);
             ewin.Show();
-            MessageBox.Show("Testing Report Window displaying\nMight be behind Main Window");
         }
 
 
