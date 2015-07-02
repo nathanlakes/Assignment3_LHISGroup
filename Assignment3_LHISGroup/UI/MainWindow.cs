@@ -15,12 +15,35 @@ namespace Assignment3_LHISGroup
     public partial class MainWindow : Form
     {
 
-        public DbController db;
+        public DbController DB;
+
+        private UI.EventReportWindow EventReportWindow;
+
+        private UI.ManageClientsWindow ManageClientsWindow;
+        private UI.ManageStaffWindow ManageStaffWindow;
+        private UI.ManageSuppliersWindow ManageSuppliersWindow;
+        private UI.ManageTasksWindow ManageTasksWindow;
+        private UI.ManageWeddingsWindow ManageWeddingsWindow;
+
+        private UI.NewClientWindow NewClientWindow;
+        private UI.NewStaffWindow NewStaffWindow;
+        private UI.NewSupplierWindow NewSupplierWindow;
+        private UI.NewTaskWindow NewTaskWindow;
+        private UI.NewWeddingWindow NewWeddingWindow;
+
+
 
         public MainWindow()
         {
             InitializeComponent();
-            db = new DbController();        // Creates a DB controller to be used by the UI classes. 
+            DB = new DbController();        // Creates a DB controller to be used by the UI classes. 
+            
+            // create windows
+            EventReportWindow = new UI.EventReportWindow(this);
+            EventReportWindow.Hide();
+            ManageClientsWindow = new UI.ManageClientsWindow();
+
+
             this.nathanDebug();                  // Code to debug Db in dev. cycle.
             
         }
@@ -35,11 +58,11 @@ namespace Assignment3_LHISGroup
             Support_Classes.Task t1 = new Support_Classes.Task("Set table at venue", "Set 12 tables", 
                 Support_Classes.Task.Priority.high, new DateTime(2015, 12, 12), s1);
 
-            db.ShowData();   // Test the select statement. 
+            DB.ShowData();   // Test the select statement. 
 
             try
             {
-                bool result = db.AddStaff(s1);
+                bool result = DB.AddStaff(s1);
                 //db.AddTask(t1);
                 Console.WriteLine("s1 Added to Staff?  " + result);
             }
