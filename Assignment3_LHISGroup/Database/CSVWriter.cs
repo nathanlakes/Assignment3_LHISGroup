@@ -2,106 +2,43 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Assignment3_LHISGroup.Support_Classes;
+
 
 namespace Assignment3_LHISGroup
 {
     /*
-     *   
-     *   
+     *    Takes a List<Support_Class> and outputs them to
+     *    a CSV file on the Desktop
      */
-
-
-    
     class CSVWriter
     {
-        public CSVWriter()
-        {
 
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        string fileName;
+
+
+        /*
+         *   Create an instance of the writer for each report you want, do not reuse.
+         *   As each CSVWriter object is bound to a reportName
+         */
+        public CSVWriter(string reportName)
+        {
+            fileName = path + "\\reportName " + DateTime.Now.Day.ToString() + "-" +
+            DateTime.Now.Month.ToString() + "-" + DateTime.Now.Year.ToString() + ".csv";
         }
 
-        /*
-         * Generates headings for the CSV
-         */
-        private string[] getSuppliersHeadings()
-        {
-            string[] titles = new string[]{
-                    "id", 
-                    "CompanyName",
-                    "Address",
-                    "ContactPerson",
-                    "Email",
-                    "PhoneNumber",
-                    "CreditTerms"
-                };
-
-            return titles;
-        }
-
-       
-        
-        
         
         /*
-         * Extracts the data from a given quotation and returns
-         * a string array of the relevent data for writing to the
-         * outfile
+         *   Takes a List<Client> and writes them to a CSV output file.
          */
-       
-        /*
-        private string[] getData(Quotation q)
+        public void WriteClientsToFile(List<Client> outputClients)
         {
-            string[] data = new string[]{
-                        q.State.ToString(),
-                        q.CompleteDate,
-                        q.Name,
-                        q.Address,
-                        q.PhoneNumber,
-                        q.TotalCost.ToString(),
-                        q.Date,
-                        q.QuoteType,
-                        q.CalloutFee.ToString(),
-                        q.PriorityFee.ToString(),
-                        q.Inspection.ToString(),
-                        q.OsUpdate.ToString(),
-                        q.SoftwareInstall.ToString(),
-                        q.AntiVirus.ToString(),
-                        q.MemoryUpgrade.ToString(),
-                        q.HdUpgrade.ToString(),
-                        q.Other.ToString(),
-                        q.Discount.ToString()
-                    };
-
-            return data;
-        }
-        */
-
-
-        /*
-         * Writes all quotations in the database to an output file. 
-         * isExport = true: Writes to the Desk
-         * isExport = false: Writes to My Documents, thus storing the database
-         */
-        /*
-        public void WriteAllToCSV(Database db, Boolean isExport)
-        {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-            if (isExport)
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, false))
             {
-                path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            }
-            else
-            {
-                path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            }
+                string[] titles = getClientHeadings();
 
-            List<Quotation> records = db.GetQuoteRecords();
-
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path + "\\db_outfile.csv", false))
-            {
-                string[] titles = getHeadings();
-
+                // Write the headings to output file.
                 for (int i = 0; i < titles.Length; i++)
                 {
                     if (i < titles.Length - 1)
@@ -114,86 +51,116 @@ namespace Assignment3_LHISGroup
                     }
                 }
 
-
-                foreach (Quotation q in records)
+                // Write the data to the outfile.
+                // Quotations " " prevent commas in text fields from breaking
+                // CSV formatting
+                foreach (Client c in outputClients)
                 {
-                    string[] data = getData(q);
-
-                    // Write the various values seperated by ',' 
-                    for (int i = 0; i < data.Length; i++)
-                    {
-                        if (i < data.Length - 1)
-                        {
-                            file.Write(data[i] + ",");
-                        }
-                        else
-                        {
-                            file.WriteLine(data[i]);
-                        }
-                    }
-                }
-            } // Close StreamWriter
-
-        }
-        */
-
-
-
-        /*
-         * Writes a quote to a CSV on the desktop
-         */
-
-        /*
-        public void WriteRecordToCSV(Quotation quote)
-        {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string dir = path + "\\quote-" + quote.Name + " " + DateTime.Now.Day.ToString() + "-" +
-                DateTime.Now.Month.ToString() + "-" + DateTime.Now.Year.ToString() + ".csv";
-            Console.WriteLine(dir);
-
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(dir))
-            {
-                string[] headings = getHeadings();
-                for (int i = 0; i < headings.Length; i++)
-                {
-                    if (i < headings.Length - 1)
-                    {
-                        file.Write(headings[i] + ",");
-                    }
-                    else
-                    {
-                        file.Write(headings[i] + "\n");
-                    }
-                }
-
-                string[] data = getData(quote);
-                for (int i = 0; i < data.Length; i++)
-                {
-                    if (i < data.Length - 1)
-                    {
-                        file.Write(data[i] + ",");
-                    }
-                    else
-                    {
-                        file.Write(data[i] + "\n");
-                    }
+                    file.Write("\"" + c.Firstname + "\",");
+                    file.Write("\"" + c.Surname + "\",");
+                    file.Write("\"" + c.ContactPerson + "\",");
+                    file.Write("\"" + c.Address + "\",");
+                    file.Write("\"" + c.Mobile + "\",");
+                    file.Write("\"" + c.HomePhone + "\",");
+                    file.Write("\"" + c.Email + "\",");
+                    file.Write("\"" + c.EngagedTo_fn + "\",");
+                    file.WriteLine("\"" + c.EngagedTo_sn);
                 }
             }
         }
-        */
-
 
 
         /*
-         * Will take a list of Quotation objects and write them
-         * to a CSV
+         *  Generates headings for Client Records
          */
-        /*
-        public void WriteListToCSV(List<Quotation> list)
+        private string[] getClientHeadings()
         {
-            Database db = new Database(list);
-            WriteAllToCSV(db, true);
+            string[] titles = new string[]{
+                    "firstname", 
+                    "surname",
+                    "contactPerson",
+                    "address",
+                    "mobile",
+                    "homePhone",
+                    "email",
+                    "engagedTo_firstname",
+                    "engagedTo_surname"
+                };
+
+            return titles;
         }
-        */
+
+        /*
+         *  Generates headings for Staff Records
+         */
+        private string[] getStaffHeadings()
+        {
+            string[] titles = new string[]{
+                    "firstname", 
+                    "surname",
+                    "email",
+                    "phone",
+                    "notes",
+                    "active"
+            };
+
+            return titles;
+        }
+
+
+        /*
+         *  Generates headings for Supplier Records
+         */
+        private string[] getSupplierHeadings()
+        {
+            string[] titles = new string[]{
+                    "companyName", 
+                    "address",
+                    "contactPerson",
+                    "email",
+                    "phoneNumber",
+                    "creditTerms"
+            };
+
+            return titles;
+        }
+
+
+        /*
+         *  Generates headings for Task Records
+         */
+        private string[] getTaskHeadings()
+        {
+            string[] titles = new string[]{
+                    "taskName", 
+                    "description",
+                    "priority",
+                    "completeByDate",
+                    "completionDate",
+                    "assignedTo",
+                    "relatedWedding"
+            };
+
+            return titles;
+        }
+
+
+        /*
+         *  Generates headings for Wedding Records
+         */
+        private string[] getWeddingHeadings()
+        {
+            string[] titles = new string[]{
+                    "title", 
+                    "client_1",
+                    "client_2",
+                    "startDate",
+                    "eventDate",
+                    "weddingPlanner"
+            };
+
+            return titles;
+        }
+
     }
 }
