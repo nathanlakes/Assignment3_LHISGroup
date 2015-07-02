@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Assignment3_LHISGroup.Reports;
 
 namespace Assignment3_LHISGroup.UI
 {
-    public partial class EventReportWindow : Form
+    public partial class ReportsMainWindow : Form
     {
         Form parent;
-        public EventReportWindow(Form form)
+        public ReportsMainWindow(Form form)
         {
             InitializeComponent();
             parent = form;
@@ -50,6 +51,12 @@ namespace Assignment3_LHISGroup.UI
         {
             parent.Show();
             this.Dispose();
+        }
+
+        private void StaffReportButton_Click(object sender, EventArgs e)
+        {
+            StaffReportWindow win = new StaffReportWindow(this);
+            win.Visible = true; 
         }
 
        
