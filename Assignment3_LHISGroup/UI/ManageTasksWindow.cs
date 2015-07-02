@@ -56,12 +56,5 @@ namespace Assignment3_LHISGroup.UI
         {
 
         }
-
-        private void ManageTasksWindow_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'modelDataSet.Task' table. You can move, or remove it, as needed.
-            this.taskTableAdapter.Fill(this.modelDataSet.Task);
-
-        }
     }
 }
