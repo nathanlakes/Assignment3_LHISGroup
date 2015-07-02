@@ -20,7 +20,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         private Wedding wedding;
 
 
-        public Task(string task, string desc, Priority prior, DateTime compBy, Staff assigned)
+        public Task(string task, string desc, Priority prior, DateTime compBy, Staff assigned, Wedding wed)
         {
             taskName = task;
             description = desc;
@@ -28,6 +28,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             completeByDate = compBy;
             completionDate = new DateTime();
             assignedTo = assigned;
+            wedding = wed;
         }
 
         public int ID
@@ -76,6 +77,13 @@ namespace Assignment3_LHISGroup.Support_Classes
             }
         }
 
+        /**
+         *    TODO: Possible conflict, as DateTime does not allow null 
+         *    cannot test if not been set like Java. 
+         *    Find work around, if needed. Existing method may well perform
+         *    sufficiently, although it's not pretty.
+         *    -- Nathan
+         */
         public DateTime CompletionDate
         {
             get 
@@ -90,6 +98,13 @@ namespace Assignment3_LHISGroup.Support_Classes
             set
             {
                 DateTime today = DateTime.Now.Date;
+
+                int d = DateTime.Compare(new DateTime().Date, completionDate.Date);
+                if (d == 0)
+                {
+                    throw new Exception("No Completion Date has been set");
+                }
+
 
                 int v = DateTime.Compare(value.Date, today);
                 if (v < 0)

@@ -70,6 +70,42 @@ namespace Assignment3_LHISGroup
             return false;
         }
 
+
+        public bool UpdateTask(int id, Support_Classes.Task t)
+        {
+
+            string query = @"UPDATE Task";
+            query += @"SET name='@name', description='@description', priority='@priority', ";
+            query += @"completeByDate='@completeByDate', actualCompletionDate='@actualCompletionDate', ";
+            query+= @"staffOnJob_FK='@staffOnJob_FK', weddingID_FK='@weddingID_FK'";
+            query += @"WHERE id='@id'";
+
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@name", t.TaskName);
+            myCommand.Parameters.AddWithValue("@description", t.Description);
+            myCommand.Parameters.AddWithValue("@priority", t.TaskPriority.ToString() );
+            myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString() );
+            
+            try
+            {
+                myCommand.Parameters.AddWithValue("@actualCompletionDate", t.CompletionDate.ToShortDateString() );
+            } catch (Exception) { Console.WriteLine("UpdateTask(int, Task) >> Date Conversion Error."); }
+
+            myCommand.Parameters.AddWithValue("@staffOnJob_FK", getStaffId(t.AssignedTo) );
+            myCommand.Parameters.AddWithValue("@weddingID_FK",  t.Wedding.ID);
+            myCommand.Parameters.AddWithValue("@id", id);
+
+
+            int res = 0;
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();
+            _db.Close();
+
+            if (res == 1) return true;
+            return false;
+        }
+
+
         /**
          *   Changes the Staff member assigned to a task.
          *   @Param  t: the task to update
@@ -712,7 +748,8 @@ namespace Assignment3_LHISGroup
                 }
 
                 Staff s = new Staff(firstname, surname, email, phone, notes, stat);
-                
+                s.ID = Convert.ToInt32(myReader["Id"].ToString());
+
                 returnList.Add(s);
             }
             _db.Close();
@@ -725,8 +762,32 @@ namespace Assignment3_LHISGroup
          */
         public List<Supplier> GetAllSuppliers()
         {
+            List<Supplier> returnList = new List<Supplier>();
 
-            return new List<Supplier>();
+            _db.Open();
+
+            SqlDataReader myReader = null;
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers", _db);
+
+            myReader = myCommand.ExecuteReader();
+
+            while (myReader.Read())
+            {
+                string coname = myReader["CompanyName"].ToString();
+                string address = myReader["Address"].ToString();
+                string contact = myReader["ContactPerson"].ToString();
+                string email = myReader["Email"].ToString();
+                string phone = myReader["PhoneNumber"].ToString();
+                int credterm = Convert.ToInt32(myReader["CreditTerms"].ToString());
+
+                Supplier s = new Supplier(coname, address, contact, email, phone, credterm);
+                s.ID = Convert.ToInt32(myReader["Id"].ToString());
+
+                returnList.Add(s);
+            }
+            _db.Close();
+
+            return returnList;
         }
 
         /**
@@ -734,8 +795,115 @@ namespace Assignment3_LHISGroup
          */
         public List<Support_Classes.Task> GetAllTasks()
         {
+            List<Support_Classes.Task> returnList = new List<Support_Classes.Task>();
 
-            return new List<Support_Classes.Task>();
+            _db.Open();
+
+            SqlDataReader taskReader = null;
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Task", _db);
+
+            taskReader = myCommand.ExecuteReader();
+
+            while (taskReader.Read())
+            {
+                string taskname = taskReader["name"].ToString();
+                string descr = taskReader["description"].ToString();
+                
+                // Assign Priority
+                string pr = taskReader["priority"].ToString();
+                Support_Classes.Task.Priority priority = Support_Classes.Task.Priority.low;
+                if (pr == Support_Classes.Task.Priority.med.ToString())
+                {
+                    priority = Support_Classes.Task.Priority.med;
+                }
+                else
+                {
+                    priority = Support_Classes.Task.Priority.high;
+                }
+
+                int[] temp = splitStringDate(taskReader["completeByDate"].ToString());
+                DateTime completeBy = new DateTime(temp[0], temp[1], temp[2]);
+
+                    // Generate Staff object
+                    SqlDataReader staffReader = getStaffDetails(
+                        Convert.ToInt32( taskReader["staffOnJob_FK"].ToString() )
+                    );
+                    Staff.Active a = Staff.Active.active;
+                    if (staffReader["status"].ToString() == Staff.Active.inactive.ToString())
+                    {
+                        a = Staff.Active.inactive;
+                    }
+                    Staff staff = new Staff(
+                        staffReader["firstname"].ToString(),
+                        staffReader["surname"].ToString(),
+                        staffReader["email"].ToString(),
+                        staffReader["phone"].ToString(),
+                        staffReader["notes"].ToString(),
+                        a
+                    );
+
+                    // Generate Wedding Object
+                    SqlDataReader weddingReader = getWeddingDetails(Convert.ToInt32(taskReader["weddingID_FK"].ToString()));
+
+                    string title = staffReader["title"].ToString();
+                
+                    // Get Client one
+                    SqlDataReader tempCli = getClientDetails(Convert.ToInt32(weddingReader["client_1_FK"].ToString()));
+                    Client c1 = new Client(
+                        tempCli["firstname"].ToString(),
+                        tempCli["surname"].ToString(),
+                        tempCli["contact"].ToString(),
+                        tempCli["address"].ToString(),
+                        tempCli["mobile"].ToString(),
+                        tempCli["homePhone"].ToString(),
+                        tempCli["email"].ToString(),
+                        tempCli["engagedTo_firstname"].ToString(),
+                        tempCli["engagedTo_surname"].ToString()
+                    );
+
+                    // Get Client two
+                    tempCli = getClientDetails(Convert.ToInt32(weddingReader["client_2_FK"].ToString()));
+                    Client c2 = new Client(
+                        tempCli["firstname"].ToString(),
+                        tempCli["surname"].ToString(),
+                        tempCli["contact"].ToString(),
+                        tempCli["address"].ToString(),
+                        tempCli["mobile"].ToString(),
+                        tempCli["homePhone"].ToString(),
+                        tempCli["email"].ToString(),
+                        tempCli["engagedTo_firstname"].ToString(),
+                        tempCli["engagedTo_surname"].ToString()
+                    );
+
+                    temp = splitStringDate(weddingReader["startDate"].ToString());
+                    DateTime startDate = new DateTime(temp[0], temp[1], temp[2]);
+
+                    temp = splitStringDate(weddingReader["eventDate"].ToString());
+                    DateTime eventDate = new DateTime(temp[0], temp[1], temp[2]);
+
+                    Wedding wedding = new Wedding(title, c1, c2, staff, startDate, eventDate);
+                
+
+                // Back to making the task now all objects compelted necessary. 
+                Support_Classes.Task t = new Support_Classes.Task(taskname, descr, priority, completeBy, 
+                    staff, wedding);
+
+                // Assign Actual Complete Date, if any.
+                try
+                {
+                    temp = splitStringDate(taskReader["completeByDate"].ToString());
+                    completeBy = new DateTime(temp[0], temp[1], temp[2]);
+                    t.CompleteBy = completeBy;
+                }
+                catch (Exception) { }
+                t.ID = Convert.ToInt32(taskReader["Id"].ToString());
+
+                returnList.Add( t );
+            }
+
+            _db.Close();
+
+            return returnList;
         }
 
         /**
@@ -818,6 +986,24 @@ namespace Assignment3_LHISGroup
         }
 
         private SqlDataReader getClientsDetails(int id)
+        {
+            string query = @"SELECT from Client ";
+            query += @"WHERE id=@'id'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            SqlDataReader myReader = myCommand.ExecuteReader();
+            return myReader;
+        }
+
+        private SqlDataReader getWeddingDetails(int id)
+        {
+            string query = @"SELECT from Wedding ";
+            query += @"WHERE id=@'id'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            SqlDataReader myReader = myCommand.ExecuteReader();
+            return myReader;
+        }
+
+        private SqlDataReader getClientDetails(int id)
         {
             string query = @"SELECT from Client ";
             query += @"WHERE id=@'id'";
