@@ -18,23 +18,18 @@ namespace Assignment3_LHISGroup
     public class DbController
     {
 
-        SqlConnection _db;
+        string connStr = "Data Source=(LocalDB)\\v11.0;" +
+                    "AttachDbFilename=|DataDirectory|\\Database\\Model.mdf;" +
+                    "Integrated Security=True";
         
         public DbController()
         {
-            try
-            {
-                string connStr = "Data Source=(LocalDB)\\v11.0;" +
-                    "AttachDbFilename=|DataDirectory|\\Database\\Model.mdf;" + 
-                    "Integrated Security=True";
-                _db = new SqlConnection(connStr);
-            }
-            catch (Exception e)
-            {
-                
-                Console.WriteLine("Error with Connection String. " + e.ToString());
-            }
-            
+              
+        }
+
+        public DbController(string myConnection)
+        {
+            connStr = myConnection;
         }
 
         /**
@@ -58,12 +53,17 @@ namespace Assignment3_LHISGroup
                 "VALUES(" + t.TaskName + _s + t.Description + _s + t.TaskPriority + _s + 
                 t.CompleteBy.Date.ToString() + _s + staffId + ")";
 
-            _db.Open();
-            SqlCommand myCommand = new SqlCommand(query, _db);
+            int res = 0;
 
-            int res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+                SqlCommand myCommand = new SqlCommand(query, _db);
 
+                res = myCommand.ExecuteNonQuery();
+                _db.Close();
+            }
+            
             if (res == 1) return true;  //Should only update one row
 
             return false;
@@ -87,10 +87,14 @@ namespace Assignment3_LHISGroup
             String query = "UPDATE Task SET staffOnJob_FK='"+ staffId +"'" +
                 "WHERE Id='"+ taskId +"'";
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
+            int res = 0;
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                SqlCommand myCommand = new SqlCommand(query, _db);
 
-            int res = myCommand.ExecuteNonQuery();  // Run the statement.
-
+                res = myCommand.ExecuteNonQuery();  // Run the statement.
+            }
+            
             if (res == 1) return true;  // Should only update one row.
             else return false;
         }
@@ -250,7 +254,7 @@ namespace Assignment3_LHISGroup
             query +=       @" VALUES (@_firstname, @_surname, @_email, @_phone, @_notes, @_status)";
 
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
+            SqlCommand myCommand = new SqlCommand(query);
 
             myCommand.Parameters.AddWithValue("@_firstname", s.FirstName);
             myCommand.Parameters.AddWithValue("@_surname", s.Surname);
@@ -260,11 +264,16 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@_status", s.StatusToString());
 
             int res = 0;
-    
-            _db.Open();
-            res = myCommand.ExecuteNonQuery();   // Run the statement.
-            _db.Close();
 
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                myCommand.Connection = _db;
+
+                _db.Open();
+                res = myCommand.ExecuteNonQuery();   // Run the statement.
+                _db.Close();
+            }
+            
             if (res == 1) return true;           // Should only update one row.
             else return false;
         }
@@ -348,6 +357,8 @@ namespace Assignment3_LHISGroup
          */   
         private int getStaffId(Staff s)
         {
+            SqlConnection _db = new SqlConnection(connStr);
+
             SqlCommand testStaff = new SqlCommand(
                "SELECT firstname FROM Staff WHERE firstname = '" + s.FirstName + "' AND surname = '" +
                s.Surname + "' AND phone = '" + s.Phone + "'", _db);
@@ -376,6 +387,8 @@ namespace Assignment3_LHISGroup
          */
         private int getTaskId(Support_Classes.Task t)
         {
+            SqlConnection _db = new SqlConnection(connStr);
+
             SqlCommand testTask = new SqlCommand(
                "SELECT Id FROM Task WHERE name = '" + t.TaskName + 
                     "' AND description = '" + t.Description + "'", _db);
@@ -405,9 +418,9 @@ namespace Assignment3_LHISGroup
          */   
         public void ShowData()
         {
+            SqlConnection _db = new SqlConnection(connStr);
             try 
             {
-                _db.Open();
 
                 SqlDataReader myReader = null;
                 SqlCommand myCommand= new SqlCommand("SELECT * FROM Suppliers", _db);
@@ -420,7 +433,6 @@ namespace Assignment3_LHISGroup
                     Console.WriteLine(myReader["ContactPerson"].ToString());
                 }
 
-                _db.Close();
             }
             catch (Exception e) { e.GetHashCode(); }
             
