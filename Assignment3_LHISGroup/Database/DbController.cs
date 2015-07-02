@@ -171,17 +171,20 @@ namespace Assignment3_LHISGroup
         {
             String query = @"INSERT into Client (firstname, surname, contactPerson, address, ";
             query += @"mobile, homePhone, email, engagedTo)";
-            query += @" VALUES ()";
+            query += @" VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, @email, @engagedTo)";
 
 
             SqlCommand myCommand = new SqlCommand(query);
 
-            myCommand.Parameters.AddWithValue("@_firstname", s.FirstName);
-            myCommand.Parameters.AddWithValue("@_surname", s.Surname);
-            myCommand.Parameters.AddWithValue("@_email", s.Email);
-            myCommand.Parameters.AddWithValue("@_phone", s.Phone);
-            myCommand.Parameters.AddWithValue("@_notes", s.Notes);
-            myCommand.Parameters.AddWithValue("@_status", s.StatusToString());
+            myCommand.Parameters.AddWithValue("@firstname", c.Firstname );
+            myCommand.Parameters.AddWithValue("@surname", c.Surname);
+            myCommand.Parameters.AddWithValue("@contactPerson", c.ContactPerson);
+            myCommand.Parameters.AddWithValue("@address", c.Address);
+            myCommand.Parameters.AddWithValue("@mobile", c.Mobile);
+            myCommand.Parameters.AddWithValue("@homePhone", c.HomePhone);
+            myCommand.Parameters.AddWithValue("@email", c.Email);
+            myCommand.Parameters.AddWithValue("@engagedTo", c.EngagedTo);
+
 
             int res = 0;
 
@@ -196,8 +199,6 @@ namespace Assignment3_LHISGroup
 
             if (res == 1) return true;           // Should only update one row.
             else return false;
-
-            return false; 
         }
 
         /**
