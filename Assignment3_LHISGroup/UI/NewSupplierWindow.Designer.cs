@@ -33,7 +33,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.CancelButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.CompanyNameTextBox = new System.Windows.Forms.TextBox();
@@ -88,22 +87,12 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Address";
             // 
-            // CancelButton
-            // 
-            this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(386, 520);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(90, 46);
-            this.CancelButton.TabIndex = 7;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            // 
             // ClearButton
             // 
             this.ClearButton.BackColor = System.Drawing.Color.White;
-            this.ClearButton.Location = new System.Drawing.Point(249, 520);
+            this.ClearButton.Location = new System.Drawing.Point(204, 425);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(102, 46);
+            this.ClearButton.Size = new System.Drawing.Size(86, 54);
             this.ClearButton.TabIndex = 6;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = false;
@@ -111,11 +100,11 @@
             // CreateButton
             // 
             this.CreateButton.BackColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(249, 449);
+            this.CreateButton.Location = new System.Drawing.Point(296, 425);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(227, 54);
+            this.CreateButton.Size = new System.Drawing.Size(180, 54);
             this.CreateButton.TabIndex = 5;
-            this.CreateButton.Text = "Create";
+            this.CreateButton.Text = "CREATE";
             this.CreateButton.UseVisualStyleBackColor = false;
             // 
             // CompanyNameTextBox
@@ -159,13 +148,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(533, 611);
+            this.ClientSize = new System.Drawing.Size(533, 512);
             this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.ContactPersonTextBox);
             this.Controls.Add(this.CompanyNameTextBox);
-            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.label5);
@@ -187,7 +175,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.TextBox CompanyNameTextBox;

@@ -28,16 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.StaffDataGridView = new System.Windows.Forms.DataGridView();
             this.AddStaffButton = new System.Windows.Forms.Button();
             this.UpdateStaffButton = new System.Windows.Forms.Button();
+            this.modelDataSet = new Assignment3_LHISGroup.ModelDataSet();
+            this.modelDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.staffTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.StaffTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.StaffDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modelDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // StaffDataGridView
             // 
+            this.StaffDataGridView.AutoGenerateColumns = false;
             this.StaffDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.StaffDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StaffDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.firstnameDataGridViewTextBoxColumn,
+            this.surnameDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.phoneDataGridViewTextBoxColumn,
+            this.notesDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn});
+            this.StaffDataGridView.DataSource = this.staffBindingSource;
             this.StaffDataGridView.Location = new System.Drawing.Point(12, 12);
             this.StaffDataGridView.Name = "StaffDataGridView";
             this.StaffDataGridView.RowTemplate.Height = 28;
@@ -66,6 +91,67 @@
             this.UpdateStaffButton.UseVisualStyleBackColor = false;
             this.UpdateStaffButton.Click += new System.EventHandler(this.UpdateStaffButton_Click);
             // 
+            // modelDataSet
+            // 
+            this.modelDataSet.DataSetName = "ModelDataSet";
+            this.modelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // modelDataSetBindingSource
+            // 
+            this.modelDataSetBindingSource.DataSource = this.modelDataSet;
+            this.modelDataSetBindingSource.Position = 0;
+            // 
+            // staffBindingSource
+            // 
+            this.staffBindingSource.DataMember = "Staff";
+            this.staffBindingSource.DataSource = this.modelDataSetBindingSource;
+            // 
+            // staffTableAdapter
+            // 
+            this.staffTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // firstnameDataGridViewTextBoxColumn
+            // 
+            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "firstname";
+            this.firstnameDataGridViewTextBoxColumn.HeaderText = "firstname";
+            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
+            // 
+            // surnameDataGridViewTextBoxColumn
+            // 
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "surname";
+            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            // 
+            // notesDataGridViewTextBoxColumn
+            // 
+            this.notesDataGridViewTextBoxColumn.DataPropertyName = "notes";
+            this.notesDataGridViewTextBoxColumn.HeaderText = "notes";
+            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
             // ManageStaffWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -77,7 +163,11 @@
             this.Controls.Add(this.StaffDataGridView);
             this.Name = "ManageStaffWindow";
             this.Text = "Manage Staff";
+            this.Load += new System.EventHandler(this.ManageStaffWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StaffDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modelDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -87,5 +177,16 @@
         private System.Windows.Forms.DataGridView StaffDataGridView;
         private System.Windows.Forms.Button AddStaffButton;
         private System.Windows.Forms.Button UpdateStaffButton;
+        private System.Windows.Forms.BindingSource modelDataSetBindingSource;
+        private ModelDataSet modelDataSet;
+        private System.Windows.Forms.BindingSource staffBindingSource;
+        private ModelDataSetTableAdapters.StaffTableAdapter staffTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
     }
 }

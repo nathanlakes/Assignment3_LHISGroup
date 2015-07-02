@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CancelButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
@@ -57,22 +56,12 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // CancelButton
-            // 
-            this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(308, 671);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(90, 46);
-            this.CancelButton.TabIndex = 28;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            // 
             // ClearButton
             // 
             this.ClearButton.BackColor = System.Drawing.Color.White;
-            this.ClearButton.Location = new System.Drawing.Point(200, 671);
+            this.ClearButton.Location = new System.Drawing.Point(92, 600);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(102, 46);
+            this.ClearButton.Size = new System.Drawing.Size(102, 54);
             this.ClearButton.TabIndex = 27;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = false;
@@ -84,7 +73,7 @@
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(198, 54);
             this.CreateButton.TabIndex = 26;
-            this.CreateButton.Text = "Create";
+            this.CreateButton.Text = "CREATE";
             this.CreateButton.UseVisualStyleBackColor = false;
             // 
             // FirstNameTextBox
@@ -290,7 +279,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(467, 759);
+            this.ClientSize = new System.Drawing.Size(467, 680);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.ContactCheckBox);
             this.Controls.Add(this.label10);
@@ -315,7 +304,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.CreateButton);
             this.Name = "NewClientWindow";
@@ -327,7 +315,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.TextBox FirstNameTextBox;

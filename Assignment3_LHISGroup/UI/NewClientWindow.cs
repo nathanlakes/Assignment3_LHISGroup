@@ -20,5 +20,10 @@ namespace Assignment3_LHISGroup.UI
             mainWin = w;
             db = d;
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

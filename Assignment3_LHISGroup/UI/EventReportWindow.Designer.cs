@@ -38,10 +38,9 @@
             // EventReportButton
             // 
             this.EventReportButton.BackColor = System.Drawing.Color.White;
-            this.EventReportButton.Location = new System.Drawing.Point(27, 109);
-            this.EventReportButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EventReportButton.Location = new System.Drawing.Point(40, 168);
             this.EventReportButton.Name = "EventReportButton";
-            this.EventReportButton.Size = new System.Drawing.Size(202, 25);
+            this.EventReportButton.Size = new System.Drawing.Size(303, 38);
             this.EventReportButton.TabIndex = 31;
             this.EventReportButton.Text = "Event Report";
             this.EventReportButton.UseVisualStyleBackColor = false;
@@ -50,10 +49,9 @@
             // EventTaskReportButton
             // 
             this.EventTaskReportButton.BackColor = System.Drawing.Color.White;
-            this.EventTaskReportButton.Location = new System.Drawing.Point(27, 149);
-            this.EventTaskReportButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EventTaskReportButton.Location = new System.Drawing.Point(40, 229);
             this.EventTaskReportButton.Name = "EventTaskReportButton";
-            this.EventTaskReportButton.Size = new System.Drawing.Size(202, 25);
+            this.EventTaskReportButton.Size = new System.Drawing.Size(303, 38);
             this.EventTaskReportButton.TabIndex = 30;
             this.EventTaskReportButton.Text = "Event Task Report";
             this.EventTaskReportButton.UseVisualStyleBackColor = false;
@@ -62,10 +60,9 @@
             // EventProgressReportButton
             // 
             this.EventProgressReportButton.BackColor = System.Drawing.Color.White;
-            this.EventProgressReportButton.Location = new System.Drawing.Point(27, 67);
-            this.EventProgressReportButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EventProgressReportButton.Location = new System.Drawing.Point(40, 103);
             this.EventProgressReportButton.Name = "EventProgressReportButton";
-            this.EventProgressReportButton.Size = new System.Drawing.Size(202, 25);
+            this.EventProgressReportButton.Size = new System.Drawing.Size(303, 38);
             this.EventProgressReportButton.TabIndex = 29;
             this.EventProgressReportButton.Text = "Event Progress Report";
             this.EventProgressReportButton.UseVisualStyleBackColor = false;
@@ -74,10 +71,9 @@
             // EventProgressGraphButton
             // 
             this.EventProgressGraphButton.BackColor = System.Drawing.Color.White;
-            this.EventProgressGraphButton.Location = new System.Drawing.Point(27, 26);
-            this.EventProgressGraphButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EventProgressGraphButton.Location = new System.Drawing.Point(40, 40);
             this.EventProgressGraphButton.Name = "EventProgressGraphButton";
-            this.EventProgressGraphButton.Size = new System.Drawing.Size(202, 25);
+            this.EventProgressGraphButton.Size = new System.Drawing.Size(303, 38);
             this.EventProgressGraphButton.TabIndex = 28;
             this.EventProgressGraphButton.Text = "Event Progress Graph";
             this.EventProgressGraphButton.UseVisualStyleBackColor = false;
@@ -86,26 +82,24 @@
             // StaffReportButton
             // 
             this.StaffReportButton.BackColor = System.Drawing.Color.White;
-            this.StaffReportButton.Location = new System.Drawing.Point(27, 193);
-            this.StaffReportButton.Margin = new System.Windows.Forms.Padding(2);
+            this.StaffReportButton.Location = new System.Drawing.Point(40, 297);
             this.StaffReportButton.Name = "StaffReportButton";
-            this.StaffReportButton.Size = new System.Drawing.Size(202, 25);
+            this.StaffReportButton.Size = new System.Drawing.Size(303, 38);
             this.StaffReportButton.TabIndex = 32;
             this.StaffReportButton.Text = "Staff Report";
             this.StaffReportButton.UseVisualStyleBackColor = false;
             // 
             // EventReportWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(292, 250);
+            this.ClientSize = new System.Drawing.Size(409, 385);
             this.Controls.Add(this.StaffReportButton);
             this.Controls.Add(this.EventReportButton);
             this.Controls.Add(this.EventTaskReportButton);
             this.Controls.Add(this.EventProgressReportButton);
             this.Controls.Add(this.EventProgressGraphButton);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EventReportWindow";
             this.Text = "Event Report";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EventReportWindow_FormClosed);

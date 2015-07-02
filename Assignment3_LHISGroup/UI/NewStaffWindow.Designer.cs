@@ -38,7 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.CancelButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -124,22 +123,12 @@
             this.label1.TabIndex = 34;
             this.label1.Text = "First Name";
             // 
-            // CancelButton
-            // 
-            this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(352, 487);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(90, 46);
-            this.CancelButton.TabIndex = 33;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            // 
             // ClearButton
             // 
             this.ClearButton.BackColor = System.Drawing.Color.White;
-            this.ClearButton.Location = new System.Drawing.Point(206, 487);
+            this.ClearButton.Location = new System.Drawing.Point(98, 412);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(102, 46);
+            this.ClearButton.Size = new System.Drawing.Size(102, 54);
             this.ClearButton.TabIndex = 32;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = false;
@@ -152,7 +141,7 @@
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(236, 54);
             this.CreateButton.TabIndex = 31;
-            this.CreateButton.Text = "Create";
+            this.CreateButton.Text = "CREATE";
             this.CreateButton.UseVisualStyleBackColor = false;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
@@ -161,7 +150,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(489, 571);
+            this.ClientSize = new System.Drawing.Size(489, 492);
             this.Controls.Add(this.NotesTextBox);
             this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.EmailTextBox);
@@ -172,7 +161,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.CreateButton);
             this.Name = "NewStaffWindow";
@@ -194,7 +182,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button CreateButton;
 
