@@ -21,6 +21,20 @@ namespace Assignment3_LHISGroup.UI
             db = d;
         }
 
+        public void UpdateForm()
+        {
+            this.clientTableAdapter.Fill(this.modelDataSet.Client);
+            ClientsDataGridView.Update();
+            ClientsDataGridView.Refresh();
+            this.Refresh();
+        }
+
+        private void ManageClientsWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Visible = false;
+            e.Cancel = true; // this cancels the close event
+        }
+
         private void AddClientButton_Click(object sender, EventArgs e)
         {
             mainWin.NewClientWindow.Visible = true;
@@ -29,6 +43,13 @@ namespace Assignment3_LHISGroup.UI
         private void UpdateClientButton_Click(object sender, EventArgs e)
         {
             mainWin.UpdateClientWindow.Visible = true;
+        }
+
+        private void ManageClientsWindow_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'modelDataSet.Client' table. You can move, or remove it, as needed.
+            this.clientTableAdapter.Fill(this.modelDataSet.Client);
+
         }
     }
 }

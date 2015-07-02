@@ -21,6 +21,20 @@ namespace Assignment3_LHISGroup.UI
             db = d;
         }
 
+        public void UpdateForm()
+        {
+            this.weddingTableAdapter.Fill(this.modelDataSet.Wedding);
+            WeddingsDataGridView.Update();
+            WeddingsDataGridView.Refresh();
+            this.Refresh();
+        }
+
+        private void ManageWeddingsWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Visible = false;
+            e.Cancel = true; // this cancels the close event
+        }
+
         private void AddWeddingButton_Click(object sender, EventArgs e)
         {
             mainWin.NewWeddingWindow.Visible = true;
@@ -33,6 +47,13 @@ namespace Assignment3_LHISGroup.UI
 
         private void DeleteWeddingButton_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void ManageWeddingsWindow_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'modelDataSet.Wedding' table. You can move, or remove it, as needed.
+            this.weddingTableAdapter.Fill(this.modelDataSet.Wedding);
 
         }
     }
