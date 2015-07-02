@@ -44,12 +44,28 @@ namespace Assignment3_LHISGroup.UI
 
         private void AddTaskButton_Click(object sender, EventArgs e)
         {
-            mainWin.NewTaskWindow.Visible = true;
+            if (!mainWin.NewTaskWindow.Visible)
+            {
+                mainWin.NewTaskWindow.Visible = true;
+            }
+            else
+            {
+                mainWin.NewTaskWindow.Focus();
+            }
+            
         }
 
         private void UpdateTaskButton_Click(object sender, EventArgs e)
         {
-            mainWin.UpdateTaskWindow.Visible = true;
+            if (!mainWin.UpdateTaskWindow.Visible)
+            {
+                mainWin.UpdateTaskWindow.Visible = true;
+            }
+            else
+            {
+                mainWin.UpdateTaskWindow.Focus();
+            }
+            
         }
 
         private void DeleteWeddingButton_Click(object sender, EventArgs e)

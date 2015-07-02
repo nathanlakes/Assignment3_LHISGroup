@@ -37,12 +37,28 @@ namespace Assignment3_LHISGroup.UI
 
         private void AddWeddingButton_Click(object sender, EventArgs e)
         {
-            mainWin.NewWeddingWindow.Visible = true;
+            if (!mainWin.NewWeddingWindow.Visible)
+            {
+                mainWin.NewWeddingWindow.Visible = true;
+            }
+            else
+            {
+                mainWin.NewWeddingWindow.Focus();
+            }
+            
         }
 
         private void UpdateWeddingButton_Click(object sender, EventArgs e)
         {
-            mainWin.UpdateWeddingWindow.Visible = true;
+            if (!mainWin.UpdateWeddingWindow.Visible)
+            {
+                mainWin.UpdateWeddingWindow.Visible = true;
+            }
+            else
+            {
+                mainWin.UpdateWeddingWindow.Focus();
+            }
+            
         }
 
         private void DeleteWeddingButton_Click(object sender, EventArgs e)

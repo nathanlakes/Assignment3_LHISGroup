@@ -37,12 +37,28 @@ namespace Assignment3_LHISGroup.UI
 
         private void AddClientButton_Click(object sender, EventArgs e)
         {
-            mainWin.NewClientWindow.Visible = true;
+            if (!mainWin.NewClientWindow.Visible)
+            {
+                mainWin.NewClientWindow.Visible = true;
+            }
+            else
+            {
+                mainWin.NewClientWindow.Focus();
+            }
+            
         }
 
         private void UpdateClientButton_Click(object sender, EventArgs e)
         {
-            mainWin.UpdateClientWindow.Visible = true;
+            if (!mainWin.UpdateClientWindow.Visible)
+            {
+                mainWin.UpdateClientWindow.Visible = true;
+            }
+            else
+            {
+                mainWin.UpdateClientWindow.Focus();
+            }
+            
         }
 
         private void ManageClientsWindow_Load(object sender, EventArgs e)

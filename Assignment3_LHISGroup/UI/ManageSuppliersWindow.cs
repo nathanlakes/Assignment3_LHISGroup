@@ -23,12 +23,28 @@ namespace Assignment3_LHISGroup.UI
 
         private void AddSupplierButton_Click(object sender, EventArgs e)
         {
-            mainWin.NewSupplierWindow.Visible = true;
+            if (!mainWin.NewSupplierWindow.Visible)
+            {
+                mainWin.NewSupplierWindow.Visible = true;
+            }
+            else
+            {
+                mainWin.NewSupplierWindow.Focus();
+            }
+            
         }
 
         private void UpdateSupplierbutton_Click(object sender, EventArgs e)
         {
-            mainWin.UpdateSupplierWindow.Visible = true;
+            if (!mainWin.UpdateSupplierWindow.Visible)
+            {
+                mainWin.UpdateSupplierWindow.Visible = true;
+            }
+            else
+            {
+                mainWin.UpdateSupplierWindow.Focus();
+            }
+            
         }
 
         public void UpdateForm()
