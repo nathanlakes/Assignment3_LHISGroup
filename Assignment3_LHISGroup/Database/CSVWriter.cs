@@ -24,7 +24,7 @@ namespace Assignment3_LHISGroup
          */
         public CSVWriter(string reportName)
         {
-            fileName = path + "\\reportName " + DateTime.Now.Day.ToString() + "-" +
+            fileName = path + "\\" + reportName + DateTime.Now.Day.ToString() + "-" +
             DateTime.Now.Month.ToString() + "-" + DateTime.Now.Year.ToString() + ".csv";
         }
 
@@ -64,10 +64,170 @@ namespace Assignment3_LHISGroup
                     file.Write("\"" + c.HomePhone + "\",");
                     file.Write("\"" + c.Email + "\",");
                     file.Write("\"" + c.EngagedTo_fn + "\",");
-                    file.WriteLine("\"" + c.EngagedTo_sn);
+                    file.WriteLine("\"" + c.EngagedTo_sn + "\"");
                 }
             }
         }
+
+        /*
+         *   Takes a List<Staff> and writes them to a CSV output file.
+         */
+        public void WriteStaffToFile(List<Staff> outputStaff)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, false))
+            {
+                string[] titles = getStaffHeadings();
+
+                // Write the headings to output file.
+                for (int i = 0; i < titles.Length; i++)
+                {
+                    if (i < titles.Length - 1)
+                    {
+                        file.Write(titles[i] + ",");
+                    }
+                    else
+                    {
+                        file.WriteLine(titles[i]);
+                    }
+                }
+
+                // Write the data to the outfile.
+                // Quotations " " prevent commas in text fields from breaking
+                // CSV formatting
+                foreach (Staff s in outputStaff)
+                {
+                    file.Write("\"" + s.FirstName + "\",");
+                    file.Write("\"" + s.Surname + "\",");
+                    file.Write("\"" + s.Email + "\",");
+                    file.Write("\"" + s.Phone + "\",");
+                    file.Write("\"" + s.Notes + "\",");
+                    file.WriteLine("\"" + s.StaffStatus.ToString() + "\"");
+                }
+            }
+        }
+
+
+        /*
+         *   Takes a List<Supplier> and writes them to a CSV output file.
+         */
+        public void WriteSupplierToFile(List<Supplier> outputSupplier)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, false))
+            {
+                string[] titles = getSupplierHeadings();
+
+                // Write the headings to output file.
+                for (int i = 0; i < titles.Length; i++)
+                {
+                    if (i < titles.Length - 1)
+                    {
+                        file.Write(titles[i] + ",");
+                    }
+                    else
+                    {
+                        file.WriteLine(titles[i]);
+                    }
+                }
+
+                // Write the data to the outfile.
+                // Quotations " " prevent commas in text fields from breaking
+                // CSV formatting
+                foreach (Supplier s in outputSupplier)
+                {
+                    file.Write("\"" + s.CompanyName + "\",");
+                    file.Write("\"" + s.Address + "\",");
+                    file.Write("\"" + s.ContactPerson + "\",");
+                    file.Write("\"" + s.Email + "\",");
+                    file.Write("\"" + s.PhoneNumber + "\",");
+                    file.WriteLine("\"" + s.CreditTerms.ToString() + "\"");
+                }
+            }
+        }
+
+
+        /*
+         *   Takes a List<Task> and writes them to a CSV output file.
+         */
+        public void WriteSupplierToFile(List<Support_Classes.Task> outputTask)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, false))
+            {
+                string[] titles = getTaskHeadings();
+
+                // Write the headings to output file.
+                for (int i = 0; i < titles.Length; i++)
+                {
+                    if (i < titles.Length - 1)
+                    {
+                        file.Write(titles[i] + ",");
+                    }
+                    else
+                    {
+                        file.WriteLine(titles[i]);
+                    }
+                }
+
+                // Write the data to the outfile.
+                // Quotations " " prevent commas in text fields from breaking
+                // CSV formatting
+                foreach (Task t in outputTask)
+                {
+                    file.Write("\"" + t.TaskName + "\",");
+                    file.Write("\"" + t.Description + "\",");
+                    file.Write("\"" + t.TaskPriority.ToString() + "\",");
+                    file.Write("\"" + t.CompleteBy.ToShortDateString() + "\",");
+                    try
+                    {
+                        file.Write("\"" + t.CompletionDate.ToShortDateString() + "\",");
+                    } catch(Exception)
+                    {
+                        file.Write("\"\",");
+                    }
+
+                    file.Write("\"[" + t.ID + "] " + t.AssignedTo.FirstName + " " + t.AssignedTo.Surname + "\",");
+                    file.WriteLine("\"[" + t.Wedding.ID + "] " + t.Wedding.Title + "\"");
+                }
+            }
+        }
+
+
+        /*
+         *   Takes a List<Wedding> and writes them to a CSV output file.
+         */
+        public void WriteWeddingToFile(List<Wedding> outputWedding)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, false))
+            {
+                string[] titles = getWeddingHeadings();
+
+                // Write the headings to output file.
+                for (int i = 0; i < titles.Length; i++)
+                {
+                    if (i < titles.Length - 1)
+                    {
+                        file.Write(titles[i] + ",");
+                    }
+                    else
+                    {
+                        file.WriteLine(titles[i]);
+                    }
+                }
+
+                // Write the data to the outfile.
+                // Quotations " " prevent commas in text fields from breaking
+                // CSV formatting
+                foreach (Wedding w in outputWedding)
+                {
+                    file.Write("\"" + w.Title + "\",");
+                    file.Write("\"[" + w.Client1.ID + "] " + w.Client1.Firstname + " " + w.Client1.Surname + "\",");
+                    file.Write("\"[" + w.Client2.ID + "] " + w.Client2.Firstname + " " + w.Client2.Surname + "\",");
+                    file.Write("\"" + w.StartDate.ToShortDateString() + "\",");
+                    file.Write("\"" + w.EventDate.ToShortDateString() + "\",");
+                    file.WriteLine("\"[" + w.ID + "] " + w.WeddingPlanner.FirstName + " " + w.WeddingPlanner.Surname + "\"");
+                }
+            }
+        }
+
 
 
         /*
