@@ -28,14 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ContactRadioButton = new System.Windows.Forms.RadioButton();
             this.ClientBRadioButton = new System.Windows.Forms.RadioButton();
             this.ClientARadioButton = new System.Windows.Forms.RadioButton();
-            this.ContactAddressTextBox = new System.Windows.Forms.TextBox();
-            this.ContactHomePhoneTextBox = new System.Windows.Forms.TextBox();
-            this.ContactMobilePhoneTextBox = new System.Windows.Forms.TextBox();
-            this.ContactEmailTextBox = new System.Windows.Forms.TextBox();
-            this.ContactFirsNameTextBox = new System.Windows.Forms.TextBox();
             this.ClientBAddressTextBox = new System.Windows.Forms.TextBox();
             this.ClientBHomePhoneTextBox = new System.Windows.Forms.TextBox();
             this.ClientBMobilePhoneTextBox = new System.Windows.Forms.TextBox();
@@ -46,7 +40,6 @@
             this.ClientAMobilePhoneTextBox = new System.Windows.Forms.TextBox();
             this.ClientAEmailTextBox = new System.Windows.Forms.TextBox();
             this.ClientAFirstNameTextBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,19 +53,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.ClientASurnameTextBox = new System.Windows.Forms.TextBox();
             this.ClientBSurnameTextBox = new System.Windows.Forms.TextBox();
-            this.ContactSurnameTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // ContactRadioButton
-            // 
-            this.ContactRadioButton.AutoSize = true;
-            this.ContactRadioButton.Location = new System.Drawing.Point(800, 441);
-            this.ContactRadioButton.Name = "ContactRadioButton";
-            this.ContactRadioButton.Size = new System.Drawing.Size(203, 24);
-            this.ContactRadioButton.TabIndex = 51;
-            this.ContactRadioButton.TabStop = true;
-            this.ContactRadioButton.Text = "Contact is another party";
-            this.ContactRadioButton.UseVisualStyleBackColor = true;
             // 
             // ClientBRadioButton
             // 
@@ -95,42 +76,6 @@
             this.ClientARadioButton.TabStop = true;
             this.ClientARadioButton.Text = "Contact is Client A";
             this.ClientARadioButton.UseVisualStyleBackColor = true;
-            // 
-            // ContactAddressTextBox
-            // 
-            this.ContactAddressTextBox.Location = new System.Drawing.Point(800, 327);
-            this.ContactAddressTextBox.Multiline = true;
-            this.ContactAddressTextBox.Name = "ContactAddressTextBox";
-            this.ContactAddressTextBox.Size = new System.Drawing.Size(211, 82);
-            this.ContactAddressTextBox.TabIndex = 48;
-            // 
-            // ContactHomePhoneTextBox
-            // 
-            this.ContactHomePhoneTextBox.Location = new System.Drawing.Point(800, 275);
-            this.ContactHomePhoneTextBox.Name = "ContactHomePhoneTextBox";
-            this.ContactHomePhoneTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ContactHomePhoneTextBox.TabIndex = 47;
-            // 
-            // ContactMobilePhoneTextBox
-            // 
-            this.ContactMobilePhoneTextBox.Location = new System.Drawing.Point(800, 218);
-            this.ContactMobilePhoneTextBox.Name = "ContactMobilePhoneTextBox";
-            this.ContactMobilePhoneTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ContactMobilePhoneTextBox.TabIndex = 46;
-            // 
-            // ContactEmailTextBox
-            // 
-            this.ContactEmailTextBox.Location = new System.Drawing.Point(800, 174);
-            this.ContactEmailTextBox.Name = "ContactEmailTextBox";
-            this.ContactEmailTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ContactEmailTextBox.TabIndex = 45;
-            // 
-            // ContactFirsNameTextBox
-            // 
-            this.ContactFirsNameTextBox.Location = new System.Drawing.Point(800, 87);
-            this.ContactFirsNameTextBox.Name = "ContactFirsNameTextBox";
-            this.ContactFirsNameTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ContactFirsNameTextBox.TabIndex = 44;
             // 
             // ClientBAddressTextBox
             // 
@@ -204,15 +149,6 @@
             this.ClientAFirstNameTextBox.Size = new System.Drawing.Size(211, 26);
             this.ClientAFirstNameTextBox.TabIndex = 34;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(796, 39);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 20);
-            this.label8.TabIndex = 33;
-            this.label8.Text = "Contact";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -279,7 +215,7 @@
             // CancelButton
             // 
             this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(818, 581);
+            this.CancelButton.Location = new System.Drawing.Point(625, 580);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(90, 46);
             this.CancelButton.TabIndex = 54;
@@ -289,7 +225,7 @@
             // ResetButton
             // 
             this.ResetButton.BackColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(708, 581);
+            this.ResetButton.Location = new System.Drawing.Point(515, 580);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(102, 46);
             this.ResetButton.TabIndex = 53;
@@ -299,7 +235,7 @@
             // UpdateButton
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(708, 510);
+            this.UpdateButton.Location = new System.Drawing.Point(515, 509);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(200, 54);
             this.UpdateButton.TabIndex = 52;
@@ -329,34 +265,20 @@
             this.ClientBSurnameTextBox.Size = new System.Drawing.Size(211, 26);
             this.ClientBSurnameTextBox.TabIndex = 57;
             // 
-            // ContactSurnameTextBox
-            // 
-            this.ContactSurnameTextBox.Location = new System.Drawing.Point(800, 130);
-            this.ContactSurnameTextBox.Name = "ContactSurnameTextBox";
-            this.ContactSurnameTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ContactSurnameTextBox.TabIndex = 0;
-            // 
             // UpdateClientWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1093, 646);
-            this.Controls.Add(this.ContactSurnameTextBox);
+            this.ClientSize = new System.Drawing.Size(745, 646);
             this.Controls.Add(this.ClientBSurnameTextBox);
             this.Controls.Add(this.ClientASurnameTextBox);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.UpdateButton);
-            this.Controls.Add(this.ContactRadioButton);
             this.Controls.Add(this.ClientBRadioButton);
             this.Controls.Add(this.ClientARadioButton);
-            this.Controls.Add(this.ContactAddressTextBox);
-            this.Controls.Add(this.ContactHomePhoneTextBox);
-            this.Controls.Add(this.ContactMobilePhoneTextBox);
-            this.Controls.Add(this.ContactEmailTextBox);
-            this.Controls.Add(this.ContactFirsNameTextBox);
             this.Controls.Add(this.ClientBAddressTextBox);
             this.Controls.Add(this.ClientBHomePhoneTextBox);
             this.Controls.Add(this.ClientBMobilePhoneTextBox);
@@ -367,7 +289,6 @@
             this.Controls.Add(this.ClientAMobilePhoneTextBox);
             this.Controls.Add(this.ClientAEmailTextBox);
             this.Controls.Add(this.ClientAFirstNameTextBox);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -384,14 +305,8 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton ContactRadioButton;
         private System.Windows.Forms.RadioButton ClientBRadioButton;
         private System.Windows.Forms.RadioButton ClientARadioButton;
-        private System.Windows.Forms.TextBox ContactAddressTextBox;
-        private System.Windows.Forms.TextBox ContactHomePhoneTextBox;
-        private System.Windows.Forms.TextBox ContactMobilePhoneTextBox;
-        private System.Windows.Forms.TextBox ContactEmailTextBox;
-        private System.Windows.Forms.TextBox ContactFirsNameTextBox;
         private System.Windows.Forms.TextBox ClientBAddressTextBox;
         private System.Windows.Forms.TextBox ClientBHomePhoneTextBox;
         private System.Windows.Forms.TextBox ClientBMobilePhoneTextBox;
@@ -402,7 +317,6 @@
         private System.Windows.Forms.TextBox ClientAMobilePhoneTextBox;
         private System.Windows.Forms.TextBox ClientAEmailTextBox;
         private System.Windows.Forms.TextBox ClientAFirstNameTextBox;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -416,7 +330,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox ClientASurnameTextBox;
         private System.Windows.Forms.TextBox ClientBSurnameTextBox;
-        private System.Windows.Forms.TextBox ContactSurnameTextBox;
 
     }
 }
