@@ -107,7 +107,7 @@ namespace Assignment3_LHISGroup
             Support_Classes.Task t1 = new Support_Classes.Task("Set table at venue", "Set 12 tables", 
                 Support_Classes.Task.Priority.high, new DateTime(2015, 12, 12), s1);
 
-            db.ShowData();   // Test the select statement. 
+            DB.ShowData();   // Test the select statement. 
 
             try
             {
