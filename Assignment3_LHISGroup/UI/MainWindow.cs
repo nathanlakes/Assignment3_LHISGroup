@@ -15,7 +15,7 @@ namespace Assignment3_LHISGroup
     public partial class MainWindow : Form
     {
 
-        public DbController DB;
+        public DbController db;
 
         // windows accessed from the main window
         private UI.ManageClientsWindow ManageClientsWindow;
@@ -42,7 +42,7 @@ namespace Assignment3_LHISGroup
         public MainWindow()
         {
             InitializeComponent();
-            DB = new DbController();        // Creates a DB controller to be used by the UI classes. 
+            db = new DbController();        // Creates a DB controller to be used by the UI classes. 
             
             // create windows and hide them for later use
             // this saves on CPU by not recreating them every time they are needed
@@ -91,6 +91,8 @@ namespace Assignment3_LHISGroup
             NewTaskWindow = new UI.NewTaskWindow();
             NewTaskWindow.Hide();
 
+            NewWeddingWindow = new UI.NewWeddingWindow();
+            NewWeddingWindow.Hide();
 
 
             this.nathanDebug();                  // Code to debug Db in dev. cycle.
@@ -107,11 +109,11 @@ namespace Assignment3_LHISGroup
             Support_Classes.Task t1 = new Support_Classes.Task("Set table at venue", "Set 12 tables", 
                 Support_Classes.Task.Priority.high, new DateTime(2015, 12, 12), s1);
 
-            DB.ShowData();   // Test the select statement. 
+            db.ShowData();   // Test the select statement. 
 
             try
             {
-                bool result = DB.AddStaff(s1);
+                bool result = db.AddStaff(s1);
                 //db.AddTask(t1);
                 Console.WriteLine("s1 Added to Staff?  " + result);
             }
@@ -124,14 +126,12 @@ namespace Assignment3_LHISGroup
 
         private void ManageSuppliersButton_Click(object sender, EventArgs e)
         {
-            UI.ManageSuppliersWindow win = new UI.ManageSuppliersWindow();
-            win.Visible = true;
+            ManageSuppliersWindow.Visible = true;
         }
 
         private void ManageStaffButton_Click(object sender, EventArgs e)
         {
-            UI.ManageStaffWindow win = new UI.ManageStaffWindow();
-            win.Visible = true;
+            ManageStaffWindow.Visible = true;
         }
 
         private void ManageTasksButton_Click(object sender, EventArgs e)
@@ -142,8 +142,7 @@ namespace Assignment3_LHISGroup
 
         private void ManageClientsButton_Click(object sender, EventArgs e)
         {
-            UI.ManageClientsWindow win = new UI.ManageClientsWindow();
-            win.Visible = true;
+            ManageClientsWindow.Visible = true;
         }
 
         private void ManageWeddingsButton_Click(object sender, EventArgs e)
