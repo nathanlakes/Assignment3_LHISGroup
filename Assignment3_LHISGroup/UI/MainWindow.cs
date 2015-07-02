@@ -15,7 +15,7 @@ namespace Assignment3_LHISGroup
     public partial class MainWindow : Form
     {
 
-        public DbController DB
+        public DbController DB;
 
         // windows accessed from the main window
         private UI.ManageClientsWindow ManageClientsWindow;
