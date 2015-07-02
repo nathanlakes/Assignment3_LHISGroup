@@ -144,6 +144,7 @@
             this.ResetButton.TabIndex = 17;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // UpdateButton
             // 
@@ -154,6 +155,7 @@
             this.UpdateButton.TabIndex = 16;
             this.UpdateButton.Text = "UPDATE";
             this.UpdateButton.UseVisualStyleBackColor = false;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // StaffReport
             // 
