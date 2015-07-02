@@ -148,7 +148,8 @@ namespace Assignment3_LHISGroup
 
         private void ManageTasksButton_Click(object sender, EventArgs e)
         {
-            ManageTasksWindow.Visible = true;
+            UI.ManageTasksWindow win = new UI.ManageTasksWindow();
+            win.Visible = true;
         }
 
         private void ManageClientsButton_Click(object sender, EventArgs e)
@@ -158,37 +159,44 @@ namespace Assignment3_LHISGroup
 
         private void ManageWeddingsButton_Click(object sender, EventArgs e)
         {
-            ManageWeddingsWindow.Visible = true;
+            UI.ManageWeddingsWindow win = new UI.ManageWeddingsWindow();
+            win.Visible = true;
         }
 
         private void NewStaffButton_Click(object sender, EventArgs e)
         {
-            NewStaffWindow.Visible = true;
+            UI.NewStaffWindow win = new UI.NewStaffWindow();
+            win.Visible = true;
         }
 
         private void NewTaskButton_Click(object sender, EventArgs e)
         {
-            NewTaskWindow.Visible = true;
+            UI.NewTaskWindow win = new UI.NewTaskWindow();
+            win.Visible = true;
         }
 
         private void NewSupplierButton_Click(object sender, EventArgs e)
         {
-            NewSupplierWindow.Visible = true;
+            UI.NewSupplierWindow win = new UI.NewSupplierWindow();
+            win.Visible = true;
         }
 
         private void NewWeddingButton_Click(object sender, EventArgs e)
         {
-            NewWeddingWindow.Visible = true;
+            UI.NewWeddingWindow win = new UI.NewWeddingWindow();
+            win.Visible = true;
         }
 
         private void NewClientButton_Click(object sender, EventArgs e)
         {
-            NewClientWindow.Visible = true;
+            UI.NewClientWindow win = new UI.NewClientWindow();
+            win.Visible = true;
         }
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-            EventReportWindow.Visible = true;
+            UI.EventReportWindow win = new UI.EventReportWindow(this);
+            win.Visible = true;
         }
     }
 }
