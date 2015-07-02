@@ -12,8 +12,9 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class UpdateWeddingWindow : Form
     {
-        DbController db;
         MainWindow mainWin;
+        DbController db;
+        
         public UpdateWeddingWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
@@ -23,8 +24,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-            UI.EventReportWindow win = new UI.EventReportWindow(mainWin, db);
-            win.Visible = true;
+            mainWin.EventReportWindow.Visible = true;
         }
     }
 }

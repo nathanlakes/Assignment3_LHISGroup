@@ -18,26 +18,26 @@ namespace Assignment3_LHISGroup
         public DbController db;
 
         // windows accessed from the main window
-        private UI.ManageClientsWindow ManageClientsWindow;
-        private UI.ManageStaffWindow ManageStaffWindow;
-        private UI.ManageSuppliersWindow ManageSuppliersWindow;
-        private UI.ManageTasksWindow ManageTasksWindow;
-        private UI.ManageWeddingsWindow ManageWeddingsWindow;
+        public UI.ManageClientsWindow ManageClientsWindow;
+        public UI.ManageStaffWindow ManageStaffWindow;
+        public UI.ManageSuppliersWindow ManageSuppliersWindow;
+        public UI.ManageTasksWindow ManageTasksWindow;
+        public UI.ManageWeddingsWindow ManageWeddingsWindow;
 
-        private UI.NewClientWindow NewClientWindow;
-        private UI.NewStaffWindow NewStaffWindow;
-        private UI.NewSupplierWindow NewSupplierWindow;
-        private UI.NewTaskWindow NewTaskWindow;
-        private UI.NewWeddingWindow NewWeddingWindow;
+        public UI.NewClientWindow NewClientWindow;
+        public UI.NewStaffWindow NewStaffWindow;
+        public UI.NewSupplierWindow NewSupplierWindow;
+        public UI.NewTaskWindow NewTaskWindow;
+        public UI.NewWeddingWindow NewWeddingWindow;
 
 
         // windows accesssed from other windows
-        private UI.EventReportWindow EventReportWindow; // accessed from UpdateWeddingWindow
-        private UI.UpdateClientWindow UpdateClientWindow; // accessed from ManageClientsWindow
-        private UI.UpdateStaffWindow UpdateStaffWindow; // accessed from ManageStaffWindow
-        private UI.UpdateSupplierWindow UpdateSupplierWindow; // accessed from ManageSuppliersWindow
-        private UI.UpdateTaskWindow UpdateTaskWindow; // accessed from ManageTasksWindow
-        private UI.UpdateWeddingWindow UpdateWeddingWindow; // accessed from ManageWeddingsWindow
+        public UI.EventReportWindow EventReportWindow; // accessed from UpdateWeddingWindow
+        public UI.UpdateClientWindow UpdateClientWindow; // accessed from ManageClientsWindow
+        public UI.UpdateStaffWindow UpdateStaffWindow; // accessed from ManageStaffWindow
+        public UI.UpdateSupplierWindow UpdateSupplierWindow; // accessed from ManageSuppliersWindow
+        public UI.UpdateTaskWindow UpdateTaskWindow; // accessed from ManageTasksWindow
+        public UI.UpdateWeddingWindow UpdateWeddingWindow; // accessed from ManageWeddingsWindow
 
         public MainWindow()
         {
@@ -58,7 +58,7 @@ namespace Assignment3_LHISGroup
             UpdateSupplierWindow = new UI.UpdateSupplierWindow();
             UpdateSupplierWindow.Hide();
             
-            UpdateTaskWindow = new UI.UpdateTaskWindow();
+            UpdateTaskWindow = new UI.UpdateTaskWindow(this, db);
             UpdateTaskWindow.Hide();
 
             UpdateWeddingWindow = new UI.UpdateWeddingWindow(this, db);
