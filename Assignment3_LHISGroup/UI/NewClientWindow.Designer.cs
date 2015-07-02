@@ -31,34 +31,36 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
-            this.ClientBSurnameTextBox = new System.Windows.Forms.TextBox();
-            this.ClientASurnameTextBox = new System.Windows.Forms.TextBox();
+            this.FirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.EngagedSurnameTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.ClientBRadioButton = new System.Windows.Forms.RadioButton();
-            this.ClientARadioButton = new System.Windows.Forms.RadioButton();
-            this.ClientBAddressTextBox = new System.Windows.Forms.TextBox();
-            this.ClientBEmailTextBox = new System.Windows.Forms.TextBox();
-            this.ClientBFirstNameTextBox = new System.Windows.Forms.TextBox();
-            this.ClientAAddressTextBox = new System.Windows.Forms.TextBox();
-            this.ClientAHomePhoneTextBox = new System.Windows.Forms.TextBox();
-            this.ClientAMobilePhoneTextBox = new System.Windows.Forms.TextBox();
-            this.ClientAEmailTextBox = new System.Windows.Forms.TextBox();
-            this.ClientAFirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.SurnameTextBox = new System.Windows.Forms.TextBox();
+            this.AddressTextBox = new System.Windows.Forms.TextBox();
+            this.HomePhoneTextBox = new System.Windows.Forms.TextBox();
+            this.MobilePhoneTextBox = new System.Windows.Forms.TextBox();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
+            this.EngagedFirstNameTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ClientBHomePhoneTextBox = new System.Windows.Forms.TextBox();
-            this.ClientBMobilePhoneTextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ContactCheckBox = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CancelButton
             // 
             this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(625, 577);
+            this.CancelButton.Location = new System.Drawing.Point(308, 671);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(90, 46);
             this.CancelButton.TabIndex = 28;
@@ -68,7 +70,7 @@
             // ClearButton
             // 
             this.ClearButton.BackColor = System.Drawing.Color.White;
-            this.ClearButton.Location = new System.Drawing.Point(517, 577);
+            this.ClearButton.Location = new System.Drawing.Point(200, 671);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(102, 46);
             this.ClearButton.TabIndex = 27;
@@ -78,138 +80,92 @@
             // CreateButton
             // 
             this.CreateButton.BackColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(517, 506);
+            this.CreateButton.Location = new System.Drawing.Point(200, 600);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(198, 54);
             this.CreateButton.TabIndex = 26;
             this.CreateButton.Text = "Create";
             this.CreateButton.UseVisualStyleBackColor = false;
             // 
-            // ClientBSurnameTextBox
+            // FirstNameTextBox
             // 
-            this.ClientBSurnameTextBox.Location = new System.Drawing.Point(504, 131);
-            this.ClientBSurnameTextBox.Name = "ClientBSurnameTextBox";
-            this.ClientBSurnameTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ClientBSurnameTextBox.TabIndex = 87;
+            this.FirstNameTextBox.Location = new System.Drawing.Point(200, 57);
+            this.FirstNameTextBox.Name = "FirstNameTextBox";
+            this.FirstNameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.FirstNameTextBox.TabIndex = 87;
             // 
-            // ClientASurnameTextBox
+            // EngagedSurnameTextBox
             // 
-            this.ClientASurnameTextBox.Location = new System.Drawing.Point(217, 128);
-            this.ClientASurnameTextBox.Name = "ClientASurnameTextBox";
-            this.ClientASurnameTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ClientASurnameTextBox.TabIndex = 86;
+            this.EngagedSurnameTextBox.Location = new System.Drawing.Point(200, 202);
+            this.EngagedSurnameTextBox.Name = "EngagedSurnameTextBox";
+            this.EngagedSurnameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.EngagedSurnameTextBox.TabIndex = 86;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(30, 131);
+            this.label9.Location = new System.Drawing.Point(62, 205);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(74, 20);
             this.label9.TabIndex = 85;
             this.label9.Text = "Surname";
             // 
-            // ClientBRadioButton
+            // SurnameTextBox
             // 
-            this.ClientBRadioButton.AutoSize = true;
-            this.ClientBRadioButton.Location = new System.Drawing.Point(504, 443);
-            this.ClientBRadioButton.Name = "ClientBRadioButton";
-            this.ClientBRadioButton.Size = new System.Drawing.Size(164, 24);
-            this.ClientBRadioButton.TabIndex = 83;
-            this.ClientBRadioButton.TabStop = true;
-            this.ClientBRadioButton.Text = "Contact is Client B";
-            this.ClientBRadioButton.UseVisualStyleBackColor = true;
+            this.SurnameTextBox.Location = new System.Drawing.Point(200, 94);
+            this.SurnameTextBox.Name = "SurnameTextBox";
+            this.SurnameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.SurnameTextBox.TabIndex = 72;
             // 
-            // ClientARadioButton
+            // AddressTextBox
             // 
-            this.ClientARadioButton.AutoSize = true;
-            this.ClientARadioButton.Location = new System.Drawing.Point(217, 444);
-            this.ClientARadioButton.Name = "ClientARadioButton";
-            this.ClientARadioButton.Size = new System.Drawing.Size(164, 24);
-            this.ClientARadioButton.TabIndex = 82;
-            this.ClientARadioButton.TabStop = true;
-            this.ClientARadioButton.Text = "Contact is Client A";
-            this.ClientARadioButton.UseVisualStyleBackColor = true;
+            this.AddressTextBox.Location = new System.Drawing.Point(200, 432);
+            this.AddressTextBox.Multiline = true;
+            this.AddressTextBox.Name = "AddressTextBox";
+            this.AddressTextBox.Size = new System.Drawing.Size(211, 82);
+            this.AddressTextBox.TabIndex = 71;
             // 
-            // ClientBAddressTextBox
+            // HomePhoneTextBox
             // 
-            this.ClientBAddressTextBox.Location = new System.Drawing.Point(504, 329);
-            this.ClientBAddressTextBox.Multiline = true;
-            this.ClientBAddressTextBox.Name = "ClientBAddressTextBox";
-            this.ClientBAddressTextBox.Size = new System.Drawing.Size(211, 82);
-            this.ClientBAddressTextBox.TabIndex = 76;
+            this.HomePhoneTextBox.Location = new System.Drawing.Point(200, 382);
+            this.HomePhoneTextBox.Name = "HomePhoneTextBox";
+            this.HomePhoneTextBox.Size = new System.Drawing.Size(211, 26);
+            this.HomePhoneTextBox.TabIndex = 70;
             // 
-            // ClientBEmailTextBox
+            // MobilePhoneTextBox
             // 
-            this.ClientBEmailTextBox.Location = new System.Drawing.Point(504, 176);
-            this.ClientBEmailTextBox.Name = "ClientBEmailTextBox";
-            this.ClientBEmailTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ClientBEmailTextBox.TabIndex = 73;
+            this.MobilePhoneTextBox.Location = new System.Drawing.Point(200, 337);
+            this.MobilePhoneTextBox.Name = "MobilePhoneTextBox";
+            this.MobilePhoneTextBox.Size = new System.Drawing.Size(211, 26);
+            this.MobilePhoneTextBox.TabIndex = 69;
             // 
-            // ClientBFirstNameTextBox
+            // EmailTextBox
             // 
-            this.ClientBFirstNameTextBox.Location = new System.Drawing.Point(504, 89);
-            this.ClientBFirstNameTextBox.Name = "ClientBFirstNameTextBox";
-            this.ClientBFirstNameTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ClientBFirstNameTextBox.TabIndex = 72;
+            this.EmailTextBox.Location = new System.Drawing.Point(200, 295);
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(211, 26);
+            this.EmailTextBox.TabIndex = 68;
             // 
-            // ClientAAddressTextBox
+            // EngagedFirstNameTextBox
             // 
-            this.ClientAAddressTextBox.Location = new System.Drawing.Point(217, 328);
-            this.ClientAAddressTextBox.Multiline = true;
-            this.ClientAAddressTextBox.Name = "ClientAAddressTextBox";
-            this.ClientAAddressTextBox.Size = new System.Drawing.Size(211, 82);
-            this.ClientAAddressTextBox.TabIndex = 71;
-            // 
-            // ClientAHomePhoneTextBox
-            // 
-            this.ClientAHomePhoneTextBox.Location = new System.Drawing.Point(217, 276);
-            this.ClientAHomePhoneTextBox.Name = "ClientAHomePhoneTextBox";
-            this.ClientAHomePhoneTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ClientAHomePhoneTextBox.TabIndex = 70;
-            // 
-            // ClientAMobilePhoneTextBox
-            // 
-            this.ClientAMobilePhoneTextBox.Location = new System.Drawing.Point(217, 219);
-            this.ClientAMobilePhoneTextBox.Name = "ClientAMobilePhoneTextBox";
-            this.ClientAMobilePhoneTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ClientAMobilePhoneTextBox.TabIndex = 69;
-            // 
-            // ClientAEmailTextBox
-            // 
-            this.ClientAEmailTextBox.Location = new System.Drawing.Point(217, 175);
-            this.ClientAEmailTextBox.Name = "ClientAEmailTextBox";
-            this.ClientAEmailTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ClientAEmailTextBox.TabIndex = 68;
-            // 
-            // ClientAFirstNameTextBox
-            // 
-            this.ClientAFirstNameTextBox.Location = new System.Drawing.Point(217, 88);
-            this.ClientAFirstNameTextBox.Name = "ClientAFirstNameTextBox";
-            this.ClientAFirstNameTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ClientAFirstNameTextBox.TabIndex = 67;
+            this.EngagedFirstNameTextBox.Location = new System.Drawing.Point(200, 165);
+            this.EngagedFirstNameTextBox.Name = "EngagedFirstNameTextBox";
+            this.EngagedFirstNameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.EngagedFirstNameTextBox.TabIndex = 67;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(500, 40);
+            this.label7.Location = new System.Drawing.Point(62, 57);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 20);
+            this.label7.Size = new System.Drawing.Size(86, 20);
             this.label7.TabIndex = 65;
-            this.label7.Text = "Client B";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(213, 40);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 20);
-            this.label6.TabIndex = 64;
-            this.label6.Text = "Client A";
+            this.label7.Text = "First Name";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(30, 335);
+            this.label5.Location = new System.Drawing.Point(62, 432);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 20);
             this.label5.TabIndex = 63;
@@ -218,7 +174,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 283);
+            this.label4.Location = new System.Drawing.Point(62, 385);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 20);
             this.label4.TabIndex = 62;
@@ -227,7 +183,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 226);
+            this.label3.Location = new System.Drawing.Point(62, 343);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 20);
             this.label3.TabIndex = 61;
@@ -236,7 +192,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 175);
+            this.label2.Location = new System.Drawing.Point(62, 301);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 20);
             this.label2.TabIndex = 60;
@@ -245,47 +201,113 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 95);
+            this.label1.Location = new System.Drawing.Point(62, 168);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 20);
             this.label1.TabIndex = 59;
             this.label1.Text = "First Name";
             // 
-            // ClientBHomePhoneTextBox
+            // label6
             // 
-            this.ClientBHomePhoneTextBox.Location = new System.Drawing.Point(504, 277);
-            this.ClientBHomePhoneTextBox.Name = "ClientBHomePhoneTextBox";
-            this.ClientBHomePhoneTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ClientBHomePhoneTextBox.TabIndex = 75;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(62, 94);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 20);
+            this.label6.TabIndex = 64;
+            this.label6.Text = "Surname";
             // 
-            // ClientBMobilePhoneTextBox
+            // label8
             // 
-            this.ClientBMobilePhoneTextBox.Location = new System.Drawing.Point(504, 220);
-            this.ClientBMobilePhoneTextBox.Name = "ClientBMobilePhoneTextBox";
-            this.ClientBMobilePhoneTextBox.Size = new System.Drawing.Size(211, 26);
-            this.ClientBMobilePhoneTextBox.TabIndex = 74;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(21, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 20);
+            this.label8.TabIndex = 88;
+            this.label8.Text = "CLIENT";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(21, 134);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(116, 20);
+            this.label10.TabIndex = 89;
+            this.label10.Text = "ENGAGED TO";
+            // 
+            // ContactCheckBox
+            // 
+            this.ContactCheckBox.AutoSize = true;
+            this.ContactCheckBox.Location = new System.Drawing.Point(205, 547);
+            this.ContactCheckBox.Name = "ContactCheckBox";
+            this.ContactCheckBox.Size = new System.Drawing.Size(206, 24);
+            this.ContactCheckBox.TabIndex = 90;
+            this.ContactCheckBox.Text = "Primary Contact is Client";
+            this.ContactCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(23, 255);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(155, 20);
+            this.label11.TabIndex = 91;
+            this.label11.Text = "CONTACT DETAILS";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(63, 94);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(74, 20);
+            this.label12.TabIndex = 64;
+            this.label12.Text = "Surname";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(63, 57);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(86, 20);
+            this.label13.TabIndex = 65;
+            this.label13.Text = "First Name";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(201, 94);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(211, 26);
+            this.textBox1.TabIndex = 72;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(201, 57);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(211, 26);
+            this.textBox2.TabIndex = 87;
             // 
             // NewClientWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(743, 646);
-            this.Controls.Add(this.ClientBSurnameTextBox);
-            this.Controls.Add(this.ClientASurnameTextBox);
+            this.ClientSize = new System.Drawing.Size(467, 759);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.ContactCheckBox);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.FirstNameTextBox);
+            this.Controls.Add(this.EngagedSurnameTextBox);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.ClientBRadioButton);
-            this.Controls.Add(this.ClientARadioButton);
-            this.Controls.Add(this.ClientBAddressTextBox);
-            this.Controls.Add(this.ClientBHomePhoneTextBox);
-            this.Controls.Add(this.ClientBMobilePhoneTextBox);
-            this.Controls.Add(this.ClientBEmailTextBox);
-            this.Controls.Add(this.ClientBFirstNameTextBox);
-            this.Controls.Add(this.ClientAAddressTextBox);
-            this.Controls.Add(this.ClientAHomePhoneTextBox);
-            this.Controls.Add(this.ClientAMobilePhoneTextBox);
-            this.Controls.Add(this.ClientAEmailTextBox);
-            this.Controls.Add(this.ClientAFirstNameTextBox);
+            this.Controls.Add(this.SurnameTextBox);
+            this.Controls.Add(this.AddressTextBox);
+            this.Controls.Add(this.HomePhoneTextBox);
+            this.Controls.Add(this.MobilePhoneTextBox);
+            this.Controls.Add(this.EmailTextBox);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.EngagedFirstNameTextBox);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -308,27 +330,29 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button CreateButton;
-        private System.Windows.Forms.TextBox ClientBSurnameTextBox;
-        private System.Windows.Forms.TextBox ClientASurnameTextBox;
+        private System.Windows.Forms.TextBox FirstNameTextBox;
+        private System.Windows.Forms.TextBox EngagedSurnameTextBox;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RadioButton ClientBRadioButton;
-        private System.Windows.Forms.RadioButton ClientARadioButton;
-        private System.Windows.Forms.TextBox ClientBAddressTextBox;
-        private System.Windows.Forms.TextBox ClientBEmailTextBox;
-        private System.Windows.Forms.TextBox ClientBFirstNameTextBox;
-        private System.Windows.Forms.TextBox ClientAAddressTextBox;
-        private System.Windows.Forms.TextBox ClientAHomePhoneTextBox;
-        private System.Windows.Forms.TextBox ClientAMobilePhoneTextBox;
-        private System.Windows.Forms.TextBox ClientAEmailTextBox;
-        private System.Windows.Forms.TextBox ClientAFirstNameTextBox;
+        private System.Windows.Forms.TextBox SurnameTextBox;
+        private System.Windows.Forms.TextBox AddressTextBox;
+        private System.Windows.Forms.TextBox HomePhoneTextBox;
+        private System.Windows.Forms.TextBox MobilePhoneTextBox;
+        private System.Windows.Forms.TextBox EmailTextBox;
+        private System.Windows.Forms.TextBox EngagedFirstNameTextBox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ClientBHomePhoneTextBox;
-        private System.Windows.Forms.TextBox ClientBMobilePhoneTextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox ContactCheckBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

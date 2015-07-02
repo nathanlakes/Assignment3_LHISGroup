@@ -84,7 +84,9 @@ namespace Assignment3_LHISGroup.UI
 
                 Support_Classes.Staff newStaff = new Support_Classes.Staff(fn, sn, email, ph,notes, Support_Classes.Staff.Active.active);
                 MessageBox.Show("New Staff created");
-                this.clearNewStaffForm();
+                db.AddStaff(newStaff);
+                clearNewStaffForm();
+                mainWin.ManageStaffWindow.UpdateForm();
             }          
 
         }

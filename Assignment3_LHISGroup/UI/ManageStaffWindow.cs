@@ -30,5 +30,14 @@ namespace Assignment3_LHISGroup.UI
         {
 
         }
+
+        public void UpdateForm()
+        {
+            //this.staffTableAdapter.Fill(this.modelDataSet.Staff);
+            StaffDataGridView.Update();
+            StaffDataGridView.Refresh();
+            this.Refresh();
+        }
+
     }
 }
