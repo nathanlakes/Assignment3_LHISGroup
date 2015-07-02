@@ -28,31 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.StaffTasksListView = new System.Windows.Forms.ListView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.TaskNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CompleteByCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // StaffTasksListView
+            // dataGridView1
             // 
-            this.StaffTasksListView.Location = new System.Drawing.Point(38, 87);
-            this.StaffTasksListView.Name = "StaffTasksListView";
-            this.StaffTasksListView.Size = new System.Drawing.Size(419, 255);
-            this.StaffTasksListView.TabIndex = 0;
-            this.StaffTasksListView.UseCompatibleStateImageBehavior = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TaskNameCol,
+            this.DescCol,
+            this.CompleteByCol});
+            this.dataGridView1.Location = new System.Drawing.Point(30, 35);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(349, 300);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // TaskNameCol
+            // 
+            this.TaskNameCol.HeaderText = "Task Name";
+            this.TaskNameCol.Name = "TaskNameCol";
+            // 
+            // DescCol
+            // 
+            this.DescCol.HeaderText = "Description";
+            this.DescCol.Name = "DescCol";
+            // 
+            // CompleteByCol
+            // 
+            this.CompleteByCol.HeaderText = "Completion Date";
+            this.CompleteByCol.Name = "CompleteByCol";
             // 
             // StaffReportWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 448);
-            this.Controls.Add(this.StaffTasksListView);
+            this.Controls.Add(this.dataGridView1);
             this.Name = "StaffReportWindow";
             this.Text = "Staff Report ";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView StaffTasksListView;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TaskNameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CompleteByCol;
+
     }
 }

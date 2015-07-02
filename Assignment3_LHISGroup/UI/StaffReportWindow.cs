@@ -18,14 +18,25 @@ namespace Assignment3_LHISGroup.UI
         public StaffReportWindow(Form parentForm)
         {
             InitializeComponent();
+
             parent = parentForm;
             parent.Hide();
 
             staffRep = new StaffReport();
-            StaffTasksListView.Columns.Add("Task Name", 15, HorizontalAlignment.Left);
-            StaffTasksListView.Columns.Add("Task Description", 30, HorizontalAlignment.Left);
-            StaffTasksListView.Columns.Add("Complete By Date", 30, HorizontalAlignment.Left);
+
             
+            
+        }
+
+        private void populateTasks()
+        {
+            // TODO
+            //staffRep.FindTasksAssignedTo();
+        }
+
+        private void StaffTasksListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         
