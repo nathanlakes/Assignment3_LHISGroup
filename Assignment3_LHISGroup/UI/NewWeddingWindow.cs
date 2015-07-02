@@ -20,5 +20,75 @@ namespace Assignment3_LHISGroup.UI
             mainWin = w;
             db = d;
         }
+
+        public void clearNewWeddingForm()
+        {
+            NameTextBox.Text = "";
+            ClientComboBox.ValueMember = null;
+            DescriptionTextBox.Text = "";
+            EventDateTimePicker.ResetText();
+            StartDateTimePicker.ResetText();
+            StaffComboBox.ValueMember = null;
+        }
+
+        public bool validateNewWeddingForm()
+        {
+            if (NameTextBox.Text == "" || NameTextBox.Text == null)
+            {
+                MessageBox.Show("Need name");
+                return false;
+            }
+            else if (ClientComboBox.ValueMember == null)
+            {
+                MessageBox.Show("Need client");
+
+                if (!mainWin.NewClientWindow.Visible)
+                {
+                    mainWin.NewClientWindow.Show();
+                }
+                else
+                {
+                    mainWin.NewClientWindow.Focus();
+                }                
+                return false;
+            }
+            else if (DescriptionTextBox.Text == "" || DescriptionTextBox.Text == null)
+            {
+                MessageBox.Show("Need description");
+                return false;
+            }
+            else if (StaffComboBox.ValueMember == null)
+            {
+                MessageBox.Show("Need staff");
+                return false;
+            }
+            else if (EventDateTimePicker.Value == null)
+            {
+                MessageBox.Show("Need wedding date");
+                return false;
+            }
+            else if (StartDateTimePicker.Value == null)
+            {
+                MessageBox.Show("Need starting date");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            this.clearNewWeddingForm();
+        }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+            if (this.validateNewWeddingForm() == true)
+            {
+                MessageBox.Show("Successfully Validated!");
+            }
+        }
     }
 }
