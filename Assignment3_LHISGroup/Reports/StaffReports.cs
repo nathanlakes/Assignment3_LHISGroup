@@ -27,7 +27,7 @@ namespace Assignment3_LHISGroup.Reports
 
         }
 
-        public List<Support_Classes.Task> FindTasksAssignedTo(Staff selectedStaff)
+        private List<Support_Classes.Task> FindTasksAssignedTo(Staff selectedStaff)
         {
             if (selectedStaff.StaffStatus == Staff.Active.inactive)
             {
