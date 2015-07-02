@@ -59,7 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\CSVWriter.cs" />
+    <Compile Include="Reports\CSVWriter.cs" />
     <Compile Include="Database\DbController.cs" />
     <Compile Include="ModelDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
