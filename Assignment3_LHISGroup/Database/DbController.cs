@@ -71,34 +71,41 @@ namespace Assignment3_LHISGroup
         }
 
 
+        /**
+        *   Updates an existing task with the new values provided.
+        *   @Param  id: the primary key of the task to change
+        *   @Param  t : the new task object with updated values
+        */
         public bool UpdateTask(int id, Support_Classes.Task t)
         {
+            int staffID = getStaffId(t.AssignedTo);
 
             string query = @"UPDATE Task";
-            query += @"SET name='@name', description='@description', priority='@priority', ";
-            query += @"completeByDate='@completeByDate', actualCompletionDate='@actualCompletionDate', ";
-            query+= @"staffOnJob_FK='@staffOnJob_FK', weddingID_FK='@weddingID_FK'";
-            query += @"WHERE id='@id'";
+            query += @"SET name='@name', description ='@description', priority='@priority', ";
+            query += @"completeByDate='@completeByDate', actualCompletionDate='@actualCompDate,";
+            query += @"staffOnJob_FK='@staffOnJob";
+            query += @"WHERE id=@id";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@name", t.TaskName);
             myCommand.Parameters.AddWithValue("@description", t.Description);
-            myCommand.Parameters.AddWithValue("@priority", t.TaskPriority.ToString() );
-            myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString() );
-            
+            myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
+            myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString());
+
             try
             {
-                myCommand.Parameters.AddWithValue("@actualCompletionDate", t.CompletionDate.ToShortDateString() );
-            } catch (Exception) { Console.WriteLine("UpdateTask(int, Task) >> Date Conversion Error."); }
+                myCommand.Parameters.AddWithValue("@actualCompDate", t.CompletionDate.ToShortDateString());
+            }
+            catch (Exception)
+            {
+                myCommand.Parameters.AddWithValue("@actualCompDate", null);
+            }
 
-            myCommand.Parameters.AddWithValue("@staffOnJob_FK", getStaffId(t.AssignedTo) );
-            myCommand.Parameters.AddWithValue("@weddingID_FK",  t.Wedding.ID);
+            myCommand.Parameters.AddWithValue("@staffOnJob", staffID);
             myCommand.Parameters.AddWithValue("@id", id);
 
-
-            int res = 0;
             _db.Open();
-            res = myCommand.ExecuteNonQuery();
+            int res = myCommand.ExecuteNonQuery();
             _db.Close();
 
             if (res == 1) return true;
@@ -150,47 +157,6 @@ namespace Assignment3_LHISGroup
 
             _db.Open();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
-
-            if (res == 1) return true;
-            return false;
-        }
-
-        /**
-         *   Updates an existing task with the new values provided.
-         *   @Param  id: the primary key of the task to change
-         *   @Param  t : the new task object with updated values
-         */
-        public bool UpdateTask(int id, Support_Classes.Task t)
-        {
-            int staffID = getStaffId(t.AssignedTo);
-
-            string query = @"UPDATE Task";
-            query += @"SET name='@name', description ='@description', priority='@priority', ";
-            query += @"completeByDate='@completeByDate', actualCompletionDate='@actualCompDate,";
-            query += @"staffOnJob_FK='@staffOnJob";
-            query += @"WHERE id=@id";
-
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@name", t.TaskName);
-            myCommand.Parameters.AddWithValue("@description", t.Description);
-            myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
-            myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString());
-
-            try
-            {
-                myCommand.Parameters.AddWithValue("@actualCompDate", t.CompletionDate.ToShortDateString());
-            }
-            catch (Exception)
-            {
-                myCommand.Parameters.AddWithValue("@actualCompDate", null);
-            }
-
-            myCommand.Parameters.AddWithValue("@staffOnJob", staffID);
-            myCommand.Parameters.AddWithValue("@id", id);
-
-            _db.Open();
-            int res = myCommand.ExecuteNonQuery();
             _db.Close();
 
             if (res == 1) return true;
