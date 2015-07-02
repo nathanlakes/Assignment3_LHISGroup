@@ -12,9 +12,13 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class ManageSuppliersWindow : Form
     {
-        public ManageSuppliersWindow()
+        MainWindow mainWin;
+        DbController db;
+        public ManageSuppliersWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
+            mainWin = w;
+            db = d;
         }
 
         private void AddSupplierButton_Click(object sender, EventArgs e)
@@ -25,8 +29,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateSupplierbutton_Click(object sender, EventArgs e)
         {
-            UI.UpdateSupplierWindow win = new UI.UpdateSupplierWindow();
-            win.Visible = true;
+            mainWin.UpdateSupplierWindow.Visible = true;
         }
 
      

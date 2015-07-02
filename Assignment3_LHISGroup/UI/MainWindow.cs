@@ -55,7 +55,7 @@ namespace Assignment3_LHISGroup
             UpdateStaffWindow = new UI.UpdateStaffWindow();
             UpdateStaffWindow.Hide();
 
-            UpdateSupplierWindow = new UI.UpdateSupplierWindow();
+            UpdateSupplierWindow = new UI.UpdateSupplierWindow(this, db);
             UpdateSupplierWindow.Hide();
             
             UpdateTaskWindow = new UI.UpdateTaskWindow(this, db);
@@ -70,13 +70,13 @@ namespace Assignment3_LHISGroup
             ManageStaffWindow = new UI.ManageStaffWindow();
             ManageStaffWindow.Hide();
 
-            ManageSuppliersWindow = new UI.ManageSuppliersWindow();
+            ManageSuppliersWindow = new UI.ManageSuppliersWindow(this, db);
             ManageSuppliersWindow.Hide();
 
-            ManageTasksWindow = new UI.ManageTasksWindow();
+            ManageTasksWindow = new UI.ManageTasksWindow(this, db);
             ManageTasksWindow.Hide();
 
-            ManageWeddingsWindow = new UI.ManageWeddingsWindow();
+            ManageWeddingsWindow = new UI.ManageWeddingsWindow(this, db);
             ManageWeddingsWindow.Hide();
 
             NewClientWindow = new UI.NewClientWindow();
