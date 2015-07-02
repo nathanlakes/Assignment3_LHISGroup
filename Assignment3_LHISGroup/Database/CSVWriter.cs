@@ -223,7 +223,8 @@ namespace Assignment3_LHISGroup
                     file.Write("\"[" + w.Client2.ID + "] " + w.Client2.Firstname + " " + w.Client2.Surname + "\",");
                     file.Write("\"" + w.StartDate.ToShortDateString() + "\",");
                     file.Write("\"" + w.EventDate.ToShortDateString() + "\",");
-                    file.WriteLine("\"[" + w.ID + "] " + w.WeddingPlanner.FirstName + " " + w.WeddingPlanner.Surname + "\"");
+                    file.WriteLine("\"[" + w.ID + "] " + w.WeddingPlanner.FirstName + " " + 
+                        w.WeddingPlanner.Surname + "\"");
                 }
             }
         }
