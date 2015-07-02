@@ -116,9 +116,16 @@ namespace Assignment3_LHISGroup.UI
                 }
 
                 Support_Classes.Client client = new Support_Classes.Client(n, sn, contact, address, mobile, phone, email, e_n, e_sn);
-                db.AddClient(client);
-                clearNewClientForm();
-                mainWin.ManageClientsWindow.UpdateForm();
+                try
+                {
+                    db.AddClient(client);
+                    clearNewClientForm();
+                    mainWin.ManageClientsWindow.UpdateForm();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Exception thrown");
+                }
             }
         }
     }

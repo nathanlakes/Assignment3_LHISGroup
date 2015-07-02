@@ -84,9 +84,19 @@ namespace Assignment3_LHISGroup.UI
                 String address = AddressTextBox.Text;
 
                 Support_Classes.Supplier s = new Support_Classes.Supplier(name, address, contact, email, phone, 0);
-                db.AddSupplier(s);
-                clearNewSupplierWindow();
-                mainWin.ManageSuppliersWindow.UpdateForm();
+
+                try
+                {
+                    db.AddSupplier(s);
+                    clearNewSupplierWindow();
+                    mainWin.ManageSuppliersWindow.UpdateForm();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Exception thrown");
+                }
+                
+                
             }
         }
     }
