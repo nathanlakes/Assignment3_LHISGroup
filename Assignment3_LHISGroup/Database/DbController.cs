@@ -437,7 +437,6 @@ namespace Assignment3_LHISGroup
                 }
 
                 _db.Close();
-
             }
             catch (Exception e) { e.GetHashCode(); }
             
