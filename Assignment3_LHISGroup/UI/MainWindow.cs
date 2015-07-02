@@ -15,10 +15,9 @@ namespace Assignment3_LHISGroup
     public partial class MainWindow : Form
     {
 
-        public DbController DB;
+        public DbController DB
 
-        private UI.EventReportWindow EventReportWindow;
-
+        // windows accessed from the main window
         private UI.ManageClientsWindow ManageClientsWindow;
         private UI.ManageStaffWindow ManageStaffWindow;
         private UI.ManageSuppliersWindow ManageSuppliersWindow;
@@ -32,16 +31,66 @@ namespace Assignment3_LHISGroup
         private UI.NewWeddingWindow NewWeddingWindow;
 
 
+        // windows accesssed from other windows
+        private UI.EventReportWindow EventReportWindow; // accessed from UpdateWeddingWindow
+        private UI.UpdateClientWindow UpdateClientWindow; // accessed from ManageClientsWindow
+        private UI.UpdateStaffWindow UpdateStaffWindow; // accessed from ManageStaffWindow
+        private UI.UpdateSupplierWindow UpdateSupplierWindow; // accessed from ManageSuppliersWindow
+        private UI.UpdateTaskWindow UpdateTaskWindow; // accessed from ManageTasksWindow
+        private UI.UpdateWeddingWindow UpdateWeddingWindow; // accessed from ManageWeddingsWindow
 
         public MainWindow()
         {
             InitializeComponent();
             DB = new DbController();        // Creates a DB controller to be used by the UI classes. 
             
-            // create windows
+            // create windows and hide them for later use
+            // this saves on CPU by not recreating them every time they are needed
             EventReportWindow = new UI.EventReportWindow(this);
             EventReportWindow.Hide();
+
+            UpdateClientWindow = new UI.UpdateClientWindow();
+            UpdateClientWindow.Hide();
+
+            UpdateStaffWindow = new UI.UpdateStaffWindow();
+            UpdateStaffWindow.Hide();
+
+            UpdateSupplierWindow = new UI.UpdateSupplierWindow();
+            UpdateSupplierWindow.Hide();
+            
+            UpdateTaskWindow = new UI.UpdateTaskWindow();
+            UpdateTaskWindow.Hide();
+
+            UpdateWeddingWindow = new UI.UpdateWeddingWindow();
+            UpdateWeddingWindow.Hide();
+            
             ManageClientsWindow = new UI.ManageClientsWindow();
+            ManageClientsWindow.Hide();
+
+            ManageStaffWindow = new UI.ManageStaffWindow();
+            ManageStaffWindow.Hide();
+
+            ManageSuppliersWindow = new UI.ManageSuppliersWindow();
+            ManageSuppliersWindow.Hide();
+
+            ManageTasksWindow = new UI.ManageTasksWindow();
+            ManageTasksWindow.Hide();
+
+            ManageWeddingsWindow = new UI.ManageWeddingsWindow();
+            ManageWeddingsWindow.Hide();
+
+            NewClientWindow = new UI.NewClientWindow();
+            NewClientWindow.Hide();
+
+            NewStaffWindow = new UI.NewStaffWindow();
+            NewStaffWindow.Hide();
+
+            NewSupplierWindow = new UI.NewSupplierWindow();
+            NewSupplierWindow.Hide();
+
+            NewTaskWindow = new UI.NewTaskWindow();
+            NewTaskWindow.Hide();
+
 
 
             this.nathanDebug();                  // Code to debug Db in dev. cycle.
