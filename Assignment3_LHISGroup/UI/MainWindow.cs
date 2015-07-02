@@ -136,59 +136,127 @@ namespace Assignment3_LHISGroup
 
         }
 
+
+        // Code for Buttons
+        // DO NOT REMOVE unless you don't want the buttons to do anything
         private void ManageSuppliersButton_Click(object sender, EventArgs e)
         {
-            ManageSuppliersWindow.Visible = true;
+            if (!ManageSuppliersWindow.Visible)
+            {
+                ManageSuppliersWindow.Visible = true;
+            }
+            else
+            {
+                ManageSuppliersWindow.Focus();
+            }
         }
 
         private void ManageStaffButton_Click(object sender, EventArgs e)
         {
-            ManageStaffWindow.Visible = true;
+            if (!ManageStaffWindow.Visible)
+            {
+                ManageStaffWindow.Visible = true;
+            }
+            else
+            {
+                ManageStaffWindow.Focus();
+            } 
         }
 
         private void ManageTasksButton_Click(object sender, EventArgs e)
         {
-            ManageTasksWindow.Visible = true;
+            if (!ManageTasksWindow.Visible)
+            {
+                ManageTasksWindow.Visible = true;
+            }
+            else
+            {
+                ManageTasksWindow.Focus();
+            }
         }
 
         private void ManageClientsButton_Click(object sender, EventArgs e)
         {
-            ManageClientsWindow.Visible = true;
+            if (!ManageClientsWindow.Visible)
+            {
+                ManageClientsWindow.Visible = true;
+            }
+            else
+            {
+                ManageClientsWindow.Focus();
+            }
         }
 
         private void ManageWeddingsButton_Click(object sender, EventArgs e)
         {
-            ManageWeddingsWindow.Visible = true;
+            if (!ManageWeddingsWindow.Visible)
+            {
+                ManageWeddingsWindow.Visible = true;
+            }
+            else
+            {
+                ManageWeddingsWindow.Focus();
+            }
         }
 
         private void NewStaffButton_Click(object sender, EventArgs e)
         {
-            NewStaffWindow.Visible = true;
+            if (!NewStaffWindow.Visible)
+            {
+                NewStaffWindow.Visible = true;
+            }
+            else
+            {
+                NewStaffWindow.Focus();
+            }
         }
 
         private void NewTaskButton_Click(object sender, EventArgs e)
         {
-            NewTaskWindow.Visible = true;
+            if (!NewTaskWindow.Visible)
+            {
+                NewTaskWindow.Visible = true;
+            }
+            else
+            {
+                NewTaskWindow.Focus();
+            }
         }
 
         private void NewSupplierButton_Click(object sender, EventArgs e)
         {
-            NewSupplierWindow.Visible = true;
+            if (!NewStaffWindow.Visible)
+            {
+                NewSupplierWindow.Visible = true;
+            }
+            else
+            {
+                NewSupplierWindow.Focus();
+            }            
         }
 
         private void NewWeddingButton_Click(object sender, EventArgs e)
         {
-            NewWeddingWindow.Visible = true;
+            if (!NewWeddingWindow.Visible)
+            {
+                NewWeddingWindow.Visible = true;
+            }
+            else
+            {
+                NewWeddingWindow.Focus();
+            }
         }
 
         private void NewClientButton_Click(object sender, EventArgs e)
         {
-            NewClientWindow.Visible = true;
-        }
-
-        private void ReportsButton_Click(object sender, EventArgs e)
-        {
-            EventReportWindow.Visible = true;
+            if (!NewClientWindow.Visible)
+            {
+                NewClientWindow.Visible = true;
+            }
+            else
+            {
+                NewClientWindow.Focus();
+            }
         }
     }
 }
