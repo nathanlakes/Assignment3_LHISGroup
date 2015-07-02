@@ -599,9 +599,28 @@ namespace Assignment3_LHISGroup
          *   @Param  id: staff member to update
          *   @Param   s: the updated staff detrails
          */
-        public bool EditStaff(int id, Staff s)
+        public bool UpdateStaff(int id, Staff s)
         {
+            string query = @"UPDATE Staff";
+            query += @"SET firstname='@firstname', surname='@surname', email='@email', ";
+            query += @"phone='@phone', notes='@notes', status='@status'";
+            query += @"WHERE id='@id'";
 
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
+            myCommand.Parameters.AddWithValue("@surname", s.Surname);
+            myCommand.Parameters.AddWithValue("@email", s.Email);
+            myCommand.Parameters.AddWithValue("@phone", s.Phone);
+            myCommand.Parameters.AddWithValue("@notes", s.Notes);
+            myCommand.Parameters.AddWithValue("@status", s.StatusToString());
+            myCommand.Parameters.AddWithValue("@id", id);
+
+            int res = 0;
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();
+            _db.Close();
+
+            if (res == 1) return true;
             return false;
         }
 
@@ -612,7 +631,20 @@ namespace Assignment3_LHISGroup
          */
         public bool ChangeStaffActiveStatus(int id, Staff.Active a)
         {
+            string query = @"UPDATE Staff";
+            query += @"SET status='@status'";
+            query += @"WHERE id='@id'";
 
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@status", a);
+            myCommand.Parameters.AddWithValue("@id", id);
+
+            int res = 0;
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();
+            _db.Close();
+
+            if (res == 1) return true;
             return false;
         }
 
@@ -621,8 +653,33 @@ namespace Assignment3_LHISGroup
          */
         public List<Client> GetAllClients()
         {
+            List<Client> returnList = new List<Client>();
+            
+            _db.Open();
 
-            return new List<Client>();
+            SqlDataReader myReader = null;
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Client", _db);
+
+            myReader = myCommand.ExecuteReader();
+
+            while (myReader.Read())
+            {
+                string firstname = myReader["firstname"].ToString();
+                string surname = myReader["surname"].ToString();
+                string contactPerson = myReader["contactPerson"].ToString();
+                string address = myReader["address"].ToString();
+                string mobile = myReader["mobile"].ToString();
+                string homephone = myReader["homePhone"].ToString();
+                string email = myReader["email"].ToString();
+                string engToFN = myReader["engagedTo_firstname"].ToString();
+                string engToSN = myReader["engagedTo_surname"].ToString();
+                Client c = new Client(firstname, surname, contactPerson, address, mobile, 
+                    homephone, email, engToFN, engToSN);
+                returnList.Add(c);
+            }
+            _db.Close();
+
+            return returnList;
         }
 
         /**
