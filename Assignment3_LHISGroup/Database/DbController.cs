@@ -687,8 +687,37 @@ namespace Assignment3_LHISGroup
          */
         public List<Staff> GetAllStaff()
         {
+            List<Staff> returnList = new List<Staff>();
 
-            return new List<Staff>();
+            _db.Open();
+
+            SqlDataReader myReader = null;
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Staff", _db);
+
+            myReader = myCommand.ExecuteReader();
+
+            while (myReader.Read())
+            {
+                string firstname = myReader["firstname"].ToString();
+                string surname = myReader["surname"].ToString();
+                string email = myReader["email"].ToString();
+                string phone = myReader["phone"].ToString();
+                string notes = myReader["notes"].ToString();
+                string status = myReader["status"].ToString();
+
+                Staff.Active stat = Staff.Active.inactive;
+                if (Staff.Active.active.ToString() == status)
+                {
+                    stat = Staff.Active.active;
+                }
+
+                Staff s = new Staff(firstname, surname, email, phone, notes, stat);
+                
+                returnList.Add(s);
+            }
+            _db.Close();
+
+            return returnList;
         }
 
         /**
