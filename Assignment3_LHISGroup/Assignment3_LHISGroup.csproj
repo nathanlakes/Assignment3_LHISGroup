@@ -289,10 +289,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\Model.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Database\Model_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>Model.mdf</DependentUpon>
     </Content>
   </ItemGroup>

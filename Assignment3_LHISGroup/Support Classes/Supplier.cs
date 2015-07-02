@@ -10,7 +10,7 @@ namespace Assignment3_LHISGroup.Support_Classes
 
         public class Supplier
         {
-            private int id;
+            private int id;                 // Do not set this attribute, handled by DBMS
             private string companyName;
             private string address;
             private string contactPerson;

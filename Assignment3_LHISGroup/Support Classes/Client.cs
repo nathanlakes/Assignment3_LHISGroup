@@ -8,7 +8,7 @@ namespace Assignment3_LHISGroup.Support_Classes
 {
     public class Client
     {
-        private int id;
+        private int id;                 // Do not set this attribute, handled by DBMS
         private string firstname;
         private string surname;
         private string contactPerson;

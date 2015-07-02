@@ -10,7 +10,7 @@ namespace Assignment3_LHISGroup.Support_Classes
     {
         public enum Priority { low, med, high };
 
-        private int id;
+        private int id;                     // Do not set this attribute, handled by DBMS
         private string taskName;
         private string description;
         private Priority priority;

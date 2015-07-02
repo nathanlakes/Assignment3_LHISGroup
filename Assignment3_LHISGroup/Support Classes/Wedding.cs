@@ -10,7 +10,7 @@ namespace Assignment3_LHISGroup.Support_Classes
     {
         public enum Status { Underway, Finished, OnHold, Cancelled, InPreparation };
 
-        private int id;
+        private int id;                 // Do not set this attribute, handled by DBMS
         private string title;
         private Client client1;
         private Client client2;

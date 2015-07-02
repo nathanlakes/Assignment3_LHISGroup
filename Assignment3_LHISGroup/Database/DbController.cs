@@ -47,25 +47,27 @@ namespace Assignment3_LHISGroup
             int staffId = getStaffId(s);
             if (staffId == -1) throw new Exception("Staff must exist in Db.Staff, before being assigned to a task:");
 
-            string _s = ",";
-
-            String query = "INSERT INTO Task(name,description,priority,completeByDate, staffOnJob_FK) " +
-                "VALUES(" + t.TaskName + _s + t.Description + _s + t.TaskPriority + _s + 
-                t.CompleteBy.Date.ToString() + _s + staffId + ")";
-
             int res = 0;
 
             using (SqlConnection _db = new SqlConnection(connStr))
             {
                 _db.Open();
+                String query = @"INSERT INTO Task(name,description,priority,completeByDate, staffOnJob_FK) ";
+                query += @" VALUES( @taskname, @description, @priority, @completeByDate, @staffOnJob)";
+
                 SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@taskname", t.TaskName);
+                myCommand.Parameters.AddWithValue("@description", t.Description);
+                myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
+                myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString() );
+                myCommand.Parameters.AddWithValue("@staffOnJob", staffId.ToString() );
 
                 res = myCommand.ExecuteNonQuery();
+                
                 _db.Close();
             }
             
             if (res == 1) return true;  //Should only update one row
-
             return false;
         }
 
@@ -84,13 +86,15 @@ namespace Assignment3_LHISGroup
             int taskId = getTaskId(t);
             if (taskId == -1) throw new Exception("Task does not exist.");
 
-            String query = "UPDATE Task SET staffOnJob_FK='"+ staffId +"'" +
-                "WHERE Id='"+ taskId +"'";
 
             int res = 0;
             using (SqlConnection _db = new SqlConnection(connStr))
             {
+                String query = "UPDATE Task SET staffOnJob_FK='@staffId' WHERE Id='@taskId'";
                 SqlCommand myCommand = new SqlCommand(query, _db);
+                    myCommand.Parameters.AddWithValue("@staffId", staffId);
+                    myCommand.Parameters.AddWithValue("@taskId", taskId);
+
 
                 res = myCommand.ExecuteNonQuery();  // Run the statement.
             }

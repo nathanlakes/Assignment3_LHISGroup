@@ -13,7 +13,7 @@ namespace Assignment3_LHISGroup.Support_Classes
     {
         public enum Active { active, inactive }
 
-        private int id;
+        private int id;                 // Do not set this attribute, handled by DBMS
         private string firstname;
         private string surname;
         private string email;
