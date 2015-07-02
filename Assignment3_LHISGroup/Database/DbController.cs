@@ -380,7 +380,7 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@title", title);
 
             _db.Open();
-            SqlDataReader myReader = myReader = myCommand.ExecuteReader();
+            SqlDataReader myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
                 string weddTitle = myReader["title"].ToString();
@@ -488,9 +488,21 @@ namespace Assignment3_LHISGroup
          */
         public bool DeleteSupplier(int id)
         {
+            string query = @"DELETE FROM Supplier ";
+            query += "WHERE id='@id'";
 
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@id", id);
+
+            int res = 0;
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();
+            _db.Close();
+
+            if (res == 1) return true;
             return false;
         }
+
 
         /**
          *   Updates an existing supplier in the database.
@@ -500,6 +512,26 @@ namespace Assignment3_LHISGroup
         public bool UpdateSupplier(int id, Supplier s)
         {
 
+            string query = @"UPDATE Suppliers";
+            query += @"SET companyName='@companyname', address='@address', contactPerson='@contactPerson', ";
+            query += @"Email='@email', PhoneNumber='@phonenumber', CreditTerms='@creditterms'";
+            query += @"WHERE id='@id'";
+
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@companyname", s.CompanyName);
+            myCommand.Parameters.AddWithValue("@address", s.Address);
+            myCommand.Parameters.AddWithValue("@contactPerson", s.ContactPerson);
+            myCommand.Parameters.AddWithValue("@email", s.Email);
+            myCommand.Parameters.AddWithValue("@phonenumber", s.PhoneNumber);
+            myCommand.Parameters.AddWithValue("@creditterms", s.CreditTerms);
+            myCommand.Parameters.AddWithValue("@id", id);
+
+            int res = 0;
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();
+            _db.Close();
+
+            if (res == 1) return true;
             return false;
         }
 
@@ -510,8 +542,30 @@ namespace Assignment3_LHISGroup
          */
         public List<Supplier> FindSupplier(string name)
         {
+            List<Supplier> returnList = new List<Supplier>();
 
-            return new List<Supplier>();
+            string query = "SELECT * FROM Suppliers";
+            query += "WHERE CompanyName LIKE '%@name%'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@name", name);
+
+            _db.Open();
+            SqlDataReader myReader = myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                string coname = myReader["CompanyName"].ToString();
+                string address = myReader["Address"].ToString();
+                string contact = myReader["ContactPerson"].ToString();
+                string email = myReader["Email"].ToString();
+                string phone = myReader["PhoneNumber"].ToString();
+                int credterm = Convert.ToInt32( myReader["CreditTerms"].ToString() );
+
+                Supplier s = new Supplier(coname, address, contact, email, phone, credterm);
+                returnList.Add(s);
+            }
+            _db.Close();
+
+            return returnList;
         }
 
 
