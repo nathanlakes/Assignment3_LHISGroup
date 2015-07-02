@@ -12,9 +12,13 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class NewStaffWindow : Form
     {
-        public NewStaffWindow()
+        MainWindow mainWin;
+        DbController db;
+        public NewStaffWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
+            mainWin = w;
+            db = d;
         }
 
 

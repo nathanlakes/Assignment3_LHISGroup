@@ -23,8 +23,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void AddClientButton_Click(object sender, EventArgs e)
         {
-            UI.NewClientWindow win = new UI.NewClientWindow();
-            win.Visible = true;
+            mainWin.NewClientWindow.Visible = true;
         }
 
         private void UpdateClientButton_Click(object sender, EventArgs e)

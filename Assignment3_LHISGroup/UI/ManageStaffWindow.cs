@@ -23,13 +23,12 @@ namespace Assignment3_LHISGroup.UI
 
         private void AddStaffButton_Click(object sender, EventArgs e)
         {
-            UI.NewStaffWindow win = new UI.NewStaffWindow();
-            win.Visible = true;
+            mainWin.NewStaffWindow.Visible = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void UpdateStaffButton_Click(object sender, EventArgs e)
         {
-            mainWin.UpdateStaffWindow.Visible = true;
+
         }
     }
 }

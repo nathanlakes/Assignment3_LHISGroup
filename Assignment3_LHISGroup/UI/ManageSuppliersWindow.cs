@@ -23,8 +23,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void AddSupplierButton_Click(object sender, EventArgs e)
         {
-            UI.NewSupplierWindow win = new UI.NewSupplierWindow();
-            win.Visible = true;
+            mainWin.NewSupplierWindow.Visible = true;
         }
 
         private void UpdateSupplierbutton_Click(object sender, EventArgs e)

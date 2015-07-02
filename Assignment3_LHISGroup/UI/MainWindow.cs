@@ -79,19 +79,19 @@ namespace Assignment3_LHISGroup
             ManageWeddingsWindow = new UI.ManageWeddingsWindow(this, db);
             ManageWeddingsWindow.Hide();
 
-            NewClientWindow = new UI.NewClientWindow();
+            NewClientWindow = new UI.NewClientWindow(this, db);
             NewClientWindow.Hide();
 
-            NewStaffWindow = new UI.NewStaffWindow();
+            NewStaffWindow = new UI.NewStaffWindow(this, db);
             NewStaffWindow.Hide();
 
-            NewSupplierWindow = new UI.NewSupplierWindow();
+            NewSupplierWindow = new UI.NewSupplierWindow(this, db);
             NewSupplierWindow.Hide();
 
-            NewTaskWindow = new UI.NewTaskWindow();
+            NewTaskWindow = new UI.NewTaskWindow(this, db);
             NewTaskWindow.Hide();
 
-            NewWeddingWindow = new UI.NewWeddingWindow();
+            NewWeddingWindow = new UI.NewWeddingWindow(this, db);
             NewWeddingWindow.Hide();
 
 

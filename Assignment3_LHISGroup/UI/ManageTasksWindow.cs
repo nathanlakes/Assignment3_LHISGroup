@@ -23,8 +23,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void AddTaskButton_Click(object sender, EventArgs e)
         {
-            UI.NewTaskWindow win = new UI.NewTaskWindow();
-            win.Visible = true;
+            mainWin.NewTaskWindow.Visible = true;
         }
 
         private void UpdateTaskButton_Click(object sender, EventArgs e)

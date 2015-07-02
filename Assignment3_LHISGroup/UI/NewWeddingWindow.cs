@@ -12,9 +12,13 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class NewWeddingWindow : Form
     {
-        public NewWeddingWindow()
+        MainWindow mainWin;
+        DbController db;
+        public NewWeddingWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
+            mainWin = w;
+            db = d;
         }
     }
 }

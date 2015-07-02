@@ -12,9 +12,13 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class NewClientWindow : Form
     {
-        public NewClientWindow()
+        MainWindow mainWin;
+        DbController db;
+        public NewClientWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
+            mainWin = w;
+            db = d;
         }
     }
 }

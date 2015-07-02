@@ -23,8 +23,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void AddWeddingButton_Click(object sender, EventArgs e)
         {
-            UI.NewWeddingWindow win = new UI.NewWeddingWindow();
-            win.Visible = true;
+            mainWin.NewWeddingWindow.Visible = true;
         }
 
         private void UpdateWeddingButton_Click(object sender, EventArgs e)

@@ -55,16 +55,16 @@
             this.AddStaffButton.UseVisualStyleBackColor = false;
             this.AddStaffButton.Click += new System.EventHandler(this.AddStaffButton_Click);
             // 
-            // button1
+            // UpdateStaffButton
             // 
             this.UpdateStaffButton.BackColor = System.Drawing.Color.White;
             this.UpdateStaffButton.Location = new System.Drawing.Point(423, 276);
-            this.UpdateStaffButton.Name = "button1";
+            this.UpdateStaffButton.Name = "UpdateStaffButton";
             this.UpdateStaffButton.Size = new System.Drawing.Size(174, 41);
             this.UpdateStaffButton.TabIndex = 2;
             this.UpdateStaffButton.Text = "Update Staff";
             this.UpdateStaffButton.UseVisualStyleBackColor = false;
-            this.UpdateStaffButton.Click += new System.EventHandler(this.button1_Click);
+            this.UpdateStaffButton.Click += new System.EventHandler(this.UpdateStaffButton_Click);
             // 
             // ManageStaffWindow
             // 

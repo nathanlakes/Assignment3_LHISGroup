@@ -12,9 +12,13 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class NewSupplierWindow : Form
     {
-        public NewSupplierWindow()
+        MainWindow mainWin;
+        DbController db;
+        public NewSupplierWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
+            mainWin = w;
+            db = d;
         }
     }
 }
