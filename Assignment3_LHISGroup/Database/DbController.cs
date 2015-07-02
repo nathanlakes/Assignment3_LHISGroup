@@ -66,7 +66,7 @@ namespace Assignment3_LHISGroup
                 
             _db.Close();            
             
-            if (res == 1) return true;  //Should only update one row
+            if (res == 1) return true;
             return false;
         }
 
@@ -93,10 +93,10 @@ namespace Assignment3_LHISGroup
                 myCommand.Parameters.AddWithValue("@taskId", taskId);
 
             _db.Open();
-            res = myCommand.ExecuteNonQuery();  // Run the statement.
+            res = myCommand.ExecuteNonQuery();
             _db.Close();
             
-            if (res == 1) return true;  // Should only update one row.
+            if (res == 1) return true;
             else return false;
         }
 
@@ -113,7 +113,7 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@idnum", id);
 
             _db.Open();
-            res = myCommand.ExecuteNonQuery();  // Run the statement.
+            res = myCommand.ExecuteNonQuery();
             _db.Close();
 
             if (res == 1) return true;
@@ -154,7 +154,7 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@id", id);
 
             _db.Open();
-            int res = myCommand.ExecuteNonQuery();  // Run the statement.
+            int res = myCommand.ExecuteNonQuery();
             _db.Close();
 
             if (res == 1) return true;
@@ -186,10 +186,10 @@ namespace Assignment3_LHISGroup
 
             int res = 0;
             _db.Open();
-            res = myCommand.ExecuteNonQuery();   // Run the statement.
+            res = myCommand.ExecuteNonQuery();
             _db.Close();            
 
-            if (res == 1) return true;           // Should only update one row.
+            if (res == 1) return true;
             else return false;
         }
 
@@ -221,10 +221,10 @@ namespace Assignment3_LHISGroup
             
             int res = 0;
             _db.Open();
-            res = myCommand.ExecuteNonQuery();   // Run the statement.
+            res = myCommand.ExecuteNonQuery();
             _db.Close();
 
-            if (res == 1) return true;           // Should only update one row.
+            if (res == 1) return true;
             else return false;
         }
 
@@ -293,6 +293,24 @@ namespace Assignment3_LHISGroup
         public bool AddWedding(Wedding w)
         {
             string query = @"INSERT into Weddding";
+            query += @"(title, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK)";
+            query += @"VALUES(@title, @client1, @client2, @startDate, @eventDate, @weddingPlanner)";
+
+            SqlCommand myCommand = new SqlCommand(query, _db);
+
+            myCommand.Parameters.AddWithValue("@title",          w.Title.ToString());
+            myCommand.Parameters.AddWithValue("@client1",        w.Client1.Firstname + " " + w.Client1.Surname);
+            myCommand.Parameters.AddWithValue("@client2",        w.Client2.Firstname + " " + w.Client2.Surname);
+            myCommand.Parameters.AddWithValue("@startDate",      w.StartDate.ToShortDateString());
+            myCommand.Parameters.AddWithValue("@eventDate",      w.EventDate.ToShortDateString());
+            myCommand.Parameters.AddWithValue("@weddingPlanner", getStaffId(w.WeddingPlanner) );
+
+            int res = 0;
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();
+            _db.Close();
+
+            if (res == 1) return true;
             return false;
         }
 
@@ -303,7 +321,26 @@ namespace Assignment3_LHISGroup
          */
         public bool UpdateWedding(int id, Wedding w)
         {
+            string query = @"UPDATE Wedding";
+            query += @"SET title='@title', client_1_FK='@client1', client_2_FK='@client2', startDate='@startDate', ";
+            query += @"eventDate='@eventDate', weddingPlanner_FK='@weddingPlanner_FK'";
+            query += @"WHERE id='@id'";
 
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@title", w.Title);
+            myCommand.Parameters.AddWithValue("@client1", w.Client1.Firstname + " " + w.Client1.Surname);
+            myCommand.Parameters.AddWithValue("@client2", w.Client2.Firstname + " " + w.Client2.Surname);
+            myCommand.Parameters.AddWithValue("@startDate", w.StartDate.ToShortDateString());
+            myCommand.Parameters.AddWithValue("@eventDate", w.EventDate.ToShortDateString());
+            myCommand.Parameters.AddWithValue("@weddingPlanner_FK", getStaffId(w.WeddingPlanner));
+            myCommand.Parameters.AddWithValue("@id", id);
+
+            int res = 0;
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();   
+            _db.Close();
+
+            if (res == 1) return true; 
             return false;
         }
 

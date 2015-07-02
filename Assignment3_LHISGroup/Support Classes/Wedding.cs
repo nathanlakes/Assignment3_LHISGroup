@@ -62,5 +62,11 @@ namespace Assignment3_LHISGroup.Support_Classes
             get { return eventDate; }
             set { eventDate = value; }
         }
+
+        public Staff WeddingPlanner
+        {
+            get { return weddingPlanner; }
+            set { weddingPlanner = value; }
+        }
     }
 }
