@@ -421,17 +421,22 @@ namespace Assignment3_LHISGroup
             SqlConnection _db = new SqlConnection(connStr);
             try 
             {
+                _db.Open();
 
                 SqlDataReader myReader = null;
                 SqlCommand myCommand= new SqlCommand("SELECT * FROM Suppliers", _db);
 
                 myReader = myCommand.ExecuteReader();
 
+                Console.WriteLine("Cmd:  SELECT * FROM Suppliers");
                 while (myReader.Read())
                 {
-                    Console.WriteLine(myReader["CompanyName"].ToString());
-                    Console.WriteLine(myReader["ContactPerson"].ToString());
+                    Console.Write(myReader["CompanyName"].ToString());
+                    Console.Write(",  ");
+                    Console.Write(myReader["ContactPerson"].ToString() + "\n");
                 }
+
+                _db.Close();
 
             }
             catch (Exception e) { e.GetHashCode(); }
