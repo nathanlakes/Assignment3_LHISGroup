@@ -252,8 +252,39 @@ namespace Assignment3_LHISGroup
          */
         public List<Client> FindClients(string name)
         {
+            List<Client> returnList = new List<Client>();
 
-            return new List<Client>();
+            string query = "SELECT * FROM Clients";
+            query += "WHERE firstname LIKE '%@fn%' OR surname LIKE '%@sn%'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@fn", name);
+            myCommand.Parameters.AddWithValue("@sn", name);
+
+            SqlDataReader myReader = myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                string firstname;
+                string surname;
+                string contact;
+                string address;
+                string mobile;
+                string homephone;
+                string email;
+                string engaged_fn;
+                string engaged_sn;
+                
+
+
+
+                
+                Console.Write(myReader["CompanyName"].ToString());
+                Console.Write(",  ");
+                Console.Write(myReader["ContactPerson"].ToString() + "\n");
+            }
+
+            _db.Close();
+
+            return returnList;
         }
 
         /**
@@ -512,7 +543,6 @@ namespace Assignment3_LHISGroup
          */   
         public void ShowData()
         {
-            SqlConnection _db = new SqlConnection(connStr);
             try 
             {
                 _db.Open();

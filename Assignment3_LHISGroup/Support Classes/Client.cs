@@ -16,11 +16,12 @@ namespace Assignment3_LHISGroup.Support_Classes
         private string mobile;
         private string homePhone;
         private string email;
-        private Client engagedTo;
+        private string engagedTo_firstName;
+        private string engagedTo_surname;
 
 
         public Client(string name, string surname, string contact, string address, string mobile,
-            string homeph, string email, Client engagedTo)
+            string homeph, string email, string engagedTo_fn, string engagedTo_sn)
         {
             this.firstname = name;
             this.surname = surname;
@@ -29,7 +30,9 @@ namespace Assignment3_LHISGroup.Support_Classes
             this.mobile = mobile;
             this.homePhone = homeph;
             this.email = email;
-            this.engagedTo = engagedTo;
+            this.engagedTo_firstName = engagedTo_fn;
+            this.engagedTo_surname = engagedTo_sn;
+
         }
 
         public int ID
@@ -80,10 +83,16 @@ namespace Assignment3_LHISGroup.Support_Classes
             set { email = value; }
         }
 
-        public Client EngagedTo
+        public string EngagedTo_fn
         {
-            get { return engagedTo; }
-            set { engagedTo = value; }
+            get { return engagedTo_firstName; }
+            set { engagedTo_firstName = value; }
+        }
+
+        public string EngagedTo_sn
+        {
+            get { return engagedTo_surname; }
+            set { engagedTo_surname = value; }
         }
     
     }
