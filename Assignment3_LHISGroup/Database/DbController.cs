@@ -232,7 +232,17 @@ namespace Assignment3_LHISGroup
          */
         public bool DeleteClient(int id)
         {
+            string query =  @"DELETE FROM Client";
+            query +=        @"WHERE id='@id'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@id", id);
 
+            int res = 0;
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();
+            _db.Close();
+
+            if (res == 1) return true;
             return false;
         }
 
