@@ -14,7 +14,7 @@ namespace Assignment3_LHISGroup
      *   The controller for the SQL Database model. 
      *   All views interface with Database.cs and read
      *   write via this class
-     */   
+     */
     public class DbController
     {
 
@@ -22,7 +22,7 @@ namespace Assignment3_LHISGroup
         string connStr = "Data Source=(LocalDB)\\v11.0;" +
                     "AttachDbFilename=|DataDirectory|\\Database\\Model.mdf;" +
                     "Integrated Security=True";
-        
+
         public DbController()
         {
             _db = new SqlConnection(connStr);
@@ -39,7 +39,7 @@ namespace Assignment3_LHISGroup
          *   Nb. Task cannot be made without it being assigned to somebody.
          *   @Param  t:  The task to add.
          */
-        public bool AddTask(Support_Classes.Task t) 
+        public bool AddTask(Support_Classes.Task t)
         {
             Staff s = t.AssignedTo;
 
@@ -50,7 +50,7 @@ namespace Assignment3_LHISGroup
             if (staffId == -1) throw new Exception("Staff must exist in Db.Staff, before being assigned to a task:");
 
             int res = 0;
-                        
+
             _db.Open();
             String query = @"INSERT INTO Task(name,description,priority,completeByDate, staffOnJob_FK) ";
             query += @" VALUES( @taskname, @description, @priority, @completeByDate, @staffOnJob)";
@@ -59,13 +59,13 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@taskname", t.TaskName);
             myCommand.Parameters.AddWithValue("@description", t.Description);
             myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
-            myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString() );
-            myCommand.Parameters.AddWithValue("@staffOnJob", staffId.ToString() );
+            myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString());
+            myCommand.Parameters.AddWithValue("@staffOnJob", staffId.ToString());
 
             res = myCommand.ExecuteNonQuery();
-                
-            _db.Close();            
-            
+
+            _db.Close();
+
             if (res == 1) return true;
             return false;
         }
@@ -74,7 +74,7 @@ namespace Assignment3_LHISGroup
          *   Changes the Staff member assigned to a task.
          *   @Param  t: the task to update
          *   @Param  s: the staff member to assign 't' to
-         */   
+         */
         public bool UpdatePersonOnTask(Support_Classes.Task t, Staff s)
         {
             // Find ID number of staff.
@@ -86,16 +86,16 @@ namespace Assignment3_LHISGroup
             if (taskId == -1) throw new Exception("Task does not exist.");
 
             int res = 0;
-            
+
             String query = "UPDATE Task SET staffOnJob_FK='@staffId' WHERE Id='@taskId'";
             SqlCommand myCommand = new SqlCommand(query, _db);
-                myCommand.Parameters.AddWithValue("@staffId", staffId);
-                myCommand.Parameters.AddWithValue("@taskId", taskId);
+            myCommand.Parameters.AddWithValue("@staffId", staffId);
+            myCommand.Parameters.AddWithValue("@taskId", taskId);
 
             _db.Open();
             res = myCommand.ExecuteNonQuery();
             _db.Close();
-            
+
             if (res == 1) return true;
             else return false;
         }
@@ -107,7 +107,7 @@ namespace Assignment3_LHISGroup
         public bool DeleteTask(int id)
         {
             int res = 0;
-            
+
             String query = "DELETE FROM Task WHERE Id=@idnum";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@idnum", id);
@@ -127,13 +127,13 @@ namespace Assignment3_LHISGroup
          */
         public bool UpdateTask(int id, Support_Classes.Task t)
         {
-            int staffID = getStaffId( t.AssignedTo );
-            
+            int staffID = getStaffId(t.AssignedTo);
+
             string query = @"UPDATE Task";
-            query +=       @"SET name='@name', description ='@description', priority='@priority', ";
-            query +=       @"completeByDate='@completeByDate', actualCompletionDate='@actualCompDate,";
-            query +=       @"staffOnJob_FK='@staffOnJob";
-            query +=       @"WHERE id=@id";
+            query += @"SET name='@name', description ='@description', priority='@priority', ";
+            query += @"completeByDate='@completeByDate', actualCompletionDate='@actualCompDate,";
+            query += @"staffOnJob_FK='@staffOnJob";
+            query += @"WHERE id=@id";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@name", t.TaskName);
@@ -145,7 +145,7 @@ namespace Assignment3_LHISGroup
             {
                 myCommand.Parameters.AddWithValue("@actualCompDate", t.CompletionDate.ToShortDateString());
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 myCommand.Parameters.AddWithValue("@actualCompDate", null);
             }
@@ -173,7 +173,7 @@ namespace Assignment3_LHISGroup
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
-            myCommand.Parameters.AddWithValue("@firstname", c.Firstname );
+            myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
             myCommand.Parameters.AddWithValue("@surname", c.Surname);
             myCommand.Parameters.AddWithValue("@contactPerson", c.ContactPerson);
             myCommand.Parameters.AddWithValue("@address", c.Address);
@@ -187,7 +187,7 @@ namespace Assignment3_LHISGroup
             int res = 0;
             _db.Open();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();            
+            _db.Close();
 
             if (res == 1) return true;
             else return false;
@@ -218,7 +218,7 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@engFn", c.EngagedTo_fn);
             myCommand.Parameters.AddWithValue("@engSn", c.EngagedTo_sn);
             myCommand.Parameters.AddWithValue("@id", id);
-            
+
             int res = 0;
             _db.Open();
             res = myCommand.ExecuteNonQuery();
@@ -234,8 +234,8 @@ namespace Assignment3_LHISGroup
          */
         public bool DeleteClient(int id)
         {
-            string query =  @"DELETE FROM Client";
-            query +=        @"WHERE id='@id'";
+            string query = @"DELETE FROM Client";
+            query += @"WHERE id='@id'";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
 
@@ -277,7 +277,7 @@ namespace Assignment3_LHISGroup
                 string engaged_sn = myReader["engagedTo_surname"].ToString();
 
                 Client c = new Client(firstname, surname, contact, address, mobile, homephone, email, engaged_fn, engaged_sn);
-                c.ID = Convert.ToInt32( myReader["id"].ToString() );
+                c.ID = Convert.ToInt32(myReader["id"].ToString());
 
                 returnList.Add(c);
             }
@@ -298,12 +298,12 @@ namespace Assignment3_LHISGroup
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
-            myCommand.Parameters.AddWithValue("@title",          w.Title.ToString());
-            myCommand.Parameters.AddWithValue("@client1",        w.Client1.Firstname + " " + w.Client1.Surname);
-            myCommand.Parameters.AddWithValue("@client2",        w.Client2.Firstname + " " + w.Client2.Surname);
-            myCommand.Parameters.AddWithValue("@startDate",      w.StartDate.ToShortDateString());
-            myCommand.Parameters.AddWithValue("@eventDate",      w.EventDate.ToShortDateString());
-            myCommand.Parameters.AddWithValue("@weddingPlanner", getStaffId(w.WeddingPlanner) );
+            myCommand.Parameters.AddWithValue("@title", w.Title.ToString());
+            myCommand.Parameters.AddWithValue("@client1", w.Client1.Firstname + " " + w.Client1.Surname);
+            myCommand.Parameters.AddWithValue("@client2", w.Client2.Firstname + " " + w.Client2.Surname);
+            myCommand.Parameters.AddWithValue("@startDate", w.StartDate.ToShortDateString());
+            myCommand.Parameters.AddWithValue("@eventDate", w.EventDate.ToShortDateString());
+            myCommand.Parameters.AddWithValue("@weddingPlanner", getStaffId(w.WeddingPlanner));
 
             int res = 0;
             _db.Open();
@@ -337,10 +337,10 @@ namespace Assignment3_LHISGroup
 
             int res = 0;
             _db.Open();
-            res = myCommand.ExecuteNonQuery();   
+            res = myCommand.ExecuteNonQuery();
             _db.Close();
 
-            if (res == 1) return true; 
+            if (res == 1) return true;
             return false;
         }
 
@@ -350,7 +350,18 @@ namespace Assignment3_LHISGroup
          */
         public bool DeleteWedding(int id)
         {
-        
+            string query = @"DELETE FROM Wedding";
+            query += @"WHERE id='@id'";
+
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@id", id);
+
+            int res = 0;
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();
+            _db.Close();
+
+            if (res == 1) return true;
             return false;
         }
 
@@ -361,8 +372,86 @@ namespace Assignment3_LHISGroup
          */
         public List<Wedding> FindWedding(string title)
         {
+            List<Wedding> returnList = new List<Wedding>();
 
-            return new List<Wedding>();
+            string query = "SELECT * FROM Wedding";
+            query += "WHERE title LIKE '%@title%'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@title", title);
+
+            _db.Open();
+            SqlDataReader myReader = myReader = myCommand.ExecuteReader();
+            while (myReader.Read())
+            {
+                string weddTitle = myReader["title"].ToString();
+
+                //
+                // Create Client Objects
+                //
+                // Client 1               
+                SqlDataReader c1 = getClientsDetails(Convert.ToInt32(myReader["client_1_fk"].ToString()));
+                Client client1 = new Client(
+                    c1["firstname"].ToString(),
+                    c1["surname"].ToString(),
+                    c1["contact"].ToString(),
+                    c1["address"].ToString(),
+                    c1["mobile"].ToString(),
+                    c1["homePhone"].ToString(),
+                    c1["email"].ToString(),
+                    c1["engagedTo_firsname"].ToString(),
+                    c1["engagedTo_surname"].ToString()
+                );
+
+                // Client 2
+                SqlDataReader c2 = getClientsDetails(Convert.ToInt32(myReader["client_2_fk"].ToString()));
+                Client client2 = new Client(
+                    c2["firstname"].ToString(),
+                    c2["surname"].ToString(),
+                    c2["contact"].ToString(),
+                    c2["address"].ToString(),
+                    c2["mobile"].ToString(),
+                    c2["homePhone"].ToString(),
+                    c2["email"].ToString(),
+                    c2["engagedTo_firsname"].ToString(),
+                    c2["engagedTo_surname"].ToString()
+                );
+
+                // Generate DateTime for start date.
+                string temp = myReader["startDate"].ToString();
+                int[] dateArray = splitStringDate(temp);
+                DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+
+                // Generate DateTime for event date.
+                temp = myReader["eventDate"].ToString();
+                dateArray = splitStringDate(temp);
+                DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+
+                // Create Staff Object
+                SqlDataReader stf = getStaffDetails(Convert.ToInt32(myReader["weddingPlanner_FK"].ToString()));
+                string status = stf["status"].ToString();
+                Staff.Active a;
+                if ( status == Staff.Active.active.ToString() )
+                {
+                    a = Staff.Active.active;
+                }
+                else { a = Staff.Active.inactive; }
+                Staff weddPlann = new Staff(
+                    stf["firstname"].ToString(),
+                    stf["surname"].ToString(),
+                    stf["email"].ToString(),
+                    stf["phone"].ToString(),
+                    stf["notes"].ToString(),
+                    a
+                );
+
+                Wedding returnWedding = new Wedding(weddTitle, client1, client2, weddPlann, startDate, eventDate);
+                returnWedding.ID = Convert.ToInt32( myReader["ID"].ToString() );
+
+                returnList.Add( returnWedding );
+            }
+            _db.Close();
+
+            return returnList;
         }
 
         /**
@@ -412,7 +501,7 @@ namespace Assignment3_LHISGroup
         {
 
             String query = @"INSERT into Staff (firstname, surname, email, phone, notes, status)";
-            query +=       @" VALUES (@_firstname, @_surname, @_email, @_phone, @_notes, @_status)";
+            query += @" VALUES (@_firstname, @_surname, @_email, @_phone, @_notes, @_status)";
 
 
             SqlCommand myCommand = new SqlCommand(query);
@@ -434,7 +523,7 @@ namespace Assignment3_LHISGroup
                 res = myCommand.ExecuteNonQuery();   // Run the statement.
                 _db.Close();
             }
-            
+
             if (res == 1) return true;           // Should only update one row.
             else return false;
         }
@@ -515,7 +604,7 @@ namespace Assignment3_LHISGroup
         /**
          *   Checks the Staff table and returns the staff ID number if they exist.
          *   Returns -1 if the staff member does not exist.
-         */   
+         */
         private int getStaffId(Staff s)
         {
             SqlConnection _db = new SqlConnection(connStr);
@@ -551,7 +640,7 @@ namespace Assignment3_LHISGroup
             SqlConnection _db = new SqlConnection(connStr);
 
             SqlCommand testTask = new SqlCommand(
-               "SELECT Id FROM Task WHERE name = '" + t.TaskName + 
+               "SELECT Id FROM Task WHERE name = '" + t.TaskName +
                     "' AND description = '" + t.Description + "'", _db);
 
             using (var myReader = testTask.ExecuteReader())
@@ -567,24 +656,37 @@ namespace Assignment3_LHISGroup
             }
         }
 
-        private int getWeddingId(int id)
+        private SqlDataReader getStaffDetails(int id)
         {
-            return -1;
+            string query = @"SELECT from Staff ";
+            query += @"WHERE id='@id'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            SqlDataReader myReader = myCommand.ExecuteReader();
+            return myReader;
+        }
+
+        private SqlDataReader getClientsDetails(int id)
+        {
+            string query = @"SELECT from Client ";
+            query += @"WHERE id=@'id'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            SqlDataReader myReader = myCommand.ExecuteReader();
+            return myReader;
         }
 
 
         /**
          *   Used for debugging purposes.
          *   TODO: DELETE AFTERWARDS!!!!
-         */   
+         */
         public void ShowData()
         {
-            try 
+            try
             {
                 _db.Open();
 
                 SqlDataReader myReader = null;
-                SqlCommand myCommand= new SqlCommand("SELECT * FROM Suppliers", _db);
+                SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers", _db);
 
                 myReader = myCommand.ExecuteReader();
 
@@ -599,11 +701,36 @@ namespace Assignment3_LHISGroup
                 _db.Close();
             }
             catch (Exception e) { e.GetHashCode(); }
-            
+
         }
 
-        
-        
+        private string getClientsFullName(int id)
+        {
+            string query = @"SELECT firstname, surname FROM Client";
+            query += @"WHERE id='@id'";
 
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            _db.Open();
+            SqlDataReader myReader = myCommand.ExecuteReader();
+            _db.Close();
+            return (myReader["firstname"].ToString() + " " + myReader["surname"].ToString());
+        }
+
+        public int[] splitStringDate(string d)
+        {
+            char[] delimChars = { '/', '\\' };
+            string[] date = new string[3];
+            date = d.Split(delimChars);
+
+            int i = 0;
+            int[] returnDate = new int[3];
+            foreach (string s in date)
+            {
+                returnDate[i] = Convert.ToInt32(s);
+                i++;
+            }
+
+            return returnDate;
+        }
     }
 }

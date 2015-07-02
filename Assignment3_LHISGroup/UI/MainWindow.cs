@@ -114,25 +114,31 @@ namespace Assignment3_LHISGroup
 
 
         private void nathanDebug()
-        {            
-            Staff s1 = new Staff("Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "cant work sundays",
-                Staff.Active.active);
+        {
 
-            Support_Classes.Task t1 = new Support_Classes.Task("Set table at venue", "Set 12 tables", 
-                Support_Classes.Task.Priority.high, new DateTime(2015, 12, 12), s1);
+            db.splitStringDate("20/12/2015");
 
-            db.ShowData();   // Test the select statement. 
 
-            try
-            {
-                bool result = db.AddStaff(s1);
-                //db.AddTask(t1);
-                Console.WriteLine("s1 Added to Staff?  " + result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }    
+
+
+            //Staff s1 = new Staff("Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "cant work sundays",
+            //    Staff.Active.active);
+
+            //Support_Classes.Task t1 = new Support_Classes.Task("Set table at venue", "Set 12 tables",
+            //    Support_Classes.Task.Priority.high, new DateTime(2015, 12, 12), s1);
+
+            //db.ShowData();   // Test the select statement. 
+
+            //try
+            //{
+            //    bool result = db.AddStaff(s1);
+            //    db.AddTask(t1);
+            //    Console.WriteLine("s1 Added to Staff?  " + result);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.ToString());
+            //}    
 
         }
 
