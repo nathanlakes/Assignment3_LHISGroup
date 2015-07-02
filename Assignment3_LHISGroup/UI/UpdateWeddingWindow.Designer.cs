@@ -40,7 +40,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.CancelButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.ReportsButton = new System.Windows.Forms.Button();
@@ -147,22 +146,12 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Name";
             // 
-            // CancelButton
-            // 
-            this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(311, 528);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(90, 46);
-            this.CancelButton.TabIndex = 30;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            // 
             // ResetButton
             // 
             this.ResetButton.BackColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(201, 528);
+            this.ResetButton.Location = new System.Drawing.Point(206, 457);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(102, 46);
+            this.ResetButton.Size = new System.Drawing.Size(67, 54);
             this.ResetButton.TabIndex = 29;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
@@ -170,17 +159,17 @@
             // UpdateButton
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(201, 457);
+            this.UpdateButton.Location = new System.Drawing.Point(279, 457);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(200, 54);
+            this.UpdateButton.Size = new System.Drawing.Size(122, 54);
             this.UpdateButton.TabIndex = 28;
-            this.UpdateButton.Text = "Update";
+            this.UpdateButton.Text = "UPDATE";
             this.UpdateButton.UseVisualStyleBackColor = false;
             // 
             // ReportsButton
             // 
             this.ReportsButton.BackColor = System.Drawing.Color.White;
-            this.ReportsButton.Location = new System.Drawing.Point(35, 471);
+            this.ReportsButton.Location = new System.Drawing.Point(33, 453);
             this.ReportsButton.Name = "ReportsButton";
             this.ReportsButton.Size = new System.Drawing.Size(109, 56);
             this.ReportsButton.TabIndex = 31;
@@ -216,11 +205,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(456, 602);
+            this.ClientSize = new System.Drawing.Size(456, 536);
             this.Controls.Add(this.StatusComboBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ReportsButton);
-            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.StartDateTimePicker);
@@ -256,7 +244,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button ReportsButton;

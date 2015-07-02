@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CancelButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.StartDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -45,22 +44,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // CancelButton
-            // 
-            this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(314, 464);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(90, 46);
-            this.CancelButton.TabIndex = 46;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            // 
             // ClearButton
             // 
             this.ClearButton.BackColor = System.Drawing.Color.White;
-            this.ClearButton.Location = new System.Drawing.Point(204, 464);
+            this.ClearButton.Location = new System.Drawing.Point(204, 393);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(102, 46);
+            this.ClearButton.Size = new System.Drawing.Size(65, 54);
             this.ClearButton.TabIndex = 45;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = false;
@@ -68,11 +57,11 @@
             // CreateButton
             // 
             this.CreateButton.BackColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(204, 393);
+            this.CreateButton.Location = new System.Drawing.Point(275, 393);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(200, 54);
+            this.CreateButton.Size = new System.Drawing.Size(129, 54);
             this.CreateButton.TabIndex = 44;
-            this.CreateButton.Text = "Create";
+            this.CreateButton.Text = "CREATE";
             this.CreateButton.UseVisualStyleBackColor = false;
             // 
             // StartDateTimePicker
@@ -179,8 +168,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(439, 535);
-            this.Controls.Add(this.CancelButton);
+            this.ClientSize = new System.Drawing.Size(439, 477);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.StartDateTimePicker);
@@ -204,7 +192,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.DateTimePicker StartDateTimePicker;

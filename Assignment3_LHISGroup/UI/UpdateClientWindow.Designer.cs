@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CancelButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -53,22 +52,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // CancelButton
-            // 
-            this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(308, 670);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(90, 46);
-            this.CancelButton.TabIndex = 54;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            // 
             // ResetButton
             // 
             this.ResetButton.BackColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(198, 670);
+            this.ResetButton.Location = new System.Drawing.Point(90, 599);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(102, 46);
+            this.ResetButton.Size = new System.Drawing.Size(102, 54);
             this.ResetButton.TabIndex = 53;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
@@ -254,7 +243,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(452, 748);
+            this.ClientSize = new System.Drawing.Size(452, 682);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.ContactCheckBox);
             this.Controls.Add(this.label10);
@@ -275,7 +264,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.UpdateButton);
             this.Name = "UpdateClientWindow";
@@ -287,7 +275,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Label label11;

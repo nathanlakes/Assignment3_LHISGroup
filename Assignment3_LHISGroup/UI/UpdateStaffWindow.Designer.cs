@@ -39,7 +39,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.CancelButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.StaffReport = new System.Windows.Forms.Button();
@@ -56,7 +55,7 @@
             // ActiveStatusCheckBox
             // 
             this.ActiveStatusCheckBox.AutoSize = true;
-            this.ActiveStatusCheckBox.Location = new System.Drawing.Point(27, 367);
+            this.ActiveStatusCheckBox.Location = new System.Drawing.Point(33, 334);
             this.ActiveStatusCheckBox.Name = "ActiveStatusCheckBox";
             this.ActiveStatusCheckBox.Size = new System.Drawing.Size(129, 24);
             this.ActiveStatusCheckBox.TabIndex = 28;
@@ -136,22 +135,12 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "First Name";
             // 
-            // CancelButton
-            // 
-            this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(356, 484);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(90, 46);
-            this.CancelButton.TabIndex = 18;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            // 
             // ResetButton
             // 
             this.ResetButton.BackColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(210, 484);
+            this.ResetButton.Location = new System.Drawing.Point(210, 412);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(102, 46);
+            this.ResetButton.Size = new System.Drawing.Size(90, 54);
             this.ResetButton.TabIndex = 17;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
@@ -159,19 +148,19 @@
             // UpdateButton
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(210, 409);
+            this.UpdateButton.Location = new System.Drawing.Point(306, 412);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(236, 54);
+            this.UpdateButton.Size = new System.Drawing.Size(140, 54);
             this.UpdateButton.TabIndex = 16;
-            this.UpdateButton.Text = "Update";
+            this.UpdateButton.Text = "UPDATE";
             this.UpdateButton.UseVisualStyleBackColor = false;
             // 
             // StaffReport
             // 
             this.StaffReport.BackColor = System.Drawing.Color.White;
-            this.StaffReport.Location = new System.Drawing.Point(30, 450);
+            this.StaffReport.Location = new System.Drawing.Point(33, 412);
             this.StaffReport.Name = "StaffReport";
-            this.StaffReport.Size = new System.Drawing.Size(126, 58);
+            this.StaffReport.Size = new System.Drawing.Size(129, 54);
             this.StaffReport.TabIndex = 30;
             this.StaffReport.Text = "Staff Report";
             this.StaffReport.UseVisualStyleBackColor = false;
@@ -181,7 +170,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(500, 552);
+            this.ClientSize = new System.Drawing.Size(500, 500);
             this.Controls.Add(this.StaffReport);
             this.Controls.Add(this.NotesTextBox);
             this.Controls.Add(this.ActiveStatusCheckBox);
@@ -194,7 +183,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.UpdateButton);
             this.Name = "UpdateStaffWindow";
@@ -217,7 +205,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button StaffReport;

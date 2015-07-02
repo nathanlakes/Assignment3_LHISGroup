@@ -33,7 +33,6 @@
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.ContactPersonTextBox = new System.Windows.Forms.TextBox();
             this.CompanyNameTextBox = new System.Windows.Forms.TextBox();
-            this.CancelButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -81,22 +80,12 @@
             this.CompanyNameTextBox.Size = new System.Drawing.Size(272, 26);
             this.CompanyNameTextBox.TabIndex = 21;
             // 
-            // CancelButton
-            // 
-            this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(392, 524);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(90, 46);
-            this.CancelButton.TabIndex = 20;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            // 
             // ResetButton
             // 
             this.ResetButton.BackColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(255, 524);
+            this.ResetButton.Location = new System.Drawing.Point(210, 453);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(102, 46);
+            this.ResetButton.Size = new System.Drawing.Size(102, 54);
             this.ResetButton.TabIndex = 19;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
@@ -104,11 +93,11 @@
             // UpdateButton
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(255, 453);
+            this.UpdateButton.Location = new System.Drawing.Point(318, 453);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(227, 54);
+            this.UpdateButton.Size = new System.Drawing.Size(164, 54);
             this.UpdateButton.TabIndex = 18;
-            this.UpdateButton.Text = "Update";
+            this.UpdateButton.Text = "UPDATE";
             this.UpdateButton.UseVisualStyleBackColor = false;
             // 
             // label5
@@ -177,7 +166,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(538, 610);
+            this.ClientSize = new System.Drawing.Size(538, 537);
             this.Controls.Add(this.CreditItemsTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.AddressTextBox);
@@ -185,7 +174,6 @@
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.ContactPersonTextBox);
             this.Controls.Add(this.CompanyNameTextBox);
-            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.label5);
@@ -207,7 +195,6 @@
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.TextBox ContactPersonTextBox;
         private System.Windows.Forms.TextBox CompanyNameTextBox;
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Label label5;

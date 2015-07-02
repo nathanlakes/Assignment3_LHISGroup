@@ -36,7 +36,6 @@
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.CancelButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.LowRadioButton = new System.Windows.Forms.RadioButton();
@@ -83,7 +82,7 @@
             this.StaffComboBox.FormattingEnabled = true;
             this.StaffComboBox.Location = new System.Drawing.Point(86, 301);
             this.StaffComboBox.Name = "StaffComboBox";
-            this.StaffComboBox.Size = new System.Drawing.Size(188, 28);
+            this.StaffComboBox.Size = new System.Drawing.Size(300, 28);
             this.StaffComboBox.TabIndex = 25;
             // 
             // DescriptionTextBox
@@ -91,14 +90,14 @@
             this.DescriptionTextBox.Location = new System.Drawing.Point(12, 149);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(477, 129);
+            this.DescriptionTextBox.Size = new System.Drawing.Size(384, 129);
             this.DescriptionTextBox.TabIndex = 24;
             // 
             // NameTextBox
             // 
             this.NameTextBox.Location = new System.Drawing.Point(12, 54);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(287, 26);
+            this.NameTextBox.Size = new System.Drawing.Size(221, 26);
             this.NameTextBox.TabIndex = 23;
             // 
             // label3
@@ -110,22 +109,12 @@
             this.label3.TabIndex = 22;
             this.label3.Text = "Staff";
             // 
-            // CancelButton
-            // 
-            this.CancelButton.BackColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(399, 540);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(90, 46);
-            this.CancelButton.TabIndex = 21;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = false;
-            // 
             // ResetButton
             // 
             this.ResetButton.BackColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(262, 540);
+            this.ResetButton.Location = new System.Drawing.Point(53, 457);
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(102, 46);
+            this.ResetButton.Size = new System.Drawing.Size(100, 54);
             this.ResetButton.TabIndex = 20;
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = false;
@@ -133,16 +122,16 @@
             // UpdateButton
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(262, 469);
+            this.UpdateButton.Location = new System.Drawing.Point(159, 457);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(227, 54);
             this.UpdateButton.TabIndex = 19;
-            this.UpdateButton.Text = "Update";
+            this.UpdateButton.Text = "UPDATE";
             this.UpdateButton.UseVisualStyleBackColor = false;
             // 
             // LowRadioButton
             // 
-            this.LowRadioButton.Location = new System.Drawing.Point(348, 84);
+            this.LowRadioButton.Location = new System.Drawing.Point(255, 84);
             this.LowRadioButton.Name = "LowRadioButton";
             this.LowRadioButton.Size = new System.Drawing.Size(126, 24);
             this.LowRadioButton.TabIndex = 14;
@@ -152,7 +141,7 @@
             // 
             // MediumRadioButton
             // 
-            this.MediumRadioButton.Location = new System.Drawing.Point(348, 54);
+            this.MediumRadioButton.Location = new System.Drawing.Point(255, 54);
             this.MediumRadioButton.Name = "MediumRadioButton";
             this.MediumRadioButton.Size = new System.Drawing.Size(141, 24);
             this.MediumRadioButton.TabIndex = 15;
@@ -163,7 +152,7 @@
             // HighRadioButton
             // 
             this.HighRadioButton.AutoSize = true;
-            this.HighRadioButton.Location = new System.Drawing.Point(348, 24);
+            this.HighRadioButton.Location = new System.Drawing.Point(255, 24);
             this.HighRadioButton.Name = "HighRadioButton";
             this.HighRadioButton.Size = new System.Drawing.Size(118, 24);
             this.HighRadioButton.TabIndex = 18;
@@ -194,7 +183,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(530, 619);
+            this.ClientSize = new System.Drawing.Size(433, 542);
             this.Controls.Add(this.CompletionDateTimePicker);
             this.Controls.Add(this.CompleteByDateTimePicker);
             this.Controls.Add(this.label5);
@@ -203,7 +192,6 @@
             this.Controls.Add(this.DescriptionTextBox);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.LowRadioButton);
@@ -228,7 +216,6 @@
         private System.Windows.Forms.TextBox DescriptionTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.RadioButton LowRadioButton;

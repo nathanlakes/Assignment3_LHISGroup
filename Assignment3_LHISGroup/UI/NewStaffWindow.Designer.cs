@@ -126,9 +126,9 @@
             // ClearButton
             // 
             this.ClearButton.BackColor = System.Drawing.Color.White;
-            this.ClearButton.Location = new System.Drawing.Point(98, 412);
+            this.ClearButton.Location = new System.Drawing.Point(206, 386);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(102, 54);
+            this.ClearButton.Size = new System.Drawing.Size(87, 54);
             this.ClearButton.TabIndex = 32;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = false;
@@ -137,9 +137,9 @@
             // CreateButton
             // 
             this.CreateButton.BackColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(206, 412);
+            this.CreateButton.Location = new System.Drawing.Point(299, 386);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(236, 54);
+            this.CreateButton.Size = new System.Drawing.Size(143, 54);
             this.CreateButton.TabIndex = 31;
             this.CreateButton.Text = "CREATE";
             this.CreateButton.UseVisualStyleBackColor = false;
@@ -150,7 +150,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(489, 492);
+            this.ClientSize = new System.Drawing.Size(489, 480);
             this.Controls.Add(this.NotesTextBox);
             this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.EmailTextBox);
