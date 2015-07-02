@@ -96,7 +96,29 @@ namespace Assignment3_LHISGroup.UI
         {
             if (validateNewClientForm() == true)
             {
-                MessageBox.Show("Successfully Validated!!");
+                String n = FirstNameTextBox.Text;
+                String sn = SurnameTextBox.Text;
+                String e_n = EngagedFirstNameTextBox.Text;
+                String e_sn = EngagedFirstNameTextBox.Text;
+                String email = EmailTextBox.Text;
+                String mobile = MobilePhoneTextBox.Text;
+                String phone = HomePhoneTextBox.Text;
+                String address = AddressTextBox.Text;
+
+                String contact = "";
+                if (ContactCheckBox.Checked == true)
+                {
+                    contact = n + " " + sn;
+                }
+                else
+                {
+                    contact = e_n + " " + e_sn;
+                }
+
+                Support_Classes.Client client = new Support_Classes.Client(n, sn, contact, address, mobile, phone, email, e_n, e_sn);
+                db.AddClient(client);
+                clearNewClientForm();
+                mainWin.ManageClientsWindow.UpdateForm();
             }
         }
     }

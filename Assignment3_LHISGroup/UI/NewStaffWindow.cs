@@ -82,9 +82,9 @@ namespace Assignment3_LHISGroup.UI
                     notes = NotesTextBox.Text;
                 }
 
-                Support_Classes.Staff newStaff = new Support_Classes.Staff(fn, sn, email, ph,notes, Support_Classes.Staff.Active.active);
-                MessageBox.Show("New Staff created");
-                db.AddStaff(newStaff);
+                Support_Classes.Staff staff = new Support_Classes.Staff(fn, sn, email, ph,notes, Support_Classes.Staff.Active.active);
+                //MessageBox.Show("New Staff created");
+                db.AddStaff(staff);
                 clearNewStaffForm();
                 mainWin.ManageStaffWindow.UpdateForm();
             }          
