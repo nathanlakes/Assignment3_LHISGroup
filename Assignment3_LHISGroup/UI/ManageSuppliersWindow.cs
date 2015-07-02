@@ -31,6 +31,18 @@ namespace Assignment3_LHISGroup.UI
             mainWin.UpdateSupplierWindow.Visible = true;
         }
 
-     
+        public void UpdateForm()
+        {
+            this.suppliersTableAdapter.Fill(this.modelDataSet.Suppliers);
+            SuppliersDataGridView.Update();
+            SuppliersDataGridView.Refresh();
+            this.Refresh();
+        }
+
+        private void ManageSuppliersWindow_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'modelDataSet.Staff' table. You can move, or remove it, as needed.
+            this.suppliersTableAdapter.Fill(this.modelDataSet.Suppliers);
+        }
     }
 }
