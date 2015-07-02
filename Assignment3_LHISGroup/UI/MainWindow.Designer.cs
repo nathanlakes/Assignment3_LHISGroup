@@ -38,14 +38,16 @@
             this.NewSupplierButton = new System.Windows.Forms.Button();
             this.ManageTasksButton = new System.Windows.Forms.Button();
             this.NewTaskButton = new System.Windows.Forms.Button();
+            this.ReportsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ManageWeddingsButton
             // 
             this.ManageWeddingsButton.BackColor = System.Drawing.Color.White;
-            this.ManageWeddingsButton.Location = new System.Drawing.Point(60, 26);
+            this.ManageWeddingsButton.Location = new System.Drawing.Point(40, 17);
+            this.ManageWeddingsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ManageWeddingsButton.Name = "ManageWeddingsButton";
-            this.ManageWeddingsButton.Size = new System.Drawing.Size(183, 63);
+            this.ManageWeddingsButton.Size = new System.Drawing.Size(122, 41);
             this.ManageWeddingsButton.TabIndex = 0;
             this.ManageWeddingsButton.Text = "Manage Weddings";
             this.ManageWeddingsButton.UseVisualStyleBackColor = false;
@@ -54,9 +56,10 @@
             // ManageClientsButton
             // 
             this.ManageClientsButton.BackColor = System.Drawing.Color.White;
-            this.ManageClientsButton.Location = new System.Drawing.Point(60, 117);
+            this.ManageClientsButton.Location = new System.Drawing.Point(40, 76);
+            this.ManageClientsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ManageClientsButton.Name = "ManageClientsButton";
-            this.ManageClientsButton.Size = new System.Drawing.Size(183, 64);
+            this.ManageClientsButton.Size = new System.Drawing.Size(122, 42);
             this.ManageClientsButton.TabIndex = 2;
             this.ManageClientsButton.Text = "Manage Clients";
             this.ManageClientsButton.UseVisualStyleBackColor = false;
@@ -65,9 +68,10 @@
             // ManageSuppliersButton
             // 
             this.ManageSuppliersButton.BackColor = System.Drawing.Color.White;
-            this.ManageSuppliersButton.Location = new System.Drawing.Point(60, 376);
+            this.ManageSuppliersButton.Location = new System.Drawing.Point(40, 244);
+            this.ManageSuppliersButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ManageSuppliersButton.Name = "ManageSuppliersButton";
-            this.ManageSuppliersButton.Size = new System.Drawing.Size(183, 73);
+            this.ManageSuppliersButton.Size = new System.Drawing.Size(122, 47);
             this.ManageSuppliersButton.TabIndex = 8;
             this.ManageSuppliersButton.Text = "Manage Suppliers";
             this.ManageSuppliersButton.UseVisualStyleBackColor = false;
@@ -76,9 +80,10 @@
             // ManageStaffButton
             // 
             this.ManageStaffButton.BackColor = System.Drawing.Color.White;
-            this.ManageStaffButton.Location = new System.Drawing.Point(60, 280);
+            this.ManageStaffButton.Location = new System.Drawing.Point(40, 182);
+            this.ManageStaffButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ManageStaffButton.Name = "ManageStaffButton";
-            this.ManageStaffButton.Size = new System.Drawing.Size(183, 72);
+            this.ManageStaffButton.Size = new System.Drawing.Size(122, 47);
             this.ManageStaffButton.TabIndex = 6;
             this.ManageStaffButton.Text = "Manage Staff";
             this.ManageStaffButton.UseVisualStyleBackColor = false;
@@ -88,9 +93,10 @@
             // 
             this.NewClientButton.BackColor = System.Drawing.Color.White;
             this.NewClientButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.NewClientButton.Location = new System.Drawing.Point(275, 117);
+            this.NewClientButton.Location = new System.Drawing.Point(183, 76);
+            this.NewClientButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NewClientButton.Name = "NewClientButton";
-            this.NewClientButton.Size = new System.Drawing.Size(183, 64);
+            this.NewClientButton.Size = new System.Drawing.Size(122, 42);
             this.NewClientButton.TabIndex = 3;
             this.NewClientButton.Text = "New Client";
             this.NewClientButton.UseVisualStyleBackColor = false;
@@ -99,9 +105,10 @@
             // NewWeddingButton
             // 
             this.NewWeddingButton.BackColor = System.Drawing.Color.White;
-            this.NewWeddingButton.Location = new System.Drawing.Point(275, 26);
+            this.NewWeddingButton.Location = new System.Drawing.Point(183, 17);
+            this.NewWeddingButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NewWeddingButton.Name = "NewWeddingButton";
-            this.NewWeddingButton.Size = new System.Drawing.Size(183, 63);
+            this.NewWeddingButton.Size = new System.Drawing.Size(122, 41);
             this.NewWeddingButton.TabIndex = 1;
             this.NewWeddingButton.Text = "New Wedding";
             this.NewWeddingButton.UseVisualStyleBackColor = false;
@@ -110,9 +117,10 @@
             // NewStaffButton
             // 
             this.NewStaffButton.BackColor = System.Drawing.Color.White;
-            this.NewStaffButton.Location = new System.Drawing.Point(275, 280);
+            this.NewStaffButton.Location = new System.Drawing.Point(183, 182);
+            this.NewStaffButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NewStaffButton.Name = "NewStaffButton";
-            this.NewStaffButton.Size = new System.Drawing.Size(183, 72);
+            this.NewStaffButton.Size = new System.Drawing.Size(122, 47);
             this.NewStaffButton.TabIndex = 7;
             this.NewStaffButton.Text = "New Staff";
             this.NewStaffButton.UseVisualStyleBackColor = false;
@@ -121,9 +129,10 @@
             // NewSupplierButton
             // 
             this.NewSupplierButton.BackColor = System.Drawing.Color.White;
-            this.NewSupplierButton.Location = new System.Drawing.Point(275, 376);
+            this.NewSupplierButton.Location = new System.Drawing.Point(183, 244);
+            this.NewSupplierButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NewSupplierButton.Name = "NewSupplierButton";
-            this.NewSupplierButton.Size = new System.Drawing.Size(183, 73);
+            this.NewSupplierButton.Size = new System.Drawing.Size(122, 47);
             this.NewSupplierButton.TabIndex = 9;
             this.NewSupplierButton.Text = "New Supplier";
             this.NewSupplierButton.UseVisualStyleBackColor = false;
@@ -132,9 +141,10 @@
             // ManageTasksButton
             // 
             this.ManageTasksButton.BackColor = System.Drawing.Color.White;
-            this.ManageTasksButton.Location = new System.Drawing.Point(60, 201);
+            this.ManageTasksButton.Location = new System.Drawing.Point(40, 131);
+            this.ManageTasksButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ManageTasksButton.Name = "ManageTasksButton";
-            this.ManageTasksButton.Size = new System.Drawing.Size(183, 60);
+            this.ManageTasksButton.Size = new System.Drawing.Size(122, 39);
             this.ManageTasksButton.TabIndex = 4;
             this.ManageTasksButton.Text = "Manage Tasks";
             this.ManageTasksButton.UseVisualStyleBackColor = false;
@@ -143,20 +153,34 @@
             // NewTaskButton
             // 
             this.NewTaskButton.BackColor = System.Drawing.Color.White;
-            this.NewTaskButton.Location = new System.Drawing.Point(275, 201);
+            this.NewTaskButton.Location = new System.Drawing.Point(183, 131);
+            this.NewTaskButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NewTaskButton.Name = "NewTaskButton";
-            this.NewTaskButton.Size = new System.Drawing.Size(183, 60);
+            this.NewTaskButton.Size = new System.Drawing.Size(122, 39);
             this.NewTaskButton.TabIndex = 5;
             this.NewTaskButton.Text = "New Task";
             this.NewTaskButton.UseVisualStyleBackColor = false;
             this.NewTaskButton.Click += new System.EventHandler(this.NewTaskButton_Click);
             // 
+            // ReportsButton
+            // 
+            this.ReportsButton.BackColor = System.Drawing.Color.White;
+            this.ReportsButton.Location = new System.Drawing.Point(106, 304);
+            this.ReportsButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ReportsButton.Name = "ReportsButton";
+            this.ReportsButton.Size = new System.Drawing.Size(122, 47);
+            this.ReportsButton.TabIndex = 10;
+            this.ReportsButton.Text = "Reports";
+            this.ReportsButton.UseVisualStyleBackColor = false;
+            this.ReportsButton.Click += new System.EventHandler(this.ReportsButton_Click);
+            // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(534, 486);
+            this.ClientSize = new System.Drawing.Size(356, 362);
+            this.Controls.Add(this.ReportsButton);
             this.Controls.Add(this.NewTaskButton);
             this.Controls.Add(this.ManageTasksButton);
             this.Controls.Add(this.NewSupplierButton);
@@ -167,7 +191,6 @@
             this.Controls.Add(this.ManageSuppliersButton);
             this.Controls.Add(this.ManageClientsButton);
             this.Controls.Add(this.ManageWeddingsButton);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainWindow";
             this.Text = "Start Screen";
             this.ResumeLayout(false);
@@ -186,6 +209,7 @@
         private System.Windows.Forms.Button NewSupplierButton;
         private System.Windows.Forms.Button ManageTasksButton;
         private System.Windows.Forms.Button NewTaskButton;
+        private System.Windows.Forms.Button ReportsButton;
     }
 }
 

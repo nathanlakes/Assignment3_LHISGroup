@@ -109,5 +109,11 @@ namespace Assignment3_LHISGroup
             UI.NewClientWindow win = new UI.NewClientWindow();
             win.Visible = true;
         }
+
+        private void ReportsButton_Click(object sender, EventArgs e)
+        {
+            UI.EventReportWindow win = new UI.EventReportWindow(this);
+            win.Visible = true;
+        }
     }
 }

@@ -51,5 +51,7 @@ namespace Assignment3_LHISGroup.UI
             parent.Show();
             this.Dispose();
         }
+
+       
     }
 }

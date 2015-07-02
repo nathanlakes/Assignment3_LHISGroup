@@ -18,6 +18,7 @@ namespace Assignment3_LHISGroup.Reports
         Staff currentStaff;
         List<Support_Classes.Task> assignedTaskList;
         DbController dbController = new DbController();
+
         public StaffReport(Staff givenStaffMember)
         {
             assignedTaskList = new List<Support_Classes.Task>();
@@ -37,15 +38,24 @@ namespace Assignment3_LHISGroup.Reports
             {
                 List<Support_Classes.Task> allTaskList = new List<Support_Classes.Task>();
                 allTaskList = dbController.GetAllTasks();
+                foreach (Support_Classes.Task task in allTaskList)
+                {
+                    if (task.AssignedTo.ID == currentStaff.ID)
+                    {
+                        DateTime date = task.CompletionDate;
+                        assignedTaskList.Add(task);
+                    }
+                }
 
 
 
 
-
-                return new List<Support_Classes.Task>();
+                return assignedTaskList;
             }
             
         }
+
+        
 
         private void StaffReport_Load(object sender, EventArgs e)
         {
