@@ -260,28 +260,25 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@fn", name);
             myCommand.Parameters.AddWithValue("@sn", name);
 
+            _db.Open();
             SqlDataReader myReader = myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
-                string firstname;
-                string surname;
-                string contact;
-                string address;
-                string mobile;
-                string homephone;
-                string email;
-                string engaged_fn;
-                string engaged_sn;
-                
+                string firstname = myReader["firstname"].ToString();
+                string surname = myReader["surname"].ToString();
+                string contact = myReader["contactPerson"].ToString();
+                string address = myReader["address"].ToString();
+                string mobile = myReader["mobile"].ToString();
+                string homephone = myReader["homephone"].ToString();
+                string email = myReader["email"].ToString();
+                string engaged_fn = myReader["engagedTo_firstname"].ToString();
+                string engaged_sn = myReader["engagedTo_surname"].ToString();
 
+                Client c = new Client(firstname, surname, contact, address, mobile, homephone, email, engaged_fn, engaged_sn);
+                c.ID = Convert.ToInt32( myReader["id"].ToString() );
 
-
-                
-                Console.Write(myReader["CompanyName"].ToString());
-                Console.Write(",  ");
-                Console.Write(myReader["ContactPerson"].ToString() + "\n");
+                returnList.Add(c);
             }
-
             _db.Close();
 
             return returnList;

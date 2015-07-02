@@ -42,6 +42,8 @@ namespace Assignment3_LHISGroup {
         
         private global::System.Data.DataRelation relationFK_WeddPln_Staff;
         
+        private global::System.Data.DataRelation relationFK_Task_Wedding;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -302,6 +304,7 @@ namespace Assignment3_LHISGroup {
             this.relationFK_WeddC1_Client = this.Relations["FK_WeddC1_Client"];
             this.relationFK_WeddC2_Client = this.Relations["FK_WeddC2_Client"];
             this.relationFK_WeddPln_Staff = this.Relations["FK_WeddPln_Staff"];
+            this.relationFK_Task_Wedding = this.Relations["FK_Task_Wedding"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -338,6 +341,10 @@ namespace Assignment3_LHISGroup {
                         this.tableStaff.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableWedding.weddingPlanner_FKColumn}, false);
             this.Relations.Add(this.relationFK_WeddPln_Staff);
+            this.relationFK_Task_Wedding = new global::System.Data.DataRelation("FK_Task_Wedding", new global::System.Data.DataColumn[] {
+                        this.tableWedding.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTask.weddingID_FKColumn}, false);
+            this.Relations.Add(this.relationFK_Task_Wedding);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -463,7 +470,9 @@ namespace Assignment3_LHISGroup {
             
             private global::System.Data.DataColumn columnemail;
             
-            private global::System.Data.DataColumn columnengagedTo;
+            private global::System.Data.DataColumn columnengagedTo_firstname;
+            
+            private global::System.Data.DataColumn columnengagedTo_surname;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -564,9 +573,17 @@ namespace Assignment3_LHISGroup {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn engagedToColumn {
+            public global::System.Data.DataColumn engagedTo_firstnameColumn {
                 get {
-                    return this.columnengagedTo;
+                    return this.columnengagedTo_firstname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn engagedTo_surnameColumn {
+                get {
+                    return this.columnengagedTo_surname;
                 }
             }
             
@@ -607,7 +624,7 @@ namespace Assignment3_LHISGroup {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientRow AddClientRow(int Id, string firstname, string surname, string contactPerson, string address, string mobile, string homePhone, string email, string engagedTo) {
+            public ClientRow AddClientRow(int Id, string firstname, string surname, string contactPerson, string address, string mobile, string homePhone, string email, string engagedTo_firstname, string engagedTo_surname) {
                 ClientRow rowClientRow = ((ClientRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -618,7 +635,8 @@ namespace Assignment3_LHISGroup {
                         mobile,
                         homePhone,
                         email,
-                        engagedTo};
+                        engagedTo_firstname,
+                        engagedTo_surname};
                 rowClientRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowClientRow);
                 return rowClientRow;
@@ -656,7 +674,8 @@ namespace Assignment3_LHISGroup {
                 this.columnmobile = base.Columns["mobile"];
                 this.columnhomePhone = base.Columns["homePhone"];
                 this.columnemail = base.Columns["email"];
-                this.columnengagedTo = base.Columns["engagedTo"];
+                this.columnengagedTo_firstname = base.Columns["engagedTo_firstname"];
+                this.columnengagedTo_surname = base.Columns["engagedTo_surname"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -678,8 +697,10 @@ namespace Assignment3_LHISGroup {
                 base.Columns.Add(this.columnhomePhone);
                 this.columnemail = new global::System.Data.DataColumn("email", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnemail);
-                this.columnengagedTo = new global::System.Data.DataColumn("engagedTo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnengagedTo);
+                this.columnengagedTo_firstname = new global::System.Data.DataColumn("engagedTo_firstname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnengagedTo_firstname);
+                this.columnengagedTo_surname = new global::System.Data.DataColumn("engagedTo_surname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnengagedTo_surname);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
@@ -695,8 +716,10 @@ namespace Assignment3_LHISGroup {
                 this.columnmobile.MaxLength = 20;
                 this.columnhomePhone.MaxLength = 20;
                 this.columnemail.MaxLength = 50;
-                this.columnengagedTo.AllowDBNull = false;
-                this.columnengagedTo.MaxLength = 50;
+                this.columnengagedTo_firstname.AllowDBNull = false;
+                this.columnengagedTo_firstname.MaxLength = 50;
+                this.columnengagedTo_surname.AllowDBNull = false;
+                this.columnengagedTo_surname.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1549,6 +1572,8 @@ namespace Assignment3_LHISGroup {
             
             private global::System.Data.DataColumn columnstaffOnJob_FK;
             
+            private global::System.Data.DataColumn columnweddingID_FK;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TaskDataTable() {
@@ -1640,6 +1665,14 @@ namespace Assignment3_LHISGroup {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn weddingID_FKColumn {
+                get {
+                    return this.columnweddingID_FK;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1675,7 +1708,7 @@ namespace Assignment3_LHISGroup {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TaskRow AddTaskRow(int Id, string name, string description, string priority, System.DateTime completeByDate, System.DateTime actualCompletionDate, StaffRow parentStaffRowByFK_Task_Staff) {
+            public TaskRow AddTaskRow(int Id, string name, string description, string priority, System.DateTime completeByDate, System.DateTime actualCompletionDate, StaffRow parentStaffRowByFK_Task_Staff, WeddingRow parentWeddingRowByFK_Task_Wedding) {
                 TaskRow rowTaskRow = ((TaskRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -1684,9 +1717,13 @@ namespace Assignment3_LHISGroup {
                         priority,
                         completeByDate,
                         actualCompletionDate,
+                        null,
                         null};
                 if ((parentStaffRowByFK_Task_Staff != null)) {
                     columnValuesArray[6] = parentStaffRowByFK_Task_Staff[0];
+                }
+                if ((parentWeddingRowByFK_Task_Wedding != null)) {
+                    columnValuesArray[7] = parentWeddingRowByFK_Task_Wedding[0];
                 }
                 rowTaskRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTaskRow);
@@ -1724,6 +1761,7 @@ namespace Assignment3_LHISGroup {
                 this.columncompleteByDate = base.Columns["completeByDate"];
                 this.columnactualCompletionDate = base.Columns["actualCompletionDate"];
                 this.columnstaffOnJob_FK = base.Columns["staffOnJob_FK"];
+                this.columnweddingID_FK = base.Columns["weddingID_FK"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1743,6 +1781,8 @@ namespace Assignment3_LHISGroup {
                 base.Columns.Add(this.columnactualCompletionDate);
                 this.columnstaffOnJob_FK = new global::System.Data.DataColumn("staffOnJob_FK", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstaffOnJob_FK);
+                this.columnweddingID_FK = new global::System.Data.DataColumn("weddingID_FK", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnweddingID_FK);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
@@ -1756,6 +1796,7 @@ namespace Assignment3_LHISGroup {
                 this.columncompleteByDate.AllowDBNull = false;
                 this.columnactualCompletionDate.AllowDBNull = false;
                 this.columnstaffOnJob_FK.AllowDBNull = false;
+                this.columnweddingID_FK.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2359,12 +2400,23 @@ namespace Assignment3_LHISGroup {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string engagedTo {
+            public string engagedTo_firstname {
                 get {
-                    return ((string)(this[this.tableClient.engagedToColumn]));
+                    return ((string)(this[this.tableClient.engagedTo_firstnameColumn]));
                 }
                 set {
-                    this[this.tableClient.engagedToColumn] = value;
+                    this[this.tableClient.engagedTo_firstnameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string engagedTo_surname {
+                get {
+                    return ((string)(this[this.tableClient.engagedTo_surnameColumn]));
+                }
+                set {
+                    this[this.tableClient.engagedTo_surnameColumn] = value;
                 }
             }
             
@@ -2760,12 +2812,34 @@ namespace Assignment3_LHISGroup {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int weddingID_FK {
+                get {
+                    return ((int)(this[this.tableTask.weddingID_FKColumn]));
+                }
+                set {
+                    this[this.tableTask.weddingID_FKColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public StaffRow StaffRow {
                 get {
                     return ((StaffRow)(this.GetParentRow(this.Table.ParentRelations["FK_Task_Staff"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Task_Staff"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public WeddingRow WeddingRow {
+                get {
+                    return ((WeddingRow)(this.GetParentRow(this.Table.ParentRelations["FK_Task_Wedding"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Task_Wedding"]);
                 }
             }
         }
@@ -2891,6 +2965,17 @@ namespace Assignment3_LHISGroup {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_WeddPln_Staff"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TaskRow[] GetTaskRows() {
+                if ((this.Table.ChildRelations["FK_Task_Wedding"] == null)) {
+                    return new TaskRow[0];
+                }
+                else {
+                    return ((TaskRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Task_Wedding"])));
                 }
             }
         }
@@ -3198,11 +3283,12 @@ namespace Assignment3_LHISGroup.ModelDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("mobile", "mobile");
             tableMapping.ColumnMappings.Add("homePhone", "homePhone");
             tableMapping.ColumnMappings.Add("email", "email");
-            tableMapping.ColumnMappings.Add("engagedTo", "engagedTo");
+            tableMapping.ColumnMappings.Add("engagedTo_firstname", "engagedTo_firstname");
+            tableMapping.ColumnMappings.Add("engagedTo_surname", "engagedTo_surname");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Client] WHERE (([Id] = @Original_Id) AND ([firstname] = @Original_firstname) AND ([surname] = @Original_surname) AND ((@IsNull_contactPerson = 1 AND [contactPerson] IS NULL) OR ([contactPerson] = @Original_contactPerson)) AND ([address] = @Original_address) AND ([mobile] = @Original_mobile) AND ((@IsNull_homePhone = 1 AND [homePhone] IS NULL) OR ([homePhone] = @Original_homePhone)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_email)) AND ([engagedTo] = @Original_engagedTo))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Client] WHERE (([Id] = @Original_Id) AND ([firstname] = @Original_firstname) AND ([surname] = @Original_surname) AND ((@IsNull_contactPerson = 1 AND [contactPerson] IS NULL) OR ([contactPerson] = @Original_contactPerson)) AND ([address] = @Original_address) AND ([mobile] = @Original_mobile) AND ((@IsNull_homePhone = 1 AND [homePhone] IS NULL) OR ([homePhone] = @Original_homePhone)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_email)) AND ([engagedTo_firstname] = @Original_engagedTo_firstname) AND ([engagedTo_surname] = @Original_engagedTo_surname))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_firstname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3215,13 +3301,13 @@ namespace Assignment3_LHISGroup.ModelDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_homePhone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "homePhone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_email", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_engagedTo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_engagedTo_firstname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo_firstname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_engagedTo_surname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo_surname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Client] ([Id], [firstname], [surname], [contactPerson], [address], [mobile], [homePhone], [email], [engagedTo]) VALUES (@Id, @firstname, @surname, @contactPerson, @address, @mobile, @homePhone, @email, @engagedTo);
-SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo FROM Client WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Client] ([firstname], [surname], [contactPerson], [address], [mobile], [homePhone], [email], [engagedTo_firstname], [engagedTo_surname]) VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, @email, @engagedTo_firstname, @engagedTo_surname);
+SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo_firstname, engagedTo_surname FROM Client WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@surname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "surname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contactPerson", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contactPerson", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3229,13 +3315,13 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mobile", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "mobile", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@homePhone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "homePhone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@engagedTo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@engagedTo_firstname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo_firstname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@engagedTo_surname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo_surname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Client] SET [Id] = @Id, [firstname] = @firstname, [surname] = @surname, [contactPerson] = @contactPerson, [address] = @address, [mobile] = @mobile, [homePhone] = @homePhone, [email] = @email, [engagedTo] = @engagedTo WHERE (([Id] = @Original_Id) AND ([firstname] = @Original_firstname) AND ([surname] = @Original_surname) AND ((@IsNull_contactPerson = 1 AND [contactPerson] IS NULL) OR ([contactPerson] = @Original_contactPerson)) AND ([address] = @Original_address) AND ([mobile] = @Original_mobile) AND ((@IsNull_homePhone = 1 AND [homePhone] IS NULL) OR ([homePhone] = @Original_homePhone)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_email)) AND ([engagedTo] = @Original_engagedTo));
-SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo FROM Client WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Client] SET [firstname] = @firstname, [surname] = @surname, [contactPerson] = @contactPerson, [address] = @address, [mobile] = @mobile, [homePhone] = @homePhone, [email] = @email, [engagedTo_firstname] = @engagedTo_firstname, [engagedTo_surname] = @engagedTo_surname WHERE (([Id] = @Original_Id) AND ([firstname] = @Original_firstname) AND ([surname] = @Original_surname) AND ((@IsNull_contactPerson = 1 AND [contactPerson] IS NULL) OR ([contactPerson] = @Original_contactPerson)) AND ([address] = @Original_address) AND ([mobile] = @Original_mobile) AND ((@IsNull_homePhone = 1 AND [homePhone] IS NULL) OR ([homePhone] = @Original_homePhone)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_email)) AND ([engagedTo_firstname] = @Original_engagedTo_firstname) AND ([engagedTo_surname] = @Original_engagedTo_surname));
+SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo_firstname, engagedTo_surname FROM Client WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@firstname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@surname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "surname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contactPerson", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contactPerson", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3243,7 +3329,8 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mobile", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "mobile", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@homePhone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "homePhone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@engagedTo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@engagedTo_firstname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo_firstname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@engagedTo_surname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo_surname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_firstname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "firstname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_surname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "surname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3255,7 +3342,9 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_homePhone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "homePhone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_email", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_engagedTo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_engagedTo_firstname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo_firstname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_engagedTo_surname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "engagedTo_surname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3272,7 +3361,7 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email, " +
-                "engagedTo FROM dbo.Client";
+                "engagedTo_firstname, engagedTo_surname FROM Client";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3333,7 +3422,7 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_firstname, string Original_surname, string Original_contactPerson, string Original_address, string Original_mobile, string Original_homePhone, string Original_email, string Original_engagedTo) {
+        public virtual int Delete(int Original_Id, string Original_firstname, string Original_surname, string Original_contactPerson, string Original_address, string Original_mobile, string Original_homePhone, string Original_email, string Original_engagedTo_firstname, string Original_engagedTo_surname) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_firstname == null)) {
                 throw new global::System.ArgumentNullException("Original_firstname");
@@ -3383,11 +3472,17 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_email));
             }
-            if ((Original_engagedTo == null)) {
-                throw new global::System.ArgumentNullException("Original_engagedTo");
+            if ((Original_engagedTo_firstname == null)) {
+                throw new global::System.ArgumentNullException("Original_engagedTo_firstname");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_engagedTo));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_engagedTo_firstname));
+            }
+            if ((Original_engagedTo_surname == null)) {
+                throw new global::System.ArgumentNullException("Original_engagedTo_surname");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_engagedTo_surname));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3409,55 +3504,60 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, string firstname, string surname, string contactPerson, string address, string mobile, string homePhone, string email, string engagedTo) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Insert(string firstname, string surname, string contactPerson, string address, string mobile, string homePhone, string email, string engagedTo_firstname, string engagedTo_surname) {
             if ((firstname == null)) {
                 throw new global::System.ArgumentNullException("firstname");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(firstname));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(firstname));
             }
             if ((surname == null)) {
                 throw new global::System.ArgumentNullException("surname");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(surname));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(surname));
             }
             if ((contactPerson == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(contactPerson));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(contactPerson));
             }
             if ((address == null)) {
                 throw new global::System.ArgumentNullException("address");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(address));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(address));
             }
             if ((mobile == null)) {
                 throw new global::System.ArgumentNullException("mobile");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(mobile));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(mobile));
             }
             if ((homePhone == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(homePhone));
+            }
+            if ((email == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(homePhone));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(email));
             }
-            if ((email == null)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(email));
-            }
-            if ((engagedTo == null)) {
-                throw new global::System.ArgumentNullException("engagedTo");
+            if ((engagedTo_firstname == null)) {
+                throw new global::System.ArgumentNullException("engagedTo_firstname");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(engagedTo));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(engagedTo_firstname));
+            }
+            if ((engagedTo_surname == null)) {
+                throw new global::System.ArgumentNullException("engagedTo_surname");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(engagedTo_surname));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3480,7 +3580,6 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    int Id, 
                     string firstname, 
                     string surname, 
                     string contactPerson, 
@@ -3488,7 +3587,8 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
                     string mobile, 
                     string homePhone, 
                     string email, 
-                    string engagedTo, 
+                    string engagedTo_firstname, 
+                    string engagedTo_surname, 
                     int Original_Id, 
                     string Original_firstname, 
                     string Original_surname, 
@@ -3497,55 +3597,62 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
                     string Original_mobile, 
                     string Original_homePhone, 
                     string Original_email, 
-                    string Original_engagedTo) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
+                    string Original_engagedTo_firstname, 
+                    string Original_engagedTo_surname, 
+                    int Id) {
             if ((firstname == null)) {
                 throw new global::System.ArgumentNullException("firstname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(firstname));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(firstname));
             }
             if ((surname == null)) {
                 throw new global::System.ArgumentNullException("surname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(surname));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(surname));
             }
             if ((contactPerson == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(contactPerson));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(contactPerson));
             }
             if ((address == null)) {
                 throw new global::System.ArgumentNullException("address");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(address));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(address));
             }
             if ((mobile == null)) {
                 throw new global::System.ArgumentNullException("mobile");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(mobile));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(mobile));
             }
             if ((homePhone == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(homePhone));
+            }
+            if ((email == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(homePhone));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(email));
             }
-            if ((email == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(email));
-            }
-            if ((engagedTo == null)) {
-                throw new global::System.ArgumentNullException("engagedTo");
+            if ((engagedTo_firstname == null)) {
+                throw new global::System.ArgumentNullException("engagedTo_firstname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(engagedTo));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(engagedTo_firstname));
+            }
+            if ((engagedTo_surname == null)) {
+                throw new global::System.ArgumentNullException("engagedTo_surname");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(engagedTo_surname));
             }
             this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id));
             if ((Original_firstname == null)) {
@@ -3596,12 +3703,19 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_email));
             }
-            if ((Original_engagedTo == null)) {
-                throw new global::System.ArgumentNullException("Original_engagedTo");
+            if ((Original_engagedTo_firstname == null)) {
+                throw new global::System.ArgumentNullException("Original_engagedTo_firstname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_engagedTo));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_engagedTo_firstname));
             }
+            if ((Original_engagedTo_surname == null)) {
+                throw new global::System.ArgumentNullException("Original_engagedTo_surname");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_engagedTo_surname));
+            }
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3630,7 +3744,8 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
                     string mobile, 
                     string homePhone, 
                     string email, 
-                    string engagedTo, 
+                    string engagedTo_firstname, 
+                    string engagedTo_surname, 
                     int Original_Id, 
                     string Original_firstname, 
                     string Original_surname, 
@@ -3639,8 +3754,9 @@ SELECT Id, firstname, surname, contactPerson, address, mobile, homePhone, email,
                     string Original_mobile, 
                     string Original_homePhone, 
                     string Original_email, 
-                    string Original_engagedTo) {
-            return this.Update(Original_Id, firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo, Original_Id, Original_firstname, Original_surname, Original_contactPerson, Original_address, Original_mobile, Original_homePhone, Original_email, Original_engagedTo);
+                    string Original_engagedTo_firstname, 
+                    string Original_engagedTo_surname) {
+            return this.Update(firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo_firstname, engagedTo_surname, Original_Id, Original_firstname, Original_surname, Original_contactPerson, Original_address, Original_mobile, Original_homePhone, Original_email, Original_engagedTo_firstname, Original_engagedTo_surname, Original_Id);
         }
     }
     
@@ -4693,10 +4809,11 @@ SELECT Id, CompanyName, Address, ContactPerson, Email, PhoneNumber, CreditTerms 
             tableMapping.ColumnMappings.Add("completeByDate", "completeByDate");
             tableMapping.ColumnMappings.Add("actualCompletionDate", "actualCompletionDate");
             tableMapping.ColumnMappings.Add("staffOnJob_FK", "staffOnJob_FK");
+            tableMapping.ColumnMappings.Add("weddingID_FK", "weddingID_FK");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Task] WHERE (([Id] = @Original_Id) AND ([name] = @Original_name) AND ([description] = @Original_description) AND ([priority] = @Original_priority) AND ([completeByDate] = @Original_completeByDate) AND ([actualCompletionDate] = @Original_actualCompletionDate) AND ([staffOnJob_FK] = @Original_staffOnJob_FK))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Task] WHERE (([Id] = @Original_Id) AND ([name] = @Original_name) AND ([description] = @Original_description) AND ([priority] = @Original_priority) AND ([completeByDate] = @Original_completeByDate) AND ([actualCompletionDate] = @Original_actualCompletionDate) AND ([staffOnJob_FK] = @Original_staffOnJob_FK) AND ([weddingID_FK] = @Original_weddingID_FK))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4705,30 +4822,31 @@ SELECT Id, CompanyName, Address, ContactPerson, Email, PhoneNumber, CreditTerms 
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_completeByDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "completeByDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_actualCompletionDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "actualCompletionDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_staffOnJob_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "staffOnJob_FK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_weddingID_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weddingID_FK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Task] ([Id], [name], [description], [priority], [completeByDate], [actualCompletionDate], [staffOnJob_FK]) VALUES (@Id, @name, @description, @priority, @completeByDate, @actualCompletionDate, @staffOnJob_FK);
-SELECT Id, name, description, priority, completeByDate, actualCompletionDate, staffOnJob_FK FROM Task WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Task] ([name], [description], [priority], [completeByDate], [actualCompletionDate], [staffOnJob_FK], [weddingID_FK]) VALUES (@name, @description, @priority, @completeByDate, @actualCompletionDate, @staffOnJob_FK, @weddingID_FK);
+SELECT Id, name, description, priority, completeByDate, actualCompletionDate, staffOnJob_FK, weddingID_FK FROM Task WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priority", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@completeByDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "completeByDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@actualCompletionDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "actualCompletionDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@staffOnJob_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "staffOnJob_FK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@weddingID_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weddingID_FK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Task] SET [Id] = @Id, [name] = @name, [description] = @description, [priority] = @priority, [completeByDate] = @completeByDate, [actualCompletionDate] = @actualCompletionDate, [staffOnJob_FK] = @staffOnJob_FK WHERE (([Id] = @Original_Id) AND ([name] = @Original_name) AND ([description] = @Original_description) AND ([priority] = @Original_priority) AND ([completeByDate] = @Original_completeByDate) AND ([actualCompletionDate] = @Original_actualCompletionDate) AND ([staffOnJob_FK] = @Original_staffOnJob_FK));
-SELECT Id, name, description, priority, completeByDate, actualCompletionDate, staffOnJob_FK FROM Task WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Task] SET [name] = @name, [description] = @description, [priority] = @priority, [completeByDate] = @completeByDate, [actualCompletionDate] = @actualCompletionDate, [staffOnJob_FK] = @staffOnJob_FK, [weddingID_FK] = @weddingID_FK WHERE (([Id] = @Original_Id) AND ([name] = @Original_name) AND ([description] = @Original_description) AND ([priority] = @Original_priority) AND ([completeByDate] = @Original_completeByDate) AND ([actualCompletionDate] = @Original_actualCompletionDate) AND ([staffOnJob_FK] = @Original_staffOnJob_FK) AND ([weddingID_FK] = @Original_weddingID_FK));
+SELECT Id, name, description, priority, completeByDate, actualCompletionDate, staffOnJob_FK, weddingID_FK FROM Task WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@priority", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "priority", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@completeByDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "completeByDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@actualCompletionDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "actualCompletionDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@staffOnJob_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "staffOnJob_FK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@weddingID_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weddingID_FK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4736,6 +4854,8 @@ SELECT Id, name, description, priority, completeByDate, actualCompletionDate, st
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_completeByDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "completeByDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_actualCompletionDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "actualCompletionDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_staffOnJob_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "staffOnJob_FK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_weddingID_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weddingID_FK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4752,7 +4872,7 @@ SELECT Id, name, description, priority, completeByDate, actualCompletionDate, st
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, name, description, priority, completeByDate, actualCompletionDate, sta" +
-                "ffOnJob_FK FROM dbo.Task";
+                "ffOnJob_FK, weddingID_FK FROM Task";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4813,7 +4933,7 @@ SELECT Id, name, description, priority, completeByDate, actualCompletionDate, st
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_name, string Original_description, string Original_priority, System.DateTime Original_completeByDate, System.DateTime Original_actualCompletionDate, int Original_staffOnJob_FK) {
+        public virtual int Delete(int Original_Id, string Original_name, string Original_description, string Original_priority, System.DateTime Original_completeByDate, System.DateTime Original_actualCompletionDate, int Original_staffOnJob_FK, int Original_weddingID_FK) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_name == null)) {
                 throw new global::System.ArgumentNullException("Original_name");
@@ -4836,6 +4956,7 @@ SELECT Id, name, description, priority, completeByDate, actualCompletionDate, st
             this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_completeByDate));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_actualCompletionDate));
             this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_staffOnJob_FK));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_weddingID_FK));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4856,29 +4977,29 @@ SELECT Id, name, description, priority, completeByDate, actualCompletionDate, st
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, string name, string description, string priority, System.DateTime completeByDate, System.DateTime actualCompletionDate, int staffOnJob_FK) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Insert(string name, string description, string priority, System.DateTime completeByDate, System.DateTime actualCompletionDate, int staffOnJob_FK, int weddingID_FK) {
             if ((name == null)) {
                 throw new global::System.ArgumentNullException("name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(name));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(name));
             }
             if ((description == null)) {
                 throw new global::System.ArgumentNullException("description");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(description));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(description));
             }
             if ((priority == null)) {
                 throw new global::System.ArgumentNullException("priority");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(priority));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(priority));
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(completeByDate));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(actualCompletionDate));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(staffOnJob_FK));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(completeByDate));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(actualCompletionDate));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(staffOnJob_FK));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(weddingID_FK));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4899,29 +5020,45 @@ SELECT Id, name, description, priority, completeByDate, actualCompletionDate, st
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Id, string name, string description, string priority, System.DateTime completeByDate, System.DateTime actualCompletionDate, int staffOnJob_FK, int Original_Id, string Original_name, string Original_description, string Original_priority, System.DateTime Original_completeByDate, System.DateTime Original_actualCompletionDate, int Original_staffOnJob_FK) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Update(
+                    string name, 
+                    string description, 
+                    string priority, 
+                    System.DateTime completeByDate, 
+                    System.DateTime actualCompletionDate, 
+                    int staffOnJob_FK, 
+                    int weddingID_FK, 
+                    int Original_Id, 
+                    string Original_name, 
+                    string Original_description, 
+                    string Original_priority, 
+                    System.DateTime Original_completeByDate, 
+                    System.DateTime Original_actualCompletionDate, 
+                    int Original_staffOnJob_FK, 
+                    int Original_weddingID_FK, 
+                    int Id) {
             if ((name == null)) {
                 throw new global::System.ArgumentNullException("name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(name));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(name));
             }
             if ((description == null)) {
                 throw new global::System.ArgumentNullException("description");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(description));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(description));
             }
             if ((priority == null)) {
                 throw new global::System.ArgumentNullException("priority");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(priority));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(priority));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(completeByDate));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(actualCompletionDate));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(staffOnJob_FK));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(completeByDate));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(actualCompletionDate));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(staffOnJob_FK));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(weddingID_FK));
             this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Id));
             if ((Original_name == null)) {
                 throw new global::System.ArgumentNullException("Original_name");
@@ -4944,6 +5081,8 @@ SELECT Id, name, description, priority, completeByDate, actualCompletionDate, st
             this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_completeByDate));
             this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_actualCompletionDate));
             this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_staffOnJob_FK));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_weddingID_FK));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4964,8 +5103,8 @@ SELECT Id, name, description, priority, completeByDate, actualCompletionDate, st
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string name, string description, string priority, System.DateTime completeByDate, System.DateTime actualCompletionDate, int staffOnJob_FK, int Original_Id, string Original_name, string Original_description, string Original_priority, System.DateTime Original_completeByDate, System.DateTime Original_actualCompletionDate, int Original_staffOnJob_FK) {
-            return this.Update(Original_Id, name, description, priority, completeByDate, actualCompletionDate, staffOnJob_FK, Original_Id, Original_name, Original_description, Original_priority, Original_completeByDate, Original_actualCompletionDate, Original_staffOnJob_FK);
+        public virtual int Update(string name, string description, string priority, System.DateTime completeByDate, System.DateTime actualCompletionDate, int staffOnJob_FK, int weddingID_FK, int Original_Id, string Original_name, string Original_description, string Original_priority, System.DateTime Original_completeByDate, System.DateTime Original_actualCompletionDate, int Original_staffOnJob_FK, int Original_weddingID_FK) {
+            return this.Update(name, description, priority, completeByDate, actualCompletionDate, staffOnJob_FK, weddingID_FK, Original_Id, Original_name, Original_description, Original_priority, Original_completeByDate, Original_actualCompletionDate, Original_staffOnJob_FK, Original_weddingID_FK, Original_Id);
         }
     }
     
@@ -5536,6 +5675,15 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._weddingTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Wedding.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._weddingTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._suppliersTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -5551,15 +5699,6 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._taskTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._weddingTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Wedding.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._weddingTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5589,6 +5728,14 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._weddingTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Wedding.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._weddingTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._suppliersTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Suppliers.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -5605,14 +5752,6 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._weddingTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Wedding.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._weddingTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -5623,14 +5762,6 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(ModelDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._weddingTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Wedding.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._weddingTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._taskTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Task.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -5644,6 +5775,14 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._suppliersTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._weddingTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Wedding.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._weddingTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
