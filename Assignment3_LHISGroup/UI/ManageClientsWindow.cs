@@ -12,9 +12,13 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class ManageClientsWindow : Form
     {
-        public ManageClientsWindow()
+        MainWindow mainWin;
+        DbController db;
+        public ManageClientsWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
+            mainWin = w;
+            db = d;
         }
 
         private void AddClientButton_Click(object sender, EventArgs e)
@@ -25,8 +29,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateClientButton_Click(object sender, EventArgs e)
         {
-            UI.UpdateClientWindow win = new UI.UpdateClientWindow();
-            win.Visible = true;
+            mainWin.UpdateClientWindow.Visible = true;
         }
     }
 }

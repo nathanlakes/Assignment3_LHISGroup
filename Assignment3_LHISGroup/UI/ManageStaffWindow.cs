@@ -12,9 +12,13 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class ManageStaffWindow : Form
     {
-        public ManageStaffWindow()
+        MainWindow mainWin;
+        DbController db;
+        public ManageStaffWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
+            mainWin = w;
+            db = d;
         }
 
         private void AddStaffButton_Click(object sender, EventArgs e)
@@ -25,8 +29,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UI.UpdateStaffWindow win = new UI.UpdateStaffWindow();
-            win.Visible = true;
+            mainWin.UpdateStaffWindow.Visible = true;
         }
     }
 }

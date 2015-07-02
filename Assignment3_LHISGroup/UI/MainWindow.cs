@@ -49,10 +49,10 @@ namespace Assignment3_LHISGroup
             EventReportWindow = new UI.EventReportWindow(this, db);
             EventReportWindow.Hide();
 
-            UpdateClientWindow = new UI.UpdateClientWindow();
+            UpdateClientWindow = new UI.UpdateClientWindow(this, db);
             UpdateClientWindow.Hide();
 
-            UpdateStaffWindow = new UI.UpdateStaffWindow();
+            UpdateStaffWindow = new UI.UpdateStaffWindow(this, db);
             UpdateStaffWindow.Hide();
 
             UpdateSupplierWindow = new UI.UpdateSupplierWindow(this, db);
@@ -64,10 +64,10 @@ namespace Assignment3_LHISGroup
             UpdateWeddingWindow = new UI.UpdateWeddingWindow(this, db);
             UpdateWeddingWindow.Hide();
             
-            ManageClientsWindow = new UI.ManageClientsWindow();
+            ManageClientsWindow = new UI.ManageClientsWindow(this, db);
             ManageClientsWindow.Hide();
 
-            ManageStaffWindow = new UI.ManageStaffWindow();
+            ManageStaffWindow = new UI.ManageStaffWindow(this, db);
             ManageStaffWindow.Hide();
 
             ManageSuppliersWindow = new UI.ManageSuppliersWindow(this, db);
