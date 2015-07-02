@@ -18,18 +18,20 @@ namespace Assignment3_LHISGroup
     public class DbController
     {
 
+        SqlConnection _db;
         string connStr = "Data Source=(LocalDB)\\v11.0;" +
                     "AttachDbFilename=|DataDirectory|\\Database\\Model.mdf;" +
                     "Integrated Security=True";
         
         public DbController()
         {
-              
+            _db = new SqlConnection(connStr);
         }
 
         public DbController(string myConnection)
         {
             connStr = myConnection;
+            _db = new SqlConnection(connStr);
         }
 
         /**
@@ -48,24 +50,22 @@ namespace Assignment3_LHISGroup
             if (staffId == -1) throw new Exception("Staff must exist in Db.Staff, before being assigned to a task:");
 
             int res = 0;
+                        
+            _db.Open();
+            String query = @"INSERT INTO Task(name,description,priority,completeByDate, staffOnJob_FK) ";
+            query += @" VALUES( @taskname, @description, @priority, @completeByDate, @staffOnJob)";
 
-            using (SqlConnection _db = new SqlConnection(connStr))
-            {
-                _db.Open();
-                String query = @"INSERT INTO Task(name,description,priority,completeByDate, staffOnJob_FK) ";
-                query += @" VALUES( @taskname, @description, @priority, @completeByDate, @staffOnJob)";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@taskname", t.TaskName);
+            myCommand.Parameters.AddWithValue("@description", t.Description);
+            myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
+            myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString() );
+            myCommand.Parameters.AddWithValue("@staffOnJob", staffId.ToString() );
 
-                SqlCommand myCommand = new SqlCommand(query, _db);
-                myCommand.Parameters.AddWithValue("@taskname", t.TaskName);
-                myCommand.Parameters.AddWithValue("@description", t.Description);
-                myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
-                myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString() );
-                myCommand.Parameters.AddWithValue("@staffOnJob", staffId.ToString() );
-
-                res = myCommand.ExecuteNonQuery();
+            res = myCommand.ExecuteNonQuery();
                 
-                _db.Close();
-            }
+            _db.Close();
+            
             
             if (res == 1) return true;  //Should only update one row
             return false;
@@ -88,16 +88,15 @@ namespace Assignment3_LHISGroup
 
 
             int res = 0;
-            using (SqlConnection _db = new SqlConnection(connStr))
-            {
-                String query = "UPDATE Task SET staffOnJob_FK='@staffId' WHERE Id='@taskId'";
-                SqlCommand myCommand = new SqlCommand(query, _db);
-                    myCommand.Parameters.AddWithValue("@staffId", staffId);
-                    myCommand.Parameters.AddWithValue("@taskId", taskId);
+            
+            String query = "UPDATE Task SET staffOnJob_FK='@staffId' WHERE Id='@taskId'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@staffId", staffId);
+                myCommand.Parameters.AddWithValue("@taskId", taskId);
 
-
-                res = myCommand.ExecuteNonQuery();  // Run the statement.
-            }
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();  // Run the statement.
+            _db.Close();
             
             if (res == 1) return true;  // Should only update one row.
             else return false;
@@ -109,7 +108,17 @@ namespace Assignment3_LHISGroup
          */
         public bool DeleteTask(int id)
         {
+            int res = 0;
+            
+            String query = "DELETE FROM Task WHERE Id=@idnum";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@idnum", id);
 
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();  // Run the statement.
+            _db.Close();
+
+            if (res == 1) return true;
             return false;
         }
 
@@ -118,11 +127,40 @@ namespace Assignment3_LHISGroup
          *   @Param  id: the primary key of the task to change
          *   @Param  t : the new task object with updated values
          */
-        public Support_Classes.Task UpdateTask(int id, Support_Classes.Task t)
+        public bool UpdateTask(int id, Support_Classes.Task t)
         {
+            int staffID = getStaffId( t.AssignedTo );
             
-            Support_Classes.Task tt = null;
-            return tt;
+            string query = @"UPDATE Task";
+            query +=       @"SET name='@name', description ='@description', priority='@priority', ";
+            query +=       @"completeByDate='@completeByDate', actualCompletionDate='@actualCompDate,";
+            query +=       @"staffOnJob_FK='@staffOnJob";
+            query +=       @"WHERE id=@id";
+
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@name", t.TaskName);
+            myCommand.Parameters.AddWithValue("@description", t.Description);
+            myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
+            myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString());
+
+            try
+            {
+                myCommand.Parameters.AddWithValue("@actualCompDate", t.CompletionDate.ToShortDateString());
+            }
+            catch (Exception) 
+            {
+                myCommand.Parameters.AddWithValue("@actualCompDate", null);
+            }
+
+            myCommand.Parameters.AddWithValue("@staffOnJob", staffID);
+            myCommand.Parameters.AddWithValue("@id", id);
+
+            _db.Open();
+            int res = myCommand.ExecuteNonQuery();  // Run the statement.
+            _db.Close();
+
+            if (res == 1) return true;
+            return false;
         }
 
         /**
@@ -131,6 +169,33 @@ namespace Assignment3_LHISGroup
          */
         public bool AddClient(Client c)
         {
+            String query = @"INSERT into Client (firstname, surname, contactPerson, address, ";
+            query += @"mobile, homePhone, email, engagedTo)";
+            query += @" VALUES ()";
+
+
+            SqlCommand myCommand = new SqlCommand(query);
+
+            myCommand.Parameters.AddWithValue("@_firstname", s.FirstName);
+            myCommand.Parameters.AddWithValue("@_surname", s.Surname);
+            myCommand.Parameters.AddWithValue("@_email", s.Email);
+            myCommand.Parameters.AddWithValue("@_phone", s.Phone);
+            myCommand.Parameters.AddWithValue("@_notes", s.Notes);
+            myCommand.Parameters.AddWithValue("@_status", s.StatusToString());
+
+            int res = 0;
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                myCommand.Connection = _db;
+
+                _db.Open();
+                res = myCommand.ExecuteNonQuery();   // Run the statement.
+                _db.Close();
+            }
+
+            if (res == 1) return true;           // Should only update one row.
+            else return false;
 
             return false; 
         }
