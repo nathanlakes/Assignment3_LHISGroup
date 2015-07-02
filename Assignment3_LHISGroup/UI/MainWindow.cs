@@ -96,11 +96,22 @@ namespace Assignment3_LHISGroup
 
 
             this.nathanDebug();                  // Code to debug Db in dev. cycle.
-            
+
+            this.danielTest();   // Code for Daniel to test reports
         }
+
+        // code for Daniel to test
+        private void danielTest()
+        {
+            UI.EventReportWindow ewin = new UI.EventReportWindow(this);
+            ewin.Show();
+        }
+
 
         // Used for DB Debugging purposes, NL to clean up
         // Do not modify or worry about the class behind, work in progress. 
+
+
         private void nathanDebug()
         {            
             Staff s1 = new Staff("Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "cant work sundays",
