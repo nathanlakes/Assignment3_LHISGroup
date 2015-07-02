@@ -12,14 +12,18 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class UpdateWeddingWindow : Form
     {
-        public UpdateWeddingWindow()
+        DbController db;
+        MainWindow mainWin;
+        public UpdateWeddingWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
+            db = d;
+            mainWin = w;
         }
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-            UI.EventReportWindow win = new UI.EventReportWindow(this);
+            UI.EventReportWindow win = new UI.EventReportWindow(mainWin, db);
             win.Visible = true;
         }
     }

@@ -46,7 +46,7 @@ namespace Assignment3_LHISGroup
             
             // create windows and hide them for later use
             // this saves on CPU by not recreating them every time they are needed
-            EventReportWindow = new UI.EventReportWindow(this);
+            EventReportWindow = new UI.EventReportWindow(this, db);
             EventReportWindow.Hide();
 
             UpdateClientWindow = new UI.UpdateClientWindow();
@@ -61,7 +61,7 @@ namespace Assignment3_LHISGroup
             UpdateTaskWindow = new UI.UpdateTaskWindow();
             UpdateTaskWindow.Hide();
 
-            UpdateWeddingWindow = new UI.UpdateWeddingWindow();
+            UpdateWeddingWindow = new UI.UpdateWeddingWindow(this, db);
             UpdateWeddingWindow.Hide();
             
             ManageClientsWindow = new UI.ManageClientsWindow();
@@ -103,7 +103,7 @@ namespace Assignment3_LHISGroup
         // code for Daniel to test
         private void danielTest()
         {
-            UI.EventReportWindow ewin = new UI.EventReportWindow(this);
+            UI.EventReportWindow ewin = new UI.EventReportWindow(this, db);
             ewin.Show();
             MessageBox.Show("The testing window for reports may be behind the main window");
         }
