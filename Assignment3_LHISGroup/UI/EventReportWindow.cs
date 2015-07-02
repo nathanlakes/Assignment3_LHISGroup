@@ -12,12 +12,14 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class EventReportWindow : Form
     {
-        Form parent;
-        public EventReportWindow(Form form)
+        DbController db;
+        MainWindow mainWin;
+        public EventReportWindow(MainWindow form, DbController controller)
         {
             InitializeComponent();
-            parent = form;
-            parent.Hide();
+            db = controller;
+            mainWin = form;
+            //parent.Hide();
             //this.Show();
         }
 
@@ -48,7 +50,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void EventReportWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
-            parent.Show();
+            mainWin.Show();
             this.Dispose();
         }
 

@@ -12,9 +12,14 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class UpdateTaskWindow : Form
     {
-        public UpdateTaskWindow()
+        MainWindow mainWin;
+        DbController db;
+        
+        public UpdateTaskWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
+            this.db = d;
+            this.mainWin = w;
         }
     }
 }

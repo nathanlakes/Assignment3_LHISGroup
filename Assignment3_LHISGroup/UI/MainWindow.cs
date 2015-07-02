@@ -18,26 +18,26 @@ namespace Assignment3_LHISGroup
         public DbController db;
 
         // windows accessed from the main window
-        private UI.ManageClientsWindow ManageClientsWindow;
-        private UI.ManageStaffWindow ManageStaffWindow;
-        private UI.ManageSuppliersWindow ManageSuppliersWindow;
-        private UI.ManageTasksWindow ManageTasksWindow;
-        private UI.ManageWeddingsWindow ManageWeddingsWindow;
+        public UI.ManageClientsWindow ManageClientsWindow;
+        public UI.ManageStaffWindow ManageStaffWindow;
+        public UI.ManageSuppliersWindow ManageSuppliersWindow;
+        public UI.ManageTasksWindow ManageTasksWindow;
+        public UI.ManageWeddingsWindow ManageWeddingsWindow;
 
-        private UI.NewClientWindow NewClientWindow;
-        private UI.NewStaffWindow NewStaffWindow;
-        private UI.NewSupplierWindow NewSupplierWindow;
-        private UI.NewTaskWindow NewTaskWindow;
-        private UI.NewWeddingWindow NewWeddingWindow;
+        public UI.NewClientWindow NewClientWindow;
+        public UI.NewStaffWindow NewStaffWindow;
+        public UI.NewSupplierWindow NewSupplierWindow;
+        public UI.NewTaskWindow NewTaskWindow;
+        public UI.NewWeddingWindow NewWeddingWindow;
 
 
         // windows accesssed from other windows
-        private UI.EventReportWindow EventReportWindow; // accessed from UpdateWeddingWindow
-        private UI.UpdateClientWindow UpdateClientWindow; // accessed from ManageClientsWindow
-        private UI.UpdateStaffWindow UpdateStaffWindow; // accessed from ManageStaffWindow
-        private UI.UpdateSupplierWindow UpdateSupplierWindow; // accessed from ManageSuppliersWindow
-        private UI.UpdateTaskWindow UpdateTaskWindow; // accessed from ManageTasksWindow
-        private UI.UpdateWeddingWindow UpdateWeddingWindow; // accessed from ManageWeddingsWindow
+        public UI.EventReportWindow EventReportWindow; // accessed from UpdateWeddingWindow
+        public UI.UpdateClientWindow UpdateClientWindow; // accessed from ManageClientsWindow
+        public UI.UpdateStaffWindow UpdateStaffWindow; // accessed from ManageStaffWindow
+        public UI.UpdateSupplierWindow UpdateSupplierWindow; // accessed from ManageSuppliersWindow
+        public UI.UpdateTaskWindow UpdateTaskWindow; // accessed from ManageTasksWindow
+        public UI.UpdateWeddingWindow UpdateWeddingWindow; // accessed from ManageWeddingsWindow
 
         public MainWindow()
         {
@@ -46,7 +46,7 @@ namespace Assignment3_LHISGroup
             
             // create windows and hide them for later use
             // this saves on CPU by not recreating them every time they are needed
-            EventReportWindow = new UI.EventReportWindow(this);
+            EventReportWindow = new UI.EventReportWindow(this, db);
             EventReportWindow.Hide();
 
             UpdateClientWindow = new UI.UpdateClientWindow();
@@ -55,13 +55,13 @@ namespace Assignment3_LHISGroup
             UpdateStaffWindow = new UI.UpdateStaffWindow();
             UpdateStaffWindow.Hide();
 
-            UpdateSupplierWindow = new UI.UpdateSupplierWindow();
+            UpdateSupplierWindow = new UI.UpdateSupplierWindow(this, db);
             UpdateSupplierWindow.Hide();
             
-            UpdateTaskWindow = new UI.UpdateTaskWindow();
+            UpdateTaskWindow = new UI.UpdateTaskWindow(this, db);
             UpdateTaskWindow.Hide();
 
-            UpdateWeddingWindow = new UI.UpdateWeddingWindow();
+            UpdateWeddingWindow = new UI.UpdateWeddingWindow(this, db);
             UpdateWeddingWindow.Hide();
             
             ManageClientsWindow = new UI.ManageClientsWindow();
@@ -70,13 +70,13 @@ namespace Assignment3_LHISGroup
             ManageStaffWindow = new UI.ManageStaffWindow();
             ManageStaffWindow.Hide();
 
-            ManageSuppliersWindow = new UI.ManageSuppliersWindow();
+            ManageSuppliersWindow = new UI.ManageSuppliersWindow(this, db);
             ManageSuppliersWindow.Hide();
 
-            ManageTasksWindow = new UI.ManageTasksWindow();
+            ManageTasksWindow = new UI.ManageTasksWindow(this, db);
             ManageTasksWindow.Hide();
 
-            ManageWeddingsWindow = new UI.ManageWeddingsWindow();
+            ManageWeddingsWindow = new UI.ManageWeddingsWindow(this, db);
             ManageWeddingsWindow.Hide();
 
             NewClientWindow = new UI.NewClientWindow();
@@ -103,7 +103,7 @@ namespace Assignment3_LHISGroup
         // code for Daniel to test
         private void danielTest()
         {
-            UI.EventReportWindow ewin = new UI.EventReportWindow(this);
+            UI.EventReportWindow ewin = new UI.EventReportWindow(this, db);
             ewin.Show();
             MessageBox.Show("The testing window for reports may be behind the main window");
         }
@@ -148,8 +148,7 @@ namespace Assignment3_LHISGroup
 
         private void ManageTasksButton_Click(object sender, EventArgs e)
         {
-            UI.ManageTasksWindow win = new UI.ManageTasksWindow();
-            win.Visible = true;
+            ManageTasksWindow.Visible = true;
         }
 
         private void ManageClientsButton_Click(object sender, EventArgs e)
@@ -159,44 +158,37 @@ namespace Assignment3_LHISGroup
 
         private void ManageWeddingsButton_Click(object sender, EventArgs e)
         {
-            UI.ManageWeddingsWindow win = new UI.ManageWeddingsWindow();
-            win.Visible = true;
+            ManageWeddingsWindow.Visible = true;
         }
 
         private void NewStaffButton_Click(object sender, EventArgs e)
         {
-            UI.NewStaffWindow win = new UI.NewStaffWindow();
-            win.Visible = true;
+            NewStaffWindow.Visible = true;
         }
 
         private void NewTaskButton_Click(object sender, EventArgs e)
         {
-            UI.NewTaskWindow win = new UI.NewTaskWindow();
-            win.Visible = true;
+            NewTaskWindow.Visible = true;
         }
 
         private void NewSupplierButton_Click(object sender, EventArgs e)
         {
-            UI.NewSupplierWindow win = new UI.NewSupplierWindow();
-            win.Visible = true;
+            NewSupplierWindow.Visible = true;
         }
 
         private void NewWeddingButton_Click(object sender, EventArgs e)
         {
-            UI.NewWeddingWindow win = new UI.NewWeddingWindow();
-            win.Visible = true;
+            NewWeddingWindow.Visible = true;
         }
 
         private void NewClientButton_Click(object sender, EventArgs e)
         {
-            UI.NewClientWindow win = new UI.NewClientWindow();
-            win.Visible = true;
+            NewClientWindow.Visible = true;
         }
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-            UI.EventReportWindow win = new UI.EventReportWindow(this);
-            win.Visible = true;
+            EventReportWindow.Visible = true;
         }
     }
 }

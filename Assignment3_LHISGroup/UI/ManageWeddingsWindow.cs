@@ -12,9 +12,13 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class ManageWeddingsWindow : Form
     {
-        public ManageWeddingsWindow()
+        MainWindow mainWin;
+        DbController db;
+        public ManageWeddingsWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
+            mainWin = w;
+            db = d;
         }
 
         private void AddWeddingButton_Click(object sender, EventArgs e)
@@ -25,8 +29,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateWeddingButton_Click(object sender, EventArgs e)
         {
-            UI.UpdateWeddingWindow win = new UI.UpdateWeddingWindow();
-            win.Visible = true;
+            mainWin.UpdateWeddingWindow.Visible = true;
         }
 
         private void DeleteWeddingButton_Click(object sender, EventArgs e)
