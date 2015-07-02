@@ -460,8 +460,26 @@ namespace Assignment3_LHISGroup
          */
         public bool AddSupplier(Supplier s)
         {
+            String query = @"INSERT into Suppliers (companyName, Address, contactPerson, Email, PhoneNumber, CreditTerms)";
+            query += @" VALUES (@companyName, @address, @contactPerson, @email, @phonenumber, @creditterms)";
 
-            return false;
+            SqlCommand myCommand = new SqlCommand(query, _db);
+
+            myCommand.Parameters.AddWithValue("@companyName", s.CompanyName);
+            myCommand.Parameters.AddWithValue("@address", s.Address);
+            myCommand.Parameters.AddWithValue("@contactPerson", s.ContactPerson);
+            myCommand.Parameters.AddWithValue("@email", s.Email);
+            myCommand.Parameters.AddWithValue("@phonenumber", s.PhoneNumber);
+            myCommand.Parameters.AddWithValue("@creditterms", s.CreditTerms);
+
+            int res = 0;
+
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();   // Run the statement.
+            _db.Close();            
+
+            if (res == 1) return true;           // Should only update one row.
+            else return false;
         }
 
         /**
@@ -503,8 +521,7 @@ namespace Assignment3_LHISGroup
             String query = @"INSERT into Staff (firstname, surname, email, phone, notes, status)";
             query += @" VALUES (@_firstname, @_surname, @_email, @_phone, @_notes, @_status)";
 
-
-            SqlCommand myCommand = new SqlCommand(query);
+            SqlCommand myCommand = new SqlCommand(query, _db);
 
             myCommand.Parameters.AddWithValue("@_firstname", s.FirstName);
             myCommand.Parameters.AddWithValue("@_surname", s.Surname);
@@ -515,14 +532,9 @@ namespace Assignment3_LHISGroup
 
             int res = 0;
 
-            using (SqlConnection _db = new SqlConnection(connStr))
-            {
-                myCommand.Connection = _db;
-
-                _db.Open();
-                res = myCommand.ExecuteNonQuery();   // Run the statement.
-                _db.Close();
-            }
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();   // Run the statement.
+            _db.Close();           
 
             if (res == 1) return true;           // Should only update one row.
             else return false;
