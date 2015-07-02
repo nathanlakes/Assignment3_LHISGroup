@@ -30,10 +30,8 @@
         {
             this.ClearButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
-            this.FirstNameTextBox = new System.Windows.Forms.TextBox();
             this.EngagedSurnameTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.SurnameTextBox = new System.Windows.Forms.TextBox();
             this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.HomePhoneTextBox = new System.Windows.Forms.TextBox();
             this.MobilePhoneTextBox = new System.Windows.Forms.TextBox();
@@ -52,8 +50,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.FirstNameTextBox = new System.Windows.Forms.TextBox();
+            this.SurnameTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // ClearButton
@@ -65,6 +63,7 @@
             this.ClearButton.TabIndex = 27;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = false;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // CreateButton
             // 
@@ -75,13 +74,7 @@
             this.CreateButton.TabIndex = 26;
             this.CreateButton.Text = "CREATE";
             this.CreateButton.UseVisualStyleBackColor = false;
-            // 
-            // FirstNameTextBox
-            // 
-            this.FirstNameTextBox.Location = new System.Drawing.Point(200, 57);
-            this.FirstNameTextBox.Name = "FirstNameTextBox";
-            this.FirstNameTextBox.Size = new System.Drawing.Size(211, 26);
-            this.FirstNameTextBox.TabIndex = 87;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // EngagedSurnameTextBox
             // 
@@ -98,13 +91,6 @@
             this.label9.Size = new System.Drawing.Size(74, 20);
             this.label9.TabIndex = 85;
             this.label9.Text = "Surname";
-            // 
-            // SurnameTextBox
-            // 
-            this.SurnameTextBox.Location = new System.Drawing.Point(200, 94);
-            this.SurnameTextBox.Name = "SurnameTextBox";
-            this.SurnameTextBox.Size = new System.Drawing.Size(211, 26);
-            this.SurnameTextBox.TabIndex = 72;
             // 
             // AddressTextBox
             // 
@@ -226,6 +212,8 @@
             // ContactCheckBox
             // 
             this.ContactCheckBox.AutoSize = true;
+            this.ContactCheckBox.Checked = true;
+            this.ContactCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ContactCheckBox.Location = new System.Drawing.Point(205, 547);
             this.ContactCheckBox.Name = "ContactCheckBox";
             this.ContactCheckBox.Size = new System.Drawing.Size(206, 24);
@@ -260,19 +248,19 @@
             this.label13.TabIndex = 65;
             this.label13.Text = "First Name";
             // 
-            // textBox1
+            // FirstNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(201, 94);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(211, 26);
-            this.textBox1.TabIndex = 72;
+            this.FirstNameTextBox.Location = new System.Drawing.Point(200, 57);
+            this.FirstNameTextBox.Name = "FirstNameTextBox";
+            this.FirstNameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.FirstNameTextBox.TabIndex = 109;
             // 
-            // textBox2
+            // SurnameTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(201, 57);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(211, 26);
-            this.textBox2.TabIndex = 87;
+            this.SurnameTextBox.Location = new System.Drawing.Point(200, 94);
+            this.SurnameTextBox.Name = "SurnameTextBox";
+            this.SurnameTextBox.Size = new System.Drawing.Size(211, 26);
+            this.SurnameTextBox.TabIndex = 108;
             // 
             // NewClientWindow
             // 
@@ -280,16 +268,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(467, 680);
+            this.Controls.Add(this.FirstNameTextBox);
+            this.Controls.Add(this.SurnameTextBox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.ContactCheckBox);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.FirstNameTextBox);
             this.Controls.Add(this.EngagedSurnameTextBox);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.SurnameTextBox);
             this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.HomePhoneTextBox);
             this.Controls.Add(this.MobilePhoneTextBox);
@@ -317,10 +303,8 @@
 
         private System.Windows.Forms.Button ClearButton;
         private System.Windows.Forms.Button CreateButton;
-        private System.Windows.Forms.TextBox FirstNameTextBox;
         private System.Windows.Forms.TextBox EngagedSurnameTextBox;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox SurnameTextBox;
         private System.Windows.Forms.TextBox AddressTextBox;
         private System.Windows.Forms.TextBox HomePhoneTextBox;
         private System.Windows.Forms.TextBox MobilePhoneTextBox;
@@ -339,7 +323,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox FirstNameTextBox;
+        private System.Windows.Forms.TextBox SurnameTextBox;
     }
 }
