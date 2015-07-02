@@ -64,8 +64,7 @@ namespace Assignment3_LHISGroup
 
             res = myCommand.ExecuteNonQuery();
                 
-            _db.Close();
-            
+            _db.Close();            
             
             if (res == 1) return true;  //Should only update one row
             return false;
@@ -85,7 +84,6 @@ namespace Assignment3_LHISGroup
             // Find ID of Task
             int taskId = getTaskId(t);
             if (taskId == -1) throw new Exception("Task does not exist.");
-
 
             int res = 0;
             
@@ -170,8 +168,8 @@ namespace Assignment3_LHISGroup
         public bool AddClient(Client c)
         {
             String query = @"INSERT into Client (firstname, surname, contactPerson, address, ";
-            query += @"mobile, homePhone, email, engagedTo)";
-            query += @" VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, @email, @engagedTo)";
+            query += @"mobile, homePhone, email, engagedTo_firstname, engagedTo_surname)";
+            query += @" VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, @email, @engFn, @engSn)";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
@@ -182,7 +180,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@mobile", c.Mobile);
             myCommand.Parameters.AddWithValue("@homePhone", c.HomePhone);
             myCommand.Parameters.AddWithValue("@email", c.Email);
-            myCommand.Parameters.AddWithValue("@engagedTo", c.EngagedTo);
+            myCommand.Parameters.AddWithValue("@engFn", c.EngagedTo_fn);
+            myCommand.Parameters.AddWithValue("@engSn", c.EngagedTo_sn);
+
 
             int res = 0;
             _db.Open();
@@ -202,7 +202,8 @@ namespace Assignment3_LHISGroup
         {
             string query = @"UPDATE Client";
             query += @"SET firstname='@firstname', surname='@surname', contactPerson='@contactPerson', address='@address', ";
-            query += @"mobile=@'mobile', homePhone='@homePhone', email='@email', engagedTo='@engagedTo'";
+            query += @"mobile=@'mobile', homePhone='@homePhone', email='@email', ";
+            query += @"engagedTo_firstname='@engFn', engagedTo_surname='@engSn'";
             query += @"WHERE id='@id'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
@@ -214,7 +215,8 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@mobile", c.Mobile);
             myCommand.Parameters.AddWithValue("@homePhone", c.HomePhone);
             myCommand.Parameters.AddWithValue("@email", c.Email);
-            myCommand.Parameters.AddWithValue("@engagedTo", c.EngagedTo);
+            myCommand.Parameters.AddWithValue("@engFn", c.EngagedTo_fn);
+            myCommand.Parameters.AddWithValue("@engSn", c.EngagedTo_sn);
             myCommand.Parameters.AddWithValue("@id", id);
             
             int res = 0;
@@ -290,7 +292,7 @@ namespace Assignment3_LHISGroup
          */
         public bool AddWedding(Wedding w)
         {
-
+            string query = @"INSERT into Weddding";
             return false;
         }
 
