@@ -173,8 +173,7 @@ namespace Assignment3_LHISGroup
             query += @"mobile, homePhone, email, engagedTo)";
             query += @" VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, @email, @engagedTo)";
 
-
-            SqlCommand myCommand = new SqlCommand(query);
+            SqlCommand myCommand = new SqlCommand(query, _db);
 
             myCommand.Parameters.AddWithValue("@firstname", c.Firstname );
             myCommand.Parameters.AddWithValue("@surname", c.Surname);
@@ -185,17 +184,10 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@email", c.Email);
             myCommand.Parameters.AddWithValue("@engagedTo", c.EngagedTo);
 
-
             int res = 0;
-
-            using (SqlConnection _db = new SqlConnection(connStr))
-            {
-                myCommand.Connection = _db;
-
-                _db.Open();
-                res = myCommand.ExecuteNonQuery();   // Run the statement.
-                _db.Close();
-            }
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();   // Run the statement.
+            _db.Close();            
 
             if (res == 1) return true;           // Should only update one row.
             else return false;
@@ -208,8 +200,30 @@ namespace Assignment3_LHISGroup
          */
         public bool UpdateClient(int id, Client c)
         {
+            string query = @"UPDATE Client";
+            query += @"SET firstname='@firstname', surname='@surname', contactPerson='@contactPerson', address='@address', ";
+            query += @"mobile=@'mobile', homePhone='@homePhone', email='@email', engagedTo='@engagedTo'";
+            query += @"WHERE id='@id'";
 
-            return false;
+            SqlCommand myCommand = new SqlCommand(query, _db);
+
+            myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
+            myCommand.Parameters.AddWithValue("@surname", c.Surname);
+            myCommand.Parameters.AddWithValue("@contactPerson", c.ContactPerson);
+            myCommand.Parameters.AddWithValue("@address", c.Address);
+            myCommand.Parameters.AddWithValue("@mobile", c.Mobile);
+            myCommand.Parameters.AddWithValue("@homePhone", c.HomePhone);
+            myCommand.Parameters.AddWithValue("@email", c.Email);
+            myCommand.Parameters.AddWithValue("@engagedTo", c.EngagedTo);
+            myCommand.Parameters.AddWithValue("@id", id);
+            
+            int res = 0;
+            _db.Open();
+            res = myCommand.ExecuteNonQuery();   // Run the statement.
+            _db.Close();
+
+            if (res == 1) return true;           // Should only update one row.
+            else return false;
         }
 
         /**
