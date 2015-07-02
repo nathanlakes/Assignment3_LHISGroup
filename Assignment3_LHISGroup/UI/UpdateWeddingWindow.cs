@@ -19,7 +19,7 @@ namespace Assignment3_LHISGroup.UI
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-            UI.ReportsMainWindow win = new UI.ReportsMainWindow(this);
+            UI.EventReportWindow win = new UI.EventReportWindow(this);
             win.Visible = true;
         }
     }

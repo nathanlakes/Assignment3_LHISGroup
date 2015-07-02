@@ -1,6 +1,6 @@
 ﻿namespace Assignment3_LHISGroup.UI
 {
-    partial class ReportsMainWindow
+    partial class EventReportWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -93,7 +93,6 @@
             this.StaffReportButton.TabIndex = 32;
             this.StaffReportButton.Text = "Staff Report";
             this.StaffReportButton.UseVisualStyleBackColor = false;
-            this.StaffReportButton.Click += new System.EventHandler(this.StaffReportButton_Click);
             // 
             // EventReportWindow
             // 

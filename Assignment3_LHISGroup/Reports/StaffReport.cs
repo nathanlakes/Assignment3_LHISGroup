@@ -13,23 +13,23 @@ using Assignment3_LHISGroup.UI;
 
 namespace Assignment3_LHISGroup.Reports
 {
-    class StaffReport
+    public partial class StaffReport : Form
     {
         Staff currentStaff;
         List<Support_Classes.Task> assignedTaskList;
         DbController dbController = new DbController();
 
-        public StaffReport()
+        public StaffReport(Staff givenStaffMember)
         {
             assignedTaskList = new List<Support_Classes.Task>();
-
-
+            currentStaff = givenStaffMember;
+            InitializeComponent();
 
         }
 
-        private List<Support_Classes.Task> FindTasksAssignedTo(Staff selectedStaff)
+        private List<Support_Classes.Task> FindTasksAssignedTo()
         {
-            if (selectedStaff.StaffStatus == Staff.Active.inactive)
+            if (currentStaff.StaffStatus == Staff.Active.inactive)
             {
                 Console.WriteLine("Error: Staff Member is inactive");
                 return new List<Support_Classes.Task>();
@@ -40,15 +40,25 @@ namespace Assignment3_LHISGroup.Reports
                 allTaskList = dbController.GetAllTasks();
                 foreach (Support_Classes.Task task in allTaskList)
                 {
-                    if (task.AssignedTo.ID == selectedStaff.ID)
+                    if (task.AssignedTo.ID == currentStaff.ID)
                     {
                         DateTime date = task.CompletionDate;
                         assignedTaskList.Add(task);
                     }
                 }
 
+
+
+
                 return assignedTaskList;
             }
+            
+        }
+
+        
+
+        private void StaffReport_Load(object sender, EventArgs e)
+        {
 
         }
 
