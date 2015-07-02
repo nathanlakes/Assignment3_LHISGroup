@@ -12,8 +12,8 @@ namespace Assignment3_LHISGroup.UI
 {
     public partial class EventReportWindow : Form
     {
-        Form parent;
-        public EventReportWindow(Form form)
+        MainWindow parent;
+        public EventReportWindow(MainWindow form)
         {
             InitializeComponent();
             parent = form;
