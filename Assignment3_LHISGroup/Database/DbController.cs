@@ -1057,6 +1057,7 @@ namespace Assignment3_LHISGroup
             {
                 id = Convert.ToInt32(myReader["Id"].ToString());
             }
+            _db.Close();
             return id;
             
         }   // NL UPTO HERE.
@@ -1194,7 +1195,7 @@ namespace Assignment3_LHISGroup
          *   Takes a string of dd/mm/yyyy and returns an
          *   int array of { dd, mm, yyyy };
          */
-        public int[] splitStringDate(string d)
+        private int[] splitStringDate(string d)
         {
             char[] delimChars = { '/', '\\' };
             string[] date = new string[3];
