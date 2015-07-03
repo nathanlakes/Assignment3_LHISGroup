@@ -201,6 +201,7 @@
             this.Controls.Add(this.label1);
             this.Name = "NewTaskWindow";
             this.Text = "New Task";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewTaskWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -201,6 +201,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UpdateTaskWindow";
             this.Text = "Update Task";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateTaskWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

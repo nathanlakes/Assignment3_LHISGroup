@@ -165,6 +165,7 @@
             this.Controls.Add(this.label1);
             this.Name = "NewSupplierWindow";
             this.Text = "New Supplier";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewSupplierWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

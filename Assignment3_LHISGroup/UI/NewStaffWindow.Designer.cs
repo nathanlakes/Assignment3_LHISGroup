@@ -165,6 +165,7 @@
             this.Controls.Add(this.CreateButton);
             this.Name = "NewStaffWindow";
             this.Text = "New Staff";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewStaffWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

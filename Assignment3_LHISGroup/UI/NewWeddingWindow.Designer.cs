@@ -187,6 +187,7 @@
             this.Controls.Add(this.label1);
             this.Name = "NewWeddingWindow";
             this.Text = "New Wedding";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewWeddingWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

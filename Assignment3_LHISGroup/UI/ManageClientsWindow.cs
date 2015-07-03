@@ -82,7 +82,7 @@ namespace Assignment3_LHISGroup.UI
             }
             else
             {
-
+                MessageBox.Show("Row not selected");
             }
 
             

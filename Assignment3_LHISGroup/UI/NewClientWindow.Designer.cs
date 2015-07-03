@@ -294,6 +294,7 @@
             this.Controls.Add(this.CreateButton);
             this.Name = "NewClientWindow";
             this.Text = "New Client";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewClientWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

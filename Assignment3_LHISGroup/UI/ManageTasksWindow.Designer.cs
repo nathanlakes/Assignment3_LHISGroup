@@ -55,7 +55,10 @@
             // 
             // TasksDataGridView
             // 
+            this.TasksDataGridView.AllowUserToAddRows = false;
+            this.TasksDataGridView.AllowUserToDeleteRows = false;
             this.TasksDataGridView.AutoGenerateColumns = false;
+            this.TasksDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TasksDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.TasksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TasksDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -72,6 +75,7 @@
             this.TasksDataGridView.Location = new System.Drawing.Point(0, 0);
             this.TasksDataGridView.MultiSelect = false;
             this.TasksDataGridView.Name = "TasksDataGridView";
+            this.TasksDataGridView.ReadOnly = true;
             this.TasksDataGridView.RowTemplate.Height = 28;
             this.TasksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TasksDataGridView.Size = new System.Drawing.Size(869, 433);
@@ -83,48 +87,56 @@
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // priorityDataGridViewTextBoxColumn
             // 
             this.priorityDataGridViewTextBoxColumn.DataPropertyName = "priority";
             this.priorityDataGridViewTextBoxColumn.HeaderText = "priority";
             this.priorityDataGridViewTextBoxColumn.Name = "priorityDataGridViewTextBoxColumn";
+            this.priorityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // completeByDateDataGridViewTextBoxColumn
             // 
             this.completeByDateDataGridViewTextBoxColumn.DataPropertyName = "completeByDate";
             this.completeByDateDataGridViewTextBoxColumn.HeaderText = "completeByDate";
             this.completeByDateDataGridViewTextBoxColumn.Name = "completeByDateDataGridViewTextBoxColumn";
+            this.completeByDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // actualCompletionDateDataGridViewTextBoxColumn
             // 
             this.actualCompletionDateDataGridViewTextBoxColumn.DataPropertyName = "actualCompletionDate";
             this.actualCompletionDateDataGridViewTextBoxColumn.HeaderText = "actualCompletionDate";
             this.actualCompletionDateDataGridViewTextBoxColumn.Name = "actualCompletionDateDataGridViewTextBoxColumn";
+            this.actualCompletionDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // staffOnJobFKDataGridViewTextBoxColumn
             // 
             this.staffOnJobFKDataGridViewTextBoxColumn.DataPropertyName = "staffOnJob_FK";
             this.staffOnJobFKDataGridViewTextBoxColumn.HeaderText = "staffOnJob_FK";
             this.staffOnJobFKDataGridViewTextBoxColumn.Name = "staffOnJobFKDataGridViewTextBoxColumn";
+            this.staffOnJobFKDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // weddingIDFKDataGridViewTextBoxColumn
             // 
             this.weddingIDFKDataGridViewTextBoxColumn.DataPropertyName = "weddingID_FK";
             this.weddingIDFKDataGridViewTextBoxColumn.HeaderText = "weddingID_FK";
             this.weddingIDFKDataGridViewTextBoxColumn.Name = "weddingIDFKDataGridViewTextBoxColumn";
+            this.weddingIDFKDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // taskBindingSource
             // 
@@ -203,6 +215,7 @@
             this.Controls.Add(this.TasksDataGridView);
             this.Name = "ManageTasksWindow";
             this.Text = "Manage Tasks";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageTasksWindow_FormClosing);
             this.Load += new System.EventHandler(this.ManageTasksWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TasksDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).EndInit();

@@ -51,8 +51,10 @@
             // 
             // SuppliersDataGridView
             // 
+            this.SuppliersDataGridView.AllowUserToAddRows = false;
+            this.SuppliersDataGridView.AllowUserToDeleteRows = false;
             this.SuppliersDataGridView.AutoGenerateColumns = false;
-            this.SuppliersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.SuppliersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.SuppliersDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.SuppliersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SuppliersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -68,6 +70,7 @@
             this.SuppliersDataGridView.Location = new System.Drawing.Point(0, 0);
             this.SuppliersDataGridView.MultiSelect = false;
             this.SuppliersDataGridView.Name = "SuppliersDataGridView";
+            this.SuppliersDataGridView.ReadOnly = true;
             this.SuppliersDataGridView.RowTemplate.Height = 28;
             this.SuppliersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SuppliersDataGridView.Size = new System.Drawing.Size(774, 416);
@@ -78,49 +81,49 @@
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 48;
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // companyNameDataGridViewTextBoxColumn
             // 
             this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
             this.companyNameDataGridViewTextBoxColumn.HeaderText = "CompanyName";
             this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
-            this.companyNameDataGridViewTextBoxColumn.Width = 143;
+            this.companyNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // addressDataGridViewTextBoxColumn
             // 
             this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
             this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
             this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            this.addressDataGridViewTextBoxColumn.Width = 93;
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // contactPersonDataGridViewTextBoxColumn
             // 
             this.contactPersonDataGridViewTextBoxColumn.DataPropertyName = "ContactPerson";
             this.contactPersonDataGridViewTextBoxColumn.HeaderText = "ContactPerson";
             this.contactPersonDataGridViewTextBoxColumn.Name = "contactPersonDataGridViewTextBoxColumn";
-            this.contactPersonDataGridViewTextBoxColumn.Width = 140;
+            this.contactPersonDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // emailDataGridViewTextBoxColumn
             // 
             this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
             this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.Width = 73;
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // phoneNumberDataGridViewTextBoxColumn
             // 
             this.phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
             this.phoneNumberDataGridViewTextBoxColumn.HeaderText = "PhoneNumber";
             this.phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
-            this.phoneNumberDataGridViewTextBoxColumn.Width = 136;
+            this.phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // creditTermsDataGridViewTextBoxColumn
             // 
             this.creditTermsDataGridViewTextBoxColumn.DataPropertyName = "CreditTerms";
             this.creditTermsDataGridViewTextBoxColumn.HeaderText = "CreditTerms";
             this.creditTermsDataGridViewTextBoxColumn.Name = "creditTermsDataGridViewTextBoxColumn";
-            this.creditTermsDataGridViewTextBoxColumn.Width = 120;
+            this.creditTermsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // suppliersBindingSource
             // 
@@ -178,6 +181,7 @@
             this.Controls.Add(this.SuppliersDataGridView);
             this.Name = "ManageSuppliersWindow";
             this.Text = "Manage Suppliers";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageSuppliersWindow_FormClosing);
             this.Load += new System.EventHandler(this.ManageSuppliersWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SuppliersDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppliersBindingSource)).EndInit();

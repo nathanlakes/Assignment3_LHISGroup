@@ -48,6 +48,7 @@ namespace Assignment3_LHISGroup.UI
            
         }
 
+
         private void EventReportWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             mainWin.Show();

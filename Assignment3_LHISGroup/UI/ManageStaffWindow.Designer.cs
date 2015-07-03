@@ -54,6 +54,7 @@
             // StaffDataGridView
             // 
             this.StaffDataGridView.AutoGenerateColumns = false;
+            this.StaffDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.StaffDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.StaffDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StaffDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -177,6 +178,7 @@
             this.Controls.Add(this.StaffDataGridView);
             this.Name = "ManageStaffWindow";
             this.Text = "Manage Staff";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageStaffWindow_FormClosing);
             this.Load += new System.EventHandler(this.ManageStaffWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.StaffDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).EndInit();

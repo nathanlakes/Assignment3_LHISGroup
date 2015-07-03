@@ -272,6 +272,7 @@
             this.Controls.Add(this.UpdateButton);
             this.Name = "UpdateClientWindow";
             this.Text = "Update Client";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateClientWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

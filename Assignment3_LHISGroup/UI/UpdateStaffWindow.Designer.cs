@@ -189,6 +189,7 @@
             this.Controls.Add(this.UpdateButton);
             this.Name = "UpdateStaffWindow";
             this.Text = "Update Staff";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateStaffWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
