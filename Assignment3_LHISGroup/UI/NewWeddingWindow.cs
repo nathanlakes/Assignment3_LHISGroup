@@ -14,24 +14,65 @@ namespace Assignment3_LHISGroup.UI
     {
         MainWindow mainWin;
         DbController db;
+
+        List<Support_Classes.Staff> StaffList;
+        List<Support_Classes.Client> ClientList;
+
         public NewWeddingWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
             mainWin = w;
             db = d;
+
+            ClientList = db.GetAllClients();
+            foreach (Support_Classes.Client client in ClientList)
+            {
+                ClientComboBox.Items.Add(client.Firstname + " " + client.Surname);
+                EngagedComboBox.Items.Add(client.Firstname + " " + client.Surname);
+            }
+
+            StaffList = db.GetAllStaff();
+            foreach (Support_Classes.Staff staff in StaffList)
+            {
+                if (staff.StatusToString().Equals("active"))
+                {
+                    StaffComboBox.Items.Add(staff.FirstName + " " + staff.Surname);
+                }
+            }
+            
         }
 
-        public void clearNewWeddingForm()
+        public void RefreshData()
+        {
+            ClientList = db.GetAllClients();
+            foreach (Support_Classes.Client client in ClientList)
+            {
+                ClientComboBox.Items.Add(client.Firstname + " " + client.Surname);
+                EngagedComboBox.Items.Add(client.Firstname + " " + client.Surname);
+            }
+
+            StaffList = db.GetAllStaff();
+            foreach (Support_Classes.Staff staff in StaffList)
+            {
+                if (staff.StatusToString().Equals("active"))
+                {
+                    StaffComboBox.Items.Add(staff.FirstName + " " + staff.Surname);
+                }
+            }
+        }
+
+        public void ClearForm()
         {
             NameTextBox.Text = "";
             ClientComboBox.ValueMember = null;
+            EngagedComboBox.ValueMember = null;
             DescriptionTextBox.Text = "";
             EventDateTimePicker.ResetText();
             StartDateTimePicker.ResetText();
             StaffComboBox.ValueMember = null;
         }
 
-        public bool validateNewWeddingForm()
+        public bool ValidateForm()
         {
             if (NameTextBox.Text == "" || NameTextBox.Text == null)
             {
@@ -80,12 +121,12 @@ namespace Assignment3_LHISGroup.UI
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            this.clearNewWeddingForm();
+            this.ClearForm();
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            if (this.validateNewWeddingForm() == true)
+            if (this.ValidateForm() == true)
             {
                 MessageBox.Show("Successfully Validated!");
             }
