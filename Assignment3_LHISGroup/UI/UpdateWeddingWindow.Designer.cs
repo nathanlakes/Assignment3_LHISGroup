@@ -225,6 +225,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UpdateWeddingWindow";
             this.Text = "Update Wedding";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateWeddingsWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

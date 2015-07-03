@@ -97,7 +97,7 @@ namespace Assignment3_LHISGroup.UI
             }
             else
             {
-                return false;
+                return true;
             }
         }
 
@@ -121,7 +121,7 @@ namespace Assignment3_LHISGroup.UI
 
                 try
                 {
-                    db.UpdateSupplier(id, s);
+                    bool x = db.UpdateSupplier(id, s);
                     mainWin.ManageSuppliersWindow.UpdateForm();
                     //this.Hide();
                 }

@@ -163,7 +163,7 @@
             this.CreditItemsTextBox.Size = new System.Drawing.Size(272, 26);
             this.CreditItemsTextBox.TabIndex = 27;
             // 
-            // UpdateSupplierWindow
+            // UpdateWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -183,8 +183,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "UpdateSupplierWindow";
+            this.Name = "UpdateWindow";
             this.Text = "Update Supplier";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UpdateSupplierWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
