@@ -326,8 +326,8 @@ namespace Assignment3_LHISGroup
 
             myCommand.Parameters.AddWithValue("@client1", clientOneFk);
             myCommand.Parameters.AddWithValue("@client2", clientTwoFk);
-            myCommand.Parameters.AddWithValue("@startDate", w.StartDate.ToShortDateString());
-            myCommand.Parameters.AddWithValue("@eventDate", w.EventDate.ToShortDateString());
+            myCommand.Parameters.AddWithValue("@startDate", formatDateForDbInput(w.StartDate) );
+            myCommand.Parameters.AddWithValue("@eventDate", formatDateForDbInput(w.EventDate));
             myCommand.Parameters.AddWithValue("@weddingPlanner", getStaffId(w.WeddingPlanner));
 
             int res = 0;
@@ -1178,6 +1178,13 @@ namespace Assignment3_LHISGroup
             }
 
             return returnDate;
+        }
+
+        private string formatDateForDbInput(DateTime dt)
+        {
+            string format = "yyyy-MM-dd HH:MM:ss";
+            string dbSafeDate = dt.ToString(format);
+            return dbSafeDate;
         }
     }
 }
