@@ -50,14 +50,41 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateClientButton_Click(object sender, EventArgs e)
         {
-            if (!mainWin.UpdateClientWindow.Visible)
+            if (ClientsDataGridView.SelectedRows.Count > 0 && ClientsDataGridView.SelectedRows[0].Cells[0].Value != null)
             {
-                mainWin.UpdateClientWindow.Visible = true;
+
+                int id = (int)ClientsDataGridView.SelectedRows[0].Cells[0].Value;
+
+                string firstname = (string)ClientsDataGridView.SelectedRows[0].Cells[1].Value;
+                string surname = (string)ClientsDataGridView.SelectedRows[0].Cells[2].Value;
+                string contactPerson = (string)ClientsDataGridView.SelectedRows[0].Cells[3].Value;
+                string address = (string)ClientsDataGridView.SelectedRows[0].Cells[4].Value;
+                string mobile = (string)ClientsDataGridView.SelectedRows[0].Cells[5].Value;
+                string homePhone = (string)ClientsDataGridView.SelectedRows[0].Cells[6].Value;
+                string email = (string)ClientsDataGridView.SelectedRows[0].Cells[7].Value;
+                string engagedTo_firstName = (string)ClientsDataGridView.SelectedRows[0].Cells[8].Value;
+                string engagedTo_surname = (string)ClientsDataGridView.SelectedRows[0].Cells[9].Value;
+
+                Support_Classes.Client c = new Support_Classes.Client(firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo_firstName, engagedTo_surname);
+                c.ID = id;
+
+                if (!mainWin.UpdateClientWindow.Visible)
+                {
+                    mainWin.UpdateClientWindow.Visible = true;
+                    mainWin.UpdateClientWindow.PopulateForm(c);
+                }
+                else
+                {
+                    mainWin.UpdateClientWindow.Focus();
+                    mainWin.UpdateClientWindow.PopulateForm(c);
+                }
+
             }
             else
             {
-                mainWin.UpdateClientWindow.Focus();
+
             }
+
             
         }
 

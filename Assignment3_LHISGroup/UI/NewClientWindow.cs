@@ -21,7 +21,7 @@ namespace Assignment3_LHISGroup.UI
             db = d;
         }
 
-        private bool validateNewClientForm()
+        private bool ValidateForm()
         {
             if (FirstNameTextBox.Text == "" || FirstNameTextBox.Text == null)
             {
@@ -74,7 +74,7 @@ namespace Assignment3_LHISGroup.UI
             }
         }
 
-        private void clearNewClientForm()
+        private void ClearForm()
         {
             FirstNameTextBox.Text = "";
             SurnameTextBox.Text = "";
@@ -89,12 +89,12 @@ namespace Assignment3_LHISGroup.UI
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            clearNewClientForm();
+            ClearForm();
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            if (validateNewClientForm() == true)
+            if (ValidateForm() == true)
             {
                 String n = FirstNameTextBox.Text;
                 String sn = SurnameTextBox.Text;
@@ -119,7 +119,7 @@ namespace Assignment3_LHISGroup.UI
                 try
                 {
                     db.AddClient(client);
-                    clearNewClientForm();
+                    ClearForm();
                     mainWin.ManageClientsWindow.UpdateForm();
                 }
                 catch (Exception)

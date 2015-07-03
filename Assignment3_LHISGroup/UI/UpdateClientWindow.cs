@@ -14,6 +14,10 @@ namespace Assignment3_LHISGroup.UI
     {
         MainWindow mainWin;
         DbController db;
+
+        int id;
+        Support_Classes.Client client;
+
         public UpdateClientWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
@@ -21,7 +25,43 @@ namespace Assignment3_LHISGroup.UI
             db = d;
         }
 
-        private bool validateUpdateClientForm()
+
+        public void PopulateForm(Support_Classes.Client c)
+        {
+            client = c;
+            id = c.ID;
+
+            string firstname = c.Firstname;
+            string surname = c.Surname;
+            string contactPerson = c.ContactPerson;
+            string address = c.Address;
+            string mobile = c.Mobile;
+            string homePhone = c.HomePhone;
+            string email = c.Email;
+            string engagedTo_firstName = c.EngagedTo_fn;
+            string engagedTo_surname = c.EngagedTo_sn;
+
+            FirstNameTextBox.Text = firstname;
+            SurnameTextBox.Text = surname;
+            AddressTextBox.Text = address;
+            MobilePhoneTextBox.Text = mobile;
+            HomePhoneTextBox.Text = homePhone;
+            EmailTextBox.Text = email;
+            EngagedFirstNameTextBox.Text = engagedTo_firstName;
+            EngagedSurnameTextBox.Text = engagedTo_surname;
+
+            if (contactPerson.Equals(firstname + " " + surname))
+            {
+                ContactCheckBox.Checked = true;
+            }
+            else
+            {
+                ContactCheckBox.Checked = false;
+            }
+
+        }
+
+        private bool ValidateForm()
         {
             if (FirstNameTextBox.Text == "" || FirstNameTextBox.Text == null)
             {
@@ -74,17 +114,48 @@ namespace Assignment3_LHISGroup.UI
             }
         }
 
+
+
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            if (validateUpdateClientForm() == true)
+            if (ValidateForm() == true)
             {
-                MessageBox.Show("Successful Validation!!");
+                String fn = FirstNameTextBox.Text;
+                String sn = SurnameTextBox.Text;
+                String contact = fn + " " + sn;
+                String address = AddressTextBox.Text;
+                String mobile = MobilePhoneTextBox.Text;
+                String homePhone = HomePhoneTextBox.Text;
+                String email = EmailTextBox.Text;
+                String e_fn = EngagedFirstNameTextBox.Text;
+                String e_sn = EngagedSurnameTextBox.Text;
+                if (ContactCheckBox.Checked == false)
+                {
+                    contact = e_fn + " " + e_sn;
+                }
+
+                Support_Classes.Client c = new Support_Classes.Client(fn, sn, contact, address, mobile, homePhone, email, e_fn, e_sn);
+
+                try
+                {
+                    db.UpdateClient(this.id, c);
+                    mainWin.ManageClientsWindow.UpdateForm();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Exception thrown");
+                }
+
+            }
+            else
+            {
+
             }
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-
+            PopulateForm(this.client);
         }
 
         private void UpdateClientWindow_FormClosing(object sender, FormClosingEventArgs e)
