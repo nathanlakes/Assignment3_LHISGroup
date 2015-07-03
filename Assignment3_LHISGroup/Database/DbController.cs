@@ -810,7 +810,7 @@ namespace Assignment3_LHISGroup
                 string taskname = taskReader["name"].ToString();
                 string descr = taskReader["description"].ToString();
                 
-                // Assign Priority
+                // Assign Task Priority
                 string pr = taskReader["priority"].ToString();
                 Support_Classes.Task.Priority priority = Support_Classes.Task.Priority.low;
                 if (pr == Support_Classes.Task.Priority.med.ToString())
@@ -822,17 +822,20 @@ namespace Assignment3_LHISGroup
                     priority = Support_Classes.Task.Priority.high;
                 }
 
+                // Assign Task Completion Date
                 int[] temp = splitStringDate(taskReader["completeByDate"].ToString());
                 DateTime completeBy = new DateTime(temp[0], temp[1], temp[2]);
 
-                    // Generate Staff object
+                    //
+                    // Generate Staff Object tied to the Task
+                    //
                     SqlDataReader staffReader = getStaffDetails(
                         Convert.ToInt32( taskReader["staffOnJob_FK"].ToString() )
                     );
-                    Staff.Active a = Staff.Active.active;
+                    Staff.Active isActive = Staff.Active.active;
                     if (staffReader["status"].ToString() == Staff.Active.inactive.ToString())
                     {
-                        a = Staff.Active.inactive;
+                        isActive = Staff.Active.inactive;
                     }
                     Staff staff = new Staff(
                         staffReader["firstname"].ToString(),
@@ -840,16 +843,21 @@ namespace Assignment3_LHISGroup
                         staffReader["email"].ToString(),
                         staffReader["phone"].ToString(),
                         staffReader["notes"].ToString(),
-                        a
+                        isActive
                     );
 
-                    // Generate Wedding Object
-                    SqlDataReader weddingReader = getWeddingDetails(Convert.ToInt32(taskReader["weddingID_FK"].ToString()));
+
+                    //
+                    // Generate Wedding Object tied to Task
+                    //    
+                    SqlDataReader weddingReader = getWeddingDetails(
+                        Convert.ToInt32(taskReader["weddingID_FK"].ToString())
+                    );
 
                     string title = weddingReader["title"].ToString();
                     string desc = weddingReader["description"].ToString();
                 
-                    // Get Client one
+                    // Get Bride/Groom 1
                     SqlDataReader tempCli = getClientDetails(Convert.ToInt32(weddingReader["client_1_FK"].ToString()));
                     Client c1 = new Client(
                         tempCli["firstname"].ToString(),
@@ -863,7 +871,7 @@ namespace Assignment3_LHISGroup
                         tempCli["engagedTo_surname"].ToString()
                     );
 
-                    // Get Client two
+                    // Get Bride/Groom 2
                     tempCli = getClientDetails(Convert.ToInt32(weddingReader["client_2_FK"].ToString()));
                     Client c2 = new Client(
                         tempCli["firstname"].ToString(),
@@ -883,10 +891,11 @@ namespace Assignment3_LHISGroup
                     temp = splitStringDate(weddingReader["eventDate"].ToString());
                     DateTime eventDate = new DateTime(temp[0], temp[1], temp[2]);
 
+                    // Make actual Wedding Object
                     Wedding wedding = new Wedding(title, desc, c1, c2, staff, startDate, eventDate);
                 
 
-                // Back to making the task now all objects compelted necessary. 
+                // Make the Task Object now all components needed exist. 
                 Support_Classes.Task t = new Support_Classes.Task(taskname, descr, priority, completeBy, 
                     staff, wedding);
 
@@ -898,7 +907,8 @@ namespace Assignment3_LHISGroup
                     t.CompleteBy = completeBy;
                 }
                 catch (Exception) { }
-                t.ID = Convert.ToInt32(taskReader["Id"].ToString());
+
+                t.ID = Convert.ToInt32(taskReader["Id"].ToString());  // Attach PK
 
                 returnList.Add( t );
             }
