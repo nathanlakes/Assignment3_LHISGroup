@@ -313,12 +313,14 @@ namespace Assignment3_LHISGroup
         public bool AddWedding(Wedding w)
         {
             string query = @"INSERT into Wedding";
-            query += @"(title, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK)";
-            query += @"VALUES(@title, @client1, @client2, @startDate, @eventDate, @weddingPlanner)";
+            query += @"(title, description, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK)";
+            query += @"VALUES(@title, @desc, @client1, @client2, @startDate, @eventDate, @weddingPlanner)";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
-            myCommand.Parameters.AddWithValue("@title", w.Title.ToString());
+            myCommand.Parameters.AddWithValue("@title", w.Title);
+            myCommand.Parameters.AddWithValue("@desc", w.Description);
+
 
             int clientOneFk;
             int clientTwoFk;
@@ -355,12 +357,13 @@ namespace Assignment3_LHISGroup
         public bool UpdateWedding(int id, Wedding w)
         {
             string query = @"UPDATE Wedding";
-            query += @"SET title='@title', client_1_FK='@client1', client_2_FK='@client2', startDate='@startDate', ";
-            query += @"eventDate='@eventDate', weddingPlanner_FK='@weddingPlanner_FK'";
+            query += @"SET title='@title', description='@desc', client_1_FK='@client1', client_2_FK='@client2', ";
+            query += @"startDate='@startDate', eventDate='@eventDate', weddingPlanner_FK='@weddingPlanner_FK'";
             query += @"WHERE id='@id'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@title", w.Title);
+            myCommand.Parameters.AddWithValue("@desc", w.Description);
             myCommand.Parameters.AddWithValue("@client1", w.Client1.Firstname + " " + w.Client1.Surname);
             myCommand.Parameters.AddWithValue("@client2", w.Client2.Firstname + " " + w.Client2.Surname);
             myCommand.Parameters.AddWithValue("@startDate", w.StartDate.ToShortDateString());
@@ -417,6 +420,7 @@ namespace Assignment3_LHISGroup
             while (myReader.Read())
             {
                 string weddTitle = myReader["title"].ToString();
+                string desc = myReader["description"].ToString();
 
                 //
                 // Create Client Objects
@@ -477,7 +481,7 @@ namespace Assignment3_LHISGroup
                     a
                 );
 
-                Wedding returnWedding = new Wedding(weddTitle, client1, client2, weddPlann, startDate, eventDate);
+                Wedding returnWedding = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
                 returnWedding.ID = Convert.ToInt32( myReader["ID"].ToString() );
 
                 returnList.Add( returnWedding );
@@ -842,7 +846,8 @@ namespace Assignment3_LHISGroup
                     // Generate Wedding Object
                     SqlDataReader weddingReader = getWeddingDetails(Convert.ToInt32(taskReader["weddingID_FK"].ToString()));
 
-                    string title = staffReader["title"].ToString();
+                    string title = weddingReader["title"].ToString();
+                    string desc = weddingReader["description"].ToString();
                 
                     // Get Client one
                     SqlDataReader tempCli = getClientDetails(Convert.ToInt32(weddingReader["client_1_FK"].ToString()));
@@ -878,7 +883,7 @@ namespace Assignment3_LHISGroup
                     temp = splitStringDate(weddingReader["eventDate"].ToString());
                     DateTime eventDate = new DateTime(temp[0], temp[1], temp[2]);
 
-                    Wedding wedding = new Wedding(title, c1, c2, staff, startDate, eventDate);
+                    Wedding wedding = new Wedding(title, desc, c1, c2, staff, startDate, eventDate);
                 
 
                 // Back to making the task now all objects compelted necessary. 
@@ -920,6 +925,7 @@ namespace Assignment3_LHISGroup
             while (myReader.Read())
             {
                 string title = myReader["title"].ToString();
+                string desc = myReader["description"].ToString();
 
                 // 
                 // Make Client 1
@@ -997,7 +1003,7 @@ namespace Assignment3_LHISGroup
                 //
                 // Create Wedding Object
                 //
-                Wedding w = new Wedding(title, client1, client2, staff, startDate, eventDate);
+                Wedding w = new Wedding(title, desc, client1, client2, staff, startDate, eventDate);
                 w.ID = Convert.ToInt32(myReader["Id"].ToString());
 
                 returnList.Add(w);

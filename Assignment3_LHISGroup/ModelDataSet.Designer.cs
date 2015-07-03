@@ -1944,6 +1944,8 @@ namespace Assignment3_LHISGroup {
             
             private global::System.Data.DataColumn columnweddingPlanner_FK;
             
+            private global::System.Data.DataColumn columndescription;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public WeddingDataTable() {
@@ -2035,6 +2037,14 @@ namespace Assignment3_LHISGroup {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn descriptionColumn {
+                get {
+                    return this.columndescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2070,7 +2080,7 @@ namespace Assignment3_LHISGroup {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public WeddingRow AddWeddingRow(int Id, string title, ClientRow parentClientRowByFK_WeddC1_Client, ClientRow parentClientRowByFK_WeddC2_Client, System.DateTime startDate, System.DateTime eventDate, StaffRow parentStaffRowByFK_WeddPln_Staff) {
+            public WeddingRow AddWeddingRow(int Id, string title, ClientRow parentClientRowByFK_WeddC1_Client, ClientRow parentClientRowByFK_WeddC2_Client, System.DateTime startDate, System.DateTime eventDate, StaffRow parentStaffRowByFK_WeddPln_Staff, string description) {
                 WeddingRow rowWeddingRow = ((WeddingRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -2079,7 +2089,8 @@ namespace Assignment3_LHISGroup {
                         null,
                         startDate,
                         eventDate,
-                        null};
+                        null,
+                        description};
                 if ((parentClientRowByFK_WeddC1_Client != null)) {
                     columnValuesArray[2] = parentClientRowByFK_WeddC1_Client[0];
                 }
@@ -2125,6 +2136,7 @@ namespace Assignment3_LHISGroup {
                 this.columnstartDate = base.Columns["startDate"];
                 this.columneventDate = base.Columns["eventDate"];
                 this.columnweddingPlanner_FK = base.Columns["weddingPlanner_FK"];
+                this.columndescription = base.Columns["description"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2144,6 +2156,8 @@ namespace Assignment3_LHISGroup {
                 base.Columns.Add(this.columneventDate);
                 this.columnweddingPlanner_FK = new global::System.Data.DataColumn("weddingPlanner_FK", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnweddingPlanner_FK);
+                this.columndescription = new global::System.Data.DataColumn("description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndescription);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
@@ -2155,6 +2169,7 @@ namespace Assignment3_LHISGroup {
                 this.columnstartDate.AllowDBNull = false;
                 this.columneventDate.AllowDBNull = false;
                 this.columnweddingPlanner_FK.AllowDBNull = false;
+                this.columndescription.MaxLength = 1000;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2937,6 +2952,22 @@ namespace Assignment3_LHISGroup {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string description {
+                get {
+                    try {
+                        return ((string)(this[this.tableWedding.descriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'description\' in table \'Wedding\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableWedding.descriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClientRow ClientRowByFK_WeddC1_Client {
                 get {
                     return ((ClientRow)(this.GetParentRow(this.Table.ParentRelations["FK_WeddC1_Client"])));
@@ -2966,6 +2997,18 @@ namespace Assignment3_LHISGroup {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_WeddPln_Staff"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdescriptionNull() {
+                return this.IsNull(this.tableWedding.descriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdescriptionNull() {
+                this[this.tableWedding.descriptionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5236,10 +5279,11 @@ SELECT Id, name, description, priority, completeByDate, actualCompletionDate, st
             tableMapping.ColumnMappings.Add("startDate", "startDate");
             tableMapping.ColumnMappings.Add("eventDate", "eventDate");
             tableMapping.ColumnMappings.Add("weddingPlanner_FK", "weddingPlanner_FK");
+            tableMapping.ColumnMappings.Add("description", "description");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Wedding] WHERE (([Id] = @Original_Id) AND ([title] = @Original_title) AND ([client_1_FK] = @Original_client_1_FK) AND ([client_2_FK] = @Original_client_2_FK) AND ([startDate] = @Original_startDate) AND ([eventDate] = @Original_eventDate) AND ([weddingPlanner_FK] = @Original_weddingPlanner_FK))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Wedding] WHERE (([Id] = @Original_Id) AND ([title] = @Original_title) AND ([client_1_FK] = @Original_client_1_FK) AND ([client_2_FK] = @Original_client_2_FK) AND ([startDate] = @Original_startDate) AND ([eventDate] = @Original_eventDate) AND ([weddingPlanner_FK] = @Original_weddingPlanner_FK) AND ((@IsNull_description = 1 AND [description] IS NULL) OR ([description] = @Original_description)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -5248,30 +5292,32 @@ SELECT Id, name, description, priority, completeByDate, actualCompletionDate, st
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_startDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "startDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_eventDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eventDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_weddingPlanner_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weddingPlanner_FK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_description", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Wedding] ([Id], [title], [client_1_FK], [client_2_FK], [startDate], [eventDate], [weddingPlanner_FK]) VALUES (@Id, @title, @client_1_FK, @client_2_FK, @startDate, @eventDate, @weddingPlanner_FK);
-SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner_FK FROM Wedding WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Wedding] ([title], [client_1_FK], [client_2_FK], [startDate], [eventDate], [weddingPlanner_FK], [description]) VALUES (@title, @client_1_FK, @client_2_FK, @startDate, @eventDate, @weddingPlanner_FK, @description);
+SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner_FK, description FROM Wedding WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@client_1_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "client_1_FK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@client_2_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "client_2_FK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@startDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "startDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eventDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eventDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@weddingPlanner_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weddingPlanner_FK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Wedding] SET [Id] = @Id, [title] = @title, [client_1_FK] = @client_1_FK, [client_2_FK] = @client_2_FK, [startDate] = @startDate, [eventDate] = @eventDate, [weddingPlanner_FK] = @weddingPlanner_FK WHERE (([Id] = @Original_Id) AND ([title] = @Original_title) AND ([client_1_FK] = @Original_client_1_FK) AND ([client_2_FK] = @Original_client_2_FK) AND ([startDate] = @Original_startDate) AND ([eventDate] = @Original_eventDate) AND ([weddingPlanner_FK] = @Original_weddingPlanner_FK));
-SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner_FK FROM Wedding WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Wedding] SET [title] = @title, [client_1_FK] = @client_1_FK, [client_2_FK] = @client_2_FK, [startDate] = @startDate, [eventDate] = @eventDate, [weddingPlanner_FK] = @weddingPlanner_FK, [description] = @description WHERE (([Id] = @Original_Id) AND ([title] = @Original_title) AND ([client_1_FK] = @Original_client_1_FK) AND ([client_2_FK] = @Original_client_2_FK) AND ([startDate] = @Original_startDate) AND ([eventDate] = @Original_eventDate) AND ([weddingPlanner_FK] = @Original_weddingPlanner_FK) AND ((@IsNull_description = 1 AND [description] IS NULL) OR ([description] = @Original_description)));
+SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner_FK, description FROM Wedding WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@client_1_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "client_1_FK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@client_2_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "client_2_FK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@startDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "startDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@eventDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eventDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@weddingPlanner_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weddingPlanner_FK", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_title", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_client_1_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "client_1_FK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -5279,6 +5325,9 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_startDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "startDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_eventDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "eventDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_weddingPlanner_FK", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "weddingPlanner_FK", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_description", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_description", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5295,7 +5344,7 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner_" +
-                "FK FROM dbo.Wedding";
+                "FK, description FROM Wedding";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5356,7 +5405,7 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_title, int Original_client_1_FK, int Original_client_2_FK, System.DateTime Original_startDate, System.DateTime Original_eventDate, int Original_weddingPlanner_FK) {
+        public virtual int Delete(int Original_Id, string Original_title, int Original_client_1_FK, int Original_client_2_FK, System.DateTime Original_startDate, System.DateTime Original_eventDate, int Original_weddingPlanner_FK, string Original_description) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_title == null)) {
                 throw new global::System.ArgumentNullException("Original_title");
@@ -5369,6 +5418,14 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
             this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_startDate));
             this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_eventDate));
             this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_weddingPlanner_FK));
+            if ((Original_description == null)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_description));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5389,19 +5446,24 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, string title, int client_1_FK, int client_2_FK, System.DateTime startDate, System.DateTime eventDate, int weddingPlanner_FK) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Insert(string title, int client_1_FK, int client_2_FK, System.DateTime startDate, System.DateTime eventDate, int weddingPlanner_FK, string description) {
             if ((title == null)) {
                 throw new global::System.ArgumentNullException("title");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(title));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(title));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(client_1_FK));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(client_2_FK));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(startDate));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(eventDate));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(weddingPlanner_FK));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(client_1_FK));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(client_2_FK));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(startDate));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(eventDate));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(weddingPlanner_FK));
+            if ((description == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(description));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5422,19 +5484,40 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Id, string title, int client_1_FK, int client_2_FK, System.DateTime startDate, System.DateTime eventDate, int weddingPlanner_FK, int Original_Id, string Original_title, int Original_client_1_FK, int Original_client_2_FK, System.DateTime Original_startDate, System.DateTime Original_eventDate, int Original_weddingPlanner_FK) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
+        public virtual int Update(
+                    string title, 
+                    int client_1_FK, 
+                    int client_2_FK, 
+                    System.DateTime startDate, 
+                    System.DateTime eventDate, 
+                    int weddingPlanner_FK, 
+                    string description, 
+                    int Original_Id, 
+                    string Original_title, 
+                    int Original_client_1_FK, 
+                    int Original_client_2_FK, 
+                    System.DateTime Original_startDate, 
+                    System.DateTime Original_eventDate, 
+                    int Original_weddingPlanner_FK, 
+                    string Original_description, 
+                    int Id) {
             if ((title == null)) {
                 throw new global::System.ArgumentNullException("title");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(title));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(title));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(client_1_FK));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(client_2_FK));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(startDate));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(eventDate));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(weddingPlanner_FK));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(client_1_FK));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(client_2_FK));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(startDate));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(eventDate));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(weddingPlanner_FK));
+            if ((description == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(description));
+            }
             this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Id));
             if ((Original_title == null)) {
                 throw new global::System.ArgumentNullException("Original_title");
@@ -5447,6 +5530,15 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
             this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_startDate));
             this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_eventDate));
             this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_weddingPlanner_FK));
+            if ((Original_description == null)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_description));
+            }
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5467,8 +5559,8 @@ SELECT Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string title, int client_1_FK, int client_2_FK, System.DateTime startDate, System.DateTime eventDate, int weddingPlanner_FK, int Original_Id, string Original_title, int Original_client_1_FK, int Original_client_2_FK, System.DateTime Original_startDate, System.DateTime Original_eventDate, int Original_weddingPlanner_FK) {
-            return this.Update(Original_Id, title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner_FK, Original_Id, Original_title, Original_client_1_FK, Original_client_2_FK, Original_startDate, Original_eventDate, Original_weddingPlanner_FK);
+        public virtual int Update(string title, int client_1_FK, int client_2_FK, System.DateTime startDate, System.DateTime eventDate, int weddingPlanner_FK, string description, int Original_Id, string Original_title, int Original_client_1_FK, int Original_client_2_FK, System.DateTime Original_startDate, System.DateTime Original_eventDate, int Original_weddingPlanner_FK, string Original_description) {
+            return this.Update(title, client_1_FK, client_2_FK, startDate, eventDate, weddingPlanner_FK, description, Original_Id, Original_title, Original_client_1_FK, Original_client_2_FK, Original_startDate, Original_eventDate, Original_weddingPlanner_FK, Original_description, Original_Id);
         }
     }
     
