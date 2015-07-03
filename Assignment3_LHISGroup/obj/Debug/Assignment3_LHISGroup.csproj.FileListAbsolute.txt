@@ -55,3 +55,6 @@ C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\o
 C:\Users\Crusader\Desktop\AGILE A3\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.csproj.GenerateResource.Cache
 C:\Users\Nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.Reports.StaffReport.resources
 C:\Users\Nathan\documents\visual studio 2013\Projects\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.EventReportWindow.resources
+C:\Users\Nathan\Documents\GitHub\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Assignment3_LHISGroup.exe.config
+C:\Users\Nathan\Documents\GitHub\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.exe
+C:\Users\Nathan\Documents\GitHub\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.pdb

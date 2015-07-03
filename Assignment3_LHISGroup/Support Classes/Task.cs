@@ -99,13 +99,6 @@ namespace Assignment3_LHISGroup.Support_Classes
             {
                 DateTime today = DateTime.Now.Date;
 
-                int d = DateTime.Compare(new DateTime().Date, completionDate.Date);
-                if (d == 0)
-                {
-                    throw new Exception("No Completion Date has been set");
-                }
-
-
                 int v = DateTime.Compare(value.Date, today);
                 if (v < 0)
                 {
