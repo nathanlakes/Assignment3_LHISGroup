@@ -1044,7 +1044,7 @@ namespace Assignment3_LHISGroup
             try
             {
                 var myReader = testStaff.ExecuteReader();
-                
+
                 if (myReader.Read())
                 {
                     id = Convert.ToInt32(myReader["Id"].ToString());
@@ -1067,14 +1067,21 @@ namespace Assignment3_LHISGroup
                     "' AND description = '" + t.Description + "'", _db);
 
             _db.Open();
-            var myReader = testTask.ExecuteReader();
-
             int id = -1;
-            if (myReader.Read())
+            try
             {
-                id = Convert.ToInt32(myReader["Id"].ToString());
+                var myReader = testTask.ExecuteReader();
+
+                if (myReader.Read())
+                {
+                    id = Convert.ToInt32(myReader["Id"].ToString());
+                }
+                _db.Close();
             }
+            catch (Exception) { }
+
             _db.Close();
+
             return id;
             
         }   
@@ -1089,16 +1096,25 @@ namespace Assignment3_LHISGroup
                "SELECT Id FROM Client WHERE firstname = '" + c.Firstname +
                     "' AND surname = '" + c.Surname + "' AND homePhone ='" + c.HomePhone + "'", _db);
             _db.Open();
-            var myReader = testTask.ExecuteReader();
-            int fk = -1;
 
-            if (myReader.Read())
+            int key = -1;
+
+            try
             {
-                fk = Convert.ToInt32(myReader["Id"].ToString());
+                var myReader = testTask.ExecuteReader();
+                if (myReader.Read())
+                {
+                    key = Convert.ToInt32(myReader["Id"].ToString());
+                }
+
             }
+            catch (Exception) { }
 
             _db.Close();
-            return fk;            
+
+           
+
+            return key;            
         }
 
         
@@ -1109,13 +1125,17 @@ namespace Assignment3_LHISGroup
                     "' AND client_1_FK = '" + w.Client1.ToString() + "'", _db);
             _db.Open();
 
-            var myReader = testTask.ExecuteReader();
             int key = -1;
-
-            if (myReader.Read())
+            try
             {
-                key = Convert.ToInt32(myReader["Id"].ToString());
+                var myReader = testTask.ExecuteReader();
+
+                if (myReader.Read())
+                {
+                    key = Convert.ToInt32(myReader["Id"].ToString());
+                }
             }
+            catch (Exception) { }
 
             _db.Close();
 
