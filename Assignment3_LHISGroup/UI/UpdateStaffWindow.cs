@@ -14,6 +14,9 @@ namespace Assignment3_LHISGroup.UI
     {
         MainWindow mainWin;
         DbController db;
+        Support_Classes.Staff staff;
+
+        int id;
         public UpdateStaffWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
@@ -21,10 +24,33 @@ namespace Assignment3_LHISGroup.UI
             db = d;
         }
 
-        private void resetUpdateStaffForm()
+        public void PopulateForm(Support_Classes.Staff s)
         {
-            //mainWin.ManageStaffWindow
+            staff = s;
+            this.id = s.ID;
+
+            string firstname = s.FirstName;
+            string surname = s.Surname;
+            string email = s.Email;
+            string phone = s.Phone;
+            string notes = s.Notes;
+            Support_Classes.Staff.Active active = s.StaffStatus;
+
+            FirstNameTextBox.Text = firstname;
+            SurnameTextBox.Text = surname;
+            EmailTextBox.Text = email;
+            PhoneTextBox.Text = phone;
+            NotesTextBox.Text = notes;
+            if (active == Support_Classes.Staff.Active.active)
+            {
+                ActiveStatusCheckBox.Checked = true;
+            }
+            else
+            {
+                ActiveStatusCheckBox.Checked = false;
+            }
         }
+
 
         private bool validateUpdateStaffForm()
         {
@@ -60,14 +86,37 @@ namespace Assignment3_LHISGroup.UI
         }
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            resetUpdateStaffForm();
+            this.PopulateForm(this.staff);
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             if (validateUpdateStaffForm() == true)
             {
-                MessageBox.Show("Validation works!");
+
+                string fn = FirstNameTextBox.Text;
+                string sn = SurnameTextBox.Text;
+                string email = EmailTextBox.Text;
+                string phone = PhoneTextBox.Text;
+                string notes = NotesTextBox.Text;
+                bool active = ActiveStatusCheckBox.Checked;
+                Support_Classes.Staff.Active status = Support_Classes.Staff.Active.active;
+                if (active == false)
+                {
+                    status = Support_Classes.Staff.Active.inactive;
+                }
+
+                Support_Classes.Staff s = new Support_Classes.Staff(fn, sn, email, phone, notes, status);
+                
+                try
+                {
+                    db.UpdateStaff(this.id, s);
+                    mainWin.ManageStaffWindow.UpdateForm();
+                } catch (Exception){
+                    MessageBox.Show("Exception thrown");
+                }
+
+
             }
         }
 
