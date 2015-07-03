@@ -889,8 +889,103 @@ namespace Assignment3_LHISGroup
          */
         public List<Wedding> GetAllWeddings()
         {
+            List<Wedding> returnList = new List<Wedding>();
 
-            return new List<Wedding>();
+            _db.Open();
+
+            SqlDataReader myReader = null;
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Wedding", _db);
+
+            myReader = myCommand.ExecuteReader();
+
+            while (myReader.Read())
+            {
+                string title = myReader["title"].ToString();
+
+                // 
+                // Make Client 1
+                //
+                Client client1;
+                {
+                    int clientId = Convert.ToInt32(myReader["client_1_fk"].ToString());
+                    SqlDataReader clientOneReader = getClientDetails(clientId);
+                    string name = clientOneReader["firstname"].ToString();
+                    string surname = clientOneReader["surname"].ToString();
+                    string contact = clientOneReader["contactPerson"].ToString();
+                    string address = clientOneReader["address"].ToString();
+                    string mobile = clientOneReader["mobile"].ToString();
+                    string homeph = clientOneReader["homePhone"].ToString();
+                    string email = clientOneReader["email"].ToString();
+                    string engFn = clientOneReader["engagedTo_firstname"].ToString();
+                    string engSn = clientOneReader["engagedTo_surname"].ToString();
+                    client1 = new Client(name, surname, contact, address, mobile, homeph, email, engFn, engSn);
+                }              
+                
+                //
+                // Make Client 2
+                //
+                Client client2;
+                {
+                    int clientId = Convert.ToInt32(myReader["client_1_fk"].ToString());
+                    SqlDataReader clientTwoReader = getClientDetails(clientId);
+                    string name = clientTwoReader["firstname"].ToString();
+                    string surname = clientTwoReader["surname"].ToString();
+                    string contact = clientTwoReader["contactPerson"].ToString();
+                    string address = clientTwoReader["address"].ToString();
+                    string mobile = clientTwoReader["mobile"].ToString();
+                    string homeph = clientTwoReader["homePhone"].ToString();
+                    string email = clientTwoReader["email"].ToString();
+                    string engFn = clientTwoReader["engagedTo_firstname"].ToString();
+                    string engSn = clientTwoReader["engagedTo_surname"].ToString();
+                    client2 = new Client(name, surname, contact, address, mobile, homeph, email, engFn, engSn);
+                }
+                
+                //
+                // Make Staff
+                //
+                Staff staff;
+                {
+                    int staffId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
+                    SqlDataReader staffReader = getStaffDetails(staffId);
+                    string firstname = staffReader["firstname"].ToString();
+                    string surname = staffReader["surname"].ToString();
+                    string email = staffReader["email"].ToString();
+                    string phone = staffReader["phone"].ToString();
+                    string notes = staffReader["notes"].ToString();
+                    string active = staffReader["status"].ToString();
+                    Staff.Active isActive;
+                    if (active == Staff.Active.active.ToString())
+                    {
+                        isActive = Staff.Active.active;
+                    }
+                    else
+                    {
+                        isActive = Staff.Active.inactive;
+                    }
+                    staff = new Staff(firstname, surname, email, phone, notes, isActive);
+                }
+
+                //
+                // Create Dates
+                //
+                int[] tempDate = splitStringDate(myReader["startDate"].ToString());
+                DateTime startDate = new DateTime(tempDate[0], tempDate[1], tempDate[2]);
+
+                tempDate = splitStringDate(myReader["eventDate"].ToString());
+                DateTime eventDate = new DateTime(tempDate[0], tempDate[1], tempDate[2]);
+
+
+                //
+                // Create Wedding Object
+                //
+                Wedding w = new Wedding(title, client1, client2, staff, startDate, eventDate);
+                w.ID = Convert.ToInt32(myReader["Id"].ToString());
+
+                returnList.Add(w);
+            }
+            _db.Close();
+
+            return returnList;
         }
 
 
