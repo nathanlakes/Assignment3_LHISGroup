@@ -313,8 +313,8 @@ namespace Assignment3_LHISGroup
         public bool AddWedding(Wedding w)
         {
             string query = @"INSERT into Wedding";
-            query += @"(title, description, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK)";
-            query += @"VALUES(@title, @desc, @client1, @client2, @startDate, @eventDate, @weddingPlanner)";
+            query += @"(title, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK, description)";
+            query += @"VALUES(@title, @client1, @client2, @startDate, @eventDate, @weddingPlanner, @desc)";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
