@@ -1188,8 +1188,7 @@ namespace Assignment3_LHISGroup
         private string formatDateForDbInput(DateTime dt)
         {
             string format = "yyyy-MM-dd HH:MM:ss";
-            string dbSafeDate = dt.ToString(format);
-            return dbSafeDate;
+            return dt.ToString(format);
         }
 
 
