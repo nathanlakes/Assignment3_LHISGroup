@@ -70,10 +70,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\EventProgressGraph.cs" />
-    <Compile Include="Reports\EventProgressReport.cs" />
-    <Compile Include="Reports\EventTaskReport.cs" />
-    <Compile Include="Reports\EventReport.cs" />
+    <Compile Include="Reports\EventProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\EventProgress.Designer.cs">
+      <DependentUpon>EventProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EventReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\EventReport.Designer.cs">
+      <DependentUpon>EventReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EventTaskReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\EventTaskReport.Designer.cs">
+      <DependentUpon>EventTaskReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\StaffReport.cs">
       <SubType>Form</SubType>
     </Compile>
