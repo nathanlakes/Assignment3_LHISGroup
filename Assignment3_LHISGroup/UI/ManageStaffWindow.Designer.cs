@@ -43,10 +43,12 @@
             this.AddStaffButton = new System.Windows.Forms.Button();
             this.UpdateStaffButton = new System.Windows.Forms.Button();
             this.staffTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.StaffTableAdapter();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.StaffDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // StaffDataGridView
@@ -63,10 +65,13 @@
             this.notesDataGridViewTextBoxColumn,
             this.statusDataGridViewTextBoxColumn});
             this.StaffDataGridView.DataSource = this.staffBindingSource;
-            this.StaffDataGridView.Location = new System.Drawing.Point(12, 12);
+            this.StaffDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StaffDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.StaffDataGridView.MultiSelect = false;
             this.StaffDataGridView.Name = "StaffDataGridView";
             this.StaffDataGridView.RowTemplate.Height = 28;
-            this.StaffDataGridView.Size = new System.Drawing.Size(749, 226);
+            this.StaffDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.StaffDataGridView.Size = new System.Drawing.Size(771, 362);
             this.StaffDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -129,7 +134,7 @@
             // AddStaffButton
             // 
             this.AddStaffButton.BackColor = System.Drawing.Color.White;
-            this.AddStaffButton.Location = new System.Drawing.Point(104, 276);
+            this.AddStaffButton.Location = new System.Drawing.Point(30, 14);
             this.AddStaffButton.Name = "AddStaffButton";
             this.AddStaffButton.Size = new System.Drawing.Size(173, 42);
             this.AddStaffButton.TabIndex = 1;
@@ -140,7 +145,7 @@
             // UpdateStaffButton
             // 
             this.UpdateStaffButton.BackColor = System.Drawing.Color.White;
-            this.UpdateStaffButton.Location = new System.Drawing.Point(423, 276);
+            this.UpdateStaffButton.Location = new System.Drawing.Point(242, 15);
             this.UpdateStaffButton.Name = "UpdateStaffButton";
             this.UpdateStaffButton.Size = new System.Drawing.Size(174, 41);
             this.UpdateStaffButton.TabIndex = 2;
@@ -152,14 +157,23 @@
             // 
             this.staffTableAdapter.ClearBeforeFill = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.UpdateStaffButton);
+            this.panel1.Controls.Add(this.AddStaffButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 290);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(771, 72);
+            this.panel1.TabIndex = 3;
+            // 
             // ManageStaffWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(771, 362);
-            this.Controls.Add(this.UpdateStaffButton);
-            this.Controls.Add(this.AddStaffButton);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.StaffDataGridView);
             this.Name = "ManageStaffWindow";
             this.Text = "Manage Staff";
@@ -168,6 +182,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -188,5 +203,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -30,12 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.TasksDataGridView = new System.Windows.Forms.DataGridView();
-            this.AddTaskButton = new System.Windows.Forms.Button();
-            this.UpdateTaskButton = new System.Windows.Forms.Button();
-            this.DeleteWeddingButton = new System.Windows.Forms.Button();
-            this.modelDataSet = new Assignment3_LHISGroup.ModelDataSet();
-            this.taskBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.taskTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.TaskTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,9 +38,19 @@
             this.actualCompletionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.staffOnJobFKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weddingIDFKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taskBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.modelDataSet = new Assignment3_LHISGroup.ModelDataSet();
+            this.AddTaskButton = new System.Windows.Forms.Button();
+            this.UpdateTaskButton = new System.Windows.Forms.Button();
+            this.DeleteWeddingButton = new System.Windows.Forms.Button();
+            this.taskTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.TaskTableAdapter();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.TasksDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TasksDataGridView
@@ -64,58 +68,15 @@
             this.staffOnJobFKDataGridViewTextBoxColumn,
             this.weddingIDFKDataGridViewTextBoxColumn});
             this.TasksDataGridView.DataSource = this.taskBindingSource;
-            this.TasksDataGridView.Location = new System.Drawing.Point(12, 12);
+            this.TasksDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TasksDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.TasksDataGridView.MultiSelect = false;
             this.TasksDataGridView.Name = "TasksDataGridView";
             this.TasksDataGridView.RowTemplate.Height = 28;
-            this.TasksDataGridView.Size = new System.Drawing.Size(850, 272);
+            this.TasksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TasksDataGridView.Size = new System.Drawing.Size(869, 433);
             this.TasksDataGridView.TabIndex = 0;
-            // 
-            // AddTaskButton
-            // 
-            this.AddTaskButton.BackColor = System.Drawing.Color.White;
-            this.AddTaskButton.Location = new System.Drawing.Point(103, 299);
-            this.AddTaskButton.Name = "AddTaskButton";
-            this.AddTaskButton.Size = new System.Drawing.Size(108, 47);
-            this.AddTaskButton.TabIndex = 1;
-            this.AddTaskButton.Text = "Add Task";
-            this.AddTaskButton.UseVisualStyleBackColor = false;
-            this.AddTaskButton.Click += new System.EventHandler(this.AddTaskButton_Click);
-            // 
-            // UpdateTaskButton
-            // 
-            this.UpdateTaskButton.BackColor = System.Drawing.Color.White;
-            this.UpdateTaskButton.Location = new System.Drawing.Point(433, 299);
-            this.UpdateTaskButton.Name = "UpdateTaskButton";
-            this.UpdateTaskButton.Size = new System.Drawing.Size(131, 46);
-            this.UpdateTaskButton.TabIndex = 2;
-            this.UpdateTaskButton.Text = "Update Task";
-            this.UpdateTaskButton.UseVisualStyleBackColor = false;
-            this.UpdateTaskButton.Click += new System.EventHandler(this.UpdateTaskButton_Click);
-            // 
-            // DeleteWeddingButton
-            // 
-            this.DeleteWeddingButton.BackColor = System.Drawing.Color.White;
-            this.DeleteWeddingButton.Location = new System.Drawing.Point(433, 362);
-            this.DeleteWeddingButton.Name = "DeleteWeddingButton";
-            this.DeleteWeddingButton.Size = new System.Drawing.Size(131, 43);
-            this.DeleteWeddingButton.TabIndex = 3;
-            this.DeleteWeddingButton.Text = "Delete Task";
-            this.DeleteWeddingButton.UseVisualStyleBackColor = false;
-            this.DeleteWeddingButton.Click += new System.EventHandler(this.DeleteWeddingButton_Click);
-            // 
-            // modelDataSet
-            // 
-            this.modelDataSet.DataSetName = "ModelDataSet";
-            this.modelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // taskBindingSource
-            // 
-            this.taskBindingSource.DataMember = "Task";
-            this.taskBindingSource.DataSource = this.modelDataSet;
-            // 
-            // taskTableAdapter
-            // 
-            this.taskTableAdapter.ClearBeforeFill = true;
+            this.TasksDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TasksDataGridView_CellContentClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -165,22 +126,89 @@
             this.weddingIDFKDataGridViewTextBoxColumn.HeaderText = "weddingID_FK";
             this.weddingIDFKDataGridViewTextBoxColumn.Name = "weddingIDFKDataGridViewTextBoxColumn";
             // 
+            // taskBindingSource
+            // 
+            this.taskBindingSource.DataMember = "Task";
+            this.taskBindingSource.DataSource = this.modelDataSet;
+            // 
+            // modelDataSet
+            // 
+            this.modelDataSet.DataSetName = "ModelDataSet";
+            this.modelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // AddTaskButton
+            // 
+            this.AddTaskButton.BackColor = System.Drawing.Color.White;
+            this.AddTaskButton.Location = new System.Drawing.Point(161, 20);
+            this.AddTaskButton.Name = "AddTaskButton";
+            this.AddTaskButton.Size = new System.Drawing.Size(108, 43);
+            this.AddTaskButton.TabIndex = 1;
+            this.AddTaskButton.Text = "Add Task";
+            this.AddTaskButton.UseVisualStyleBackColor = false;
+            this.AddTaskButton.Click += new System.EventHandler(this.AddTaskButton_Click);
+            // 
+            // UpdateTaskButton
+            // 
+            this.UpdateTaskButton.BackColor = System.Drawing.Color.White;
+            this.UpdateTaskButton.Location = new System.Drawing.Point(551, 17);
+            this.UpdateTaskButton.Name = "UpdateTaskButton";
+            this.UpdateTaskButton.Size = new System.Drawing.Size(131, 46);
+            this.UpdateTaskButton.TabIndex = 2;
+            this.UpdateTaskButton.Text = "Update Task";
+            this.UpdateTaskButton.UseVisualStyleBackColor = false;
+            this.UpdateTaskButton.Click += new System.EventHandler(this.UpdateTaskButton_Click);
+            // 
+            // DeleteWeddingButton
+            // 
+            this.DeleteWeddingButton.BackColor = System.Drawing.Color.White;
+            this.DeleteWeddingButton.Location = new System.Drawing.Point(366, 20);
+            this.DeleteWeddingButton.Name = "DeleteWeddingButton";
+            this.DeleteWeddingButton.Size = new System.Drawing.Size(131, 43);
+            this.DeleteWeddingButton.TabIndex = 3;
+            this.DeleteWeddingButton.Text = "Delete Task";
+            this.DeleteWeddingButton.UseVisualStyleBackColor = false;
+            this.DeleteWeddingButton.Click += new System.EventHandler(this.DeleteWeddingButton_Click);
+            // 
+            // taskTableAdapter
+            // 
+            this.taskTableAdapter.ClearBeforeFill = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 358);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(869, 75);
+            this.panel1.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.AddTaskButton);
+            this.panel2.Controls.Add(this.DeleteWeddingButton);
+            this.panel2.Controls.Add(this.UpdateTaskButton);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(869, 75);
+            this.panel2.TabIndex = 4;
+            // 
             // ManageTasksWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(869, 433);
-            this.Controls.Add(this.DeleteWeddingButton);
-            this.Controls.Add(this.UpdateTaskButton);
-            this.Controls.Add(this.AddTaskButton);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.TasksDataGridView);
             this.Name = "ManageTasksWindow";
             this.Text = "Manage Tasks";
             this.Load += new System.EventHandler(this.ManageTasksWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TasksDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -202,5 +230,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn actualCompletionDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn staffOnJobFKDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn weddingIDFKDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

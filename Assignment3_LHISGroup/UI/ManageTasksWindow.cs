@@ -72,5 +72,10 @@ namespace Assignment3_LHISGroup.UI
         {
 
         }
+
+        private void TasksDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
