@@ -43,8 +43,8 @@ namespace Assignment3_LHISGroup.UI
                 string sn = (string)StaffDataGridView.SelectedRows[0].Cells[2].Value;
                 string email = (string)StaffDataGridView.SelectedRows[0].Cells[3].Value;
                 string phone = (string)StaffDataGridView.SelectedRows[0].Cells[4].Value;
-                string notes = (string)StaffDataGridView.SelectedRows[0].Cells[4].Value;
-                string status = (string)StaffDataGridView.SelectedRows[0].Cells[5].Value;
+                string notes = (string)StaffDataGridView.SelectedRows[0].Cells[5].Value;
+                string status = (string)StaffDataGridView.SelectedRows[0].Cells[6].Value;
 
                 Support_Classes.Staff.Active active = Support_Classes.Staff.Active.active;
                 if (active.ToString().ToLower().Contains("f"))

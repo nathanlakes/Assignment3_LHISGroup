@@ -99,7 +99,7 @@ namespace Assignment3_LHISGroup.UI
                 String n = FirstNameTextBox.Text;
                 String sn = SurnameTextBox.Text;
                 String e_n = EngagedFirstNameTextBox.Text;
-                String e_sn = EngagedFirstNameTextBox.Text;
+                String e_sn = EngagedSurnameTextBox.Text;
                 String email = EmailTextBox.Text;
                 String mobile = MobilePhoneTextBox.Text;
                 String phone = HomePhoneTextBox.Text;

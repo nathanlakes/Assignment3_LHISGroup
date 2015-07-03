@@ -48,13 +48,11 @@ namespace Assignment3_LHISGroup.UI
            
         }
 
-
-        private void EventReportWindow_FormClosed(object sender, FormClosedEventArgs e)
+        private void EventReportWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            mainWin.Show();
-            this.Dispose();
+            this.Visible = false;
+            e.Cancel = true; // this cancels the close event
         }
-
        
     }
 }

@@ -264,5 +264,32 @@ namespace Assignment3_LHISGroup
                 NewClientWindow.Focus();
             }
         }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // dispose of all windows.
+            ManageClientsWindow.Dispose();
+            ManageStaffWindow.Dispose();
+            ManageSuppliersWindow.Dispose();
+            ManageTasksWindow.Dispose();
+            ManageWeddingsWindow.Dispose();
+            NewClientWindow.Dispose();
+            NewStaffWindow.Dispose();
+            NewSupplierWindow.Dispose();
+            NewTaskWindow.Dispose();
+            NewWeddingWindow.Dispose();
+            EventReportWindow.Dispose();
+            UpdateClientWindow.Dispose();
+            UpdateStaffWindow.Dispose();
+            UpdateSupplierWindow.Dispose();
+            UpdateTaskWindow.Dispose();
+            UpdateWeddingWindow.Dispose();
+            this.Dispose();
+        }
     }
 }
