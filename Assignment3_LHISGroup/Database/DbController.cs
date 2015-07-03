@@ -1150,36 +1150,6 @@ namespace Assignment3_LHISGroup
             return myReader;
         }
 
-
-        /**
-         *   Used for debugging purposes.
-         *   TODO: DELETE AFTERWARDS!!!!
-         */
-        public void ShowData()
-        {
-            try
-            {
-                _db.Open();
-
-                SqlDataReader myReader = null;
-                SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers", _db);
-
-                myReader = myCommand.ExecuteReader();
-
-                Console.WriteLine("Cmd:  SELECT * FROM Suppliers");
-                while (myReader.Read())
-                {
-                    Console.Write(myReader["CompanyName"].ToString());
-                    Console.Write(",  ");
-                    Console.Write(myReader["ContactPerson"].ToString() + "\n");
-                }
-
-                _db.Close();
-            }
-            catch (Exception e) { e.GetHashCode(); }
-
-        }
-
         private string getClientsFullName(int id)
         {
             string query = @"SELECT firstname, surname FROM Client";
@@ -1220,6 +1190,36 @@ namespace Assignment3_LHISGroup
             string format = "yyyy-MM-dd HH:MM:ss";
             string dbSafeDate = dt.ToString(format);
             return dbSafeDate;
+        }
+
+
+        /**
+         *   Used for debugging purposes.
+         *   TODO: DELETE AFTERWARDS!!!!
+         */
+        public void ShowData()
+        {
+            try
+            {
+                _db.Open();
+
+                SqlDataReader myReader = null;
+                SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers", _db);
+
+                myReader = myCommand.ExecuteReader();
+
+                Console.WriteLine("Cmd:  SELECT * FROM Suppliers");
+                while (myReader.Read())
+                {
+                    Console.Write(myReader["CompanyName"].ToString());
+                    Console.Write(",  ");
+                    Console.Write(myReader["ContactPerson"].ToString() + "\n");
+                }
+
+                _db.Close();
+            }
+            catch (Exception e) { e.GetHashCode(); }
+
         }
     }
 }
