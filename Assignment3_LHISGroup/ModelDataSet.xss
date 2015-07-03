@@ -10,7 +10,7 @@
     <Shape ID="DesignTable:Staff" ZOrder="9" X="337" Y="388" Height="210" Width="172" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:Suppliers" ZOrder="8" X="820" Y="70" Height="210" Width="198" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:Task" ZOrder="7" X="579" Y="388" Height="229" Width="171" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
-    <Shape ID="DesignTable:Wedding" ZOrder="6" X="70" Y="70" Height="210" Width="197" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
+    <Shape ID="DesignTable:Wedding" ZOrder="6" X="70" Y="70" Height="229" Width="197" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK_Task_Staff" ZOrder="5" LineWidth="11">
@@ -61,7 +61,7 @@
         </Point>
         <Point>
           <X>250</X>
-          <Y>280</Y>
+          <Y>299</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -69,7 +69,7 @@
       <RoutePoints>
         <Point>
           <X>242</X>
-          <Y>280</Y>
+          <Y>299</Y>
         </Point>
         <Point>
           <X>242</X>

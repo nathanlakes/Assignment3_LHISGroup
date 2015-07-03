@@ -1172,7 +1172,7 @@ namespace Assignment3_LHISGroup
          *   Takes a string of dd/mm/yyyy and returns an
          *   int array of { dd, mm, yyyy };
          */
-        private int[] splitStringDate(string d)
+        public int[] splitStringDate(string d)
         {
             char[] delimChars = { '/', '\\' };
             string[] date = new string[3];
