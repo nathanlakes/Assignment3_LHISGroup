@@ -18,6 +18,8 @@ namespace Assignment3_LHISGroup.UI
         List<Support_Classes.Staff> StaffList;
         List<Support_Classes.Client> ClientList;
 
+        int id;
+        Support_Classes.Wedding wedding;
 
         public UpdateWeddingWindow(MainWindow w, DbController d)
         {
@@ -53,6 +55,20 @@ namespace Assignment3_LHISGroup.UI
 
             StaffComboBox.DisplayMember = "Value";
             StaffComboBox.ValueMember = "Key";
+        }
+
+        public void PopulateDataFields(Support_Classes.Wedding w)
+        {
+            wedding = w;
+            id = w.ID;
+
+            NameTextBox.Text = w.Title;
+            ClientComboBox.ValueMember = w.Client1.Firstname + " " + w.Client1.Surname;
+            EngagedComboBox.ValueMember = w.Client2.Firstname + " " + w.Client2.Surname;
+            DescriptionTextBox.Text = "";
+            EventDateTimePicker.ResetText();
+            StartDateTimePicker.ResetText();
+            StaffComboBox.ValueMember = "";
         }
 
         public void RefreshData()

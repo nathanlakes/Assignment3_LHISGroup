@@ -95,12 +95,12 @@ namespace Assignment3_LHISGroup.UI
         public void ClearForm()
         {
             NameTextBox.Text = "";
-            ClientComboBox.ValueMember = null;
-            EngagedComboBox.ValueMember = null;
+            ClientComboBox.ValueMember = "";
+            EngagedComboBox.ValueMember = "";
             DescriptionTextBox.Text = "";
             EventDateTimePicker.ResetText();
             StartDateTimePicker.ResetText();
-            StaffComboBox.ValueMember = null;
+            StaffComboBox.ValueMember = "";
             RefreshData();
         }
 
