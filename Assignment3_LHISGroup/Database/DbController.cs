@@ -1058,7 +1058,10 @@ namespace Assignment3_LHISGroup
             }
         }
 
-
+        /**
+         *   Checks the Client table and returns the Client ID number if it exists.
+         *   Returns -1 if the Client does not exsit
+         */
         private int getClientId(Client c)
         {
             SqlCommand testTask = new SqlCommand(
