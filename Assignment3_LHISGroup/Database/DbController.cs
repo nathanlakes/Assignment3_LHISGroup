@@ -53,19 +53,19 @@ namespace Assignment3_LHISGroup
             int res = 0;
 
             _db.Open();
-            String query = @"INSERT INTO Task(name, description, priority,completeByDate, ";
-            query += "actualCompletionDate,staffOnJob_FK)";
+            String query = @"INSERT INTO Task(name, description, priority, completeByDate, ";
+            query += "actualCompletionDate, staffOnJob_FK)";
             query += @" VALUES( @taskname, @description, @priority, @completeByDate, @actualComplete, @staffOnJob)";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@taskname", t.TaskName);
             myCommand.Parameters.AddWithValue("@description", t.Description);
             myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
-            myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString());
+            myCommand.Parameters.AddWithValue("@completeByDate", formatDateForDbInput(t.CompleteBy));
             try
             {
                 DateTime compDate = t.CompletionDate;
-                myCommand.Parameters.AddWithValue("@actualComplete", compDate.ToShortDateString());
+                myCommand.Parameters.AddWithValue("@actualComplete", formatDateForDbInput(t.CompletionDate));
             }
             catch (Exception)
             {
