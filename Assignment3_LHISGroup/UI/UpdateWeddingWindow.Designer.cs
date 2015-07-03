@@ -167,6 +167,7 @@
             this.UpdateButton.TabIndex = 28;
             this.UpdateButton.Text = "UPDATE";
             this.UpdateButton.UseVisualStyleBackColor = false;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // ReportsButton
             // 

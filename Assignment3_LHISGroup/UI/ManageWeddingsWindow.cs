@@ -50,14 +50,25 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateWeddingButton_Click(object sender, EventArgs e)
         {
-            if (!mainWin.UpdateWeddingWindow.Visible)
+            if (WeddingsDataGridView.SelectedRows.Count > 0 && WeddingsDataGridView.SelectedRows[0].Cells[0] != null)
             {
-                mainWin.UpdateWeddingWindow.Visible = true;
+                int id = (int) WeddingsDataGridView.SelectedRows[0].Cells[0].Value;
+
+                if (!mainWin.UpdateWeddingWindow.Visible)
+                {
+                    mainWin.UpdateWeddingWindow.Visible = true;
+                }
+                else
+                {
+                    mainWin.UpdateWeddingWindow.Focus();
+                }
             }
             else
             {
-                mainWin.UpdateWeddingWindow.Focus();
+
             }
+
+            
             
         }
 

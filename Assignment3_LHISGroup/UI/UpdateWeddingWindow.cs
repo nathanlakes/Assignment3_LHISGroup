@@ -118,5 +118,10 @@ namespace Assignment3_LHISGroup.UI
             this.Visible = false;
             e.Cancel = true; // this cancels the close event
         }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
