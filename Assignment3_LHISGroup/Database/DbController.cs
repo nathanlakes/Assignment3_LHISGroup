@@ -1011,28 +1011,25 @@ namespace Assignment3_LHISGroup
          */
         private int getStaffId(Staff s)
         {
-            SqlConnection _db = new SqlConnection(connStr);
-
             SqlCommand testStaff = new SqlCommand(
                "SELECT firstname FROM Staff WHERE firstname = '" + s.FirstName + "' AND surname = '" +
                s.Surname + "' AND phone = '" + s.Phone + "'", _db);
 
+            _db.Open();
+            int id = -1;
             try
             {
-                using (var myReader = testStaff.ExecuteReader())
+                var myReader = testStaff.ExecuteReader();
+                
+                if (myReader.Read())
                 {
-                    if (myReader.Read())
-                    {
-                        return Convert.ToInt32(myReader["Id"].ToString());
-                    }
+                    id = Convert.ToInt32(myReader["Id"].ToString());
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
+            catch (Exception) { }
 
-            return -1;
+            _db.Close();
+            return id;
         }
 
         /**
@@ -1045,18 +1042,17 @@ namespace Assignment3_LHISGroup
                "SELECT Id FROM Task WHERE name = '" + t.TaskName +
                     "' AND description = '" + t.Description + "'", _db);
 
-            using (var myReader = testTask.ExecuteReader())
+            _db.Open();
+            var myReader = testTask.ExecuteReader();
+
+            int id = -1;
+            if (myReader.Read())
             {
-                if (myReader.Read())
-                {
-                    return Convert.ToInt32(myReader["Id"].ToString());
-                }
-                else
-                {
-                    return -1;
-                }
+                id = Convert.ToInt32(myReader["Id"].ToString());
             }
-        }
+            return id;
+            
+        }   // NL UPTO HERE.
 
         /**
          *   Checks the Client table and returns the Client ID number if it exists.
