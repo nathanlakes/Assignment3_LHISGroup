@@ -1065,15 +1065,11 @@ namespace Assignment3_LHISGroup
                     "' AND surname = '" + c.Surname + "' AND homePhone ='" + c.HomePhone + "'", _db);
             _db.Open();
             var myReader = testTask.ExecuteReader();
-            int fk;
+            int fk = -1;
 
             if (myReader.Read())
             {
                 fk = Convert.ToInt32(myReader["Id"].ToString());
-            }
-            else
-            {
-                return -1;
             }
 
             _db.Close();
@@ -1085,8 +1081,10 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT from Staff ";
             query += @"WHERE id='@id'";
+            _db.Open();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
+            _db.Close();
             return myReader;
         }
 
@@ -1094,8 +1092,10 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT from Client ";
             query += @"WHERE id=@'id'";
+            _db.Open();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
+            _db.Close();
             return myReader;
         }
 
@@ -1103,8 +1103,10 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT from Wedding ";
             query += @"WHERE id=@'id'";
+            _db.Open();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
+            _db.Close();
             return myReader;
         }
 
@@ -1112,8 +1114,10 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT from Client ";
             query += @"WHERE id=@'id'";
+            _db.Open();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
+            _db.Close();
             return myReader;
         }
 
@@ -1151,14 +1155,17 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT firstname, surname FROM Client";
             query += @"WHERE id='@id'";
-
-            SqlCommand myCommand = new SqlCommand(query, _db);
             _db.Open();
+            SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
             _db.Close();
             return (myReader["firstname"].ToString() + " " + myReader["surname"].ToString());
         }
 
+        /**
+         *   Takes a string of dd/mm/yyyy and returns an
+         *   int array of { dd, mm, yyyy };
+         */
         public int[] splitStringDate(string d)
         {
             char[] delimChars = { '/', '\\' };
@@ -1176,6 +1183,9 @@ namespace Assignment3_LHISGroup
             return returnDate;
         }
 
+        /**
+         *   Formats .NET DateTime to SQLServer friendly format
+         */ 
         private string formatDateForDbInput(DateTime dt)
         {
             string format = "yyyy-MM-dd HH:MM:ss";
