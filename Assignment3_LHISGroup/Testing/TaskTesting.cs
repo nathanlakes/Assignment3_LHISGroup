@@ -21,7 +21,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         [ExpectedException(typeof(Exception))]
         public void CompleteBySetTest1()
         {
-            Wedding testWedding = new Wedding("Gay Rites", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
+            Wedding testWedding = new Wedding("Gay Rites", "notacakewalk", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
             Task testTask = new Task("testing", "does things", testPrio, new DateTime(), testStaff, testWedding);
             testTask.CompleteBy = new DateTime(2014, 1, 18);
         }
@@ -29,7 +29,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         [Test]
         public void CompleteBySetTest2()
         {
-            Wedding testWedding = new Wedding("Gay Rites", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
+            Wedding testWedding = new Wedding("Gay Rites", "notacakewalk", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
             Task testTask = new Task("testing", "does things", testPrio, new DateTime(), testStaff, testWedding);
             testTask.CompleteBy = new DateTime(2015, 12, 18);
             Assert.AreEqual(new DateTime(2015, 12, 18), testTask.CompleteBy);
@@ -39,7 +39,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         [ExpectedException(typeof(Exception))]
         public void CompletionDateGetTest1()
         {
-            Wedding testWedding = new Wedding("Gay Rites", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
+            Wedding testWedding = new Wedding("Gay Rites", "notacakewalk", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
             Task testTask = new Task("testing", "does things", testPrio, new DateTime(), testStaff, testWedding);
             DateTime result = testTask.CompletionDate;
         }
@@ -47,7 +47,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         [Test]
         public void CompletionSetDateTest1()
         {
-            Wedding testWedding = new Wedding("Gay Rites", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
+            Wedding testWedding = new Wedding("Gay Rites", "notacakewalk", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
             Task testTask = new Task("testing", "does things", testPrio, new DateTime(), testStaff, testWedding);
             testTask.CompletionDate = new DateTime(2015, 07, 18);
             Assert.AreEqual(new DateTime(2015, 07, 18), testTask.CompletionDate);
@@ -57,7 +57,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         [ExpectedException(typeof(Exception))]
         public void CompletionSetDateTest2()
         {
-            Wedding testWedding = new Wedding("Gay Rites", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
+            Wedding testWedding = new Wedding("Gay Rites", "notacakewalk", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
             Task testTask = new Task("testing", "does things", testPrio, new DateTime(), testStaff, testWedding);
             testTask.CompletionDate = new DateTime();
         }
@@ -66,7 +66,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         [ExpectedException(typeof(Exception))]
         public void CompletionSetDateTest3()
         {
-            Wedding testWedding = new Wedding("Gay Rites", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
+            Wedding testWedding = new Wedding("Gay Rites", "notacakewalk", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
             Task testTask = new Task("testing", "does things", testPrio, new DateTime(), testStaff, testWedding);
             testTask.CompletionDate = new DateTime(2012, 12, 8);
         }

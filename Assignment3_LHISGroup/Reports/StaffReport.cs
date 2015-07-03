@@ -46,7 +46,7 @@ namespace Assignment3_LHISGroup.Reports
             Client testClient1 = new Client("Jimmy", "Bastiras", "kalfslasf", "aflklsafl", "00000000000", "00340602", "gmail", "Daniel", "Stone");
             Client testClient2 = new Client("Daniel", "Stone", "kalfslasf", "aflklsafl", "00000000000", "00340602", "gmail", "Jimmy", "Bastiras");
 
-            Wedding testWedding = new Wedding("Gay Rites", testClient1, testClient2, testStaff1, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
+            Wedding testWedding = new Wedding("Gay Rites", "notacakewalk", testClient1, testClient2, testStaff1, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
             Support_Classes.Task testTask = new Support_Classes.Task("testing", "does things", testPrio, new DateTime(), testStaff1, testWedding);
 
             dbController.AddStaff(testStaff1);
@@ -59,7 +59,7 @@ namespace Assignment3_LHISGroup.Reports
 
             dbController.AddWedding(testWedding);
 
-           // dbController.AddTask(testTask);
+            dbController.AddTask(testTask);
 
             
         }
