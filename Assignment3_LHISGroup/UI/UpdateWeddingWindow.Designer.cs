@@ -45,18 +45,20 @@
             this.ReportsButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.StatusComboBox = new System.Windows.Forms.ComboBox();
+            this.EngagedComboBox = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // StartDateTimePicker
             // 
-            this.StartDateTimePicker.Location = new System.Drawing.Point(201, 275);
+            this.StartDateTimePicker.Location = new System.Drawing.Point(201, 332);
             this.StartDateTimePicker.Name = "StartDateTimePicker";
             this.StartDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.StartDateTimePicker.TabIndex = 23;
             // 
             // EventDateTimePicker
             // 
-            this.EventDateTimePicker.Location = new System.Drawing.Point(201, 235);
+            this.EventDateTimePicker.Location = new System.Drawing.Point(201, 292);
             this.EventDateTimePicker.Name = "EventDateTimePicker";
             this.EventDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.EventDateTimePicker.TabIndex = 22;
@@ -64,7 +66,7 @@
             // StaffComboBox
             // 
             this.StaffComboBox.FormattingEnabled = true;
-            this.StaffComboBox.Location = new System.Drawing.Point(201, 325);
+            this.StaffComboBox.Location = new System.Drawing.Point(201, 382);
             this.StaffComboBox.Name = "StaffComboBox";
             this.StaffComboBox.Size = new System.Drawing.Size(200, 28);
             this.StaffComboBox.TabIndex = 21;
@@ -79,7 +81,7 @@
             // 
             // DescriptionTextBox
             // 
-            this.DescriptionTextBox.Location = new System.Drawing.Point(201, 124);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(201, 181);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(200, 83);
@@ -95,7 +97,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 333);
+            this.label6.Location = new System.Drawing.Point(31, 390);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(130, 20);
             this.label6.TabIndex = 17;
@@ -113,7 +115,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 281);
+            this.label4.Location = new System.Drawing.Point(31, 338);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 20);
             this.label4.TabIndex = 15;
@@ -122,7 +124,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 235);
+            this.label3.Location = new System.Drawing.Point(31, 292);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 20);
             this.label3.TabIndex = 14;
@@ -131,7 +133,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 124);
+            this.label2.Location = new System.Drawing.Point(31, 181);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 13;
@@ -149,7 +151,7 @@
             // ResetButton
             // 
             this.ResetButton.BackColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(206, 457);
+            this.ResetButton.Location = new System.Drawing.Point(206, 514);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(67, 54);
             this.ResetButton.TabIndex = 29;
@@ -159,7 +161,7 @@
             // UpdateButton
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(279, 457);
+            this.UpdateButton.Location = new System.Drawing.Point(279, 514);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(122, 54);
             this.UpdateButton.TabIndex = 28;
@@ -169,7 +171,7 @@
             // ReportsButton
             // 
             this.ReportsButton.BackColor = System.Drawing.Color.White;
-            this.ReportsButton.Location = new System.Drawing.Point(33, 453);
+            this.ReportsButton.Location = new System.Drawing.Point(33, 510);
             this.ReportsButton.Name = "ReportsButton";
             this.ReportsButton.Size = new System.Drawing.Size(109, 56);
             this.ReportsButton.TabIndex = 31;
@@ -180,7 +182,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(33, 387);
+            this.label7.Location = new System.Drawing.Point(33, 444);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 20);
             this.label7.TabIndex = 32;
@@ -195,17 +197,36 @@
             "OnHold",
             "Cancelled",
             "InPreparation"});
-            this.StatusComboBox.Location = new System.Drawing.Point(201, 387);
+            this.StatusComboBox.Location = new System.Drawing.Point(201, 444);
             this.StatusComboBox.Name = "StatusComboBox";
             this.StatusComboBox.Size = new System.Drawing.Size(200, 28);
             this.StatusComboBox.TabIndex = 33;
+            // 
+            // EngagedComboBox
+            // 
+            this.EngagedComboBox.FormattingEnabled = true;
+            this.EngagedComboBox.Location = new System.Drawing.Point(201, 124);
+            this.EngagedComboBox.Name = "EngagedComboBox";
+            this.EngagedComboBox.Size = new System.Drawing.Size(200, 28);
+            this.EngagedComboBox.TabIndex = 49;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(31, 132);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 20);
+            this.label8.TabIndex = 48;
+            this.label8.Text = "Engaged To";
             // 
             // UpdateWeddingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(456, 536);
+            this.ClientSize = new System.Drawing.Size(456, 598);
+            this.Controls.Add(this.EngagedComboBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.StatusComboBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.ReportsButton);
@@ -250,5 +271,7 @@
         private System.Windows.Forms.Button ReportsButton;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox StatusComboBox;
+        private System.Windows.Forms.ComboBox EngagedComboBox;
+        private System.Windows.Forms.Label label8;
     }
 }

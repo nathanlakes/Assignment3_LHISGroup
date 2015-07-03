@@ -43,18 +43,20 @@
             this.HighRadioButton = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.WeddingComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // CompletionDateTimePicker
             // 
-            this.CompletionDateTimePicker.Location = new System.Drawing.Point(186, 415);
+            this.CompletionDateTimePicker.Location = new System.Drawing.Point(186, 460);
             this.CompletionDateTimePicker.Name = "CompletionDateTimePicker";
             this.CompletionDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.CompletionDateTimePicker.TabIndex = 29;
             // 
             // CompleteByDateTimePicker
             // 
-            this.CompleteByDateTimePicker.Location = new System.Drawing.Point(186, 371);
+            this.CompleteByDateTimePicker.Location = new System.Drawing.Point(186, 416);
             this.CompleteByDateTimePicker.Name = "CompleteByDateTimePicker";
             this.CompleteByDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.CompleteByDateTimePicker.TabIndex = 28;
@@ -62,7 +64,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 415);
+            this.label5.Location = new System.Drawing.Point(12, 460);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 20);
             this.label5.TabIndex = 27;
@@ -71,7 +73,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 378);
+            this.label4.Location = new System.Drawing.Point(12, 422);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(147, 20);
             this.label4.TabIndex = 26;
@@ -80,7 +82,7 @@
             // StaffComboBox
             // 
             this.StaffComboBox.FormattingEnabled = true;
-            this.StaffComboBox.Location = new System.Drawing.Point(86, 301);
+            this.StaffComboBox.Location = new System.Drawing.Point(86, 365);
             this.StaffComboBox.Name = "StaffComboBox";
             this.StaffComboBox.Size = new System.Drawing.Size(300, 28);
             this.StaffComboBox.TabIndex = 25;
@@ -103,7 +105,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 309);
+            this.label3.Location = new System.Drawing.Point(12, 373);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 20);
             this.label3.TabIndex = 22;
@@ -112,7 +114,7 @@
             // ResetButton
             // 
             this.ResetButton.BackColor = System.Drawing.Color.White;
-            this.ResetButton.Location = new System.Drawing.Point(53, 457);
+            this.ResetButton.Location = new System.Drawing.Point(53, 502);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(100, 54);
             this.ResetButton.TabIndex = 20;
@@ -122,7 +124,7 @@
             // UpdateButton
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(159, 457);
+            this.UpdateButton.Location = new System.Drawing.Point(159, 502);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(227, 54);
             this.UpdateButton.TabIndex = 19;
@@ -163,7 +165,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 116);
+            this.label2.Location = new System.Drawing.Point(12, 110);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 17;
@@ -172,18 +174,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 24);
+            this.label1.Location = new System.Drawing.Point(12, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 16;
             this.label1.Text = "Name";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 316);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 20);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "Wedding";
+            // 
+            // WeddingComboBox
+            // 
+            this.WeddingComboBox.FormattingEnabled = true;
+            this.WeddingComboBox.Location = new System.Drawing.Point(105, 307);
+            this.WeddingComboBox.Name = "WeddingComboBox";
+            this.WeddingComboBox.Size = new System.Drawing.Size(276, 28);
+            this.WeddingComboBox.TabIndex = 31;
             // 
             // UpdateTaskWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(433, 542);
+            this.ClientSize = new System.Drawing.Size(423, 568);
+            this.Controls.Add(this.WeddingComboBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.CompletionDateTimePicker);
             this.Controls.Add(this.CompleteByDateTimePicker);
             this.Controls.Add(this.label5);
@@ -224,5 +245,7 @@
         private System.Windows.Forms.RadioButton HighRadioButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox WeddingComboBox;
     }
 }

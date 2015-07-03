@@ -43,12 +43,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.CompleteByDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.CompletionDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.WeddingComboBox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 24);
+            this.label1.Location = new System.Drawing.Point(12, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 0;
@@ -57,7 +59,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 116);
+            this.label2.Location = new System.Drawing.Point(12, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 1;
@@ -97,7 +99,7 @@
             // ClearButton
             // 
             this.ClearButton.BackColor = System.Drawing.Color.White;
-            this.ClearButton.Location = new System.Drawing.Point(51, 473);
+            this.ClearButton.Location = new System.Drawing.Point(51, 510);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(102, 54);
             this.ClearButton.TabIndex = 4;
@@ -107,7 +109,7 @@
             // CreateButton
             // 
             this.CreateButton.BackColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(159, 473);
+            this.CreateButton.Location = new System.Drawing.Point(159, 510);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(227, 54);
             this.CreateButton.TabIndex = 3;
@@ -117,7 +119,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 309);
+            this.label3.Location = new System.Drawing.Point(12, 364);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 20);
             this.label3.TabIndex = 6;
@@ -141,7 +143,7 @@
             // StaffComboBox
             // 
             this.StaffComboBox.FormattingEnabled = true;
-            this.StaffComboBox.Location = new System.Drawing.Point(86, 301);
+            this.StaffComboBox.Location = new System.Drawing.Point(86, 361);
             this.StaffComboBox.Name = "StaffComboBox";
             this.StaffComboBox.Size = new System.Drawing.Size(300, 28);
             this.StaffComboBox.TabIndex = 9;
@@ -149,7 +151,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 378);
+            this.label4.Location = new System.Drawing.Point(12, 421);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(147, 20);
             this.label4.TabIndex = 10;
@@ -158,7 +160,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 415);
+            this.label5.Location = new System.Drawing.Point(12, 460);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 20);
             this.label5.TabIndex = 11;
@@ -166,24 +168,43 @@
             // 
             // CompleteByDateTimePicker
             // 
-            this.CompleteByDateTimePicker.Location = new System.Drawing.Point(186, 371);
+            this.CompleteByDateTimePicker.Location = new System.Drawing.Point(186, 416);
             this.CompleteByDateTimePicker.Name = "CompleteByDateTimePicker";
             this.CompleteByDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.CompleteByDateTimePicker.TabIndex = 12;
             // 
             // CompletionDateTimePicker
             // 
-            this.CompletionDateTimePicker.Location = new System.Drawing.Point(186, 415);
+            this.CompletionDateTimePicker.Location = new System.Drawing.Point(186, 460);
             this.CompletionDateTimePicker.Name = "CompletionDateTimePicker";
             this.CompletionDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.CompletionDateTimePicker.TabIndex = 13;
+            // 
+            // WeddingComboBox
+            // 
+            this.WeddingComboBox.FormattingEnabled = true;
+            this.WeddingComboBox.Location = new System.Drawing.Point(105, 306);
+            this.WeddingComboBox.Name = "WeddingComboBox";
+            this.WeddingComboBox.Size = new System.Drawing.Size(276, 28);
+            this.WeddingComboBox.TabIndex = 33;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 315);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 20);
+            this.label6.TabIndex = 32;
+            this.label6.Text = "Wedding";
             // 
             // NewTaskWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(420, 562);
+            this.ClientSize = new System.Drawing.Size(420, 591);
+            this.Controls.Add(this.WeddingComboBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.CompletionDateTimePicker);
             this.Controls.Add(this.CompleteByDateTimePicker);
             this.Controls.Add(this.label5);
@@ -224,5 +245,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker CompleteByDateTimePicker;
         private System.Windows.Forms.DateTimePicker CompletionDateTimePicker;
+        private System.Windows.Forms.ComboBox WeddingComboBox;
+        private System.Windows.Forms.Label label6;
     }
 }

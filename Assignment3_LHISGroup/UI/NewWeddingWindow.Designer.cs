@@ -42,12 +42,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.EngagedComboBox = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.NewClientButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ClearButton
             // 
             this.ClearButton.BackColor = System.Drawing.Color.White;
-            this.ClearButton.Location = new System.Drawing.Point(204, 393);
+            this.ClearButton.Location = new System.Drawing.Point(204, 451);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(65, 54);
             this.ClearButton.TabIndex = 45;
@@ -58,7 +61,7 @@
             // CreateButton
             // 
             this.CreateButton.BackColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(275, 393);
+            this.CreateButton.Location = new System.Drawing.Point(275, 451);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(129, 54);
             this.CreateButton.TabIndex = 44;
@@ -68,14 +71,14 @@
             // 
             // StartDateTimePicker
             // 
-            this.StartDateTimePicker.Location = new System.Drawing.Point(204, 276);
+            this.StartDateTimePicker.Location = new System.Drawing.Point(204, 334);
             this.StartDateTimePicker.Name = "StartDateTimePicker";
             this.StartDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.StartDateTimePicker.TabIndex = 43;
             // 
             // EventDateTimePicker
             // 
-            this.EventDateTimePicker.Location = new System.Drawing.Point(204, 236);
+            this.EventDateTimePicker.Location = new System.Drawing.Point(204, 294);
             this.EventDateTimePicker.Name = "EventDateTimePicker";
             this.EventDateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.EventDateTimePicker.TabIndex = 42;
@@ -83,7 +86,7 @@
             // StaffComboBox
             // 
             this.StaffComboBox.FormattingEnabled = true;
-            this.StaffComboBox.Location = new System.Drawing.Point(204, 326);
+            this.StaffComboBox.Location = new System.Drawing.Point(204, 384);
             this.StaffComboBox.Name = "StaffComboBox";
             this.StaffComboBox.Size = new System.Drawing.Size(200, 28);
             this.StaffComboBox.TabIndex = 41;
@@ -98,7 +101,7 @@
             // 
             // DescriptionTextBox
             // 
-            this.DescriptionTextBox.Location = new System.Drawing.Point(204, 125);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(204, 183);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(200, 83);
@@ -114,7 +117,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 334);
+            this.label6.Location = new System.Drawing.Point(34, 392);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(130, 20);
             this.label6.TabIndex = 37;
@@ -132,7 +135,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 282);
+            this.label4.Location = new System.Drawing.Point(34, 340);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 20);
             this.label4.TabIndex = 35;
@@ -141,7 +144,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 236);
+            this.label3.Location = new System.Drawing.Point(34, 294);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 20);
             this.label3.TabIndex = 34;
@@ -150,7 +153,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 125);
+            this.label2.Location = new System.Drawing.Point(34, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 33;
@@ -165,12 +168,42 @@
             this.label1.TabIndex = 32;
             this.label1.Text = "Name";
             // 
+            // EngagedComboBox
+            // 
+            this.EngagedComboBox.FormattingEnabled = true;
+            this.EngagedComboBox.Location = new System.Drawing.Point(204, 118);
+            this.EngagedComboBox.Name = "EngagedComboBox";
+            this.EngagedComboBox.Size = new System.Drawing.Size(200, 28);
+            this.EngagedComboBox.TabIndex = 47;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(34, 126);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(96, 20);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "Engaged To";
+            // 
+            // NewClientButton
+            // 
+            this.NewClientButton.BackColor = System.Drawing.Color.White;
+            this.NewClientButton.Location = new System.Drawing.Point(36, 451);
+            this.NewClientButton.Name = "NewClientButton";
+            this.NewClientButton.Size = new System.Drawing.Size(94, 53);
+            this.NewClientButton.TabIndex = 48;
+            this.NewClientButton.Text = "Add Client";
+            this.NewClientButton.UseVisualStyleBackColor = false;
+            // 
             // NewWeddingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(439, 477);
+            this.ClientSize = new System.Drawing.Size(439, 536);
+            this.Controls.Add(this.NewClientButton);
+            this.Controls.Add(this.EngagedComboBox);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.StartDateTimePicker);
@@ -209,6 +242,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox EngagedComboBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button NewClientButton;
 
     }
 }
