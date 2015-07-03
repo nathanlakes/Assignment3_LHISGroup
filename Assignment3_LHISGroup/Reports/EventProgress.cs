@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Assignment3_LHISGroup.Reports
 {
-    public partial class EventTaskReport : Form
+    public partial class EventProgress : Form
     {
-        public EventTaskReport()
+        public EventProgress()
         {
             InitializeComponent();
         }
