@@ -1066,7 +1066,7 @@ namespace Assignment3_LHISGroup
         {
             SqlCommand testTask = new SqlCommand(
                "SELECT Id FROM Client WHERE firstname = '" + c.Firstname +
-                    "' AND surname = '" + c.Surname + "' AND phone ='" + c.HomePhone + "'", _db);
+                    "' AND surname = '" + c.Surname + "' AND homePhone ='" + c.HomePhone + "'", _db);
             _db.Open();
             var myReader = testTask.ExecuteReader();
             int fk;
