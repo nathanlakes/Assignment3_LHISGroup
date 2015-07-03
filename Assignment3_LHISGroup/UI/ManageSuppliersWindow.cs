@@ -36,14 +36,38 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateSupplierbutton_Click(object sender, EventArgs e)
         {
-            if (!mainWin.UpdateSupplierWindow.Visible)
+            if (SuppliersDataGridView.SelectedRows.Count > 0 && SuppliersDataGridView.SelectedRows[0].Cells[0].Value != null)
             {
-                mainWin.UpdateSupplierWindow.Visible = true;
+                
+                int id = (int) SuppliersDataGridView.SelectedRows[0].Cells[0].Value;
+
+                string companyName = (string) SuppliersDataGridView.SelectedRows[0].Cells[1].Value;
+                string address = (string)SuppliersDataGridView.SelectedRows[0].Cells[2].Value;
+                string contactPerson = (string)SuppliersDataGridView.SelectedRows[0].Cells[3].Value;
+                string email = (string)SuppliersDataGridView.SelectedRows[0].Cells[4].Value;
+                string phoneNumber = (string)SuppliersDataGridView.SelectedRows[0].Cells[5].Value;
+                int creditTerms = (int)SuppliersDataGridView.SelectedRows[0].Cells[6].Value;
+
+                Support_Classes.Supplier s = new Support_Classes.Supplier(companyName, address, contactPerson, email, phoneNumber, creditTerms);
+                s.ID = id;
+
+                if (!mainWin.UpdateSupplierWindow.Visible)
+                {
+                    mainWin.UpdateSupplierWindow.Visible = true;
+                    mainWin.UpdateSupplierWindow.PopulateDataFields(s);
+                }
+                else
+                {
+                    mainWin.UpdateSupplierWindow.PopulateDataFields(s);
+                    mainWin.UpdateSupplierWindow.Focus();
+                }
             }
             else
             {
-                mainWin.UpdateSupplierWindow.Focus();
+                MessageBox.Show("No row selected");
             }
+
+           
             
         }
 
@@ -59,6 +83,12 @@ namespace Assignment3_LHISGroup.UI
         {
             // TODO: This line of code loads data into the 'modelDataSet.Staff' table. You can move, or remove it, as needed.
             this.suppliersTableAdapter.Fill(this.modelDataSet.Suppliers);
+        }
+
+        private void ManageSuppliersWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Visible = false;
+            e.Cancel = true; // this cancels the close event
         }
     }
 }

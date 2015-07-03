@@ -21,7 +21,7 @@ namespace Assignment3_LHISGroup.UI
             db = d;
         }
 
-        private void clearNewSupplierWindow()
+        private void ClearWindow()
         {
             CompanyNameTextBox.Text = "";
             ContactPersonTextBox.Text = "";
@@ -30,7 +30,7 @@ namespace Assignment3_LHISGroup.UI
             AddressTextBox.Text = "";
         }
 
-        private bool validateNewSupplierWindow()
+        private bool ValidateWindow()
         {
             if (CompanyNameTextBox.Text == "" || CompanyNameTextBox.Text == null)
             {
@@ -70,12 +70,12 @@ namespace Assignment3_LHISGroup.UI
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            this.clearNewSupplierWindow();
+            this.ClearWindow();
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            if (validateNewSupplierWindow() == true)
+            if (ValidateWindow() == true)
             {
                 String name = CompanyNameTextBox.Text;
                 String contact = ContactPersonTextBox.Text;
@@ -88,7 +88,7 @@ namespace Assignment3_LHISGroup.UI
                 try
                 {
                     db.AddSupplier(s);
-                    clearNewSupplierWindow();
+                    ClearWindow();
                     mainWin.ManageSuppliersWindow.UpdateForm();
                 }
                 catch (Exception)
@@ -98,6 +98,11 @@ namespace Assignment3_LHISGroup.UI
                 
                 
             }
+        }
+        private void NewSupplierWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Visible = false;
+            e.Cancel = true; // this cancels the close event
         }
     }
 }

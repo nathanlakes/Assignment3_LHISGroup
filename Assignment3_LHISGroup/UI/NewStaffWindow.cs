@@ -100,5 +100,12 @@ namespace Assignment3_LHISGroup.UI
         {
             this.clearNewStaffForm();
         }
+
+
+        private void NewStaffWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Visible = false;
+            e.Cancel = true; // this cancels the close event
+        }
     }
 }

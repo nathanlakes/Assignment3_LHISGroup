@@ -72,5 +72,6 @@ namespace Assignment3_LHISGroup.UI
             this.weddingTableAdapter.Fill(this.modelDataSet.Wedding);
 
         }
+
     }
 }

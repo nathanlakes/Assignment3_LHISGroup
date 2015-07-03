@@ -20,5 +20,11 @@ namespace Assignment3_LHISGroup.UI
             mainWin = w;
             db = d;
         }
+
+        private void NewTaskWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Visible = false;
+            e.Cancel = true; // this cancels the close event
+        }
     }
 }

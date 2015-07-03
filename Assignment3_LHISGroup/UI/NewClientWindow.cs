@@ -128,5 +128,11 @@ namespace Assignment3_LHISGroup.UI
                 }
             }
         }
+
+        private void NewClientWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Visible = false;
+            e.Cancel = true; // this cancels the close event
+        }
     }
 }

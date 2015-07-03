@@ -90,5 +90,11 @@ namespace Assignment3_LHISGroup.UI
                 MessageBox.Show("Successfully Validated!");
             }
         }
+
+        private void NewWeddingWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Visible = false;
+            e.Cancel = true; // this cancels the close event
+        }
     }
 }

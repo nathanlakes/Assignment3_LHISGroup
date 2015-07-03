@@ -67,5 +67,6 @@ namespace Assignment3_LHISGroup.UI
             this.clientTableAdapter.Fill(this.modelDataSet.Client);
 
         }
+
     }
 }
