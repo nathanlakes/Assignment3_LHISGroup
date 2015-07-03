@@ -1,6 +1,6 @@
 ﻿namespace Assignment3_LHISGroup.UI
 {
-    partial class UpdateSupplierWindow
+    partial class UpdateWindow
     {
         /// <summary>
         /// Required designer variable.

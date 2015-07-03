@@ -10,20 +10,22 @@ using System.Windows.Forms;
 
 namespace Assignment3_LHISGroup.UI
 {
-    public partial class UpdateSupplierWindow : Form
+    public partial class UpdateWindow : Form
     {
         MainWindow mainWin;
         DbController db;
         Support_Classes.Supplier supplier;
         int id;
-        public UpdateSupplierWindow(MainWindow w, DbController d)
+
+
+        public UpdateWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
             mainWin = w;
             db = d;
         }
 
-        public UpdateSupplierWindow(MainWindow w, DbController d, Support_Classes.Supplier s)
+        public UpdateWindow(MainWindow w, DbController d, Support_Classes.Supplier s)
         {
             InitializeComponent();
             mainWin = w;
@@ -121,7 +123,7 @@ namespace Assignment3_LHISGroup.UI
                 {
                     db.UpdateSupplier(id, s);
                     mainWin.ManageSuppliersWindow.UpdateForm();
-                    this.Hide();
+                    //this.Hide();
                 }
                 catch (Exception)
                 {

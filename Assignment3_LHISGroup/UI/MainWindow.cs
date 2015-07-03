@@ -35,7 +35,7 @@ namespace Assignment3_LHISGroup
         public UI.EventReportWindow EventReportWindow; // accessed from UpdateWeddingWindow
         public UI.UpdateClientWindow UpdateClientWindow; // accessed from ManageClientsWindow
         public UI.UpdateStaffWindow UpdateStaffWindow; // accessed from ManageStaffWindow
-        public UI.UpdateSupplierWindow UpdateSupplierWindow; // accessed from ManageSuppliersWindow
+        public UI.UpdateWindow UpdateSupplierWindow; // accessed from ManageSuppliersWindow
         public UI.UpdateTaskWindow UpdateTaskWindow; // accessed from ManageTasksWindow
         public UI.UpdateWeddingWindow UpdateWeddingWindow; // accessed from ManageWeddingsWindow
 
@@ -55,7 +55,7 @@ namespace Assignment3_LHISGroup
             UpdateStaffWindow = new UI.UpdateStaffWindow(this, db);
             UpdateStaffWindow.Hide();
 
-            UpdateSupplierWindow = new UI.UpdateSupplierWindow(this, db);
+            UpdateSupplierWindow = new UI.UpdateWindow(this, db);
             UpdateSupplierWindow.Hide();
             
             UpdateTaskWindow = new UI.UpdateTaskWindow(this, db);
