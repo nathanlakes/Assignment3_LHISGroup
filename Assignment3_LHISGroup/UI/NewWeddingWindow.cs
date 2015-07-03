@@ -24,21 +24,35 @@ namespace Assignment3_LHISGroup.UI
             mainWin = w;
             db = d;
 
+
             ClientList = db.GetAllClients();
             foreach (Support_Classes.Client client in ClientList)
             {
-                ClientComboBox.Items.Add(client.Firstname + " " + client.Surname);
-                EngagedComboBox.Items.Add(client.Firstname + " " + client.Surname);
+                KeyValuePair<int,string> keyValue = new KeyValuePair<int,string>(client.ID, client.Firstname + " " + client.Surname);
+                ClientComboBox.Items.Add(keyValue);
+                EngagedComboBox.Items.Add(keyValue);
             }
 
+            ClientComboBox.DisplayMember = "Value";
+            ClientComboBox.ValueMember = "Key";
+
+            EngagedComboBox.DisplayMember = "Value";
+            EngagedComboBox.ValueMember = "Key";
+
             StaffList = db.GetAllStaff();
+
             foreach (Support_Classes.Staff staff in StaffList)
             {
                 if (staff.StatusToString().Equals("active"))
                 {
-                    StaffComboBox.Items.Add(staff.FirstName + " " + staff.Surname);
+                    int keyValue = staff.ID;
+                    string name = staff.FirstName + " " + staff.Surname;
+                    StaffComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));   
                 }
             }
+
+            StaffComboBox.DisplayMember = "Value";
+            StaffComboBox.ValueMember = "Key";
             
         }
 
@@ -47,18 +61,31 @@ namespace Assignment3_LHISGroup.UI
             ClientList = db.GetAllClients();
             foreach (Support_Classes.Client client in ClientList)
             {
-                ClientComboBox.Items.Add(client.Firstname + " " + client.Surname);
-                EngagedComboBox.Items.Add(client.Firstname + " " + client.Surname);
+                KeyValuePair<int, string> keyValue = new KeyValuePair<int, string>(client.ID, client.Firstname + " " + client.Surname);
+                ClientComboBox.Items.Add(keyValue);
+                EngagedComboBox.Items.Add(keyValue);
             }
 
+            ClientComboBox.DisplayMember = "Value";
+            ClientComboBox.ValueMember = "Key";
+
+            EngagedComboBox.DisplayMember = "Value";
+            EngagedComboBox.ValueMember = "Key";
+
             StaffList = db.GetAllStaff();
+
             foreach (Support_Classes.Staff staff in StaffList)
             {
                 if (staff.StatusToString().Equals("active"))
                 {
-                    StaffComboBox.Items.Add(staff.FirstName + " " + staff.Surname);
+                    int keyValue = staff.ID;
+                    string name = staff.FirstName + " " + staff.Surname;
+                    StaffComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
                 }
             }
+
+            StaffComboBox.DisplayMember = "Value";
+            StaffComboBox.ValueMember = "Key";
         }
 
         public void ClearForm()
