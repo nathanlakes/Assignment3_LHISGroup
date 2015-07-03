@@ -306,7 +306,7 @@ namespace Assignment3_LHISGroup
          */
         public bool AddWedding(Wedding w)
         {
-            string query = @"INSERT into Weddding";
+            string query = @"INSERT into Wedding";
             query += @"(title, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK)";
             query += @"VALUES(@title, @client1, @client2, @startDate, @eventDate, @weddingPlanner)";
 
