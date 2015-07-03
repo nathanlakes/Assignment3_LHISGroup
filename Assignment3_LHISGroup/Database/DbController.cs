@@ -1064,18 +1064,21 @@ namespace Assignment3_LHISGroup
             SqlCommand testTask = new SqlCommand(
                "SELECT Id FROM Client WHERE firstname = '" + c.Firstname +
                     "' AND surname = '" + c.Surname + "' AND phone ='" + c.HomePhone + "'", _db);
+            _db.Open();
+            var myReader = testTask.ExecuteReader();
+            int fk;
 
-            using (var myReader = testTask.ExecuteReader())
+            if (myReader.Read())
             {
-                if (myReader.Read())
-                {
-                    return Convert.ToInt32(myReader["Id"].ToString());
-                }
-                else
-                {
-                    return -1;
-                }
+                fk = Convert.ToInt32(myReader["Id"].ToString());
             }
+            else
+            {
+                return -1;
+            }
+
+            _db.Close();
+            return fk;            
         }
 
 
