@@ -57,6 +57,10 @@ namespace Assignment3_LHISGroup.UI
 
         public void RefreshData()
         {
+            ClientComboBox.Items.Clear();
+            EngagedComboBox.Items.Clear();
+            StaffComboBox.Items.Clear();
+
             ClientList = db.GetAllClients();
             foreach (Support_Classes.Client client in ClientList)
             {

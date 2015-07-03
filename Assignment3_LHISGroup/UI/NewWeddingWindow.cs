@@ -58,6 +58,10 @@ namespace Assignment3_LHISGroup.UI
 
         public void RefreshData()
         {
+            ClientComboBox.Items.Clear();
+            EngagedComboBox.Items.Clear();
+            StaffComboBox.Items.Clear();
+
             ClientList = db.GetAllClients();
             foreach (Support_Classes.Client client in ClientList)
             {
@@ -97,6 +101,7 @@ namespace Assignment3_LHISGroup.UI
             EventDateTimePicker.ResetText();
             StartDateTimePicker.ResetText();
             StaffComboBox.ValueMember = null;
+            RefreshData();
         }
 
         public bool ValidateForm()
@@ -148,7 +153,8 @@ namespace Assignment3_LHISGroup.UI
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            this.ClearForm();
+            ClearForm();
+            RefreshData();
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
@@ -157,10 +163,16 @@ namespace Assignment3_LHISGroup.UI
             {
                 MessageBox.Show("Successfully Validated!");
             }
+            else
+            {
+
+            }
+            RefreshData();
         }
 
         private void NewWeddingWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
+            RefreshData();
             this.Visible = false;
             e.Cancel = true; // this cancels the close event
         }
