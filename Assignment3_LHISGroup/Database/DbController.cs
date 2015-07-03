@@ -184,7 +184,8 @@ namespace Assignment3_LHISGroup
         {
             String query = @"INSERT into Client (firstname, surname, contactPerson, address, ";
             query += @"mobile, homePhone, email, engagedTo_firstname, engagedTo_surname)";
-            query += @" VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, @email, @engFn, @engSn)";
+            query += @" VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, ";
+            query += @"@email, @engFn, @engSn)";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
@@ -1012,7 +1013,7 @@ namespace Assignment3_LHISGroup
         private int getStaffId(Staff s)
         {
             SqlCommand testStaff = new SqlCommand(
-               "SELECT firstname FROM Staff WHERE firstname = '" + s.FirstName + "' AND surname = '" +
+               "SELECT id FROM Staff WHERE firstname = '" + s.FirstName + "' AND surname = '" +
                s.Surname + "' AND phone = '" + s.Phone + "'", _db);
 
             _db.Open();
