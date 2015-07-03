@@ -11,9 +11,10 @@ namespace Assignment3_LHISGroup
 {
 
     /**
-     *   The controller for the SQL Database model. 
-     *   All views interface with Database.cs and read
-     *   write via this class
+     *   The controller for the SQL Database [model.mdf]. 
+     *   All views in "UI" interact exclusively with DbController.cs. 
+     *   They pass as arguments objects from "Support Classes" to write to the Db and 
+     *   when reads are quested receive objects of those classes back.
      */
     public class DbController
     {
@@ -313,8 +314,18 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand(query, _db);
 
             myCommand.Parameters.AddWithValue("@title", w.Title.ToString());
-            myCommand.Parameters.AddWithValue("@client1", w.Client1.Firstname + " " + w.Client1.Surname);
-            myCommand.Parameters.AddWithValue("@client2", w.Client2.Firstname + " " + w.Client2.Surname);
+
+            int clientOneFk;
+            int clientTwoFk;
+ 
+            clientOneFk = getClientId(w.Client1);
+            if (clientOneFk == -1) throw new Exception("Client must be in database before adding wedding.");
+
+            clientTwoFk = getClientId(w.Client2);
+            if (clientTwoFk == -1) throw new Exception("Client must be in database before adding wedding.");
+
+            myCommand.Parameters.AddWithValue("@client1", clientOneFk);
+            myCommand.Parameters.AddWithValue("@client2", clientTwoFk);
             myCommand.Parameters.AddWithValue("@startDate", w.StartDate.ToShortDateString());
             myCommand.Parameters.AddWithValue("@eventDate", w.EventDate.ToShortDateString());
             myCommand.Parameters.AddWithValue("@weddingPlanner", getStaffId(w.WeddingPlanner));
@@ -1030,8 +1041,6 @@ namespace Assignment3_LHISGroup
          */
         private int getTaskId(Support_Classes.Task t)
         {
-            SqlConnection _db = new SqlConnection(connStr);
-
             SqlCommand testTask = new SqlCommand(
                "SELECT Id FROM Task WHERE name = '" + t.TaskName +
                     "' AND description = '" + t.Description + "'", _db);
@@ -1048,6 +1057,27 @@ namespace Assignment3_LHISGroup
                 }
             }
         }
+
+
+        private int getClientId(Client c)
+        {
+            SqlCommand testTask = new SqlCommand(
+               "SELECT Id FROM Client WHERE firstname = '" + c.Firstname +
+                    "' AND surname = '" + c.Surname + "' AND phone ='" + c.HomePhone + "'", _db);
+
+            using (var myReader = testTask.ExecuteReader())
+            {
+                if (myReader.Read())
+                {
+                    return Convert.ToInt32(myReader["Id"].ToString());
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
+
 
         private SqlDataReader getStaffDetails(int id)
         {
