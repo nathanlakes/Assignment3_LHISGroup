@@ -220,8 +220,8 @@ namespace Assignment3_LHISGroup
         public bool UpdateClient(int id, Client c)
         {
             string query = @"UPDATE Client";
-            query += @"SET firstname='@firstname', surname='@surname', contactPerson='@contactPerson', address='@address', ";
-            query += @"mobile=@'mobile', homePhone='@homePhone', email='@email', ";
+            query += @"SET firstname='@firstname', surname='@surname', contactPerson='@contactPerson', ";
+            query += @"address='@address', mobile=@'mobile', homePhone='@homePhone', email='@email', ";
             query += @"engagedTo_firstname='@engFn', engagedTo_surname='@engSn'";
             query += @"WHERE id='@id'";
 
@@ -295,7 +295,8 @@ namespace Assignment3_LHISGroup
                 string engaged_fn = myReader["engagedTo_firstname"].ToString();
                 string engaged_sn = myReader["engagedTo_surname"].ToString();
 
-                Client c = new Client(firstname, surname, contact, address, mobile, homephone, email, engaged_fn, engaged_sn);
+                Client c = new Client(firstname, surname, contact, address, mobile, homephone, 
+                    email, engaged_fn, engaged_sn);
                 c.ID = Convert.ToInt32(myReader["id"].ToString());
 
                 returnList.Add(c);
@@ -1008,9 +1009,9 @@ namespace Assignment3_LHISGroup
 
 
 
-        //\\//\\//\\//\\//\\//\\
-        //  PRIVATE  METHODS  \\
-        //\\//\\//\\//\\//\\//\\
+        //\\//\\//\\//\\//\\//\\//\\//\\
+        //   PRIVATE HELPER METHODS   \\
+        //\\//\\//\\//\\//\\//\\//\\//\\
 
         /**
          *   Checks the Staff table and returns the staff ID number if they exist.
@@ -1060,7 +1061,7 @@ namespace Assignment3_LHISGroup
             _db.Close();
             return id;
             
-        }   // NL UPTO HERE.
+        }   
 
         /**
          *   Checks the Client table and returns the Client ID number if it exists.

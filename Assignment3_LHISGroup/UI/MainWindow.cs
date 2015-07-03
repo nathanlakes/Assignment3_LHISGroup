@@ -116,11 +116,6 @@ namespace Assignment3_LHISGroup
         private void nathanDebug()
         {
 
-            db.splitStringDate("20/12/2015");
-
-
-
-
             //Staff s1 = new Staff("Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "cant work sundays",
             //    Staff.Active.active);
 
