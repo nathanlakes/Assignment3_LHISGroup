@@ -329,7 +329,10 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@client2", clientTwoFk);
             myCommand.Parameters.AddWithValue("@startDate", formatDateForDbInput(w.StartDate) );
             myCommand.Parameters.AddWithValue("@eventDate", formatDateForDbInput(w.EventDate));
-            myCommand.Parameters.AddWithValue("@weddingPlanner", getStaffId(w.WeddingPlanner));
+            
+            int wedPlanner = getStaffId(w.WeddingPlanner);
+            if (wedPlanner == -1) throw new Exception("Wedding Planner must exist in Staff Table.");
+            myCommand.Parameters.AddWithValue("@weddingPlanner", wedPlanner);
 
             int res = 0;
             _db.Open();
