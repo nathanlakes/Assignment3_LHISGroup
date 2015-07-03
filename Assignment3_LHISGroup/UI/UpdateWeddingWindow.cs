@@ -65,10 +65,10 @@ namespace Assignment3_LHISGroup.UI
             NameTextBox.Text = w.Title;
             ClientComboBox.ValueMember = w.Client1.Firstname + " " + w.Client1.Surname;
             EngagedComboBox.ValueMember = w.Client2.Firstname + " " + w.Client2.Surname;
-            DescriptionTextBox.Text = "";
-            EventDateTimePicker.ResetText();
-            StartDateTimePicker.ResetText();
-            StaffComboBox.ValueMember = "";
+            DescriptionTextBox.Text = w.Description;
+            EventDateTimePicker.Value = w.EventDate;
+            StartDateTimePicker.Value = w.StartDate;
+            StaffComboBox.ValueMember = w.WeddingPlanner.FirstName + " " + w.WeddingPlanner.Surname;
         }
 
         public void RefreshData()
