@@ -54,13 +54,14 @@ namespace Assignment3_LHISGroup
 
             _db.Open();
             String query = @"INSERT INTO Task(name, description, priority, completeByDate, ";
-            query += "actualCompletionDate, staffOnJob_FK)";
-            query += @" VALUES( @taskname, @description, @priority, @completeByDate, @actualComplete, @staffOnJob)";
+            query += "actualCompletionDate, staffOnJob_FK, weddingID_FK)";
+            query += @" VALUES(@taskname, @description, @priority, @completeByDate, @actualComplete,";
+            query += @" @staffOnJob, @weddingID)";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@taskname", t.TaskName);
             myCommand.Parameters.AddWithValue("@description", t.Description);
-            myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
+            myCommand.Parameters.AddWithValue("@priority", t.TaskPriority.ToString());
             myCommand.Parameters.AddWithValue("@completeByDate", formatDateForDbInput(t.CompleteBy));
             try
             {
@@ -71,9 +72,11 @@ namespace Assignment3_LHISGroup
             {
                 myCommand.Parameters.AddWithValue("@actualComplete", null);
             }
+            myCommand.Parameters.AddWithValue("@staffOnJob", staffId);
 
-
-            myCommand.Parameters.AddWithValue("@staffOnJob", staffId.ToString());
+            int weddId = getWeddingId(t.Wedding);
+            if (weddId == -1) throw new Exception("Task must be associated to an existing Wedding.");
+            myCommand.Parameters.AddWithValue("@weddingID", weddId);
 
             res = myCommand.ExecuteNonQuery();
 
@@ -1078,6 +1081,25 @@ namespace Assignment3_LHISGroup
 
             _db.Close();
             return fk;            
+        }
+
+        
+        private int getWeddingId(Wedding w)
+        {
+            SqlCommand testTask = new SqlCommand(
+               "SELECT Id FROM Wedding WHERE title = '" + w.Title +
+                    "' AND client_1_FK = '" + w.Client1.ToString() + "'", _db);
+            _db.Open();
+            var myReader = testTask.ExecuteReader();
+            int key = -1;
+
+            if (myReader.Read())
+            {
+                key = Convert.ToInt32(myReader["Id"].ToString());
+            }
+
+            _db.Close();
+            return key;
         }
 
 
