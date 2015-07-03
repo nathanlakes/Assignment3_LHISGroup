@@ -42,17 +42,16 @@ namespace Assignment3_LHISGroup
          */
         public bool AddTask(Support_Classes.Task t)
         {
-            Staff s = t.AssignedTo;
 
             // Check that staff exists in the database. Phone number used for cases where
             // Staff with the same name work together. They won't have the same phone ext. 
             // though. 
+            Staff s = t.AssignedTo;
             int staffId = getStaffId(s);
             if (staffId == -1) throw new Exception("Staff must exist in Db.Staff, before being assigned to a task:");
 
-            int res = 0;
-
             _db.Open();
+
             String query = @"INSERT INTO Task(name, description, priority, completeByDate, ";
             query += "actualCompletionDate, staffOnJob_FK, weddingID_FK)";
             query += @" VALUES(@taskname, @description, @priority, @completeByDate, @actualComplete,";
@@ -72,13 +71,14 @@ namespace Assignment3_LHISGroup
             {
                 myCommand.Parameters.AddWithValue("@actualComplete", null);
             }
+
             myCommand.Parameters.AddWithValue("@staffOnJob", staffId);
 
             int weddId = getWeddingId(t.Wedding);
             if (weddId == -1) throw new Exception("Task must be associated to an existing Wedding.");
             myCommand.Parameters.AddWithValue("@weddingID", weddId);
 
-            res = myCommand.ExecuteNonQuery();
+            int res = myCommand.ExecuteNonQuery();
 
             _db.Close();
 
@@ -1090,6 +1090,7 @@ namespace Assignment3_LHISGroup
                "SELECT Id FROM Wedding WHERE title = '" + w.Title +
                     "' AND client_1_FK = '" + w.Client1.ToString() + "'", _db);
             _db.Open();
+
             var myReader = testTask.ExecuteReader();
             int key = -1;
 
@@ -1099,6 +1100,7 @@ namespace Assignment3_LHISGroup
             }
 
             _db.Close();
+
             return key;
         }
 
