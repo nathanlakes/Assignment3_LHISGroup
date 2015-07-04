@@ -193,8 +193,11 @@ namespace Assignment3_LHISGroup
          */
         public Support_Classes.Task FindTask(int id)
         {
+            string query = @"SELECT * from Task ";
+            query += @"WHERE Id=@id";
             this.openDb();
-            SqlDataReader taskReader = getTaskDetails(id);
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            SqlDataReader taskReader = myCommand.ExecuteReader();
 
 
             Support_Classes.Task t;
@@ -293,7 +296,7 @@ namespace Assignment3_LHISGroup
                     DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
 
                     // Create Staff Object
-                    Staff weddPlann = getStaffDetails( Convert.ToInt32( weddReader["weddingPlanner_FK"].ToString() ) );
+                    Staff weddPlann = getStaffDetails(Convert.ToInt32(weddReader["weddingPlanner_FK"].ToString()));
 
 
                     wedding = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
@@ -325,6 +328,7 @@ namespace Assignment3_LHISGroup
                     t.CompletionDate = new DateTime(date[0], date[1], date[2]);
                 }
             }
+
 
             this.closeDb();
             return t;
@@ -1904,16 +1908,6 @@ namespace Assignment3_LHISGroup
             return s;
         }
 
-        private SqlDataReader getTaskDetails(int id)
-        {
-            string query = @"SELECT * from Task ";
-            query += @"WHERE Id=@id";
-            this.openDb();
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            SqlDataReader myReader = myCommand.ExecuteReader();
-            this.closeDb();
-            return myReader;
-        }
 
         private SqlDataReader getClientsDetails(int id)
         {
