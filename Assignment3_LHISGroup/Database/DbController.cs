@@ -1352,7 +1352,7 @@ namespace Assignment3_LHISGroup
                     cr["mobile"].ToString(),
                     cr["homePhone"].ToString(),
                     cr["email"].ToString(),
-                    cr["engagedTo_firsname"].ToString(),
+                    cr["engagedTo_firstname"].ToString(),
                     cr["engagedTo_surname"].ToString()
                 );
             try
