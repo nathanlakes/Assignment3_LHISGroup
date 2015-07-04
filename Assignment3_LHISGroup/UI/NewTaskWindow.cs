@@ -41,6 +41,51 @@ namespace Assignment3_LHISGroup.UI
 
         }
 
+        private bool ValidateForm()
+        {
+            if (NameTextBox.Text == "" || NameTextBox.Text == null)
+            {
+                MessageBox.Show("Need name");
+                return false;
+            }
+            else if (DescriptionTextBox.Text == "" || DescriptionTextBox.Text == null)
+            {
+                MessageBox.Show("Need description");
+                return false;
+            }
+            else if (StaffComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Need staff");
+                return false;
+            }
+            else if (WeddingComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Need wedding");
+                return false;
+            }
+            else if (CompleteByDateTimePicker.Value == null)
+            {
+                MessageBox.Show("Need complete by date");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void ClearForm()
+        {
+            NameTextBox.Text = "";
+            DescriptionTextBox.Text = "";
+
+            WeddingComboBox.SelectedItem = null;
+            StaffComboBox.SelectedItem = null;
+
+            CompleteByDateTimePicker.Value = DateTime.Now;
+            CompletionDateTimePicker.Value = DateTime.Now;
+        }
+
         public void RefreshData()
         {
             StaffList = db.GetAllStaff();

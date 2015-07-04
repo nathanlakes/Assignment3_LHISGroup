@@ -98,16 +98,17 @@ namespace Assignment3_LHISGroup.UI
             StaffComboBox.ValueMember = "Key";
         }
 
-        public void ClearForm()
+        private void ClearForm()
         {
             NameTextBox.Text = "";
             ClientComboBox.SelectedItem = null;
             EngagedComboBox.SelectedItem = null;
             DescriptionTextBox.Text = "";
-            EventDateTimePicker.ResetText();
-            StartDateTimePicker.ResetText();
+
+            EventDateTimePicker.Value = DateTime.Now;
+            StartDateTimePicker.Value = DateTime.Now;
             StaffComboBox.SelectedItem = null;
-            RefreshData();
+            //RefreshData();
         }
 
         public bool ValidateForm()
