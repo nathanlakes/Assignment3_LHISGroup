@@ -1042,13 +1042,18 @@ namespace Assignment3_LHISGroup
          */
         private int getStaffId(Staff s)
         {
-            SqlCommand testStaff = new SqlCommand(
-               "SELECT id FROM Staff WHERE firstname = '" + s.FirstName + "' AND surname = '" +
-               s.Surname + "' AND phone = '" + s.Phone + "'", _db);
+            string query = @"SELECT id FROM Staff WHERE firstname='@firstname' AND surname='@surname' ";
+            query += @"AND phone='@phone'";
+
+
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
+            myCommand.Parameters.AddWithValue("@surname", s.Surname);
+            myCommand.Parameters.AddWithValue("@phone", s.Phone);
 
             this.openDb();
-            
-            var myReader = testStaff.ExecuteReader();
+
+            var myReader = myCommand.ExecuteReader();
             
             int id = -1;
             try
@@ -1098,7 +1103,7 @@ namespace Assignment3_LHISGroup
          */
         private int getClientId(Client c)
         {
-            string query = @"SELECT * FROM Client ";
+            string query = @"SELECT id FROM Client ";
             query += "WHERE firstname='@firstname' AND surname='@surname' AND email='@email'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
