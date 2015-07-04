@@ -1470,7 +1470,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlDataReader myReader = myCommand.ExecuteReader();
-            this.closeDb();          
+                      
 
             int id = -1;
             
@@ -1482,7 +1482,7 @@ namespace Assignment3_LHISGroup
             {
                 Console.WriteLine(e.ToString());
             }
-
+            this.closeDb();
             return id;
         }
 
