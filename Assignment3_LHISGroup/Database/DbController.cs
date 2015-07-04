@@ -50,7 +50,11 @@ namespace Assignment3_LHISGroup
             int staffId = getStaffId(s);
             if (staffId == -1) throw new Exception("Staff must exist in Db.Staff, before being assigned to a task:");
 
-            this.openDb();
+            try
+            {
+                this.openDb();
+            }
+            catch (Exception) { }
 
             String query = @"INSERT INTO Task(name, description, priority, completeByDate, ";
             query += "actualCompletionDate, staffOnJob_FK, weddingID_FK)";
