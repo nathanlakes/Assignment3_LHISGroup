@@ -132,6 +132,17 @@ namespace Assignment3_LHISGroup.Support_Classes
         }
 
         [Test]
+        public void GetAllTasksTest2()
+        {
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("GetAllTasksTest2");
+            List<Task> testList = testController.GetAllTasks();
+            int i = testList.Count();
+            Assert.AreEqual(0, i);
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+        }
+
+        [Test]
         public void GetAllStaffTest()
         {
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
@@ -149,7 +160,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             Console.WriteLine("GetAllSuppliersTest");
             List<Supplier> testList = testController.GetAllSuppliers();
             int i = testList.Count();
-            Assert.AreEqual(2, i);
+            Assert.AreEqual(3, i);
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }
 
@@ -160,15 +171,15 @@ namespace Assignment3_LHISGroup.Support_Classes
             Console.WriteLine("GetAllWeddingsTest");
             List<Wedding> testList = testController.GetAllWeddings();
             int i = testList.Count();
-            Assert.AreEqual(1, i);
+            Assert.AreEqual(0, i);
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }
 
         [Test]
-        public void GetAllTasksTest()
+        public void GetAllTasksTest1()
         {
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("GetAllTasksTest");
+            Console.WriteLine("GetAllTasksTest1");
             Client testClient1 = new Client("Jane", "Smith", "Jane Smith", "26 Oak Avenue", "23441212", "12098776", "jan@gmail.com", "John", "John");
             Client testClient2 = new Client("Jim", "Deer", "Jim Deer", "861 Downtown St", "0437233892", "87323236", "bj@hotmail.com", "Bobbie", "Wright");
             Staff testStaff = new Staff("Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "cant work sundays", Staff.Active.active);
@@ -264,7 +275,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         {
             List<Staff> testList = testController.AllActiveStaff();
             int result = testList.Count;
-            Assert.AreEqual(6, result);
+            Assert.AreEqual(1, result);
         }
 
     }
