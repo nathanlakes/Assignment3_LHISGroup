@@ -194,13 +194,14 @@ namespace Assignment3_LHISGroup
         public Support_Classes.Task FindTask(int id)
         {
             string query = @"SELECT * from Task ";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
             
             this.openDb();
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
             Support_Classes.Task t = new Support_Classes.Task();
+
             using( SqlDataReader taskReader = myCommand.ExecuteReader() )
             {
                 while (taskReader.Read())
@@ -365,6 +366,7 @@ namespace Assignment3_LHISGroup
          */
         public bool AddClient(Client c)
         {
+            this.openDb();
             String query = @"INSERT into Client (firstname, surname, contactPerson, address, ";
             query += @"mobile, homePhone, email, engagedTo_firstname, engagedTo_surname)";
             query += @" VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, ";
@@ -384,7 +386,7 @@ namespace Assignment3_LHISGroup
 
 
             int res = 0;
-            this.openDb();
+            
             res = myCommand.ExecuteNonQuery();
             this.closeDb();
 
@@ -666,7 +668,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             string query = "SELECT * FROM Wedding";
-            query += "WHERE title='@title' AND startDate=@startdate AND eventDate=@eventdate;";
+            query += "WHERE title=@title AND startDate=@startdate AND eventDate=@eventdate;";
             
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@title", w.Title);
@@ -729,14 +731,15 @@ namespace Assignment3_LHISGroup
          */
         public List<Wedding> FindWedding(string title)
         {
+            this.openDb();
             List<Wedding> returnList = new List<Wedding>();
 
             string query = "SELECT * FROM Wedding";
-            query += "WHERE title LIKE '@title'";
+            query += " WHERE title = @title";
             SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@title", "%" + title + "%");
+            myCommand.Parameters.AddWithValue("@title", title);
 
-            this.openDb();
+            
             SqlDataReader myReader = myCommand.ExecuteReader();
 
             while (myReader.Read())
@@ -877,32 +880,32 @@ namespace Assignment3_LHISGroup
          */
         public List<Supplier> FindSupplier(string name)
         {
+            SqlDataReader myReader = null;
             List<Supplier> returnList = new List<Supplier>();
 
             string query = "SELECT * FROM Suppliers ";
-            query += "WHERE CompanyName LIKE '@name';";
+            query += "WHERE CompanyName = @name";
             SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@name", "%" + name + "%");
+            myCommand.Parameters.AddWithValue("@name", name);
 
             this.openDb();
 
-            using (SqlDataReader myReader = myCommand.ExecuteReader() )
+            myReader = myCommand.ExecuteReader();
+            
+            Supplier s = new Supplier();
+            while (myReader.Read())
             {
-                Supplier s = new Supplier();
-
-                while (myReader.Read())
-                {
-                    string coname = myReader["CompanyName"].ToString();
-                    string address = myReader["Address"].ToString();
-                    string contact = myReader["ContactPerson"].ToString();
-                    string email = myReader["Email"].ToString();
-                    string phone = myReader["PhoneNumber"].ToString();
-                    int credterm = Convert.ToInt32(myReader["CreditTerms"].ToString());
-
-                    s = new Supplier(coname, address, contact, email, phone, credterm);
-                    returnList.Add(s);
-                }
-            }          
+                string coname = myReader["CompanyName"].ToString();
+                string address = myReader["Address"].ToString();
+                string contact = myReader["ContactPerson"].ToString();
+                string email = myReader["Email"].ToString();
+                string phone = myReader["PhoneNumber"].ToString();
+                int credterm = Convert.ToInt32(myReader["CreditTerms"].ToString());
+                Console.WriteLine("TESTING: " + coname);
+                s = new Supplier(coname, address, contact, email, phone, credterm);
+                returnList.Add(s);
+            }
+                     
 
             this.closeDb();
 
@@ -1381,8 +1384,8 @@ namespace Assignment3_LHISGroup
          */
         private int getStaffId(Staff s)
         {
-            string query = @"SELECT id FROM Staff WHERE firstname='@firstname' AND surname='@surname'";
-            query += @"AND phone='@phone'";
+            string query = @"SELECT id FROM Staff WHERE firstname=@firstname AND surname=@surname";
+            query += @" AND phone=@phone";
 
 
             SqlCommand myCommand = new SqlCommand(query, _db);
@@ -1440,7 +1443,7 @@ namespace Assignment3_LHISGroup
         private int getClientId(Client c)
         {
             string query = @"SELECT id FROM Client ";
-            query += "WHERE firstname='@firstname' AND surname='@surname'";
+            query += "WHERE firstname=@firstname AND surname=@surname";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
@@ -1540,7 +1543,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlCommand myCommand = new SqlCommand(query, _db);
-
+            myCommand.Parameters.AddWithValue("@id", id);
             Client c = new Client();
             using( SqlDataReader myReader = myCommand.ExecuteReader() )
             {
@@ -1577,7 +1580,7 @@ namespace Assignment3_LHISGroup
         private Wedding getWeddingDetails(int id)
         {
             string query = @"SELECT * from Wedding ";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
@@ -1627,8 +1630,7 @@ namespace Assignment3_LHISGroup
                         Console.WriteLine(ex.ToString());
                     }
                 }
-            }
-            
+            }            
 
             this.closeDb();
 
@@ -1640,7 +1642,7 @@ namespace Assignment3_LHISGroup
         private string getClientsFullName(int id)
         {
             string query = @"SELECT firstname, surname FROM Client ";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
 
