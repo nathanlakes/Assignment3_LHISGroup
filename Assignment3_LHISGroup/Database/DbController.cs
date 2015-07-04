@@ -1343,7 +1343,7 @@ namespace Assignment3_LHISGroup
             Client client = new Client(
                     cr["firstname"].ToString(),
                     cr["surname"].ToString(),
-                    cr["contact"].ToString(),
+                    cr["contactPerson"].ToString(),
                     cr["address"].ToString(),
                     cr["mobile"].ToString(),
                     cr["homePhone"].ToString(),
