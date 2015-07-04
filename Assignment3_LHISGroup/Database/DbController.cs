@@ -520,7 +520,7 @@ namespace Assignment3_LHISGroup
             while (myReader.Read())
             {
                 Wedding wedd = makeWedding(myReader);
-                wedd.ID = Convert.ToInt32(myReader["ID"].ToString());
+                wedd.ID = Convert.ToInt32(myReader["Id"].ToString());
 
                 returnList.Add(wedd);
             }
@@ -679,7 +679,7 @@ namespace Assignment3_LHISGroup
             string query = @"UPDATE Staff";
             query += @"SET firstname='@firstname', surname='@surname', email='@email', ";
             query += @"phone='@phone', notes='@notes', status='@status'";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
@@ -708,7 +708,7 @@ namespace Assignment3_LHISGroup
         {
             string query = @"UPDATE Staff";
             query += @"SET status='@status'";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@status", a);
@@ -733,7 +733,7 @@ namespace Assignment3_LHISGroup
 
             SqlDataReader myReader = null;
 
-            string query = @"SELECT * FROM Staff WHERE Id='@id'";
+            string query = @"SELECT * FROM Staff WHERE Id=@id";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);            
             myReader = myCommand.ExecuteReader();
@@ -1104,7 +1104,7 @@ namespace Assignment3_LHISGroup
         
         private int getWeddingId(Wedding w)
         {
-            string query = @"SELECT Id FROM Wedding WHERE title='@title' AND client_1_FK='@client1'";
+            string query = @"SELECT Id FROM Wedding WHERE title='@title' AND client_1_FK=@client1";
             SqlCommand testTask = new SqlCommand(query, _db);
             testTask.Parameters.AddWithValue("@title", w.Title);
             testTask.Parameters.AddWithValue("@client1", getClientId(w.Client1));
@@ -1124,7 +1124,7 @@ namespace Assignment3_LHISGroup
         private SqlDataReader getStaffDetails(int id)
         {
             string query = @"SELECT from Staff ";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
@@ -1135,7 +1135,7 @@ namespace Assignment3_LHISGroup
         private SqlDataReader getTaskDetails(int id)
         {
             string query = @"SELECT from Task ";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
@@ -1146,7 +1146,7 @@ namespace Assignment3_LHISGroup
         private SqlDataReader getClientsDetails(int id)
         {
             string query = @"SELECT from Client ";
-            query += @"WHERE Id=@'id'";
+            query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
@@ -1157,7 +1157,7 @@ namespace Assignment3_LHISGroup
         private SqlDataReader getWeddingDetails(int id)
         {
             string query = @"SELECT from Wedding ";
-            query += @"WHERE Id=@'id'";
+            query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
@@ -1180,7 +1180,7 @@ namespace Assignment3_LHISGroup
         private string getClientsFullName(int id)
         {
             string query = @"SELECT firstname, surname FROM Client ";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
