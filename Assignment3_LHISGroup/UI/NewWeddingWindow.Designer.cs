@@ -104,7 +104,6 @@
             this.ClientComboBox.Name = "ClientComboBox";
             this.ClientComboBox.Size = new System.Drawing.Size(200, 28);
             this.ClientComboBox.TabIndex = 40;
-            this.ClientComboBox.SelectionChangeCommitted += new System.EventHandler(this.ClientComboBox_SelectionChangeCommitted);
             // 
             // DescriptionTextBox
             // 
