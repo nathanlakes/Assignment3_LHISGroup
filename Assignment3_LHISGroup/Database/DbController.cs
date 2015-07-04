@@ -609,49 +609,51 @@ namespace Assignment3_LHISGroup
 
             Wedding wed = new Wedding();
 
-            SqlDataReader myReader = myCommand.ExecuteReader();
-            while (myReader.Read()) 
+            using( SqlDataReader myReader = myCommand.ExecuteReader() )
             {
-                string weddTitle = myReader["title"].ToString();
-                string desc = myReader["description"].ToString();
-
-                //
-                // Create Client Objects
-                //
-                // Client 1               
-                Client client1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
-               
-
-                // Client 2
-                Client client2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
-
-                // Generate DateTime for start date.
-                string temp = myReader["startDate"].ToString();
-                int[] dateArray = splitStringDate(temp);
-                DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
-
-                // Generate DateTime for event date.
-                temp = myReader["eventDate"].ToString();
-                dateArray = splitStringDate(temp);
-                DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
-
-                // Create Staff Object
-                int wedPlanId = Convert.ToInt32( myReader["weddingPlanner_FK"].ToString() );
-                Staff weddPlann = getStaffDetails( wedPlanId );
-
-
-                wed = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
-
-                try
+                while (myReader.Read())
                 {
-                    wed.ID = Convert.ToInt32(myReader["Id"].ToString());
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
+                    string weddTitle = myReader["title"].ToString();
+                    string desc = myReader["description"].ToString();
+
+                    //
+                    // Create Client Objects
+                    //
+                    // Client 1               
+                    Client client1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
+
+
+                    // Client 2
+                    Client client2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
+
+                    // Generate DateTime for start date.
+                    string temp = myReader["startDate"].ToString();
+                    int[] dateArray = splitStringDate(temp);
+                    DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+
+                    // Generate DateTime for event date.
+                    temp = myReader["eventDate"].ToString();
+                    dateArray = splitStringDate(temp);
+                    DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+
+                    // Create Staff Object
+                    int wedPlanId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
+                    Staff weddPlann = getStaffDetails(wedPlanId);
+
+
+                    wed = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
+
+                    try
+                    {
+                        wed.ID = Convert.ToInt32(myReader["Id"].ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
                 }
             }
-
+            
             this.closeDb();
 
             return wed;
@@ -675,47 +677,49 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@startdate", formatDateForDbInput(w.StartDate));
             myCommand.Parameters.AddWithValue("@eventdate", formatDateForDbInput(w.EventDate));
 
-            SqlDataReader myReader = myCommand.ExecuteReader();
-
             Wedding wed = new Wedding();
+
+            using ( SqlDataReader myReader = myCommand.ExecuteReader() )
             {
-                string weddTitle = myReader["title"].ToString();
-                string desc = myReader["description"].ToString();
-
-                //
-                // Create Client Objects
-                //
-                // Client 1               
-                Client client1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
-                
-
-                // Client 2
-                Client client2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
-                
-
-                // Generate DateTime for start date.
-                string temp = myReader["startDate"].ToString();
-                int[] dateArray = splitStringDate(temp);
-                DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
-
-                // Generate DateTime for event date.
-                temp = myReader["eventDate"].ToString();
-                dateArray = splitStringDate(temp);
-                DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
-
-                // Create Staff Object
-                int staffId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
-                Staff weddPlann = getStaffDetails(staffId);             
-
-                wed = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
-
-                try
                 {
-                    wed.ID = Convert.ToInt32(myReader["Id"].ToString());
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
+                    string weddTitle = myReader["title"].ToString();
+                    string desc = myReader["description"].ToString();
+
+                    //
+                    // Create Client Objects
+                    //
+                    // Client 1               
+                    Client client1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
+
+
+                    // Client 2
+                    Client client2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
+
+
+                    // Generate DateTime for start date.
+                    string temp = myReader["startDate"].ToString();
+                    int[] dateArray = splitStringDate(temp);
+                    DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+
+                    // Generate DateTime for event date.
+                    temp = myReader["eventDate"].ToString();
+                    dateArray = splitStringDate(temp);
+                    DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+
+                    // Create Staff Object
+                    int staffId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
+                    Staff weddPlann = getStaffDetails(staffId);
+
+                    wed = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
+
+                    try
+                    {
+                        wed.ID = Convert.ToInt32(myReader["Id"].ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
                 }
             }
 
@@ -1735,9 +1739,9 @@ namespace Assignment3_LHISGroup
             {
                 _db.Close();
             }
-            catch (SqlException)
+            catch (Exception e)
             {
-                throw new Exception("An error occurred whilst disconnecting with the database;");
+                Console.WriteLine(e.ToString());
             }
         }
 
