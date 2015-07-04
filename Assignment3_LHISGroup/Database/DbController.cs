@@ -1160,7 +1160,7 @@ namespace Assignment3_LHISGroup
 
         private SqlDataReader getStaffDetails(int id)
         {
-            string query = @"SELECT from Staff ";
+            string query = @"SELECT * from Staff ";
             query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
@@ -1171,7 +1171,7 @@ namespace Assignment3_LHISGroup
 
         private SqlDataReader getTaskDetails(int id)
         {
-            string query = @"SELECT from Task ";
+            string query = @"SELECT * from Task ";
             query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
@@ -1193,7 +1193,7 @@ namespace Assignment3_LHISGroup
 
         private SqlDataReader getWeddingDetails(int id)
         {
-            string query = @"SELECT from Wedding ";
+            string query = @"SELECT * from Wedding ";
             query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
