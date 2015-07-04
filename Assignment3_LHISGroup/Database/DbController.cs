@@ -1257,7 +1257,7 @@ namespace Assignment3_LHISGroup
             query += @"WHERE Id=@'id'";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@Id", id);
+            myCommand.Parameters.AddWithValue("@id", id);
             SqlDataReader myReader = myCommand.ExecuteReader();
             this.closeDb();
             return myReader;
