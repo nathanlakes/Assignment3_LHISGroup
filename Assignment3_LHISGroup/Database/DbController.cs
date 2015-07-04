@@ -417,7 +417,7 @@ namespace Assignment3_LHISGroup
             string query = @"UPDATE Wedding";
             query += @"SET title='@title', description='@desc', client_1_FK='@client1', client_2_FK='@client2', ";
             query += @"startDate='@startDate', eventDate='@eventDate', weddingPlanner_FK='@weddingPlanner_FK'";
-            query += @"WHERE id='@id'";
+            query += @"WHERE Id='@id'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@title", w.Title);
@@ -445,7 +445,7 @@ namespace Assignment3_LHISGroup
         public bool DeleteWedding(int id)
         {
             string query = @"DELETE FROM Wedding";
-            query += @"WHERE id='@id'";
+            query += @"WHERE Id='@id'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
@@ -566,7 +566,7 @@ namespace Assignment3_LHISGroup
         public bool DeleteSupplier(int id)
         {
             string query = @"DELETE FROM Supplier ";
-            query += "WHERE id='@id'";
+            query += "WHERE Id='@id'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
@@ -592,7 +592,7 @@ namespace Assignment3_LHISGroup
             string query = @"UPDATE Suppliers";
             query += @"SET companyName='@companyname', address='@address', contactPerson='@contactPerson', ";
             query += @"Email='@email', PhoneNumber='@phonenumber', CreditTerms='@creditterms'";
-            query += @"WHERE id='@id'";
+            query += @"WHERE Id='@id'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@companyname", s.CompanyName);
@@ -681,7 +681,7 @@ namespace Assignment3_LHISGroup
             string query = @"UPDATE Staff";
             query += @"SET firstname='@firstname', surname='@surname', email='@email', ";
             query += @"phone='@phone', notes='@notes', status='@status'";
-            query += @"WHERE id='@id'";
+            query += @"WHERE Id='@id'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
@@ -710,7 +710,7 @@ namespace Assignment3_LHISGroup
         {
             string query = @"UPDATE Staff";
             query += @"SET status='@status'";
-            query += @"WHERE id='@id'";
+            query += @"WHERE Id='@id'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@status", a);
@@ -1217,7 +1217,7 @@ namespace Assignment3_LHISGroup
         private SqlDataReader getStaffDetails(int id)
         {
             string query = @"SELECT from Staff ";
-            query += @"WHERE id='@id'";
+            query += @"WHERE Id='@id'";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
@@ -1228,7 +1228,7 @@ namespace Assignment3_LHISGroup
         private SqlDataReader getTaskDetails(int id)
         {
             string query = @"SELECT from Task ";
-            query += @"WHERE id='@id'";
+            query += @"WHERE Id='@id'";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
@@ -1239,7 +1239,7 @@ namespace Assignment3_LHISGroup
         private SqlDataReader getClientsDetails(int id)
         {
             string query = @"SELECT from Client ";
-            query += @"WHERE id=@'id'";
+            query += @"WHERE Id=@'id'";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
@@ -1250,7 +1250,7 @@ namespace Assignment3_LHISGroup
         private SqlDataReader getWeddingDetails(int id)
         {
             string query = @"SELECT from Wedding ";
-            query += @"WHERE id=@'id'";
+            query += @"WHERE Id=@'id'";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
@@ -1273,7 +1273,7 @@ namespace Assignment3_LHISGroup
         private string getClientsFullName(int id)
         {
             string query = @"SELECT firstname, surname FROM Client";
-            query += @"WHERE id='@id'";
+            query += @"WHERE Id='@id'";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
