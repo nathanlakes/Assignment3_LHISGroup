@@ -1048,9 +1048,17 @@ namespace Assignment3_LHISGroup
 
             this.openDb();
             
-            int id = -1;
             var myReader = testStaff.ExecuteReader();
-            id = Convert.ToInt32(myReader["Id"].ToString());                     
+            
+            int id = -1;
+            try
+            {
+                id = Convert.ToInt32(myReader["Id"].ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
 
             this.closeDb();
             return id;
@@ -1068,10 +1076,17 @@ namespace Assignment3_LHISGroup
 
             this.openDb();
             
-            int id = -1;
             var myReader = testTask.ExecuteReader();
-            id = Convert.ToInt32(myReader["Id"].ToString());
-
+            
+            int id = -1;
+            try
+            {
+                id = Convert.ToInt32(myReader["Id"].ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
             this.closeDb();
 
             return id;            
@@ -1092,13 +1107,21 @@ namespace Assignment3_LHISGroup
             
             this.openDb();
 
-            int key = -1;
             var myReader = testTask.ExecuteReader();
-            key = Convert.ToInt32(myReader["Id"].ToString());
-
+            
+            int id = -1;
+            
+            try
+            {
+                id = Convert.ToInt32(myReader["Id"].ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
             this.closeDb();          
 
-            return key;            
+            return id;            
         }
 
         
@@ -1111,13 +1134,20 @@ namespace Assignment3_LHISGroup
 
             this.openDb();
 
-            int key = -1;
             var myReader = testTask.ExecuteReader();
-            key = Convert.ToInt32(myReader["Id"].ToString());
             
+            int id = -1;
+            try
+            {
+                id = Convert.ToInt32(myReader["Id"].ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }            
             this.closeDb();
 
-            return key;
+            return id;
         }
 
 
