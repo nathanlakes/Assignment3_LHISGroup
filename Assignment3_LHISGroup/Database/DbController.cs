@@ -1124,10 +1124,10 @@ namespace Assignment3_LHISGroup
                 {
                     Console.WriteLine(e.ToString());
                 }
-                this.closeDb();
+                
                 returnList.Add(s);
             }
-
+            this.closeDb();
             return returnList;
         }
 
