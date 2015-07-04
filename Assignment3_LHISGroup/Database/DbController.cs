@@ -110,7 +110,8 @@ namespace Assignment3_LHISGroup
 
             try
             {
-                myCommand.Parameters.AddWithValue("@actualCompDate", t.CompletionDate.ToShortDateString());
+                string date = t.CompletionDate.ToShortDateString();
+                myCommand.Parameters.AddWithValue("@actualCompDate", formatDateForDbInput(date));
             }
             catch (Exception)
             {
@@ -177,6 +178,151 @@ namespace Assignment3_LHISGroup
 
             if (res == 1) return true;
             return false;
+        }
+
+        /**
+         *   Finds a task for a given ID number.
+         *   Returns a Task Object.
+         */
+        public Support_Classes.Task FindTask(int id)
+        {
+            SqlDataReader taskReader = getTaskDetails(id);
+
+            string taskname = taskReader["name"].ToString();
+            string descr = taskReader["description"].ToString();
+            string pr = taskReader["priority"].ToString();
+            
+            // Assign Priority
+            Support_Classes.Task.Priority prior = Support_Classes.Task.Priority.low;
+            if (pr == Support_Classes.Task.Priority.med.ToString())
+            {
+                prior = Support_Classes.Task.Priority.med;
+            }
+            else
+            {
+                prior = Support_Classes.Task.Priority.high;
+            }
+
+            // Assign Deadline Date
+            string temp = taskReader["completeBy"].ToString();
+            int[] date = splitStringDate(temp);
+            DateTime completeBy = new DateTime(date[0], date[1], date[2]);
+
+            //
+            // Create Wedding Planner
+            //
+            int staffId = Convert.ToInt32(taskReader["staffOnJob_FK"].ToString());
+            SqlDataReader staffReader = getStaffDetails( staffId );
+            Staff weddingPlanner;
+            {
+                string firstname = staffReader["firstname"].ToString();
+                string surname = staffReader["surname"].ToString();
+                string email = staffReader["email"].ToString();
+                string phone = staffReader["phone"].ToString();
+                string notes = staffReader["notes"].ToString();
+                string status = staffReader["status"].ToString();
+
+                Staff.Active stat = Staff.Active.inactive;
+                if (Staff.Active.active.ToString() == status)
+                {
+                    stat = Staff.Active.active;
+                }
+
+                weddingPlanner = new Staff(firstname, surname, email, phone, notes, stat);
+                weddingPlanner.ID = Convert.ToInt32(staffReader["Id"].ToString());
+            }
+
+            //
+            // Create Wedding
+            //
+            int weddId = Convert.ToInt32( taskReader["weddingID_FK"].ToString());
+            SqlDataReader weddReader = getWeddingDetails(weddId);
+            Wedding wedding;
+            {
+                string weddTitle = weddReader["title"].ToString();
+                string desc = weddReader["description"].ToString();
+
+                //
+                // Create Client Objects
+                //
+                // Client 1               
+                SqlDataReader c1 = getClientsDetails(Convert.ToInt32(weddReader["client_1_fk"].ToString()));
+                Client client1 = new Client(
+                    c1["firstname"].ToString(),
+                    c1["surname"].ToString(),
+                    c1["contact"].ToString(),
+                    c1["address"].ToString(),
+                    c1["mobile"].ToString(),
+                    c1["homePhone"].ToString(),
+                    c1["email"].ToString(),
+                    c1["engagedTo_firsname"].ToString(),
+                    c1["engagedTo_surname"].ToString()
+                );
+
+                // Client 2
+                SqlDataReader c2 = getClientsDetails(Convert.ToInt32(weddReader["client_2_fk"].ToString()));
+                Client client2 = new Client(
+                    c2["firstname"].ToString(),
+                    c2["surname"].ToString(),
+                    c2["contact"].ToString(),
+                    c2["address"].ToString(),
+                    c2["mobile"].ToString(),
+                    c2["homePhone"].ToString(),
+                    c2["email"].ToString(),
+                    c2["engagedTo_firsname"].ToString(),
+                    c2["engagedTo_surname"].ToString()
+                );
+
+                // Generate DateTime for start date.
+                temp = weddReader["startDate"].ToString();
+                int[] dateArray = splitStringDate(temp);
+                DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+
+                // Generate DateTime for event date.
+                temp = weddReader["eventDate"].ToString();
+                dateArray = splitStringDate(temp);
+                DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+
+                // Create Staff Object
+                SqlDataReader stf = getStaffDetails(Convert.ToInt32(weddReader["weddingPlanner_FK"].ToString()));
+                string status = stf["status"].ToString();
+                Staff.Active a;
+                if (status == Staff.Active.active.ToString())
+                {
+                    a = Staff.Active.active;
+                }
+                else { a = Staff.Active.inactive; }
+                Staff weddPlann = new Staff(
+                    stf["firstname"].ToString(),
+                    stf["surname"].ToString(),
+                    stf["email"].ToString(),
+                    stf["phone"].ToString(),
+                    stf["notes"].ToString(),
+                    a
+                );
+
+                wedding = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
+                wedding.ID = Convert.ToInt32(weddReader["ID"].ToString());
+            }
+
+            //
+            //  Make Actual Task
+            //
+            Support_Classes.Task t = new Support_Classes.Task(
+                taskname, descr, prior, completeBy, weddingPlanner, wedding );
+            
+            
+            // Assign Completion Date, if not null
+            string actComp = taskReader["actualCompletionDate"].ToString();
+
+            if ( !(actComp == null) || !(actComp == ""))
+            {
+                temp = taskReader["actualCompletionDate"].ToString();
+                date = splitStringDate(temp);
+                t.CompletionDate = new DateTime(date[0], date[1], date[2]);
+            }
+
+            return t;
         }
 
         /**
@@ -265,6 +411,30 @@ namespace Assignment3_LHISGroup
 
             if (res == 1) return true;
             return false;
+        }
+
+        /**
+         *   Finds a client matching the given ID.
+         *   Returns a single client object.
+         */
+        public Client FindClient(int id)
+        {
+            SqlDataReader myReader = getClientDetails(id);
+            string firstname = myReader["firstname"].ToString();
+            string surname = myReader["surname"].ToString();
+            string contact = myReader["contactPerson"].ToString();
+            string address = myReader["address"].ToString();
+            string mobile = myReader["mobile"].ToString();
+            string homephone = myReader["homephone"].ToString();
+            string email = myReader["email"].ToString();
+            string engaged_fn = myReader["engagedTo_firstname"].ToString();
+            string engaged_sn = myReader["engagedTo_surname"].ToString();
+
+            Client c = new Client(firstname, surname, contact, address, mobile, homephone,
+                email, engaged_fn, engaged_sn);
+            c.ID = Convert.ToInt32(myReader["id"].ToString());
+
+            return c;
         }
 
         /**
@@ -1154,6 +1324,17 @@ namespace Assignment3_LHISGroup
             return myReader;
         }
 
+        private SqlDataReader getTaskDetails(int id)
+        {
+            string query = @"SELECT from Task ";
+            query += @"WHERE id='@id'";
+            this.openDb();
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            SqlDataReader myReader = myCommand.ExecuteReader();
+            this.closeDb();
+            return myReader;
+        }
+
         private SqlDataReader getClientsDetails(int id)
         {
             string query = @"SELECT from Client ";
@@ -1224,6 +1405,14 @@ namespace Assignment3_LHISGroup
          */ 
         private string formatDateForDbInput(DateTime dt)
         {
+            string format = "yyyy-MM-dd HH:MM:ss";
+            return dt.ToString(format);
+        }
+
+        private string formatDateForDbInput(string date)
+        {
+            int[] temp = splitStringDate(date);
+            DateTime dt = new DateTime(temp[0], temp[1], temp[2]);
             string format = "yyyy-MM-dd HH:MM:ss";
             return dt.ToString(format);
         }
