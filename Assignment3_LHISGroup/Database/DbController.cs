@@ -588,8 +588,8 @@ namespace Assignment3_LHISGroup
         public bool UpdateSupplier(int id, Supplier s)
         {
 
-            string query = @"UPDATE Suppliers";
-            query += @"SET companyName='@companyname', address='@address', contactPerson='@contactPerson', ";
+            string query = @"UPDATE Suppliers ";
+            query += @"SET CompanyName='@companyname', Address='@address', ContactPerson='@contactPerson', ";
             query += @"Email='@email', PhoneNumber='@phonenumber', CreditTerms='@creditterms'";
             query += @"WHERE Id='@id'";
 
