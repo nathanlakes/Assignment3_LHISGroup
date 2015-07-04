@@ -1287,9 +1287,10 @@ namespace Assignment3_LHISGroup
         private SqlDataReader getClientDetails(int id)
         {
             string query = @"SELECT * FROM Client ";
-            query += @"WHERE id=@'id'";
+            query += @"WHERE Id=@'id'";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@Id", id);
             SqlDataReader myReader = myCommand.ExecuteReader();
             this.closeDb();
             return myReader;
