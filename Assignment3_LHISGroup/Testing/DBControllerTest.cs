@@ -50,5 +50,8 @@ namespace Assignment3_LHISGroup.Support_Classes
             testController.AddWedding(testWedding);
             Assert.AreEqual(testWedding.Title, testController.FindWedding(1).Title);
         }
+
+        [Test]
+        public void 
     }
 }
