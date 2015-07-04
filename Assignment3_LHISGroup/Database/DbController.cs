@@ -1101,20 +1101,22 @@ namespace Assignment3_LHISGroup
             string query = @"SELECT * FROM Client ";
             query += "WHERE firstname='@firstname' AND surname='@surname' AND homePhone='@phone'";
 
-            SqlCommand testTask = new SqlCommand(query, _db);
-            testTask.Parameters.AddWithValue("@firstname", c.Firstname);
-            testTask.Parameters.AddWithValue("@surname", c.Surname);
-            testTask.Parameters.AddWithValue("@phone", c.HomePhone);
+            SqlCommand myCommand = new SqlCommand(query, _db);
+
+            myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
+            myCommand.Parameters.AddWithValue("@surname", c.Surname);
+            myCommand.Parameters.AddWithValue("@phone", c.HomePhone);
             
             this.openDb();
 
-            var myReader = testTask.ExecuteReader();
-            
+            SqlDataReader myReader = myCommand.ExecuteReader();
+            myReader.Read();
+
             int id = -1;
             
             try
             {
-                id = Convert.ToInt32(myReader["Id"].ToString());
+                id = Convert.ToInt32( myReader["Id"].ToString() );
             }
             catch (Exception e)
             {
