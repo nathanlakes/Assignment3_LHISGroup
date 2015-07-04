@@ -1383,7 +1383,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand(query, _db);
 
             myReader = myCommand.ExecuteReader();
-            this.closeDb();
+            
 
             while (myReader.Read())
             {
@@ -1409,7 +1409,7 @@ namespace Assignment3_LHISGroup
                 {
                     Console.WriteLine(e.ToString());
                 }
- 
+                this.closeDb();
                 returnList.Add(s);
             }
 
@@ -1430,7 +1430,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Client", _db);
 
             myReader = myCommand.ExecuteReader();
-            this.closeDb();
+            
 
             Client c;
             while (myReader.Read())
@@ -1456,7 +1456,7 @@ namespace Assignment3_LHISGroup
                 }
                     returnList.Add(c);
             }
-
+            this.closeDb();
             return returnList;
         }
 
@@ -1519,7 +1519,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers", _db);
 
             myReader = myCommand.ExecuteReader();
-            this.closeDb();
+            
 
             while (myReader.Read())
             {
@@ -1535,7 +1535,7 @@ namespace Assignment3_LHISGroup
 
                 returnList.Add(s);
             }
-
+            this.closeDb();
             return returnList;
         }
 
@@ -1552,7 +1552,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Task", _db);
 
             taskReader = myCommand.ExecuteReader();
-            this.closeDb();
+            
 
             while (taskReader.Read())
             {
@@ -1646,7 +1646,7 @@ namespace Assignment3_LHISGroup
 
                 returnList.Add( t );
             }
-
+            this.closeDb();
             return returnList;
         }
 
@@ -1663,7 +1663,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Wedding", _db);
 
             myReader = myCommand.ExecuteReader();
-            this.closeDb();
+            
 
             while (myReader.Read())
             {
@@ -1747,7 +1747,7 @@ namespace Assignment3_LHISGroup
                 }
                 returnList.Add(w);
             }
-
+            this.closeDb();
             return returnList;
         }
 
