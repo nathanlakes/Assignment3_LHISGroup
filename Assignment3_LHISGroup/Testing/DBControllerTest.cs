@@ -132,6 +132,17 @@ namespace Assignment3_LHISGroup.Support_Classes
         }
 
         [Test]
+        public void GetAllStaffTest()
+        {
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("GetAllStaffTest");
+            List<Staff> testList = testController.GetAllStaff();
+            int i = testList.Count();
+            Assert.AreEqual(1, i);
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+        }
+
+        [Test]
         public void GetAllSuppliersTest()
         {
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
