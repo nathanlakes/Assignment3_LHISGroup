@@ -1440,13 +1440,12 @@ namespace Assignment3_LHISGroup
         private int getClientId(Client c)
         {
             string query = @"SELECT id FROM Client ";
-            query += "WHERE firstname='@firstname' AND surname='@surname' AND email='@email'";
+            query += "WHERE firstname='@firstname' AND surname='@surname'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
             myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
             myCommand.Parameters.AddWithValue("@surname", c.Surname);
-            myCommand.Parameters.AddWithValue("@email", c.Email);
             
             this.openDb();
 
