@@ -511,9 +511,9 @@ namespace Assignment3_LHISGroup
             List<Wedding> returnList = new List<Wedding>();
 
             string query = "SELECT * FROM Wedding";
-            query += "WHERE title LIKE '%@title%'";
+            query += "WHERE title LIKE '@title'";
             SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@title", title);
+            myCommand.Parameters.AddWithValue("@title", "%" + title + "%");
 
             this.openDb();
             SqlDataReader myReader = myCommand.ExecuteReader();
