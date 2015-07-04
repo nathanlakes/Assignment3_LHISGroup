@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ClearButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.StartDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -45,6 +46,11 @@
             this.EngagedComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.NewClientButton = new System.Windows.Forms.Button();
+            this.modelDataSet = new Assignment3_LHISGroup.ModelDataSet();
+            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clientTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.ClientTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ClearButton
@@ -195,6 +201,20 @@
             this.NewClientButton.Text = "Add Client";
             this.NewClientButton.UseVisualStyleBackColor = false;
             // 
+            // modelDataSet
+            // 
+            this.modelDataSet.DataSetName = "ModelDataSet";
+            this.modelDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clientBindingSource
+            // 
+            this.clientBindingSource.DataMember = "Client";
+            this.clientBindingSource.DataSource = this.modelDataSet;
+            // 
+            // clientTableAdapter
+            // 
+            this.clientTableAdapter.ClearBeforeFill = true;
+            // 
             // NewWeddingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -221,6 +241,9 @@
             this.Name = "NewWeddingWindow";
             this.Text = "New Wedding";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewWeddingWindow_FormClosing);
+            this.Load += new System.EventHandler(this.NewWeddingWindow_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,6 +268,9 @@
         private System.Windows.Forms.ComboBox EngagedComboBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button NewClientButton;
+        private ModelDataSet modelDataSet;
+        private System.Windows.Forms.BindingSource clientBindingSource;
+        private ModelDataSetTableAdapters.ClientTableAdapter clientTableAdapter;
 
     }
 }

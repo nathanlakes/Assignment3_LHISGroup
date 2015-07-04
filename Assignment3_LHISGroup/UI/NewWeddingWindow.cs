@@ -101,12 +101,12 @@ namespace Assignment3_LHISGroup.UI
         public void ClearForm()
         {
             NameTextBox.Text = "";
-            ClientComboBox.ValueMember = "";
-            EngagedComboBox.ValueMember = "";
+            ClientComboBox.SelectedItem = null;
+            EngagedComboBox.SelectedItem = null;
             DescriptionTextBox.Text = "";
             EventDateTimePicker.ResetText();
             StartDateTimePicker.ResetText();
-            StaffComboBox.ValueMember = "";
+            StaffComboBox.SelectedItem = null;
             RefreshData();
         }
 
@@ -117,7 +117,7 @@ namespace Assignment3_LHISGroup.UI
                 MessageBox.Show("Need name");
                 return false;
             }
-            else if (ClientComboBox.ValueMember == null)
+            else if (ClientComboBox.SelectedValue == null)
             {
                 MessageBox.Show("Need client");
 
@@ -131,12 +131,26 @@ namespace Assignment3_LHISGroup.UI
                 }                
                 return false;
             }
+            else if (EngagedComboBox.SelectedValue == null)
+            {
+                MessageBox.Show("Need engaged to");
+
+                if (!mainWin.NewClientWindow.Visible)
+                {
+                    mainWin.NewClientWindow.Show();
+                }
+                else
+                {
+                    mainWin.NewClientWindow.Focus();
+                }
+                return false;
+            }
             else if (DescriptionTextBox.Text == "" || DescriptionTextBox.Text == null)
             {
                 MessageBox.Show("Need description");
                 return false;
             }
-            else if (StaffComboBox.ValueMember == null)
+            else if (StaffComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Need staff");
                 return false;
@@ -153,6 +167,9 @@ namespace Assignment3_LHISGroup.UI
             }
             else
             {
+                //int client_id = Convert.ToInt32(ClientComboBox.SelectedValue.ToString());
+                //int engaged_id = Convert.ToInt32(EngagedComboBox.SelectedValue.ToString());
+
                 return true;
             }
         }
@@ -176,11 +193,13 @@ namespace Assignment3_LHISGroup.UI
 
                 string desc = DescriptionTextBox.Text;
 
+                
+                
+
+                string staff = StaffComboBox.SelectedItem.ToString();
+
                 EventDateTimePicker.ResetText();
                 StartDateTimePicker.ResetText();
-                StaffComboBox.ValueMember = "";
-
-
 
 
                 //Support_Classes.Wedding wedding = new Support_Classes.Wedding();
@@ -202,7 +221,7 @@ namespace Assignment3_LHISGroup.UI
             {
 
             }
-            RefreshData();
+            //RefreshData();
         }
 
         private void NewWeddingWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -210,6 +229,13 @@ namespace Assignment3_LHISGroup.UI
             RefreshData();
             this.Visible = false;
             e.Cancel = true; // this cancels the close event
+        }
+
+        private void NewWeddingWindow_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'modelDataSet.Client' table. You can move, or remove it, as needed.
+            this.clientTableAdapter.Fill(this.modelDataSet.Client);
+
         }
     }
 }
