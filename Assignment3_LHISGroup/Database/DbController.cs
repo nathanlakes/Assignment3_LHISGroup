@@ -1473,7 +1473,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Staff", _db);
 
             myReader = myCommand.ExecuteReader();
-            this.closeDb();
+            
 
             while (myReader.Read())
             {
@@ -1502,7 +1502,7 @@ namespace Assignment3_LHISGroup
 
                 returnList.Add(s);
             }
-
+            this.closeDb();
             return returnList;
         }
 
