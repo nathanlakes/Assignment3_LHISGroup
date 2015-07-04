@@ -1184,9 +1184,11 @@ namespace Assignment3_LHISGroup
         
         private int getWeddingId(Wedding w)
         {
-            SqlCommand testTask = new SqlCommand(
-               "SELECT Id FROM Wedding WHERE title = '" + w.Title +
-                    "' AND client_1_FK = '" + w.Client1.ToString() + "'", _db);
+            string query = @"SELECT Id FROM Wedding WHERE title='@title' AND client_1_FK='@client1'";
+            SqlCommand testTask = new SqlCommand(query, _db);
+            testTask.Parameters.AddWithValue("@title", w.Title);
+            testTask.Parameters.AddWithValue("@client1", getClientId(w.Client1));
+
             this.openDb();
 
             int key = -1;
