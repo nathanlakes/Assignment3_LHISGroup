@@ -116,26 +116,32 @@ namespace Assignment3_LHISGroup.UI
                 }
 
                 Support_Classes.Client client1 = new Support_Classes.Client(n, sn, contact, address, mobile, phone, email, e_n, e_sn);
+
                 Support_Classes.Client client2 = new Support_Classes.Client(e_n, e_sn, contact, address, mobile, phone, email, n, sn);
 
                 try
                 {
                     db.AddClient(client1);
-
-                    db.AddClient(client2);
-                    if (!mainWin.UpdateClientWindow.Visible)
-                    {
-                        mainWin.UpdateClientWindow.Visible = true;
-                        mainWin.UpdateClientWindow.PopulateForm(client2);
-                    }
-                    else
-                    {
-                        mainWin.UpdateClientWindow.Focus();
-                        mainWin.UpdateClientWindow.PopulateForm(client2);
-                    }
-
+                    
                     ClearForm();
                     mainWin.ManageClientsWindow.UpdateForm();
+
+                    List<Support_Classes.Client> Clients = db.GetAllClients();
+
+                    if (Clients.IndexOf(client2) <= -1)
+                    {
+                        db.AddClient(client2);
+                        if (!mainWin.UpdateClientWindow.Visible)
+                        {
+                            mainWin.UpdateClientWindow.Visible = true;
+                            mainWin.UpdateClientWindow.PopulateForm(client2);
+                        }
+                        else
+                        {
+                            mainWin.UpdateClientWindow.Focus();
+                            mainWin.UpdateClientWindow.PopulateForm(client2);
+                        }
+                    }
 
                 }
                 catch (Exception)

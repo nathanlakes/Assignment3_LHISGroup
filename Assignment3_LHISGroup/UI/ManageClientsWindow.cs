@@ -52,6 +52,7 @@ namespace Assignment3_LHISGroup.UI
         {
             if (ClientsDataGridView.SelectedRows.Count > 0 && ClientsDataGridView.SelectedRows[0].Cells[0].Value != null)
             {
+
                 int id = (int)ClientsDataGridView.SelectedRows[0].Cells[0].Value;
 
                 string firstname = (string)ClientsDataGridView.SelectedRows[0].Cells[1].Value;
