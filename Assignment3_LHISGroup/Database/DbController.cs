@@ -463,7 +463,7 @@ namespace Assignment3_LHISGroup
         public Wedding FindWedding(int id)
         {
             string query = "SELECT * FROM Wedding ";
-            query += "WHERE Id='@id'";
+            query += "WHERE Id=@id";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
 
