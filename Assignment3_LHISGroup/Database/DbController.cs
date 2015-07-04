@@ -1023,55 +1023,7 @@ namespace Assignment3_LHISGroup
 
             while (myReader.Read())
             {
-                string title = myReader["title"].ToString();
-                string desc = myReader["description"].ToString();
-
-                // 
-                // Make Client 1
-                //
-                Client client1;
-                {
-                    int clientId = Convert.ToInt32(myReader["client_1_fk"].ToString());
-                    SqlDataReader clientOneReader = getClientDetails(clientId);
-                    client1 = makeClient(clientOneReader);
-                }              
-                
-                //
-                // Make Client 2
-                //
-                Client client2;
-                {
-                    int clientId = Convert.ToInt32(myReader["client_1_fk"].ToString());
-                    SqlDataReader clientTwoReader = getClientDetails(clientId);
-                    client2 = makeClient(clientTwoReader);
-                }
-                
-                //
-                // Make Staff
-                //
-                Staff staff;
-                {
-                    int staffId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
-                    SqlDataReader staffReader = getStaffDetails(staffId);
-                    staff = makeStaff(staffReader);
-                }
-
-                //
-                // Create Dates
-                //
-                int[] tempDate = splitStringDate(myReader["startDate"].ToString());
-                DateTime startDate = new DateTime(tempDate[0], tempDate[1], tempDate[2]);
-
-                tempDate = splitStringDate(myReader["eventDate"].ToString());
-                DateTime eventDate = new DateTime(tempDate[0], tempDate[1], tempDate[2]);
-
-
-                //
-                // Create Wedding Object
-                //
-                Wedding w = new Wedding(title, desc, client1, client2, staff, startDate, eventDate);
-                w.ID = Convert.ToInt32(myReader["Id"].ToString());
-
+                Wedding w = makeWedding(myReader);
                 returnList.Add(w);
             }
             this.closeDb();
