@@ -535,7 +535,7 @@ namespace Assignment3_LHISGroup
          */
         public bool AddSupplier(Supplier s)
         {
-            String query = @"INSERT into Suppliers (companyName, Address, contactPerson, Email, PhoneNumber, CreditTerms)";
+            String query = @"INSERT into Suppliers (CompanyName, Address, ContactPerson, Email, PhoneNumber, CreditTerms)";
             query += @" VALUES (@companyName, @address, @contactPerson, @email, @phonenumber, @creditterms)";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
