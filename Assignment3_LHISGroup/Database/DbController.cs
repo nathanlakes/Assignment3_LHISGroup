@@ -1047,8 +1047,8 @@ namespace Assignment3_LHISGroup
                s.Surname + "' AND phone = '" + s.Phone + "'", _db);
 
             this.openDb();
-            int id = -1;
             
+            int id = -1;
             var myReader = testStaff.ExecuteReader();
             id = Convert.ToInt32(myReader["Id"].ToString());                     
 
@@ -1067,23 +1067,14 @@ namespace Assignment3_LHISGroup
                     "' AND description = '" + t.Description + "'", _db);
 
             this.openDb();
+            
             int id = -1;
-            try
-            {
-                var myReader = testTask.ExecuteReader();
-
-                if (myReader.Read())
-                {
-                    id = Convert.ToInt32(myReader["Id"].ToString());
-                }
-                this.closeDb();
-            }
-            catch (Exception) { }
+            var myReader = testTask.ExecuteReader();
+            id = Convert.ToInt32(myReader["Id"].ToString());
 
             this.closeDb();
 
-            return id;
-            
+            return id;            
         }   
 
         /**
