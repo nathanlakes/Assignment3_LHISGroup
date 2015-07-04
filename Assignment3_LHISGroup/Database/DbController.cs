@@ -761,10 +761,10 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@email", s.Email);
 
             SqlDataReader myReader = myCommand.ExecuteReader();
+            Staff returnStaff = makeStaff(myReader);
 
             this.closeDb();
 
-            Staff returnStaff = makeStaff(myReader);
             return returnStaff;
         }
 
