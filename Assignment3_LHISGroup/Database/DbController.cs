@@ -811,6 +811,34 @@ namespace Assignment3_LHISGroup
             return false;
         }
 
+
+        /**
+         *   Returns a List<Staff> who are currently
+         *   active.
+         */
+        public List<Staff> AllActiveStaff()
+        {
+            List<Staff> returnList = new List<Staff>();
+
+            this.openDb();
+
+            SqlDataReader myReader = null;
+            string query = @"SELECT * FROM Staff WHERE status='active'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+
+            myReader = myCommand.ExecuteReader();
+
+            while (myReader.Read())
+            {
+                Staff s = makeStaff(myReader); 
+                returnList.Add(s);
+            }
+            this.closeDb();
+
+            return returnList;
+        }
+
+
         /**
          *   Returns a list of all clients
          */
@@ -861,22 +889,8 @@ namespace Assignment3_LHISGroup
 
             while (myReader.Read())
             {
-                string firstname = myReader["firstname"].ToString();
-                string surname = myReader["surname"].ToString();
-                string email = myReader["email"].ToString();
-                string phone = myReader["phone"].ToString();
-                string notes = myReader["notes"].ToString();
-                string status = myReader["status"].ToString();
-
-                Staff.Active stat = Staff.Active.inactive;
-                if (Staff.Active.active.ToString() == status)
-                {
-                    stat = Staff.Active.active;
-                }
-
-                Staff s = new Staff(firstname, surname, email, phone, notes, stat);
+                Staff s = makeStaff(myReader);
                 s.ID = Convert.ToInt32(myReader["Id"].ToString());
-
                 returnList.Add(s);
             }
             this.closeDb();
@@ -1452,7 +1466,7 @@ namespace Assignment3_LHISGroup
 
 
         /**
-         *   Makes a single client object from an
+         *   Makes a single Client object from an
          *   SqlDataReader
          */
         private Client makeClient(SqlDataReader cr)
@@ -1470,6 +1484,31 @@ namespace Assignment3_LHISGroup
                 );
 
             return client;
+        }
+
+        /**
+         *   Makes a single Staff object from an
+         *   SqlDataReader
+         */
+        private Staff makeStaff(SqlDataReader myReader)
+        {
+            string firstname = myReader["firstname"].ToString();
+            string surname = myReader["surname"].ToString();
+            string email = myReader["email"].ToString();
+            string phone = myReader["phone"].ToString();
+            string notes = myReader["notes"].ToString();
+            string status = myReader["status"].ToString();
+
+            Staff.Active stat = Staff.Active.inactive;
+            if (Staff.Active.active.ToString() == status)
+            {
+                stat = Staff.Active.active;
+            }
+
+            Staff s = new Staff(firstname, surname, email, phone, notes, stat);
+            s.ID = Convert.ToInt32(myReader["Id"].ToString());
+
+            return s;
         }
     }
 }
