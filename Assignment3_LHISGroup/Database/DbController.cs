@@ -1043,16 +1043,7 @@ namespace Assignment3_LHISGroup
                 {
                     int clientId = Convert.ToInt32(myReader["client_1_fk"].ToString());
                     SqlDataReader clientOneReader = getClientDetails(clientId);
-                    string name = clientOneReader["firstname"].ToString();
-                    string surname = clientOneReader["surname"].ToString();
-                    string contact = clientOneReader["contactPerson"].ToString();
-                    string address = clientOneReader["address"].ToString();
-                    string mobile = clientOneReader["mobile"].ToString();
-                    string homeph = clientOneReader["homePhone"].ToString();
-                    string email = clientOneReader["email"].ToString();
-                    string engFn = clientOneReader["engagedTo_firstname"].ToString();
-                    string engSn = clientOneReader["engagedTo_surname"].ToString();
-                    client1 = new Client(name, surname, contact, address, mobile, homeph, email, engFn, engSn);
+                    client1 = makeClient(clientOneReader);
                 }              
                 
                 //
@@ -1062,16 +1053,7 @@ namespace Assignment3_LHISGroup
                 {
                     int clientId = Convert.ToInt32(myReader["client_1_fk"].ToString());
                     SqlDataReader clientTwoReader = getClientDetails(clientId);
-                    string name = clientTwoReader["firstname"].ToString();
-                    string surname = clientTwoReader["surname"].ToString();
-                    string contact = clientTwoReader["contactPerson"].ToString();
-                    string address = clientTwoReader["address"].ToString();
-                    string mobile = clientTwoReader["mobile"].ToString();
-                    string homeph = clientTwoReader["homePhone"].ToString();
-                    string email = clientTwoReader["email"].ToString();
-                    string engFn = clientTwoReader["engagedTo_firstname"].ToString();
-                    string engSn = clientTwoReader["engagedTo_surname"].ToString();
-                    client2 = new Client(name, surname, contact, address, mobile, homeph, email, engFn, engSn);
+                    client2 = makeClient(clientTwoReader);
                 }
                 
                 //
@@ -1081,22 +1063,7 @@ namespace Assignment3_LHISGroup
                 {
                     int staffId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
                     SqlDataReader staffReader = getStaffDetails(staffId);
-                    string firstname = staffReader["firstname"].ToString();
-                    string surname = staffReader["surname"].ToString();
-                    string email = staffReader["email"].ToString();
-                    string phone = staffReader["phone"].ToString();
-                    string notes = staffReader["notes"].ToString();
-                    string active = staffReader["status"].ToString();
-                    Staff.Active isActive;
-                    if (active == Staff.Active.active.ToString())
-                    {
-                        isActive = Staff.Active.active;
-                    }
-                    else
-                    {
-                        isActive = Staff.Active.inactive;
-                    }
-                    staff = new Staff(firstname, surname, email, phone, notes, isActive);
+                    staff = makeStaff(staffReader);
                 }
 
                 //
@@ -1631,7 +1598,5 @@ namespace Assignment3_LHISGroup
 
             return t;
         }
-
-
     }
 }
