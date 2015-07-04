@@ -813,22 +813,10 @@ namespace Assignment3_LHISGroup
 
             myReader = myCommand.ExecuteReader();
 
+            Client c;
             while (myReader.Read())
             {
-                string firstname = myReader["firstname"].ToString();
-                string surname = myReader["surname"].ToString();
-                string contactPerson = myReader["contactPerson"].ToString();
-                string address = myReader["address"].ToString();
-                string mobile = myReader["mobile"].ToString();
-                string homephone = myReader["homePhone"].ToString();
-                string email = myReader["email"].ToString();
-                string engToFN = myReader["engagedTo_firstname"].ToString();
-                string engToSN = myReader["engagedTo_surname"].ToString();
-                
-                Client c = new Client(firstname, surname, contactPerson, address, mobile, 
-                    homephone, email, engToFN, engToSN);
-                c.ID = Convert.ToInt32(myReader["Id"].ToString());
-
+                c = makeClient(myReader);
                 returnList.Add(c);
             }
             this.closeDb();
