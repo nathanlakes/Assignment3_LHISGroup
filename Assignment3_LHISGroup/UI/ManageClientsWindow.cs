@@ -48,11 +48,10 @@ namespace Assignment3_LHISGroup.UI
             
         }
 
-        private void UpdateClientButton_Click(object sender, EventArgs e)
+        private Support_Classes.Client ExtractSelectedRow()
         {
             if (ClientsDataGridView.SelectedRows.Count > 0 && ClientsDataGridView.SelectedRows[0].Cells[0].Value != null)
             {
-
                 int id = (int)ClientsDataGridView.SelectedRows[0].Cells[0].Value;
 
                 string firstname = (string)ClientsDataGridView.SelectedRows[0].Cells[1].Value;
@@ -65,20 +64,31 @@ namespace Assignment3_LHISGroup.UI
                 string engagedTo_firstName = (string)ClientsDataGridView.SelectedRows[0].Cells[8].Value;
                 string engagedTo_surname = (string)ClientsDataGridView.SelectedRows[0].Cells[9].Value;
 
-                Support_Classes.Client c = new Support_Classes.Client(firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo_firstName, engagedTo_surname);
-                c.ID = id;
+                Support_Classes.Client client = new Support_Classes.Client(firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo_firstName, engagedTo_surname);
+                client.ID = id;
+                return client;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
+        private void UpdateClientButton_Click(object sender, EventArgs e)
+        {
+            Support_Classes.Client client = ExtractSelectedRow();
+            if (client != null)
+            {
                 if (!mainWin.UpdateClientWindow.Visible)
                 {
                     mainWin.UpdateClientWindow.Visible = true;
-                    mainWin.UpdateClientWindow.PopulateForm(c);
+                    mainWin.UpdateClientWindow.PopulateForm(client);
                 }
                 else
                 {
                     mainWin.UpdateClientWindow.Focus();
-                    mainWin.UpdateClientWindow.PopulateForm(c);
+                    mainWin.UpdateClientWindow.PopulateForm(client);
                 }
-
             }
             else
             {

@@ -47,9 +47,9 @@ namespace Assignment3_LHISGroup.UI
                 string phoneNumber = (string)SuppliersDataGridView.SelectedRows[0].Cells[5].Value;
                 int creditTerms = (int)SuppliersDataGridView.SelectedRows[0].Cells[6].Value;
 
-                Support_Classes.Supplier s = new Support_Classes.Supplier(companyName, address, contactPerson, email, phoneNumber, creditTerms);
-                s.ID = id;
-                return s;
+                Support_Classes.Supplier supplier = new Support_Classes.Supplier(companyName, address, contactPerson, email, phoneNumber, creditTerms);
+                supplier.ID = id;
+                return supplier;
             }
             else
             {

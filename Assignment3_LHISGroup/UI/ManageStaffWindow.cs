@@ -33,13 +33,13 @@ namespace Assignment3_LHISGroup.UI
             }
         }
 
-        private void UpdateStaffButton_Click(object sender, EventArgs e)
+        private Support_Classes.Staff ExtractSelectedRow()
         {
             if (StaffDataGridView.SelectedRows.Count > 0 && StaffDataGridView.SelectedRows[0].Cells[0].Value != null)
             {
                 int id = (int)StaffDataGridView.SelectedRows[0].Cells[0].Value;
 
-                string fn = (string) StaffDataGridView.SelectedRows[0].Cells[1].Value;
+                string fn = (string)StaffDataGridView.SelectedRows[0].Cells[1].Value;
                 string sn = (string)StaffDataGridView.SelectedRows[0].Cells[2].Value;
                 string email = (string)StaffDataGridView.SelectedRows[0].Cells[3].Value;
                 string phone = (string)StaffDataGridView.SelectedRows[0].Cells[4].Value;
@@ -52,20 +52,32 @@ namespace Assignment3_LHISGroup.UI
                     active = Support_Classes.Staff.Active.inactive;
                 }
 
-                Support_Classes.Staff s = new Support_Classes.Staff(fn, sn, email, phone, notes, active);
-                s.ID = id;
+                Support_Classes.Staff staff = new Support_Classes.Staff(fn, sn, email, phone, notes, active);
+                staff.ID = id;
+                return staff;
+            }
+            else
+            {
+                return null;
+            }
 
+        }
+
+        private void UpdateStaffButton_Click(object sender, EventArgs e)
+        {
+            Support_Classes.Staff staff = ExtractSelectedRow();
+            if (staff != null)
+            {
                 if (!mainWin.UpdateStaffWindow.Visible)
                 {
                     mainWin.UpdateStaffWindow.Visible = true;
-                    mainWin.UpdateStaffWindow.PopulateForm(s);
+                    mainWin.UpdateStaffWindow.PopulateForm(staff);
                 }
                 else
                 {
                     mainWin.UpdateStaffWindow.Focus();
-                    mainWin.UpdateStaffWindow.PopulateForm(s);
+                    mainWin.UpdateStaffWindow.PopulateForm(staff);
                 }
-
             }
             else
             {
