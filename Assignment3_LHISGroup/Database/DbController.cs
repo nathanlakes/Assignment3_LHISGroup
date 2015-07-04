@@ -298,7 +298,7 @@ namespace Assignment3_LHISGroup
         public bool DeleteClient(int id)
         {
             string query = @"DELETE FROM Client ";
-            query += @"WHERE id='@id'";
+            query += @"WHERE Id='@id'";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
 
@@ -565,7 +565,7 @@ namespace Assignment3_LHISGroup
          */
         public bool DeleteSupplier(int id)
         {
-            string query = @"DELETE FROM Supplier ";
+            string query = @"DELETE FROM Suppliers ";
             query += "WHERE Id='@id'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
@@ -621,10 +621,10 @@ namespace Assignment3_LHISGroup
         {
             List<Supplier> returnList = new List<Supplier>();
 
-            string query = "SELECT * FROM Suppliers";
-            query += "WHERE CompanyName LIKE '%@name%'";
+            string query = "SELECT * FROM Suppliers ";
+            query += "WHERE CompanyName LIKE '@name'";
             SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@name", name);
+            myCommand.Parameters.AddWithValue("@name", "%" + name + "%");
 
             this.openDb();
             SqlDataReader myReader = myReader = myCommand.ExecuteReader();
