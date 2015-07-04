@@ -1507,8 +1507,8 @@ namespace Assignment3_LHISGroup
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
-            }            
-            this.closeDb()
+            }
+            this.closeDb();
             return id;
         }
 
