@@ -194,13 +194,14 @@ namespace Assignment3_LHISGroup
         public Support_Classes.Task FindTask(int id)
         {
             string query = @"SELECT * from Task ";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
             
             this.openDb();
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
             Support_Classes.Task t = new Support_Classes.Task();
+
             using( SqlDataReader taskReader = myCommand.ExecuteReader() )
             {
                 while (taskReader.Read())
@@ -1540,6 +1541,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@id", id);
 
             Client c = new Client();
             using( SqlDataReader myReader = myCommand.ExecuteReader() )
@@ -1577,7 +1579,7 @@ namespace Assignment3_LHISGroup
         private Wedding getWeddingDetails(int id)
         {
             string query = @"SELECT * from Wedding ";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
@@ -1627,8 +1629,7 @@ namespace Assignment3_LHISGroup
                         Console.WriteLine(ex.ToString());
                     }
                 }
-            }
-            
+            }            
 
             this.closeDb();
 
@@ -1640,7 +1641,7 @@ namespace Assignment3_LHISGroup
         private string getClientsFullName(int id)
         {
             string query = @"SELECT firstname, surname FROM Client ";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
 
