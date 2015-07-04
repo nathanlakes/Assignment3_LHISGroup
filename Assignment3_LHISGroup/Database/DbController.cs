@@ -479,23 +479,22 @@ namespace Assignment3_LHISGroup
         {
             List<Client> returnList = new List<Client>();
 
-            string query = "SELECT * FROM Clients ";
-            query += "WHERE firstname LIKE '@fn' OR surname LIKE '@sn';";
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@fn", "%" + name + "%");
-            myCommand.Parameters.AddWithValue("@sn", "%" + name + "%");
-
             this.openDb();
-
-            SqlDataReader myReader = myCommand.ExecuteReader();
-
-            Client client = new Client();
-            while (myReader.Read())
+            string query = "SELECT * FROM Client WHERE firstname = @fn";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@fn", name);
+           
+            using (SqlDataReader myReader = myCommand.ExecuteReader() )
             {
+                Client client = new Client();
+                while (myReader.Read())
+                {
 
-                client = getClientsDetails(Convert.ToInt32(myReader["Id"].ToString()));
-                returnList.Add(client);
+                    client = getClientsDetails(Convert.ToInt32(myReader["Id"].ToString()));
+                    returnList.Add(client);
+                }
             }
+            
             this.closeDb(); 
 
             return returnList;
@@ -670,7 +669,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             string query = "SELECT * FROM Wedding";
-            query += "WHERE title=@title AND startDate=@startdate AND eventDate=@eventdate;";
+            query += " WHERE title=@title AND startDate=@startdate AND eventDate=@eventdate;";
             
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@title", w.Title);
@@ -1050,13 +1049,13 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             string query = @"SELECT * FROM Staff ";
-            query += @"WHERE firstname='@firstname' AND surname='@surname';";
+            query += @"WHERE firstname=@firstname AND surname=@surname";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
             myCommand.Parameters.AddWithValue("@surname", s.Surname);
 
             Staff returnStaff = new Staff();
-            using (SqlDataReader myReader = myCommand.ExecuteReader())
+            using( SqlDataReader myReader = myCommand.ExecuteReader() ) 
             {
                 while (myReader.Read())
                 {
@@ -1479,7 +1478,7 @@ namespace Assignment3_LHISGroup
         
         private int getWeddingId(Wedding w)
         {
-            string query = @"SELECT Id FROM Wedding WHERE title='@title' AND client_1_FK=@client1";
+            string query = @"SELECT Id FROM Wedding WHERE title=@title AND client_1_FK=@client1";
             SqlCommand testTask = new SqlCommand(query, _db);
             testTask.Parameters.AddWithValue("@title", w.Title);
             testTask.Parameters.AddWithValue("@client1", getClientId(w.Client1));
@@ -1511,7 +1510,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlCommand myCommand = new SqlCommand(query, _db);
-
+            myCommand.Parameters.AddWithValue("@id", id);
             Staff s = new Staff();
             using (SqlDataReader staffReader = myCommand.ExecuteReader())
             {

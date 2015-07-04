@@ -19,8 +19,20 @@ namespace Assignment3_LHISGroup.Support_Classes
             Client testClient = new Client("Jim", "Bastiras", "contactTest", "222222", "3333333",
            "444444", "email", "Daniel", "Stone");
             Boolean i = testController.AddClient(testClient);
-            Console.WriteLine(testController.FindClient(testClient).Firstname);
             Assert.AreEqual(testClient.Firstname, testController.FindClient(testClient).Firstname);
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+        }
+
+        [Test]
+        public void AddClientTest2()
+        {
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("AddClientTest2");
+            Client testClient = new Client("Jim", "Bastiras", "contactTest", "222222", "3333333",
+           "444444", "email", "Daniel", "Stone");
+            Boolean i = testController.AddClient(testClient);
+            int result = testController.FindClients("jim").Count();
+            Assert.AreEqual(2, result);
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }
         
@@ -33,7 +45,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             Console.WriteLine("AddStaffTest1");
             Staff testStaff = new Staff("Jimmy", "Bastiras", "email", "05231", "note", Staff.Active.active);
             testController.AddStaff(testStaff);
-            Assert.AreEqual(testStaff.FirstName, testController.FindStaff(4).FirstName);
+            Assert.AreEqual(testStaff.FirstName, testController.FindStaff(testStaff).FirstName);
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }
 
