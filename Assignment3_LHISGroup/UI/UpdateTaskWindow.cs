@@ -110,5 +110,10 @@ namespace Assignment3_LHISGroup.UI
         {
             
         }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
