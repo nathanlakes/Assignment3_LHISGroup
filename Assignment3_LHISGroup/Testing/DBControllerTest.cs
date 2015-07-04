@@ -10,6 +10,7 @@ namespace Assignment3_LHISGroup.Support_Classes
     class DBControllerTest
     {
         DbController testController = new DbController();
+        
         [Test]
         public void AddClientTest1()
         {
@@ -18,6 +19,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             Client testClient = new Client("Jim", "Bastiras", "contactTest", "222222", "3333333",
            "444444", "email", "Daniel", "Stone");
             Boolean i = testController.AddClient(testClient);
+            Console.WriteLine(testController.FindClient(testClient).Firstname);
             Assert.AreEqual(testClient.Firstname, testController.FindClient(testClient).Firstname);
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }

@@ -1540,32 +1540,34 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlCommand myCommand = new SqlCommand(query, _db);
-            SqlDataReader myReader = myCommand.ExecuteReader();
 
             Client c = new Client();
-            while (myReader.Read())
-            {                
-                c = new Client(
-                        myReader["firstname"].ToString(),
-                        myReader["surname"].ToString(),
-                        myReader["contactPerson"].ToString(),
-                        myReader["address"].ToString(),
-                        myReader["mobile"].ToString(),
-                        myReader["homePhone"].ToString(),
-                        myReader["email"].ToString(),
-                        myReader["engagedTo_firstname"].ToString(),
-                        myReader["engagedTo_surname"].ToString()
-                );
+            using( SqlDataReader myReader = myCommand.ExecuteReader() )
+            {
+                while (myReader.Read())
+                {
+                    c = new Client(
+                            myReader["firstname"].ToString(),
+                            myReader["surname"].ToString(),
+                            myReader["contactPerson"].ToString(),
+                            myReader["address"].ToString(),
+                            myReader["mobile"].ToString(),
+                            myReader["homePhone"].ToString(),
+                            myReader["email"].ToString(),
+                            myReader["engagedTo_firstname"].ToString(),
+                            myReader["engagedTo_surname"].ToString()
+                    );
 
-                try
-                {
-                    c.ID = Convert.ToInt32(myReader["Id"].ToString());
+                    try
+                    {
+                        c.ID = Convert.ToInt32(myReader["Id"].ToString());
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                    }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }                
-            }
+            }          
             
             this.closeDb();
             return c;
@@ -1578,6 +1580,7 @@ namespace Assignment3_LHISGroup
             query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@id", id);
 
             Wedding w = new Wedding();
 
