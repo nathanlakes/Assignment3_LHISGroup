@@ -237,5 +237,10 @@ namespace Assignment3_LHISGroup.UI
             this.clientTableAdapter.Fill(this.modelDataSet.Client);
 
         }
+
+        private void ClientComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ClientComboBox.SelectedItem = (KeyValuePair<int, string>)sender;
+        }
     }
 }
