@@ -443,7 +443,7 @@ namespace Assignment3_LHISGroup
         public bool DeleteWedding(int id)
         {
             string query = @"DELETE FROM Wedding ";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
