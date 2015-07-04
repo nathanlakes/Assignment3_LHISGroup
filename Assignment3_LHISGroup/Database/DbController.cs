@@ -484,37 +484,17 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@sn", "%" + name + "%");
 
             this.openDb();
+
             SqlDataReader myReader = myCommand.ExecuteReader();
 
             Client client = new Client();
             while (myReader.Read())
             {
-                // TODO:: -- Try makeClient() later. But move close after ExecuteReader();
-                
-                client = new Client(
-                    myReader["firstname"].ToString(),
-                    myReader["surname"].ToString(),
-                    myReader["contactPerson"].ToString(),
-                    myReader["address"].ToString(),
-                    myReader["mobile"].ToString(),
-                    myReader["homePhone"].ToString(),
-                    myReader["email"].ToString(),
-                    myReader["engagedTo_firstname"].ToString(),
-                    myReader["engagedTo_surname"].ToString()
-                );
 
-                try
-                {
-                    client.ID = Convert.ToInt32(myReader["Id"].ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
-
+                client = getClientsDetails(Convert.ToInt32(myReader["Id"].ToString()));
                 returnList.Add(client);
             }
-            this.closeDb(); // Move up bellow ExecuteReader() and inside while-loop call makeClient.
+            this.closeDb(); 
 
             return returnList;
         }
