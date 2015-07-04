@@ -19,6 +19,11 @@ namespace Assignment3_LHISGroup.Support_Classes
         private string engagedTo_firstName;
         private string engagedTo_surname;
 
+        public Client()
+        {
+            firstname = null;
+            surname = null;
+        }
 
         public Client(string name, string surname, string contact, string address, string mobile,
             string homeph, string email, string engagedTo_fn, string engagedTo_sn)

@@ -19,7 +19,13 @@ namespace Assignment3_LHISGroup.Support_Classes
         private string email;
         private string phone;
         private string notes;
-        private Active active; 
+        private Active active;
+
+        public Staff()
+        {
+            firstname = null;
+            surname = null;
+        }
 
         public Staff(string firstn, string surn, string email, string ph, string note, Active status)
         {

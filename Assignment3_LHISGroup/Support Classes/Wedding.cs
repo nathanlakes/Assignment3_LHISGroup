@@ -19,6 +19,11 @@ namespace Assignment3_LHISGroup.Support_Classes
         private DateTime eventDate;
         private Staff weddingPlanner;
 
+        public Wedding()
+        {
+            title = null;
+        }
+
         public Wedding(string title, string description, Client c1, Client c2, 
             Staff staff, DateTime startDate, DateTime eventDate)
         {

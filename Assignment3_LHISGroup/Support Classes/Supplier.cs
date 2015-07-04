@@ -18,6 +18,11 @@ namespace Assignment3_LHISGroup.Support_Classes
             private string phoneNumber;
             private int creditTerms;
 
+            public Supplier()
+            {
+                companyName = null;
+            }
+
             public Supplier(string name, string addr, string cont, string email, string phNum, int creditTerms)
             {
                 this.companyName = name;

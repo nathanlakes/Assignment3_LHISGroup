@@ -19,6 +19,10 @@ namespace Assignment3_LHISGroup.Support_Classes
         private Staff assignedTo;
         private Wedding wedding;
 
+        public Task()
+        {
+            taskName = null;
+        }
 
         public Task(string task, string desc, Priority prior, DateTime compBy, Staff assigned, Wedding wed)
         {

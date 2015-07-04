@@ -195,72 +195,74 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT * from Task ";
             query += @"WHERE Id=@id";
+            
             this.openDb();
+
             SqlCommand myCommand = new SqlCommand(query, _db);
-            SqlDataReader taskReader = myCommand.ExecuteReader();
 
-
-            Support_Classes.Task t;
+            Support_Classes.Task t = new Support_Classes.Task();
+            using( SqlDataReader taskReader = myCommand.ExecuteReader() )
             {
-                string taskname = taskReader["name"].ToString();
-                string descr = taskReader["description"].ToString();
-                string pr = taskReader["priority"].ToString();
-
-                // Assign Priority
-                Support_Classes.Task.Priority prior = Support_Classes.Task.Priority.low;
-                if (pr == Support_Classes.Task.Priority.med.ToString())
+                while (taskReader.Read())
                 {
-                    prior = Support_Classes.Task.Priority.med;
-                }
-                else
-                {
-                    prior = Support_Classes.Task.Priority.high;
-                }
+                    string taskname = taskReader["name"].ToString();
+                    string descr = taskReader["description"].ToString();
+                    string pr = taskReader["priority"].ToString();
 
-                // Assign Deadline Date
-                string temp = taskReader["completeBy"].ToString();
-                int[] date = splitStringDate(temp);
-                DateTime completeBy = new DateTime(date[0], date[1], date[2]);
+                    // Assign Priority
+                    Support_Classes.Task.Priority prior = Support_Classes.Task.Priority.low;
+                    if (pr == Support_Classes.Task.Priority.med.ToString())
+                    {
+                        prior = Support_Classes.Task.Priority.med;
+                    }
+                    else
+                    {
+                        prior = Support_Classes.Task.Priority.high;
+                    }
 
-                //
-                // Create Wedding Planner
-                //
-                int staffId = Convert.ToInt32(taskReader["staffOnJob_FK"].ToString());
-                Staff weddingPlanner = getStaffDetails(staffId);
+                    // Assign Deadline Date
+                    string temp = taskReader["completeBy"].ToString();
+                    int[] date = splitStringDate(temp);
+                    DateTime completeBy = new DateTime(date[0], date[1], date[2]);
 
-                //
-                // Create Wedding
-                //
-                int weddId = Convert.ToInt32(taskReader["weddingID_FK"].ToString());
-                Wedding wedding = getWeddingDetails(weddId);              
+                    //
+                    // Create Wedding Planner
+                    //
+                    int staffId = Convert.ToInt32(taskReader["staffOnJob_FK"].ToString());
+                    Staff weddingPlanner = getStaffDetails(staffId);
 
-                //
-                //  Make Actual Task
-                //
-                t = new Support_Classes.Task(
-                    taskname, descr, prior, completeBy, weddingPlanner, wedding);
+                    //
+                    // Create Wedding
+                    //
+                    int weddId = Convert.ToInt32(taskReader["weddingID_FK"].ToString());
+                    Wedding wedding = getWeddingDetails(weddId);
 
-                try
-                {
-                    t.ID = Convert.ToInt32(taskReader["Id"].ToString());
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
+                    //
+                    //  Make Actual Task
+                    //
+                    t = new Support_Classes.Task(
+                        taskname, descr, prior, completeBy, weddingPlanner, wedding);
 
-                // Assign Completion Date, if not null
-                string actComp = taskReader["actualCompletionDate"].ToString();
+                    try
+                    {
+                        t.ID = Convert.ToInt32(taskReader["Id"].ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
 
-                if (!(actComp == null) || !(actComp == ""))
-                {
-                    temp = taskReader["actualCompletionDate"].ToString();
-                    date = splitStringDate(temp);
-                    t.CompletionDate = new DateTime(date[0], date[1], date[2]);
-                }
+                    // Assign Completion Date, if not null
+                    string actComp = taskReader["actualCompletionDate"].ToString();
+
+                    if (!(actComp == null) || !(actComp == ""))
+                    {
+                        temp = taskReader["actualCompletionDate"].ToString();
+                        date = splitStringDate(temp);
+                        t.CompletionDate = new DateTime(date[0], date[1], date[2]);
+                    } 
+                }               
             }
-
-
             this.closeDb();
             return t;
         }
@@ -288,7 +290,8 @@ namespace Assignment3_LHISGroup
 
             SqlDataReader taskReader = myCommand.ExecuteReader();
 
-            Support_Classes.Task t;
+            Support_Classes.Task t = new Support_Classes.Task();
+            while (taskReader.Read())  
             {
                 string taskname = taskReader["name"].ToString();
                 string descr = taskReader["description"].ToString();
@@ -349,7 +352,6 @@ namespace Assignment3_LHISGroup
                     t.CompletionDate = new DateTime(date[0], date[1], date[2]);
                 }
             }
-
             return t;
         }
 
@@ -480,11 +482,13 @@ namespace Assignment3_LHISGroup
 
             this.openDb();
             SqlDataReader myReader = myCommand.ExecuteReader();
+
+            Client client = new Client();
             while (myReader.Read())
             {
                 // TODO:: -- Try makeClient() later. But move close after ExecuteReader();
                 
-                Client client = new Client(
+                client = new Client(
                     myReader["firstname"].ToString(),
                     myReader["surname"].ToString(),
                     myReader["contactPerson"].ToString(),
@@ -618,10 +622,11 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@id", id);
 
             this.openDb();
-            SqlDataReader myReader = myCommand.ExecuteReader();
-            this.closeDb();
 
-            Wedding wed;
+            Wedding wed = new Wedding();
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+            while (myReader.Read()) 
             {
                 string weddTitle = myReader["title"].ToString();
                 string desc = myReader["description"].ToString();
@@ -662,7 +667,9 @@ namespace Assignment3_LHISGroup
                     Console.WriteLine(ex.ToString());
                 }
             }
-            
+
+            this.closeDb();
+
             return wed;
         }
 
@@ -685,8 +692,8 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@eventdate", formatDateForDbInput(w.EventDate));
 
             SqlDataReader myReader = myCommand.ExecuteReader();
-            this.closeDb();
-            Wedding wed;
+
+            Wedding wed = new Wedding();
             {
                 string weddTitle = myReader["title"].ToString();
                 string desc = myReader["description"].ToString();
@@ -728,6 +735,8 @@ namespace Assignment3_LHISGroup
                 }
             }
 
+            this.closeDb();
+
             return wed;
         }
 
@@ -747,11 +756,10 @@ namespace Assignment3_LHISGroup
 
             this.openDb();
             SqlDataReader myReader = myCommand.ExecuteReader();
-            this.closeDb();
 
             while (myReader.Read())
             {
-                Wedding w;
+                Wedding w = new Wedding();
                 {
                     string weddTitle = myReader["title"].ToString();
                     string desc = myReader["description"].ToString();
@@ -795,7 +803,7 @@ namespace Assignment3_LHISGroup
                 returnList.Add(w);
             }
 
-
+            this.closeDb();
             return returnList;
         }
 
@@ -895,10 +903,11 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@name", "%" + name + "%");
 
             this.openDb();
-            ;
 
             using (SqlDataReader myReader = myCommand.ExecuteReader() )
             {
+                Supplier s = new Supplier();
+
                 while (myReader.Read())
                 {
                     string coname = myReader["CompanyName"].ToString();
@@ -908,7 +917,7 @@ namespace Assignment3_LHISGroup
                     string phone = myReader["PhoneNumber"].ToString();
                     int credterm = Convert.ToInt32(myReader["CreditTerms"].ToString());
 
-                    Supplier s = new Supplier(coname, address, contact, email, phone, credterm);
+                    s = new Supplier(coname, address, contact, email, phone, credterm);
                     returnList.Add(s);
                 }
             }          
@@ -1013,7 +1022,7 @@ namespace Assignment3_LHISGroup
             
             myCommand.Parameters.AddWithValue("@id", id);            
             myReader = myCommand.ExecuteReader();
-            Staff s = new Staff("Fuck", "you", "in", "the", "ass", Staff.Active.active);
+            Staff s = new Staff();
             while (myReader.Read())
             {
                 string firstname = myReader["firstname"].ToString();
@@ -1476,19 +1485,19 @@ namespace Assignment3_LHISGroup
             
             this.openDb();
 
-            SqlDataReader myReader = myCommand.ExecuteReader();
-                      
-
             int id = -1;
+            using ( SqlDataReader myReader = myCommand.ExecuteReader() )
+            {
+                try
+                {
+                    id = Convert.ToInt32( myReader["Id"].ToString() );
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
             
-            try
-            {
-                id = Convert.ToInt32( myReader["Id"].ToString() );
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
             this.closeDb();
             return id;
         }
@@ -1564,7 +1573,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
 
-            Client c;
+            Client c = new Client();
             if (myReader.Read())
             {                
                 c = new Client(
