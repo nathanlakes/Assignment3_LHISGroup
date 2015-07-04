@@ -1048,16 +1048,9 @@ namespace Assignment3_LHISGroup
 
             this.openDb();
             int id = -1;
-            try
-            {
-                var myReader = testStaff.ExecuteReader();
-
-                if (myReader.Read())
-                {
-                    id = Convert.ToInt32(myReader["Id"].ToString());
-                }
-            }
-            catch (Exception) { }
+            
+            var myReader = testStaff.ExecuteReader();
+            id = Convert.ToInt32(myReader["Id"].ToString());                     
 
             this.closeDb();
             return id;
