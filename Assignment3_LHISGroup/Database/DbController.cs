@@ -80,6 +80,7 @@ namespace Assignment3_LHISGroup
 
             int weddId = getWeddingId(t.Wedding);
             if (weddId == -1) throw new Exception("Task must be associated to an existing Wedding.");
+
             myCommand.Parameters.AddWithValue("@weddingID", weddId);
 
             int res = myCommand.ExecuteNonQuery();
@@ -391,7 +392,7 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@client1", clientOneFk);
             myCommand.Parameters.AddWithValue("@client2", clientTwoFk);
             myCommand.Parameters.AddWithValue("@startDate", formatDateForDbInput(w.StartDate) );
-            myCommand.Parameters.AddWithValue("@eventDate", formatDateForDbInput(w.EventDate));
+            myCommand.Parameters.AddWithValue("@eventDate", formatDateForDbInput(w.EventDate) );
             
             int wedPlanner = getStaffId(w.WeddingPlanner);
             if (wedPlanner == -1) throw new Exception("Wedding Planner must exist in Staff Table.");
@@ -1158,9 +1159,13 @@ namespace Assignment3_LHISGroup
          */
         private int getClientId(Client c)
         {
-            SqlCommand testTask = new SqlCommand(
-               "SELECT Id FROM Client WHERE firstname = '" + c.Firstname +
-                    "' AND surname = '" + c.Surname + "' AND homePhone ='" + c.HomePhone + "'", _db);
+            string query = @"SELECT Id FROM Client ";
+            query += "WHERE firstname= '@firstname' AND surname='@surname' AND homePhone='@phone'";
+            SqlCommand testTask = new SqlCommand(query, _db);
+            testTask.Parameters.AddWithValue("@firstname", c.Firstname);
+            testTask.Parameters.AddWithValue("@surname", c.Surname);
+            testTask.Parameters.AddWithValue("@phone", c.HomePhone);
+            
             this.openDb();
 
             int key = -1;
