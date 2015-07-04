@@ -1347,7 +1347,7 @@ namespace Assignment3_LHISGroup
 
         private SqlDataReader getClientDetails(int id)
         {
-            string query = @"SELECT from Client ";
+            string query = @"SELECT * FROM Client ";
             query += @"WHERE id=@'id'";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
