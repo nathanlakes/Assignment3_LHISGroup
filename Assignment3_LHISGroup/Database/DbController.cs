@@ -1042,7 +1042,7 @@ namespace Assignment3_LHISGroup
          */
         private int getStaffId(Staff s)
         {
-            string query = @"SELECT id FROM Staff WHERE firstname='@firstname' AND surname='@surname' ";
+            string query = @"SELECT id FROM Staff WHERE firstname='@firstname' AND surname='@surname'";
             query += @"AND phone='@phone'";
 
 
@@ -1056,13 +1056,9 @@ namespace Assignment3_LHISGroup
             var myReader = myCommand.ExecuteReader();
             
             int id = -1;
-            try
+            if ( myReader.HasRows )
             {
-                id = Convert.ToInt32(myReader["Id"].ToString());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
+                id = Convert.ToInt32( myReader["Id"].ToString() );
             }
 
             this.closeDb();
