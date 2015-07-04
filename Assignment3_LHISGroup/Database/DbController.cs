@@ -958,29 +958,8 @@ namespace Assignment3_LHISGroup
                 DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
 
                 // Create Staff Object
-                SqlDataReader staffReader = getStaffDetails(Convert.ToInt32(myReader["weddingPlanner_FK"].ToString()));
-                string firstname = staffReader["firstname"].ToString();
-                string surname = staffReader["surname"].ToString();
-                string email = staffReader["email"].ToString();
-                string phone = staffReader["phone"].ToString();
-                string notes = staffReader["notes"].ToString();
-                string status = staffReader["status"].ToString();
-
-                Staff.Active stat = Staff.Active.inactive;
-                if (Staff.Active.active.ToString() == status)
-                {
-                    stat = Staff.Active.active;
-                }
-
-                Staff weddPlann = new Staff(firstname, surname, email, phone, notes, stat);
-                try
-                {
-                    weddPlann.ID = Convert.ToInt32(staffReader["Id"].ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+                int staffId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
+                Staff weddPlann = getStaffDetails(staffId);             
 
                 wed = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
 
@@ -1080,29 +1059,8 @@ namespace Assignment3_LHISGroup
                     DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
 
                     // Create Staff Object
-                    SqlDataReader staffReader = getStaffDetails(Convert.ToInt32(myReader["weddingPlanner_FK"].ToString()));
-                    string firstname = staffReader["firstname"].ToString();
-                    string surname = staffReader["surname"].ToString();
-                    string email = staffReader["email"].ToString();
-                    string phone = staffReader["phone"].ToString();
-                    string notes = staffReader["notes"].ToString();
-                    string status = staffReader["status"].ToString();
-
-                    Staff.Active stat = Staff.Active.inactive;
-                    if (Staff.Active.active.ToString() == status)
-                    {
-                        stat = Staff.Active.active;
-                    }
-
-                    Staff weddPlann = new Staff(firstname, surname, email, phone, notes, stat);
-                    try
-                    {
-                        weddPlann.ID = Convert.ToInt32(staffReader["Id"].ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
+                    int stfId = Convert.ToInt32( myReader["weddingPlanner_FK"].ToString() );
+                    Staff weddPlann = getStaffDetails(stfId);
 
                     w = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
 
@@ -1616,23 +1574,8 @@ namespace Assignment3_LHISGroup
                     //
                     // Generate Staff Object tied to the Task
                     //
-                    SqlDataReader staffReader = getStaffDetails(
-                        Convert.ToInt32( taskReader["staffOnJob_FK"].ToString() )
-                    );
-                    Staff.Active isActive = Staff.Active.active;
-                    if (staffReader["status"].ToString() == Staff.Active.inactive.ToString())
-                    {
-                        isActive = Staff.Active.inactive;
-                    }
-                    Staff staff = new Staff(
-                        staffReader["firstname"].ToString(),
-                        staffReader["surname"].ToString(),
-                        staffReader["email"].ToString(),
-                        staffReader["phone"].ToString(),
-                        staffReader["notes"].ToString(),
-                        isActive
-                    );
-
+                    int index = Convert.ToInt32(taskReader["staffOnJob_FK"].ToString());
+                    Staff staff = getStaffDetails(index);
 
                     //
                     // Generate Wedding Object tied to Task
@@ -1783,29 +1726,9 @@ namespace Assignment3_LHISGroup
                     DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
 
                     // Create Staff Object
-                    SqlDataReader staffReader = getStaffDetails(Convert.ToInt32(myReader["weddingPlanner_FK"].ToString()));
-                    string firstname = staffReader["firstname"].ToString();
-                    string surname = staffReader["surname"].ToString();
-                    string email = staffReader["email"].ToString();
-                    string phone = staffReader["phone"].ToString();
-                    string notes = staffReader["notes"].ToString();
-                    string status = staffReader["status"].ToString();
-
-                    Staff.Active stat = Staff.Active.inactive;
-                    if (Staff.Active.active.ToString() == status)
-                    {
-                        stat = Staff.Active.active;
-                    }
-
-                    Staff weddPlann = new Staff(firstname, surname, email, phone, notes, stat);
-                    try
-                    {
-                        weddPlann.ID = Convert.ToInt32(staffReader["Id"].ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
+                    int index = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
+                    Staff weddPlann = getStaffDetails(index);
+                    
 
                     w = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
 
