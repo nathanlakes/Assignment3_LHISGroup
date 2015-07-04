@@ -44,6 +44,7 @@
             this.UpdateStaffButton = new System.Windows.Forms.Button();
             this.staffTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.StaffTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ReportButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.StaffDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSetBindingSource)).BeginInit();
@@ -76,7 +77,7 @@
             this.StaffDataGridView.ReadOnly = true;
             this.StaffDataGridView.RowTemplate.Height = 28;
             this.StaffDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StaffDataGridView.Size = new System.Drawing.Size(1001, 290);
+            this.StaffDataGridView.Size = new System.Drawing.Size(997, 290);
             this.StaffDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -171,20 +172,31 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ReportButton);
             this.panel1.Controls.Add(this.UpdateStaffButton);
             this.panel1.Controls.Add(this.AddStaffButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 290);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1001, 72);
+            this.panel1.Size = new System.Drawing.Size(997, 72);
             this.panel1.TabIndex = 3;
+            // 
+            // ReportButton
+            // 
+            this.ReportButton.BackColor = System.Drawing.Color.White;
+            this.ReportButton.Location = new System.Drawing.Point(623, 15);
+            this.ReportButton.Name = "ReportButton";
+            this.ReportButton.Size = new System.Drawing.Size(214, 41);
+            this.ReportButton.TabIndex = 3;
+            this.ReportButton.Text = "Report for Selected Staff";
+            this.ReportButton.UseVisualStyleBackColor = false;
             // 
             // ManageStaffWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1001, 362);
+            this.ClientSize = new System.Drawing.Size(997, 362);
             this.Controls.Add(this.StaffDataGridView);
             this.Controls.Add(this.panel1);
             this.Name = "ManageStaffWindow";
@@ -217,5 +229,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button ReportButton;
     }
 }
