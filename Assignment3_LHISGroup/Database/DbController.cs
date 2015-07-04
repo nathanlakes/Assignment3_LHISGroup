@@ -1110,12 +1110,12 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlDataReader myReader = myCommand.ExecuteReader();
-            myReader.Read();
 
             int id = -1;
             
             try
             {
+                myReader.Read();
                 id = Convert.ToInt32( myReader["Id"].ToString() );
             }
             catch (Exception e)
