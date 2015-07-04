@@ -534,6 +534,7 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@weddingPlanner", wedPlanner);
 
             int res = 0;
+
             this.openDb();
             res = myCommand.ExecuteNonQuery();
             this.closeDb();
@@ -1050,7 +1051,8 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@surname", s.Surname);
 
             Staff returnStaff = new Staff();
-            using (SqlDataReader myReader = myCommand.ExecuteReader()){
+            using (SqlDataReader myReader = myCommand.ExecuteReader())
+            {
                 while (myReader.Read())
                 {
                     returnStaff = getStaffDetails(Convert.ToInt32(myReader["Id"].ToString()));
@@ -1391,16 +1393,17 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@phone", s.Phone);
 
             this.openDb();
-
-            var myReader = myCommand.ExecuteReader();
-            
-
             int id = -1;
-            if ( myReader.HasRows )
+
+            using (var myReader = myCommand.ExecuteReader())
             {
-                id = Convert.ToInt32( myReader["Id"].ToString() );
+                while (myReader.Read())
+                {
+                    id = Convert.ToInt32(myReader["Id"].ToString());
+                }
+                this.closeDb();
             }
-            this.closeDb();
+            
             return id;
         }
 
