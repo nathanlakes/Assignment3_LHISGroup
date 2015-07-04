@@ -1467,11 +1467,11 @@ namespace Assignment3_LHISGroup
             // Create Client Objects
             //
             // Client 1               
-            SqlDataReader c1 = getClientsDetails(Convert.ToInt32(myReader["client_1_fk"].ToString()));
+            SqlDataReader c1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
             Client client1 = makeClient(c1);
 
             // Client 2
-            SqlDataReader c2 = getClientsDetails(Convert.ToInt32(myReader["client_2_fk"].ToString()));
+            SqlDataReader c2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
             Client client2 = makeClient(c2);
 
             // Generate DateTime for start date.
