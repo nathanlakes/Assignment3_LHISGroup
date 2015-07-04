@@ -1365,7 +1365,7 @@ namespace Assignment3_LHISGroup
             }
             catch (InvalidOperationException)
             {
-                throw new Exception("Error: Connection already open or Data Source Missing");
+                Console.WriteLine("The Database is already open.");
             }
             catch (SqlException)
             {
