@@ -415,7 +415,7 @@ namespace Assignment3_LHISGroup
             string query = @"UPDATE Wedding ";
             query += @"SET title='@title', description='@desc', client_1_FK='@client1', client_2_FK='@client2', ";
             query += @"startDate='@startDate', eventDate='@eventDate', weddingPlanner_FK='@weddingPlanner_FK'";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@title", w.Title);
