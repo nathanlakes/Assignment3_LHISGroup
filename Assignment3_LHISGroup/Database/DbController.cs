@@ -59,7 +59,7 @@ namespace Assignment3_LHISGroup
             String query = @"INSERT INTO Task(name, description, priority, completeByDate, ";
             query += "actualCompletionDate, staffOnJob_FK, weddingID_FK)";
             query += @" VALUES(@taskname, @description, @priority, @completeByDate, @actualComplete,";
-            query += @" @staffOnJob, @weddingID)";
+            query += @" @staffOnJob, @weddingID);";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@taskname", t.TaskName);
@@ -105,7 +105,7 @@ namespace Assignment3_LHISGroup
             query += @"SET name='@name', description ='@description', priority='@priority', ";
             query += @"completeByDate='@completeByDate', actualCompletionDate='@actualCompDate,";
             query += @"staffOnJob_FK='@staffOnJob";
-            query += @"WHERE id=@id";
+            query += @"WHERE id=@id;";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@name", t.TaskName);
@@ -152,7 +152,7 @@ namespace Assignment3_LHISGroup
 
             int res = 0;
 
-            String query = "UPDATE Task SET staffOnJob_FK='@staffId' WHERE Id=@taskId";
+            String query = "UPDATE Task SET staffOnJob_FK='@staffId' WHERE Id=@taskId;";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@staffId", staffId);
             myCommand.Parameters.AddWithValue("@taskId", taskId);
@@ -175,7 +175,7 @@ namespace Assignment3_LHISGroup
 
             this.openDb();
 
-            String query = "DELETE FROM Task WHERE Id=@idnum";
+            String query = "DELETE FROM Task WHERE Id=@idnum;";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@idnum", id);
 
@@ -370,7 +370,7 @@ namespace Assignment3_LHISGroup
             String query = @"INSERT into Client (firstname, surname, contactPerson, address, ";
             query += @"mobile, homePhone, email, engagedTo_firstname, engagedTo_surname)";
             query += @" VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, ";
-            query += @"@email, @engFn, @engSn)";
+            query += @"@email, @engFn, @engSn);";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
@@ -405,7 +405,7 @@ namespace Assignment3_LHISGroup
             query += @"SET firstname='@firstname', surname='@surname', contactPerson='@contactPerson', ";
             query += @"address='@address', mobile=@'mobile', homePhone='@homePhone', email='@email', ";
             query += @"engagedTo_firstname='@engFn', engagedTo_surname='@engSn'";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
@@ -436,7 +436,7 @@ namespace Assignment3_LHISGroup
         public bool DeleteClient(int id)
         {
             string query = @"DELETE FROM Client ";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
 
@@ -480,7 +480,7 @@ namespace Assignment3_LHISGroup
             List<Client> returnList = new List<Client>();
 
             this.openDb();
-            string query = "SELECT * FROM Client WHERE firstname = @fn";
+            string query = "SELECT * FROM Client WHERE firstname = @fn;";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@fn", name);
            
@@ -508,7 +508,7 @@ namespace Assignment3_LHISGroup
         {
             string query = @"INSERT into Wedding ";
             query += @"(title, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK, description)";
-            query += @"VALUES(@title, @client1, @client2, @startDate, @eventDate, @weddingPlanner, @desc)";
+            query += @"VALUES(@title, @client1, @client2, @startDate, @eventDate, @weddingPlanner, @desc);";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
@@ -552,7 +552,7 @@ namespace Assignment3_LHISGroup
             string query = @"UPDATE Wedding ";
             query += @"SET title='@title', description='@desc', client_1_FK='@client1', client_2_FK='@client2', ";
             query += @"startDate='@startDate', eventDate='@eventDate', weddingPlanner_FK='@weddingPlanner_FK'";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@title", w.Title);
@@ -580,7 +580,7 @@ namespace Assignment3_LHISGroup
         public bool DeleteWedding(int id)
         {
             string query = @"DELETE FROM Wedding ";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
@@ -602,7 +602,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             string query = "SELECT * FROM Wedding ";
-            query += "WHERE Id=@id";
+            query += "WHERE Id=@id;";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
 
@@ -738,7 +738,7 @@ namespace Assignment3_LHISGroup
             List<Wedding> returnList = new List<Wedding>();
 
             string query = "SELECT * FROM Wedding";
-            query += " WHERE title = @title";
+            query += " WHERE title = @title;";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@title", title);
 
@@ -802,7 +802,7 @@ namespace Assignment3_LHISGroup
         public bool AddSupplier(Supplier s)
         {
             String query = @"INSERT into Suppliers (CompanyName, Address, ContactPerson, Email, PhoneNumber, CreditTerms)";
-            query += @" VALUES (@companyName, @address, @contactPerson, @email, @phonenumber, @creditterms)";
+            query += @" VALUES (@companyName, @address, @contactPerson, @email, @phonenumber, @creditterms);";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
@@ -830,7 +830,7 @@ namespace Assignment3_LHISGroup
         public bool DeleteSupplier(int id)
         {
             string query = @"DELETE Suppliers ";   // RM 'FROM' keyword????
-            query += "WHERE Id=@id";
+            query += "WHERE Id=@id;";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
@@ -856,7 +856,7 @@ namespace Assignment3_LHISGroup
             string query = @"UPDATE Suppliers ";
             query += @"SET CompanyName='@companyname', Address='@address', ContactPerson='@contactPerson', ";
             query += @"Email='@email', PhoneNumber='@phonenumber', CreditTerms=@creditterms ";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@companyname", s.CompanyName);
@@ -887,7 +887,7 @@ namespace Assignment3_LHISGroup
             List<Supplier> returnList = new List<Supplier>();
 
             string query = "SELECT * FROM Suppliers ";
-            query += "WHERE CompanyName = @name";
+            query += "WHERE CompanyName = @name;";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@name", name);
 
@@ -920,7 +920,7 @@ namespace Assignment3_LHISGroup
         {
 
             String query = @"INSERT into Staff (firstname, surname, email, phone, notes, status)";
-            query += @" VALUES (@_firstname, @_surname, @_email, @_phone, @_notes, @_status)";
+            query += @" VALUES (@_firstname, @_surname, @_email, @_phone, @_notes, @_status);";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
@@ -980,7 +980,7 @@ namespace Assignment3_LHISGroup
         {
             string query = @"UPDATE Staff";
             query += @"SET status='@status'";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@status", a);
@@ -1005,7 +1005,7 @@ namespace Assignment3_LHISGroup
 
             SqlDataReader myReader = null;
 
-            string query = "SELECT * FROM Staff WHERE Id=@id";
+            string query = "SELECT * FROM Staff WHERE Id=@id;";
             SqlCommand myCommand = new SqlCommand(query, _db);
             
             myCommand.Parameters.AddWithValue("@id", id);            
@@ -1049,7 +1049,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             string query = @"SELECT * FROM Staff ";
-            query += @"WHERE firstname=@firstname AND surname=@surname";
+            query += @"WHERE firstname=@firstname AND surname=@surname;";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
             myCommand.Parameters.AddWithValue("@surname", s.Surname);
@@ -1080,7 +1080,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlDataReader myReader = null;
-            string query = @"SELECT * FROM Staff WHERE status='active'";
+            string query = @"SELECT * FROM Staff WHERE status='active';";
             SqlCommand myCommand = new SqlCommand(query, _db);
 
             myReader = myCommand.ExecuteReader();           
@@ -1127,7 +1127,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlDataReader myReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT * FROM Client", _db);
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Client;", _db);
 
             myReader = myCommand.ExecuteReader();
             
@@ -1170,7 +1170,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlDataReader myReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT * FROM Staff", _db);
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Staff;", _db);
 
             myReader = myCommand.ExecuteReader();
             
@@ -1216,7 +1216,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlDataReader myReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers", _db);
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers;", _db);
 
             myReader = myCommand.ExecuteReader();           
 
@@ -1250,7 +1250,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlDataReader taskReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT * FROM Task", _db);
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Task;", _db);
 
             taskReader = myCommand.ExecuteReader();
             
@@ -1320,7 +1320,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlDataReader myReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT * FROM Wedding", _db);
+            SqlCommand myCommand = new SqlCommand("SELECT * FROM Wedding;", _db);
 
             myReader = myCommand.ExecuteReader();
             
@@ -1388,7 +1388,7 @@ namespace Assignment3_LHISGroup
         private int getStaffId(Staff s)
         {
             string query = @"SELECT id FROM Staff WHERE firstname=@firstname AND surname=@surname";
-            query += @" AND phone=@phone";
+            query += @" AND phone=@phone;";
 
 
             SqlCommand myCommand = new SqlCommand(query, _db);
@@ -1448,7 +1448,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             string query = @"SELECT id FROM Client ";
-            query += "WHERE firstname=@firstname AND surname=@surname";
+            query += "WHERE firstname=@firstname AND surname=@surname;";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
@@ -1478,7 +1478,7 @@ namespace Assignment3_LHISGroup
         
         private int getWeddingId(Wedding w)
         {
-            string query = @"SELECT Id FROM Wedding WHERE title=@title AND client_1_FK=@client1";
+            string query = @"SELECT Id FROM Wedding WHERE title=@title AND client_1_FK=@client1;";
             SqlCommand testTask = new SqlCommand(query, _db);
             testTask.Parameters.AddWithValue("@title", w.Title);
             testTask.Parameters.AddWithValue("@client1", getClientId(w.Client1));
@@ -1505,7 +1505,7 @@ namespace Assignment3_LHISGroup
         private Staff getStaffDetails(int id)
         {
             string query = @"SELECT * from Staff ";
-            query += @"WHERE Id=@id";
+            query += @"WHERE Id=@id;";
 
             this.openDb();
 
