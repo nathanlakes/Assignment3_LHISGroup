@@ -16,7 +16,15 @@ namespace Assignment3_LHISGroup.Support_Classes
             Client testClient = new Client("Jim", "Bastiras", "contactTest", "222222", "3333333",
            "444444", "email", "Daniel", "Stone");
             Boolean i = testController.AddClient(testClient);
-            Assert.AreEqual(true, i);
+            Assert.AreEqual(testClient, testController.FindClient(testClient));
+        }
+
+        [Test]
+        public void AddStaffTest1()
+        {
+            Staff testStaff = new Staff("Jimmy", "Bastiras", "email", "05231", "note", Staff.Active.active);
+            testController.AddStaff(testStaff);
+            Assert.AreEqual(testStaff, testController.FindStaff(testStaff));
         }
     }
 }
