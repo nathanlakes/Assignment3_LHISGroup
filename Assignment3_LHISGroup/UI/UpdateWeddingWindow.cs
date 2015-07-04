@@ -65,12 +65,33 @@ namespace Assignment3_LHISGroup.UI
             id = w.ID;
 
             NameTextBox.Text = w.Title;
-            ClientComboBox.ValueMember = w.Client1.Firstname + " " + w.Client1.Surname;
-            EngagedComboBox.ValueMember = w.Client2.Firstname + " " + w.Client2.Surname;
+
+            int client_ID = w.Client1.ID;
+            string client_name = w.Client1.Firstname + " " + w.Client1.Surname;
+            ClientComboBox.SelectedItem = ClientComboBox.Equals(new KeyValuePair<int, string>(client_ID, client_name));
+
+            int engaged_id = w.Client2.ID;
+            string engaged_name = w.Client2.Firstname + " " + w.Client2.Surname;
+            EngagedComboBox.SelectedItem = EngagedComboBox.Equals(new KeyValuePair<int, string>(engaged_id, engaged_name));
+
+            int staff_id = w.WeddingPlanner.ID;
+            string staff_name = w.WeddingPlanner.FirstName + " " + w.WeddingPlanner.Surname;
+            StaffComboBox.SelectedItem = StaffComboBox.Equals(new KeyValuePair<int, string>(staff_id, staff_name));
+
+
+            //((KeyValuePair<int, string>)this.ClientComboBox.SelectedItem).Key = w.Client1.ID;
+            //((KeyValuePair<int, string>)this.EngagedComboBox.SelectedItem).Key = w.Client2.ID;
+
+            //ClientComboBox.ValueMember = w.Client1.Firstname + " " + w.Client1.Surname;
+            //EngagedComboBox.ValueMember = w.Client2.Firstname + " " + w.Client2.Surname;
+
+
             DescriptionTextBox.Text = "";
-            EventDateTimePicker.ResetText();
-            StartDateTimePicker.ResetText();
-            StaffComboBox.ValueMember = "";
+            EventDateTimePicker.Value = w.EventDate;
+            StartDateTimePicker.Value = w.StartDate;
+
+
+            //StaffComboBox.ValueMember = "";
         }
 
         public void RefreshData()
