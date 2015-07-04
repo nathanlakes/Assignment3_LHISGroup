@@ -30,9 +30,11 @@ namespace Assignment3_LHISGroup.UI
             ClientList = db.GetAllClients();
             foreach (Support_Classes.Client client in ClientList)
             {
-                KeyValuePair<int, string> keyValue = new KeyValuePair<int, string>(client.ID, client.Firstname + " " + client.Surname);
-                ClientComboBox.Items.Add(keyValue);
-                EngagedComboBox.Items.Add(keyValue);
+                int keyValue = client.ID;
+                string name = client.Firstname + " " + client.Surname;
+
+                ClientComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
+                EngagedComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
             }
 
             ClientComboBox.DisplayMember = "Value";
@@ -80,9 +82,11 @@ namespace Assignment3_LHISGroup.UI
             ClientList = db.GetAllClients();
             foreach (Support_Classes.Client client in ClientList)
             {
-                KeyValuePair<int, string> keyValue = new KeyValuePair<int, string>(client.ID, client.Firstname + " " + client.Surname);
-                ClientComboBox.Items.Add(keyValue);
-                EngagedComboBox.Items.Add(keyValue);
+                int keyValue = client.ID;
+                string name = client.Firstname + " " + client.Surname;
+
+                ClientComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
+                EngagedComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
             }
 
             ClientComboBox.DisplayMember = "Value";

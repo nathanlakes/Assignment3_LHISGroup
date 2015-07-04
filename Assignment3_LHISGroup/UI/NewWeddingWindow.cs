@@ -28,18 +28,12 @@ namespace Assignment3_LHISGroup.UI
             ClientList = db.GetAllClients();
             foreach (Support_Classes.Client client in ClientList)
             {
-
                 int keyValue = client.ID;
                 string name = client.Firstname + " " + client.Surname;
 
                 ClientComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
                 EngagedComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
 
-               // MessageBox.Show("" + keyValue + " " + name);
-//                KeyValuePair<int,string> keyValue = new KeyValuePair<int,string>(client.ID, client.Firstname + " " + client.Surname);
-//                MessageBox.Show(keyValue.ToString());
-//                ClientComboBox.Items.Add(keyValue);
- //               EngagedComboBox.Items.Add(keyValue);
             }
 
             ClientComboBox.DisplayMember = "Value";
@@ -57,7 +51,6 @@ namespace Assignment3_LHISGroup.UI
                     int keyValue = staff.ID;
                     string name = staff.FirstName + " " + staff.Surname;
                     StaffComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
-                    //MessageBox.Show(""+keyValue);
                 }
             }
 
@@ -75,9 +68,12 @@ namespace Assignment3_LHISGroup.UI
             ClientList = db.GetAllClients();
             foreach (Support_Classes.Client client in ClientList)
             {
-                KeyValuePair<int, string> keyValue = new KeyValuePair<int, string>(client.ID, client.Firstname + " " + client.Surname);
-                ClientComboBox.Items.Add(keyValue);
-                EngagedComboBox.Items.Add(keyValue);
+                int keyValue = client.ID;
+                string name = client.Firstname + " " + client.Surname;
+
+                ClientComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
+                EngagedComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
+
             }
 
             ClientComboBox.DisplayMember = "Value";

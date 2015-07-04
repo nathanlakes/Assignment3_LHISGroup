@@ -29,14 +29,18 @@ namespace Assignment3_LHISGroup.UI
             {
                 if (staff.StatusToString().Equals("active"))
                 {
-                    StaffComboBox.Items.Add(staff.FirstName + " " + staff.Surname);
+                    int keyValue = staff.ID;
+                    string name = staff.FirstName + " " + staff.Surname;
+                    StaffComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
                 }
             }
 
             WeddingList = db.GetAllWeddings();
             foreach (Support_Classes.Wedding wedding in WeddingList)
             {
-                WeddingComboBox.Items.Add(wedding.Title);
+                int keyValue = wedding.ID;
+                string name = wedding.Title;
+                WeddingComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
             }
 
         }
@@ -48,14 +52,18 @@ namespace Assignment3_LHISGroup.UI
             {
                 if (staff.StatusToString().Equals("active"))
                 {
-                    StaffComboBox.Items.Add(staff.FirstName + " " + staff.Surname);
+                    int keyValue = staff.ID;
+                    string name = staff.FirstName + " " + staff.Surname;
+                    StaffComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
                 }
             }
 
             WeddingList = db.GetAllWeddings();
             foreach (Support_Classes.Wedding wedding in WeddingList)
             {
-                WeddingComboBox.Items.Add(wedding.Title);
+                int keyValue = wedding.ID;
+                string name = wedding.Title;
+                WeddingComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
             }
         }
 
