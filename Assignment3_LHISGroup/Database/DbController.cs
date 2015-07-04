@@ -232,76 +232,7 @@ namespace Assignment3_LHISGroup
                 // Create Wedding
                 //
                 int weddId = Convert.ToInt32(taskReader["weddingID_FK"].ToString());
-                SqlDataReader weddReader = getWeddingDetails(weddId);
-                Wedding wedding;
-                {
-                    string weddTitle = weddReader["title"].ToString();
-                    string desc = weddReader["description"].ToString();
-
-                    //
-                    // Create Client Objects
-                    //
-                    // Client 1               
-                    SqlDataReader c1 = getClientsDetails(Convert.ToInt32(weddReader["client_1_fk"].ToString()));
-                    Client client1 = new Client(
-                        c1["firstname"].ToString(),
-                        c1["surname"].ToString(),
-                        c1["contactPerson"].ToString(),
-                        c1["address"].ToString(),
-                        c1["mobile"].ToString(),
-                        c1["homePhone"].ToString(),
-                        c1["email"].ToString(),
-                        c1["engagedTo_firstname"].ToString(),
-                        c1["engagedTo_surname"].ToString()
-                    );
-                    try
-                    {
-                        client1.ID = Convert.ToInt32(c1["Id"].ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
-
-                    // Client 2
-                    SqlDataReader c2 = getClientsDetails(Convert.ToInt32(weddReader["client_2_fk"].ToString()));
-                    Client client2 = new Client(
-                        c2["firstname"].ToString(),
-                        c2["surname"].ToString(),
-                        c2["contactPerson"].ToString(),
-                        c2["address"].ToString(),
-                        c2["mobile"].ToString(),
-                        c2["homePhone"].ToString(),
-                        c2["email"].ToString(),
-                        c2["engagedTo_firstname"].ToString(),
-                        c2["engagedTo_surname"].ToString()
-                    );
-                    try
-                    {
-                        client2.ID = Convert.ToInt32(c2["Id"].ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
-
-                    // Generate DateTime for start date.
-                    temp = weddReader["startDate"].ToString();
-                    int[] dateArray = splitStringDate(temp);
-                    DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
-
-                    // Generate DateTime for event date.
-                    temp = weddReader["eventDate"].ToString();
-                    dateArray = splitStringDate(temp);
-                    DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
-
-                    // Create Staff Object
-                    Staff weddPlann = getStaffDetails(Convert.ToInt32(weddReader["weddingPlanner_FK"].ToString()));
-
-
-                    wedding = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
-                    wedding.ID = Convert.ToInt32(weddReader["ID"].ToString());
-                }
+                Wedding wedding = getWeddingDetails(weddId);              
 
                 //
                 //  Make Actual Task
@@ -390,76 +321,8 @@ namespace Assignment3_LHISGroup
                 // Create Wedding
                 //
                 int weddId = Convert.ToInt32(taskReader["weddingID_FK"].ToString());
-                SqlDataReader weddReader = getWeddingDetails(weddId);
-                Wedding wedding;
-                {
-                    string weddTitle = weddReader["title"].ToString();
-                    string desc = weddReader["description"].ToString();
+                Wedding wedding = getWeddingDetails(weddId);
 
-                    //
-                    // Create Client Objects
-                    //
-                    // Client 1               
-                    SqlDataReader c1 = getClientsDetails(Convert.ToInt32(weddReader["client_1_fk"].ToString()));
-                    Client client1 = new Client(
-                        c1["firstname"].ToString(),
-                        c1["surname"].ToString(),
-                        c1["contactPerson"].ToString(),
-                        c1["address"].ToString(),
-                        c1["mobile"].ToString(),
-                        c1["homePhone"].ToString(),
-                        c1["email"].ToString(),
-                        c1["engagedTo_firstname"].ToString(),
-                        c1["engagedTo_surname"].ToString()
-                    );
-                    try
-                    {
-                        client1.ID = Convert.ToInt32(c1["Id"].ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
-
-                    // Client 2
-                    SqlDataReader c2 = getClientsDetails(Convert.ToInt32(weddReader["client_2_fk"].ToString()));
-                    Client client2 = new Client(
-                        c2["firstname"].ToString(),
-                        c2["surname"].ToString(),
-                        c2["contactPerson"].ToString(),
-                        c2["address"].ToString(),
-                        c2["mobile"].ToString(),
-                        c2["homePhone"].ToString(),
-                        c2["email"].ToString(),
-                        c2["engagedTo_firstname"].ToString(),
-                        c2["engagedTo_surname"].ToString()
-                    );
-                    try
-                    {
-                        client2.ID = Convert.ToInt32(c2["Id"].ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
-
-                    // Generate DateTime for start date.
-                    temp = weddReader["startDate"].ToString();
-                    int[] dateArray = splitStringDate(temp);
-                    DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
-
-                    // Generate DateTime for event date.
-                    temp = weddReader["eventDate"].ToString();
-                    dateArray = splitStringDate(temp);
-                    DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
-
-                    // Create Staff Object
-                    Staff weddPlann = getStaffDetails(Convert.ToInt32(weddReader["weddingPlanner_FK"].ToString()));
-                    
-
-                    wedding = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
-                    wedding.ID = Convert.ToInt32(weddReader["ID"].ToString());
-                }
 
                 //
                 //  Make Actual Task
@@ -585,27 +448,7 @@ namespace Assignment3_LHISGroup
          */
         public Client FindClient(int id)
         {
-            SqlDataReader myReader = getClientDetails(id);
-
-            Client c = new Client(
-                    myReader["firstname"].ToString(),
-                    myReader["surname"].ToString(),
-                    myReader["contactPerson"].ToString(),
-                    myReader["address"].ToString(),
-                    myReader["mobile"].ToString(),
-                    myReader["homePhone"].ToString(),
-                    myReader["email"].ToString(),
-                    myReader["engagedTo_firstname"].ToString(),
-                    myReader["engagedTo_surname"].ToString()
-                );
-            try
-            {
-                c.ID = Convert.ToInt32(myReader["Id"].ToString());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
+            Client c = getClientsDetails(id);
 
             return c;
         }
@@ -618,26 +461,7 @@ namespace Assignment3_LHISGroup
         public Client FindClient(Client c)
         {
             int id = getClientId(c);
-            SqlDataReader myReader = getClientDetails( id );
-            Client returnClient = new Client(
-                    myReader["firstname"].ToString(),
-                    myReader["surname"].ToString(),
-                    myReader["contactPerson"].ToString(),
-                    myReader["address"].ToString(),
-                    myReader["mobile"].ToString(),
-                    myReader["homePhone"].ToString(),
-                    myReader["email"].ToString(),
-                    myReader["engagedTo_firstname"].ToString(),
-                    myReader["engagedTo_surname"].ToString()
-                );
-            try
-            {
-                returnClient.ID = Convert.ToInt32(myReader["Id"].ToString());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
+            Client returnClient = getClientsDetails( id );
             return returnClient;
         }
 
@@ -806,48 +630,11 @@ namespace Assignment3_LHISGroup
                 // Create Client Objects
                 //
                 // Client 1               
-                SqlDataReader c1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
-                Client client1 = new Client(
-                        c1["firstname"].ToString(),
-                        c1["surname"].ToString(),
-                        c1["contactPerson"].ToString(),
-                        c1["address"].ToString(),
-                        c1["mobile"].ToString(),
-                        c1["homePhone"].ToString(),
-                        c1["email"].ToString(),
-                        c1["engagedTo_firstname"].ToString(),
-                        c1["engagedTo_surname"].ToString()
-                    );
-                try
-                {
-                    client1.ID = Convert.ToInt32(c1["Id"].ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+                Client client1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
+               
 
                 // Client 2
-                SqlDataReader c2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
-                Client client2 = new Client(
-                        c2["firstname"].ToString(),
-                        c2["surname"].ToString(),
-                        c2["contactPerson"].ToString(),
-                        c2["address"].ToString(),
-                        c2["mobile"].ToString(),
-                        c2["homePhone"].ToString(),
-                        c2["email"].ToString(),
-                        c2["engagedTo_firstname"].ToString(),
-                        c2["engagedTo_surname"].ToString()
-                    );
-                try
-                {
-                    client2.ID = Convert.ToInt32(c2["Id"].ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+                Client client2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
 
                 // Generate DateTime for start date.
                 string temp = myReader["startDate"].ToString();
@@ -908,48 +695,12 @@ namespace Assignment3_LHISGroup
                 // Create Client Objects
                 //
                 // Client 1               
-                SqlDataReader c1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
-                Client client1 = new Client(
-                        c1["firstname"].ToString(),
-                        c1["surname"].ToString(),
-                        c1["contactPerson"].ToString(),
-                        c1["address"].ToString(),
-                        c1["mobile"].ToString(),
-                        c1["homePhone"].ToString(),
-                        c1["email"].ToString(),
-                        c1["engagedTo_firstname"].ToString(),
-                        c1["engagedTo_surname"].ToString()
-                    );
-                try
-                {
-                    client1.ID = Convert.ToInt32(c1["Id"].ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+                Client client1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
+                
 
                 // Client 2
-                SqlDataReader c2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
-                Client client2 = new Client(
-                        c2["firstname"].ToString(),
-                        c2["surname"].ToString(),
-                        c2["contactPerson"].ToString(),
-                        c2["address"].ToString(),
-                        c2["mobile"].ToString(),
-                        c2["homePhone"].ToString(),
-                        c2["email"].ToString(),
-                        c2["engagedTo_firstname"].ToString(),
-                        c2["engagedTo_surname"].ToString()
-                    );
-                try
-                {
-                    client2.ID = Convert.ToInt32(c2["Id"].ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+                Client client2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
+                
 
                 // Generate DateTime for start date.
                 string temp = myReader["startDate"].ToString();
@@ -1009,48 +760,12 @@ namespace Assignment3_LHISGroup
                     // Create Client Objects
                     //
                     // Client 1               
-                    SqlDataReader c1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
-                    Client client1 = new Client(
-                            c1["firstname"].ToString(),
-                            c1["surname"].ToString(),
-                            c1["contactPerson"].ToString(),
-                            c1["address"].ToString(),
-                            c1["mobile"].ToString(),
-                            c1["homePhone"].ToString(),
-                            c1["email"].ToString(),
-                            c1["engagedTo_firstname"].ToString(),
-                            c1["engagedTo_surname"].ToString()
-                        );
-                    try
-                    {
-                        client1.ID = Convert.ToInt32(c1["Id"].ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
+                    Client client1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
+
 
                     // Client 2
-                    SqlDataReader c2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
-                    Client client2 = new Client(
-                            c2["firstname"].ToString(),
-                            c2["surname"].ToString(),
-                            c2["contactPerson"].ToString(),
-                            c2["address"].ToString(),
-                            c2["mobile"].ToString(),
-                            c2["homePhone"].ToString(),
-                            c2["email"].ToString(),
-                            c2["engagedTo_firstname"].ToString(),
-                            c2["engagedTo_surname"].ToString()
-                        );
-                    try
-                    {
-                        client2.ID = Convert.ToInt32(c2["Id"].ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
+                    Client client2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
+                    
 
                     // Generate DateTime for start date.
                     string temp = myReader["startDate"].ToString();
@@ -1584,49 +1299,8 @@ namespace Assignment3_LHISGroup
                     //
                     // Generate Wedding Object tied to Task
                     //    
-                    SqlDataReader weddingReader = getWeddingDetails(
-                        Convert.ToInt32(taskReader["weddingID_FK"].ToString())
-                    );
-
-                    string title = weddingReader["title"].ToString();
-                    string desc = weddingReader["description"].ToString();
-                
-                    // Get Bride/Groom 1
-                    SqlDataReader tempCli = getClientDetails(Convert.ToInt32(weddingReader["client_1_FK"].ToString()));
-                    Client c1 = new Client(
-                        tempCli["firstname"].ToString(),
-                        tempCli["surname"].ToString(),
-                        tempCli["contact"].ToString(),
-                        tempCli["address"].ToString(),
-                        tempCli["mobile"].ToString(),
-                        tempCli["homePhone"].ToString(),
-                        tempCli["email"].ToString(),
-                        tempCli["engagedTo_firstname"].ToString(),
-                        tempCli["engagedTo_surname"].ToString()
-                    );
-
-                    // Get Bride/Groom 2
-                    tempCli = getClientDetails(Convert.ToInt32(weddingReader["client_2_FK"].ToString()));
-                    Client c2 = new Client(
-                        tempCli["firstname"].ToString(),
-                        tempCli["surname"].ToString(),
-                        tempCli["contact"].ToString(),
-                        tempCli["address"].ToString(),
-                        tempCli["mobile"].ToString(),
-                        tempCli["homePhone"].ToString(),
-                        tempCli["email"].ToString(),
-                        tempCli["engagedTo_firstname"].ToString(),
-                        tempCli["engagedTo_surname"].ToString()
-                    );
-
-                    temp = splitStringDate(weddingReader["startDate"].ToString());
-                    DateTime startDate = new DateTime(temp[0], temp[1], temp[2]);
-
-                    temp = splitStringDate(weddingReader["eventDate"].ToString());
-                    DateTime eventDate = new DateTime(temp[0], temp[1], temp[2]);
-
-                    // Make actual Wedding Object
-                    Wedding wedding = new Wedding(title, desc, c1, c2, staff, startDate, eventDate);
+                    int wedIndex = Convert.ToInt32(taskReader["weddingID_FK"].ToString() );
+                    Wedding wedding = getWeddingDetails(wedIndex);
                 
 
                 // Make the Task Object now all components needed exist. 
@@ -1676,48 +1350,12 @@ namespace Assignment3_LHISGroup
                     // Create Client Objects
                     //
                     // Client 1               
-                    SqlDataReader c1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
-                    Client client1 = new Client(
-                            c1["firstname"].ToString(),
-                            c1["surname"].ToString(),
-                            c1["contactPerson"].ToString(),
-                            c1["address"].ToString(),
-                            c1["mobile"].ToString(),
-                            c1["homePhone"].ToString(),
-                            c1["email"].ToString(),
-                            c1["engagedTo_firstname"].ToString(),
-                            c1["engagedTo_surname"].ToString()
-                        );
-                    try
-                    {
-                        client1.ID = Convert.ToInt32(c1["Id"].ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
+                    Client client1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
+
 
                     // Client 2
-                    SqlDataReader c2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
-                    Client client2 = new Client(
-                            c2["firstname"].ToString(),
-                            c2["surname"].ToString(),
-                            c2["contactPerson"].ToString(),
-                            c2["address"].ToString(),
-                            c2["mobile"].ToString(),
-                            c2["homePhone"].ToString(),
-                            c2["email"].ToString(),
-                            c2["engagedTo_firstname"].ToString(),
-                            c2["engagedTo_surname"].ToString()
-                        );
-                    try
-                    {
-                        client2.ID = Convert.ToInt32(c2["Id"].ToString());
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
+                    Client client2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
+
 
                     // Generate DateTime for start date.
                     string temp = myReader["startDate"].ToString();
@@ -1909,43 +1547,97 @@ namespace Assignment3_LHISGroup
         }
 
 
-        private SqlDataReader getClientsDetails(int id)
+        private Client getClientsDetails(int id)
         {
             string query = @"SELECT * from Client ";
             query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
+
+            Client c;
+            {
+                c = new Client(
+                        myReader["firstname"].ToString(),
+                        myReader["surname"].ToString(),
+                        myReader["contactPerson"].ToString(),
+                        myReader["address"].ToString(),
+                        myReader["mobile"].ToString(),
+                        myReader["homePhone"].ToString(),
+                        myReader["email"].ToString(),
+                        myReader["engagedTo_firstname"].ToString(),
+                        myReader["engagedTo_surname"].ToString()
+                );
+                try
+                {
+                    c.ID = Convert.ToInt32(myReader["Id"].ToString());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+            }
             this.closeDb();
-            return myReader;
+
+            return c;
         }
 
-        private SqlDataReader getWeddingDetails(int id)
+        private Wedding getWeddingDetails(int id)
         {
             string query = @"SELECT * from Wedding ";
             query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
+
+            Wedding w;
+            {
+                string weddTitle = myReader["title"].ToString();
+                string desc = myReader["description"].ToString();
+
+                //
+                // Create Client Objects
+                //
+                // Client 1               
+                Client client1 = getClientsDetails(Convert.ToInt32(myReader["client_1_FK"].ToString()));
+
+
+                // Client 2
+                Client client2 = getClientsDetails(Convert.ToInt32(myReader["client_2_FK"].ToString()));
+
+
+                // Generate DateTime for start date.
+                string temp = myReader["startDate"].ToString();
+                int[] dateArray = splitStringDate(temp);
+                DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+
+                // Generate DateTime for event date.
+                temp = myReader["eventDate"].ToString();
+                dateArray = splitStringDate(temp);
+                DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+
+                // Create Staff Object
+                int index = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
+                Staff weddPlann = getStaffDetails(index);
+                    
+                w = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
+
+                try
+                {
+                    w.ID = Convert.ToInt32(myReader["Id"].ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }                
+            }
+
             this.closeDb();
-            return myReader;
+
+            return w;
         }
 
-        private SqlDataReader getClientDetails(int id)
-        {
-            string query = @"SELECT * FROM Client ";
-            query += @"WHERE Id=@id";
-            
-            this.openDb();
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@id", id);
-            SqlDataReader myReader = myCommand.ExecuteReader();
-
-            this.closeDb();
-
-            return myReader;
-        }
 
         private string getClientsFullName(int id)
         {
