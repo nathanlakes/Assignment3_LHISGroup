@@ -59,6 +59,73 @@ namespace Assignment3_LHISGroup.UI
             StaffComboBox.ValueMember = "Key";
         }
 
+        public bool ValidateForm()
+        {
+            if (NameTextBox.Text == "" || NameTextBox.Text == null)
+            {
+                MessageBox.Show("Need name");
+                return false;
+            }
+            else if (ClientComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Need client");
+
+                if (!mainWin.NewClientWindow.Visible)
+                {
+                    mainWin.NewClientWindow.Show();
+                }
+                else
+                {
+                    mainWin.NewClientWindow.Focus();
+                }
+                return false;
+            }
+            else if (EngagedComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Need engaged to");
+
+                if (!mainWin.NewClientWindow.Visible)
+                {
+                    mainWin.NewClientWindow.Show();
+                }
+                else
+                {
+                    mainWin.NewClientWindow.Focus();
+                }
+                return false;
+            }
+            else if (DescriptionTextBox.Text == "" || DescriptionTextBox.Text == null)
+            {
+                MessageBox.Show("Need description");
+                return false;
+            }
+            else if (StaffComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Need staff");
+                return false;
+            }
+            else if (EventDateTimePicker.Value == null)
+            {
+                MessageBox.Show("Need wedding date");
+                return false;
+            }
+            else if (StartDateTimePicker.Value == null)
+            {
+                MessageBox.Show("Need starting date");
+                return false;
+            }
+            else
+            {
+                // TODO if there is more time, add extra code for validation
+                // TODO code to check that the two clients are actually engaged to each other
+                // TODO the start date is before the event date
+                // TODO the start date is not before the current date
+                // TODO the event date is not the current date
+
+                return true;
+            }
+        }
+
         public void PopulateDataFields(Support_Classes.Wedding w)
         {
             wedding = w;
