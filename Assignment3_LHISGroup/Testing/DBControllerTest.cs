@@ -16,7 +16,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             Client testClient = new Client("Jim", "Bastiras", "contactTest", "222222", "3333333",
            "444444", "email", "Daniel", "Stone");
             Boolean i = testController.AddClient(testClient);
-            Assert.AreEqual(testClient.Firstname, testController.FindClient(7).Firstname);
+            Assert.AreEqual(testClient.Firstname, testController.FindClient(testClient).Firstname);
         }
         
 
@@ -48,10 +48,10 @@ namespace Assignment3_LHISGroup.Support_Classes
             testController.AddStaff(testStaff);
             Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
             testController.AddWedding(testWedding);
-            Assert.AreEqual(testWedding.Title, testController.FindWedding(1).Title);
+            List<Wedding> testList = testController.FindWedding(testWedding.Title);
+            Assert.AreEqual(testWedding.Title, testList.First());
         }
 
-        [Test]
-        public void 
+        
     }
 }
