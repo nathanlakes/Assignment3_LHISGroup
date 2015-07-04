@@ -113,7 +113,8 @@ namespace Assignment3_LHISGroup.Support_Classes
         [Test]
         public void DeleteClientTest()
         {
-
+            Boolean result = testController.DeleteClient(1);
+            Assert.AreEqual(true, result);
         }
     }
 }
