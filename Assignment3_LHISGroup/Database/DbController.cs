@@ -895,19 +895,24 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@name", "%" + name + "%");
 
             this.openDb();
-            SqlDataReader myReader = myCommand.ExecuteReader();
-            while (myReader.Read())
-            {
-                string coname = myReader["CompanyName"].ToString();
-                string address = myReader["Address"].ToString();
-                string contact = myReader["ContactPerson"].ToString();
-                string email = myReader["Email"].ToString();
-                string phone = myReader["PhoneNumber"].ToString();
-                int credterm = Convert.ToInt32( myReader["CreditTerms"].ToString() );
+            ;
 
-                Supplier s = new Supplier(coname, address, contact, email, phone, credterm);
-                returnList.Add(s);
-            }
+            using (SqlDataReader myReader = myCommand.ExecuteReader() )
+            {
+                while (myReader.Read())
+                {
+                    string coname = myReader["CompanyName"].ToString();
+                    string address = myReader["Address"].ToString();
+                    string contact = myReader["ContactPerson"].ToString();
+                    string email = myReader["Email"].ToString();
+                    string phone = myReader["PhoneNumber"].ToString();
+                    int credterm = Convert.ToInt32(myReader["CreditTerms"].ToString());
+
+                    Supplier s = new Supplier(coname, address, contact, email, phone, credterm);
+                    returnList.Add(s);
+                }
+            }          
+
             this.closeDb();
 
             return returnList;
@@ -1234,8 +1239,7 @@ namespace Assignment3_LHISGroup
             SqlDataReader myReader = null;
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers", _db);
 
-            myReader = myCommand.ExecuteReader();
-            
+            myReader = myCommand.ExecuteReader();           
 
             while (myReader.Read())
             {
@@ -1251,7 +1255,9 @@ namespace Assignment3_LHISGroup
 
                 returnList.Add(s);
             }
+
             this.closeDb();
+
             return returnList;
         }
 
