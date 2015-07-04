@@ -247,32 +247,12 @@ namespace Assignment3_LHISGroup
                 //
                 // Client 1               
                 SqlDataReader c1 = getClientsDetails(Convert.ToInt32(weddReader["client_1_fk"].ToString()));
-                Client client1 = new Client(
-                    c1["firstname"].ToString(),
-                    c1["surname"].ToString(),
-                    c1["contact"].ToString(),
-                    c1["address"].ToString(),
-                    c1["mobile"].ToString(),
-                    c1["homePhone"].ToString(),
-                    c1["email"].ToString(),
-                    c1["engagedTo_firsname"].ToString(),
-                    c1["engagedTo_surname"].ToString()
-                );
+                Client client1 = makeClient(c1); 
 
                 // Client 2
                 SqlDataReader c2 = getClientsDetails(Convert.ToInt32(weddReader["client_2_fk"].ToString()));
-                Client client2 = new Client(
-                    c2["firstname"].ToString(),
-                    c2["surname"].ToString(),
-                    c2["contact"].ToString(),
-                    c2["address"].ToString(),
-                    c2["mobile"].ToString(),
-                    c2["homePhone"].ToString(),
-                    c2["email"].ToString(),
-                    c2["engagedTo_firsname"].ToString(),
-                    c2["engagedTo_surname"].ToString()
-                );
-
+                Client client2 = makeClient(c2);
+  
                 // Generate DateTime for start date.
                 temp = weddReader["startDate"].ToString();
                 int[] dateArray = splitStringDate(temp);
@@ -420,20 +400,8 @@ namespace Assignment3_LHISGroup
         public Client FindClient(int id)
         {
             SqlDataReader myReader = getClientDetails(id);
-            string firstname = myReader["firstname"].ToString();
-            string surname = myReader["surname"].ToString();
-            string contact = myReader["contactPerson"].ToString();
-            string address = myReader["address"].ToString();
-            string mobile = myReader["mobile"].ToString();
-            string homephone = myReader["homephone"].ToString();
-            string email = myReader["email"].ToString();
-            string engaged_fn = myReader["engagedTo_firstname"].ToString();
-            string engaged_sn = myReader["engagedTo_surname"].ToString();
-
-            Client c = new Client(firstname, surname, contact, address, mobile, homephone,
-                email, engaged_fn, engaged_sn);
+            Client c = makeClient(myReader);
             c.ID = Convert.ToInt32(myReader["id"].ToString());
-
             return c;
         }
 
@@ -452,23 +420,11 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@sn", name);
 
             this.openDb();
-            SqlDataReader myReader = myReader = myCommand.ExecuteReader();
+            SqlDataReader myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
-                string firstname = myReader["firstname"].ToString();
-                string surname = myReader["surname"].ToString();
-                string contact = myReader["contactPerson"].ToString();
-                string address = myReader["address"].ToString();
-                string mobile = myReader["mobile"].ToString();
-                string homephone = myReader["homephone"].ToString();
-                string email = myReader["email"].ToString();
-                string engaged_fn = myReader["engagedTo_firstname"].ToString();
-                string engaged_sn = myReader["engagedTo_surname"].ToString();
-
-                Client c = new Client(firstname, surname, contact, address, mobile, homephone, 
-                    email, engaged_fn, engaged_sn);
+                Client c = makeClient(myReader);
                 c.ID = Convert.ToInt32(myReader["id"].ToString());
-
                 returnList.Add(c);
             }
             this.closeDb();
@@ -1417,6 +1373,16 @@ namespace Assignment3_LHISGroup
             return dt.ToString(format);
         }
 
+        /**
+         *   Takes a string of the format dd/mm/YYYY
+         *   and returns a DateTime object
+         */
+        public DateTime convertStringToDateTime(string date)
+        {
+            int[] temp = splitStringDate(date);
+            return new DateTime(temp[0], temp[1], temp[2]);
+        }
+
 
         /**
          *   Used for debugging purposes.
@@ -1482,6 +1448,28 @@ namespace Assignment3_LHISGroup
             {
                 throw new Exception("An error occurred whilst disconnecting with the database;");
             }
+        }
+
+
+        /**
+         *   Makes a single client object from an
+         *   SqlDataReader
+         */
+        private Client makeClient(SqlDataReader cr)
+        {
+            Client client = new Client(
+                    cr["firstname"].ToString(),
+                    cr["surname"].ToString(),
+                    cr["contact"].ToString(),
+                    cr["address"].ToString(),
+                    cr["mobile"].ToString(),
+                    cr["homePhone"].ToString(),
+                    cr["email"].ToString(),
+                    cr["engagedTo_firsname"].ToString(),
+                    cr["engagedTo_surname"].ToString()
+                );
+
+            return client;
         }
     }
 }
