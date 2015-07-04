@@ -34,7 +34,8 @@ namespace Assignment3_LHISGroup.Support_Classes
         {
             Supplier testSupplier = new Supplier("Jim Bastiras", "22 adress treet", "sasfasfa", "asdasd", "12214", 200);
             testController.AddSupplier(testSupplier);
-            Assert.AreEqual(testSupplier, testController.FindSupplier(testSupplier.CompanyName));
+            int i = testController.FindSupplier(testSupplier.CompanyName).Count();
+            Assert.AreEqual(1,i);
             
         }
         [Test]
