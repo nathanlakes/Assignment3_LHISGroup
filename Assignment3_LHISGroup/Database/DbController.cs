@@ -406,6 +406,20 @@ namespace Assignment3_LHISGroup
         }
 
         /**
+         *   Given partial information of a client
+         *   finds a match. Uses unique composite key rather than
+         *   primary key for matching.
+         */
+        public Client FindClient(Client c)
+        {
+            int id = getClientId(c);
+            SqlDataReader myReader = getClientDetails( id );
+            Client returnClient = makeClient(myReader);
+            c.ID = id;
+            return returnClient;
+        }
+
+        /**
          *   Finds clients matching the pattern of s
          *   @Param name:  the partial firstname or surname to search for.
          */
@@ -1250,9 +1264,7 @@ namespace Assignment3_LHISGroup
             }
             catch (Exception) { }
 
-            this.closeDb();
-
-           
+            this.closeDb();          
 
             return key;            
         }
