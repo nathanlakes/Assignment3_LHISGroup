@@ -352,6 +352,9 @@ namespace Assignment3_LHISGroup
                     t.CompletionDate = new DateTime(date[0], date[1], date[2]);
                 }
             }
+
+            this.closeDb();
+
             return t;
         }
 
