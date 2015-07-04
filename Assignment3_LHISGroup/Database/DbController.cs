@@ -824,8 +824,11 @@ namespace Assignment3_LHISGroup
                 string email = myReader["email"].ToString();
                 string engToFN = myReader["engagedTo_firstname"].ToString();
                 string engToSN = myReader["engagedTo_surname"].ToString();
+                
                 Client c = new Client(firstname, surname, contactPerson, address, mobile, 
                     homephone, email, engToFN, engToSN);
+                c.ID = Convert.ToInt32(myReader["Id"].ToString());
+
                 returnList.Add(c);
             }
             this.closeDb();
@@ -1160,7 +1163,7 @@ namespace Assignment3_LHISGroup
         private int getClientId(Client c)
         {
             string query = @"SELECT Id FROM Client ";
-            query += "WHERE firstname= '@firstname' AND surname='@surname' AND homePhone='@phone'";
+            query += "WHERE firstname='@firstname' AND surname='@surname' AND homePhone='@phone'";
             SqlCommand testTask = new SqlCommand(query, _db);
             testTask.Parameters.AddWithValue("@firstname", c.Firstname);
             testTask.Parameters.AddWithValue("@surname", c.Surname);
