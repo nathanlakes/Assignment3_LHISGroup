@@ -42,11 +42,13 @@ namespace Assignment3_LHISGroup.UI
                 string startDate = (string) WeddingsDataGridView.SelectedRows[0].Cells[5].Value;
                 string eventDate = (string)WeddingsDataGridView.SelectedRows[0].Cells[6].Value;
                 string staff_fk = (string)WeddingsDataGridView.SelectedRows[0].Cells[7].Value;
+                int c1_fk = Convert.ToInt32(client1_fk);
+                int c2_fk = Convert.ToInt32(client2_fk);
+                DateTime start = db.convertStringToDateTime(startDate);
+                DateTime wedding = db.convertStringToDateTime(eventDate);
+                int st_fk = Convert.ToInt32(staff_fk);
 
-
-
-                return null;
-
+                return new Support_Classes.Wedding(title,description, db.FindClient(c1_fk), db.FindClient(c2_fk),db.FindStaff(st_fk), start, wedding);
             }
             else
             {
