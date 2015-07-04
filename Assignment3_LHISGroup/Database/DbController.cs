@@ -733,14 +733,13 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlDataReader myReader = null;
-            string query = @"SELECT * FROM Staff WHERE Id='@Id'";
+
+            string query = @"SELECT * FROM Staff WHERE Id='@id'";
             SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@id", id);
-            
+            myCommand.Parameters.AddWithValue("@id", id);            
             myReader = myCommand.ExecuteReader();
 
             Staff s = makeStaff(myReader);
-            s.ID = Convert.ToInt32(myReader["Id"].ToString());
 
             this.closeDb();
 
