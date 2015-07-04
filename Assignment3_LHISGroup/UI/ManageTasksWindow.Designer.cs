@@ -46,6 +46,7 @@
             this.taskTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.TaskTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.MarkCompleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TasksDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).BeginInit();
@@ -78,7 +79,7 @@
             this.TasksDataGridView.ReadOnly = true;
             this.TasksDataGridView.RowTemplate.Height = 28;
             this.TasksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TasksDataGridView.Size = new System.Drawing.Size(869, 433);
+            this.TasksDataGridView.Size = new System.Drawing.Size(1183, 433);
             this.TasksDataGridView.TabIndex = 0;
             this.TasksDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TasksDataGridView_CellContentClick);
             // 
@@ -151,7 +152,7 @@
             // AddTaskButton
             // 
             this.AddTaskButton.BackColor = System.Drawing.Color.White;
-            this.AddTaskButton.Location = new System.Drawing.Point(161, 20);
+            this.AddTaskButton.Location = new System.Drawing.Point(52, 17);
             this.AddTaskButton.Name = "AddTaskButton";
             this.AddTaskButton.Size = new System.Drawing.Size(108, 43);
             this.AddTaskButton.TabIndex = 1;
@@ -162,9 +163,9 @@
             // UpdateTaskButton
             // 
             this.UpdateTaskButton.BackColor = System.Drawing.Color.White;
-            this.UpdateTaskButton.Location = new System.Drawing.Point(551, 17);
+            this.UpdateTaskButton.Location = new System.Drawing.Point(388, 17);
             this.UpdateTaskButton.Name = "UpdateTaskButton";
-            this.UpdateTaskButton.Size = new System.Drawing.Size(131, 46);
+            this.UpdateTaskButton.Size = new System.Drawing.Size(131, 43);
             this.UpdateTaskButton.TabIndex = 2;
             this.UpdateTaskButton.Text = "Update Task";
             this.UpdateTaskButton.UseVisualStyleBackColor = false;
@@ -173,7 +174,7 @@
             // DeleteWeddingButton
             // 
             this.DeleteWeddingButton.BackColor = System.Drawing.Color.White;
-            this.DeleteWeddingButton.Location = new System.Drawing.Point(366, 20);
+            this.DeleteWeddingButton.Location = new System.Drawing.Point(211, 17);
             this.DeleteWeddingButton.Name = "DeleteWeddingButton";
             this.DeleteWeddingButton.Size = new System.Drawing.Size(131, 43);
             this.DeleteWeddingButton.TabIndex = 3;
@@ -191,26 +192,37 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 358);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(869, 75);
+            this.panel1.Size = new System.Drawing.Size(1183, 75);
             this.panel1.TabIndex = 4;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.MarkCompleteButton);
             this.panel2.Controls.Add(this.AddTaskButton);
             this.panel2.Controls.Add(this.DeleteWeddingButton);
             this.panel2.Controls.Add(this.UpdateTaskButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(869, 75);
+            this.panel2.Size = new System.Drawing.Size(1183, 75);
             this.panel2.TabIndex = 4;
+            // 
+            // MarkCompleteButton
+            // 
+            this.MarkCompleteButton.BackColor = System.Drawing.Color.White;
+            this.MarkCompleteButton.Location = new System.Drawing.Point(759, 17);
+            this.MarkCompleteButton.Name = "MarkCompleteButton";
+            this.MarkCompleteButton.Size = new System.Drawing.Size(202, 42);
+            this.MarkCompleteButton.TabIndex = 4;
+            this.MarkCompleteButton.Text = "Mark As Complete";
+            this.MarkCompleteButton.UseVisualStyleBackColor = false;
             // 
             // ManageTasksWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(869, 433);
+            this.ClientSize = new System.Drawing.Size(1183, 433);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TasksDataGridView);
             this.Name = "ManageTasksWindow";
@@ -245,5 +257,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn weddingIDFKDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button MarkCompleteButton;
     }
 }

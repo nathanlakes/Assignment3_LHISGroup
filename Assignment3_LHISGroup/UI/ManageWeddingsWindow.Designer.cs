@@ -74,7 +74,7 @@
             this.WeddingsDataGridView.ReadOnly = true;
             this.WeddingsDataGridView.RowTemplate.Height = 28;
             this.WeddingsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WeddingsDataGridView.Size = new System.Drawing.Size(776, 410);
+            this.WeddingsDataGridView.Size = new System.Drawing.Size(1209, 410);
             this.WeddingsDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -165,7 +165,7 @@
             this.DeleteWeddingButton.Name = "DeleteWeddingButton";
             this.DeleteWeddingButton.Size = new System.Drawing.Size(158, 40);
             this.DeleteWeddingButton.TabIndex = 3;
-            this.DeleteWeddingButton.Text = "Delete Button";
+            this.DeleteWeddingButton.Text = "Delete Wedding";
             this.DeleteWeddingButton.UseVisualStyleBackColor = false;
             this.DeleteWeddingButton.Click += new System.EventHandler(this.DeleteWeddingButton_Click);
             // 
@@ -181,7 +181,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 317);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(776, 93);
+            this.panel1.Size = new System.Drawing.Size(1209, 93);
             this.panel1.TabIndex = 4;
             // 
             // ManageWeddingsWindow
@@ -189,7 +189,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(776, 410);
+            this.ClientSize = new System.Drawing.Size(1209, 410);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.WeddingsDataGridView);
             this.Name = "ManageWeddingsWindow";

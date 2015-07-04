@@ -76,7 +76,7 @@
             this.StaffDataGridView.ReadOnly = true;
             this.StaffDataGridView.RowTemplate.Height = 28;
             this.StaffDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StaffDataGridView.Size = new System.Drawing.Size(771, 362);
+            this.StaffDataGridView.Size = new System.Drawing.Size(1001, 362);
             this.StaffDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -176,7 +176,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 290);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(771, 72);
+            this.panel1.Size = new System.Drawing.Size(1001, 72);
             this.panel1.TabIndex = 3;
             // 
             // ManageStaffWindow
@@ -184,7 +184,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(771, 362);
+            this.ClientSize = new System.Drawing.Size(1001, 362);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.StaffDataGridView);
             this.Name = "ManageStaffWindow";
