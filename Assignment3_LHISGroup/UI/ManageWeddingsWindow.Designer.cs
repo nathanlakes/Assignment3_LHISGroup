@@ -74,7 +74,7 @@
             this.WeddingsDataGridView.ReadOnly = true;
             this.WeddingsDataGridView.RowTemplate.Height = 28;
             this.WeddingsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WeddingsDataGridView.Size = new System.Drawing.Size(1209, 410);
+            this.WeddingsDataGridView.Size = new System.Drawing.Size(1209, 317);
             this.WeddingsDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -190,8 +190,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1209, 410);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.WeddingsDataGridView);
+            this.Controls.Add(this.panel1);
             this.Name = "ManageWeddingsWindow";
             this.Text = "ManageWeddingsWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageWeddingsWindow_FormClosing);

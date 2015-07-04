@@ -78,7 +78,7 @@
             this.ClientsDataGridView.ReadOnly = true;
             this.ClientsDataGridView.RowTemplate.Height = 28;
             this.ClientsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ClientsDataGridView.Size = new System.Drawing.Size(1078, 329);
+            this.ClientsDataGridView.Size = new System.Drawing.Size(1078, 262);
             this.ClientsDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -203,8 +203,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1078, 329);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.ClientsDataGridView);
+            this.Controls.Add(this.panel1);
             this.Name = "ManageClientsWindow";
             this.Text = "Manage Clients";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageClientsWindow_FormClosing);

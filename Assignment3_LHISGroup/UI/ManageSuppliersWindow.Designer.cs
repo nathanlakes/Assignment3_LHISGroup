@@ -73,7 +73,7 @@
             this.SuppliersDataGridView.ReadOnly = true;
             this.SuppliersDataGridView.RowTemplate.Height = 28;
             this.SuppliersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SuppliersDataGridView.Size = new System.Drawing.Size(774, 416);
+            this.SuppliersDataGridView.Size = new System.Drawing.Size(774, 334);
             this.SuppliersDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -177,8 +177,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(774, 416);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.SuppliersDataGridView);
+            this.Controls.Add(this.panel1);
             this.Name = "ManageSuppliersWindow";
             this.Text = "Manage Suppliers";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageSuppliersWindow_FormClosing);
