@@ -267,7 +267,7 @@ namespace Assignment3_LHISGroup
             query += @"SET firstname='@firstname', surname='@surname', contactPerson='@contactPerson', ";
             query += @"address='@address', mobile=@'mobile', homePhone='@homePhone', email='@email', ";
             query += @"engagedTo_firstname='@engFn', engagedTo_surname='@engSn'";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
