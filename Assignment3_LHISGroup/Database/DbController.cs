@@ -332,7 +332,6 @@ namespace Assignment3_LHISGroup
             int id = getClientId(c);
             SqlDataReader myReader = getClientDetails( id );
             Client returnClient = makeClient(myReader);
-            c.ID = id;
             return returnClient;
         }
 
@@ -1202,7 +1201,7 @@ namespace Assignment3_LHISGroup
         private SqlDataReader getClientDetails(int id)
         {
             string query = @"SELECT * FROM Client ";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
