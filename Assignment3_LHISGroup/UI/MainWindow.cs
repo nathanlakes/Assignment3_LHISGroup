@@ -95,10 +95,17 @@ namespace Assignment3_LHISGroup
             NewWeddingWindow.Hide();
 
 
+
             this.nathanDebug();                  // Code to debug Db in dev. cycle.
 
             this.danielTest();   // Code for Daniel to test reports
         }
+
+        private void louiseTestDataPopulate()
+        {
+            
+        }
+
 
         // code for Daniel to test
         private void danielTest()

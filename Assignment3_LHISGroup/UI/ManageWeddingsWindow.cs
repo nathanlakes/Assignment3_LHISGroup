@@ -80,7 +80,7 @@ namespace Assignment3_LHISGroup.UI
         private void ManageWeddingsWindow_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'modelDataSet.Wedding' table. You can move, or remove it, as needed.
-            this.weddingTableAdapter.Fill(this.modelDataSet.Wedding);
+            //this.weddingTableAdapter.Fill(this.modelDataSet.Wedding);
 
         }
 
