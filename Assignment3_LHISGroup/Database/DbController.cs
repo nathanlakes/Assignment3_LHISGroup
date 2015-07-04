@@ -1098,8 +1098,9 @@ namespace Assignment3_LHISGroup
          */
         private int getClientId(Client c)
         {
-            string query = @"SELECT Id FROM Client ";
+            string query = @"SELECT * FROM Client ";
             query += "WHERE firstname='@firstname' AND surname='@surname' AND homePhone='@phone'";
+
             SqlCommand testTask = new SqlCommand(query, _db);
             testTask.Parameters.AddWithValue("@firstname", c.Firstname);
             testTask.Parameters.AddWithValue("@surname", c.Surname);
