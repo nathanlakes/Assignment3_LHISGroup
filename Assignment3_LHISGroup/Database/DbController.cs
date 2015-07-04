@@ -152,7 +152,7 @@ namespace Assignment3_LHISGroup
 
             int res = 0;
 
-            String query = "UPDATE Task SET staffOnJob_FK='@staffId' WHERE Id='@taskId'";
+            String query = "UPDATE Task SET staffOnJob_FK='@staffId' WHERE Id=@taskId";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@staffId", staffId);
             myCommand.Parameters.AddWithValue("@taskId", taskId);
@@ -207,7 +207,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             string query = @"SELECT * FROM Task ";
-            query += @"WHERE name='@name' AND completeByDate='@completeByDate' AND staffOnJob_FK='@staffOnJob";
+            query += @"WHERE name='@name' AND completeByDate='@completeByDate' AND staffOnJob_FK=@staffOnJob";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@name", t.TaskName);
             myCommand.Parameters.AddWithValue("@completeByDate", t.TaskName);            
@@ -298,7 +298,7 @@ namespace Assignment3_LHISGroup
         public bool DeleteClient(int id)
         {
             string query = @"DELETE FROM Client ";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
 
