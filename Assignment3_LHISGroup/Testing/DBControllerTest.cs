@@ -146,7 +146,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         public void UpdateSupplierTest()
         {
             Supplier testSupplier = new Supplier("Jim NOT Bastiras", "22 adress treet", "sasfasfa", "asdasd", "12214", 200);
-            Boolean result = testController.UpdateSupplier(1, testSupplier);
+            Boolean result = testController.UpdateSupplier(3, testSupplier);
             Assert.AreEqual(true, result);
 
         }

@@ -98,7 +98,6 @@
     <Compile Include="Support Classes\Staff.cs" />
     <Compile Include="Support Classes\Task.cs" />
     <Compile Include="Support Classes\Wedding.cs" />
-    <Compile Include="Testing\DBControllerTest.cs" />
     <Compile Include="Testing\TaskTesting.cs" />
     <Compile Include="UI\EventReportWindow.cs">
       <SubType>Form</SubType>
