@@ -1445,15 +1445,15 @@ namespace Assignment3_LHISGroup
          */
         private int getClientId(Client c)
         {
+            this.openDb();
+
             string query = @"SELECT id FROM Client ";
             query += "WHERE firstname=@firstname AND surname=@surname";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
             myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
-            myCommand.Parameters.AddWithValue("@surname", c.Surname);
-            
-            this.openDb();
+            myCommand.Parameters.AddWithValue("@surname", c.Surname);         
 
             int id = -1;
             using ( SqlDataReader myReader = myCommand.ExecuteReader() )
@@ -1540,13 +1540,14 @@ namespace Assignment3_LHISGroup
 
         private Client getClientsDetails(int id)
         {
+            this.openDb();
+
             string query = @"SELECT * from Client ";
             query += @"WHERE Id=@id;";
 
-            this.openDb();
-
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
+
             Client c = new Client();
             using( SqlDataReader myReader = myCommand.ExecuteReader() )
             {
@@ -1566,7 +1567,7 @@ namespace Assignment3_LHISGroup
 
                     try
                     {
-                        c.ID = Convert.ToInt32(myReader["Id"].ToString());
+                        c.ID = Convert.ToInt32( myReader["Id"].ToString() );
                     }
                     catch (Exception e)
                     {
@@ -1576,8 +1577,8 @@ namespace Assignment3_LHISGroup
             }          
             
             this.closeDb();
-            return c;
-   
+
+            return c;   
         }
 
         private Wedding getWeddingDetails(int id)
