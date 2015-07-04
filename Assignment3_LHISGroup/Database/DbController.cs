@@ -449,7 +449,6 @@ namespace Assignment3_LHISGroup
         public Client FindClient(int id)
         {
             Client c = getClientsDetails(id);
-
             return c;
         }
 
@@ -486,16 +485,17 @@ namespace Assignment3_LHISGroup
                 // TODO:: -- Try makeClient() later. But move close after ExecuteReader();
                 
                 Client client = new Client(
-                                    myReader["firstname"].ToString(),
-                                    myReader["surname"].ToString(),
-                                    myReader["contactPerson"].ToString(),
-                                    myReader["address"].ToString(),
-                                    myReader["mobile"].ToString(),
-                                    myReader["homePhone"].ToString(),
-                                    myReader["email"].ToString(),
-                                    myReader["engagedTo_firstname"].ToString(),
-                                    myReader["engagedTo_surname"].ToString()
-                                );
+                    myReader["firstname"].ToString(),
+                    myReader["surname"].ToString(),
+                    myReader["contactPerson"].ToString(),
+                    myReader["address"].ToString(),
+                    myReader["mobile"].ToString(),
+                    myReader["homePhone"].ToString(),
+                    myReader["email"].ToString(),
+                    myReader["engagedTo_firstname"].ToString(),
+                    myReader["engagedTo_surname"].ToString()
+                );
+
                 try
                 {
                     client.ID = Convert.ToInt32(myReader["Id"].ToString());
@@ -1551,12 +1551,15 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT * from Client ";
             query += @"WHERE Id=@id";
+
             this.openDb();
+
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
 
             Client c;
-            {
+            if (myReader.Read())
+            {                
                 c = new Client(
                         myReader["firstname"].ToString(),
                         myReader["surname"].ToString(),
@@ -1568,6 +1571,7 @@ namespace Assignment3_LHISGroup
                         myReader["engagedTo_firstname"].ToString(),
                         myReader["engagedTo_surname"].ToString()
                 );
+
                 try
                 {
                     c.ID = Convert.ToInt32(myReader["Id"].ToString());
@@ -1575,11 +1579,17 @@ namespace Assignment3_LHISGroup
                 catch (Exception e)
                 {
                     Console.WriteLine(e.ToString());
-                }
+                }                
             }
+            else
+            {
+                this.closeDb();
+                throw new Exception("No such client in the table.");
+            }
+            
             this.closeDb();
-
             return c;
+   
         }
 
         private Wedding getWeddingDetails(int id)
