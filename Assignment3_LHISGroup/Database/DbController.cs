@@ -1102,17 +1102,8 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             int key = -1;
-
-            try
-            {
-                var myReader = testTask.ExecuteReader();
-                if (myReader.Read())
-                {
-                    key = Convert.ToInt32(myReader["Id"].ToString());
-                }
-
-            }
-            catch (Exception) { }
+            var myReader = testTask.ExecuteReader();
+            key = Convert.ToInt32(myReader["Id"].ToString());
 
             this.closeDb();          
 
@@ -1130,17 +1121,9 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             int key = -1;
-            try
-            {
-                var myReader = testTask.ExecuteReader();
-
-                if (myReader.Read())
-                {
-                    key = Convert.ToInt32(myReader["Id"].ToString());
-                }
-            }
-            catch (Exception) { }
-
+            var myReader = testTask.ExecuteReader();
+            key = Convert.ToInt32(myReader["Id"].ToString());
+            
             this.closeDb();
 
             return key;
