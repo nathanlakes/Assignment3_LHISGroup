@@ -109,5 +109,57 @@ namespace Assignment3_LHISGroup.UI
             this.Visible = false;
             e.Cancel = true; // this cancels the close event
         }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+            if (ValidateForm() == true)
+            {
+                string title = NameTextBox.Text;
+                string desc = DescriptionTextBox.Text;
+                int wedding_id = ((KeyValuePair<int, string>)WeddingComboBox.SelectedItem).Key;
+                Support_Classes.Wedding wedding = db.FindWedding(wedding_id);
+                int staff_id = ((KeyValuePair<int, string>)StaffComboBox.SelectedItem).Key;
+                Support_Classes.Staff staff = db.FindStaff(staff_id);
+
+                DateTime completeBy = CompleteByDateTimePicker.Value;
+                DateTime completion = CompletionDateTimePicker.Value;
+
+                Support_Classes.Task.Priority priority = Support_Classes.Task.Priority.low;
+                if (MediumRadioButton.Checked)
+                {
+                    priority = Support_Classes.Task.Priority.med;
+                }
+                else if (HighRadioButton.Checked)
+                {
+                    priority = Support_Classes.Task.Priority.high;
+                }
+
+                Support_Classes.Task task = new Support_Classes.Task(title, desc, priority, completeBy, staff, wedding);
+
+                try
+                {
+                    db.AddTask(task);
+                    ClearForm();
+                    mainWin.ManageTasksWindow.UpdateForm();
+                    this.Visible = false;
+                    if (!mainWin.ManageTasksWindow.Visible)
+                    {
+                        mainWin.ManageTasksWindow.Visible = true;
+
+                    }
+                    else
+                    {
+                        mainWin.ManageTasksWindow.Focus();
+                    }
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Exception thrown");
+                }
+
+            }
+            
+        }
     }
 }

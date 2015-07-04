@@ -146,13 +146,6 @@ namespace Assignment3_LHISGroup.UI
             StaffComboBox.SelectedItem = StaffComboBox.Equals(new KeyValuePair<int, string>(staff_id, staff_name));
 
 
-            //((KeyValuePair<int, string>)this.ClientComboBox.SelectedItem).Key = w.Client1.ID;
-            //((KeyValuePair<int, string>)this.EngagedComboBox.SelectedItem).Key = w.Client2.ID;
-
-            //ClientComboBox.ValueMember = w.Client1.Firstname + " " + w.Client1.Surname;
-            //EngagedComboBox.ValueMember = w.Client2.Firstname + " " + w.Client2.Surname;
-
-
             DescriptionTextBox.Text = "";
             EventDateTimePicker.Value = w.EventDate;
             StartDateTimePicker.Value = w.StartDate;
@@ -213,7 +206,60 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
+            if (this.ValidateForm() == true)
+            {
+                if (this.ValidateForm() == true)
+                {
+                    // text boxes
 
+                    String title = NameTextBox.Text;
+                    String desc = DescriptionTextBox.Text;
+
+                    // objects from combo boxes
+
+                    int client_id = ((KeyValuePair<int, string>)this.ClientComboBox.SelectedItem).Key;
+                    Support_Classes.Client client = db.FindClient(client_id);
+
+                    int engaged_id = ((KeyValuePair<int, string>)this.EngagedComboBox.SelectedItem).Key;
+                    Support_Classes.Client engaged = db.FindClient(engaged_id);
+
+                    int staff_id = ((KeyValuePair<int, string>)this.StaffComboBox.SelectedItem).Key;
+                    Support_Classes.Staff staff = db.FindStaff(staff_id);
+
+
+                    // datetime
+
+                    DateTime startDate = StartDateTimePicker.Value;
+                    DateTime eventDate = EventDateTimePicker.Value;
+
+
+                    Support_Classes.Wedding wedding = new Support_Classes.Wedding(title, desc, client, engaged, staff, startDate, eventDate);
+                    wedding.ID = id;
+
+                    try
+                    {
+                        db.UpdateWedding(id, wedding);
+                        
+                        mainWin.ManageWeddingsWindow.UpdateForm();
+                        this.Visible = false;
+                        if (!mainWin.ManageWeddingsWindow.Visible)
+                        {
+                            mainWin.ManageWeddingsWindow.Visible = true;
+                            
+                        }
+                        else
+                        {
+                            mainWin.ManageWeddingsWindow.Focus();
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Exception thrown");
+                    }
+                }
+
+            }
         }
     }
 }

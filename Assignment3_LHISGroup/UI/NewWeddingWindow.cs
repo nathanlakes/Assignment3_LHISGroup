@@ -233,10 +233,6 @@ namespace Assignment3_LHISGroup.UI
                     MessageBox.Show("Exception thrown");
                 }
             }
-            else
-            {
-                MessageBox.Show("No row selected");
-            }
             
         }
 

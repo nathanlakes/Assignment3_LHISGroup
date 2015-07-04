@@ -130,6 +130,7 @@
             this.UpdateButton.TabIndex = 19;
             this.UpdateButton.Text = "UPDATE";
             this.UpdateButton.UseVisualStyleBackColor = false;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // LowRadioButton
             // 
