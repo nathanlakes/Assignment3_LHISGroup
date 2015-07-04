@@ -31,7 +31,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             Console.WriteLine("AddStaffTest1");
             Staff testStaff = new Staff("Jimmy", "Bastiras", "email", "05231", "note", Staff.Active.active);
             testController.AddStaff(testStaff);
-            Assert.AreEqual(testStaff, testController.FindStaff(4));
+            Assert.AreEqual(testStaff.FirstName, testController.FindStaff(4).FirstName);
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }
 
