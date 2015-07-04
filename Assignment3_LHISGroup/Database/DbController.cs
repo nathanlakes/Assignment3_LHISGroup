@@ -50,7 +50,7 @@ namespace Assignment3_LHISGroup
             int staffId = getStaffId(s);
             if (staffId == -1) throw new Exception("Staff must exist in Db.Staff, before being assigned to a task:");
 
-            _db.Open();
+            this.openDb();
 
             String query = @"INSERT INTO Task(name, description, priority, completeByDate, ";
             query += "actualCompletionDate, staffOnJob_FK, weddingID_FK)";
@@ -80,7 +80,7 @@ namespace Assignment3_LHISGroup
 
             int res = myCommand.ExecuteNonQuery();
 
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -121,9 +121,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@staffOnJob", staffID);
             myCommand.Parameters.AddWithValue("@id", id);
 
-            _db.Open();
+            this.openDb();
             int res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -152,9 +152,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@staffId", staffId);
             myCommand.Parameters.AddWithValue("@taskId", taskId);
 
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             else return false;
@@ -172,9 +172,9 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@idnum", id);
 
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -350,9 +350,9 @@ namespace Assignment3_LHISGroup
 
 
             int res = 0;
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             else return false;
@@ -385,9 +385,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@id", id);
 
             int res = 0;
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             else return false;
@@ -405,9 +405,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@id", id);
 
             int res = 0;
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -451,7 +451,7 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@fn", name);
             myCommand.Parameters.AddWithValue("@sn", name);
 
-            _db.Open();
+            this.openDb();
             SqlDataReader myReader = myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
@@ -471,7 +471,7 @@ namespace Assignment3_LHISGroup
 
                 returnList.Add(c);
             }
-            _db.Close();
+            this.closeDb();
 
             return returnList;
         }
@@ -511,9 +511,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@weddingPlanner", wedPlanner);
 
             int res = 0;
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -542,9 +542,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@id", id);
 
             int res = 0;
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -563,9 +563,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@id", id);
 
             int res = 0;
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -585,7 +585,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@title", title);
 
-            _db.Open();
+            this.openDb();
             SqlDataReader myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
@@ -656,7 +656,7 @@ namespace Assignment3_LHISGroup
 
                 returnList.Add( returnWedding );
             }
-            _db.Close();
+            this.closeDb();
 
             return returnList;
         }
@@ -681,9 +681,9 @@ namespace Assignment3_LHISGroup
 
             int res = 0;
 
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();   // Run the statement.
-            _db.Close();            
+            this.closeDb();            
 
             if (res == 1) return true;           // Should only update one row.
             else return false;
@@ -702,9 +702,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@id", id);
 
             int res = 0;
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -734,9 +734,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@id", id);
 
             int res = 0;
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -756,7 +756,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@name", name);
 
-            _db.Open();
+            this.openDb();
             SqlDataReader myReader = myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
@@ -770,7 +770,7 @@ namespace Assignment3_LHISGroup
                 Supplier s = new Supplier(coname, address, contact, email, phone, credterm);
                 returnList.Add(s);
             }
-            _db.Close();
+            this.closeDb();
 
             return returnList;
         }
@@ -793,9 +793,9 @@ namespace Assignment3_LHISGroup
 
             int res = 0;
 
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();   // Run the statement.
-            _db.Close();           
+            this.closeDb();           
 
             if (res == 1) return true;           // Should only update one row.
             else return false;
@@ -823,9 +823,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@id", id);
 
             int res = 0;
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -847,9 +847,9 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@id", id);
 
             int res = 0;
-            _db.Open();
+            this.openDb();
             res = myCommand.ExecuteNonQuery();
-            _db.Close();
+            this.closeDb();
 
             if (res == 1) return true;
             return false;
@@ -862,7 +862,7 @@ namespace Assignment3_LHISGroup
         {
             List<Client> returnList = new List<Client>();
             
-            _db.Open();
+            this.openDb();
 
             SqlDataReader myReader = null;
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Client", _db);
@@ -884,7 +884,7 @@ namespace Assignment3_LHISGroup
                     homephone, email, engToFN, engToSN);
                 returnList.Add(c);
             }
-            _db.Close();
+            this.closeDb();
 
             return returnList;
         }
@@ -896,7 +896,7 @@ namespace Assignment3_LHISGroup
         {
             List<Staff> returnList = new List<Staff>();
 
-            _db.Open();
+            this.openDb();
 
             SqlDataReader myReader = null;
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Staff", _db);
@@ -923,7 +923,7 @@ namespace Assignment3_LHISGroup
 
                 returnList.Add(s);
             }
-            _db.Close();
+            this.closeDb();
 
             return returnList;
         }
@@ -935,7 +935,7 @@ namespace Assignment3_LHISGroup
         {
             List<Supplier> returnList = new List<Supplier>();
 
-            _db.Open();
+            this.openDb();
 
             SqlDataReader myReader = null;
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers", _db);
@@ -956,7 +956,7 @@ namespace Assignment3_LHISGroup
 
                 returnList.Add(s);
             }
-            _db.Close();
+            this.closeDb();
 
             return returnList;
         }
@@ -968,7 +968,7 @@ namespace Assignment3_LHISGroup
         {
             List<Support_Classes.Task> returnList = new List<Support_Classes.Task>();
 
-            _db.Open();
+            this.openDb();
 
             SqlDataReader taskReader = null;
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Task", _db);
@@ -1083,7 +1083,7 @@ namespace Assignment3_LHISGroup
                 returnList.Add( t );
             }
 
-            _db.Close();
+            this.closeDb();
 
             return returnList;
         }
@@ -1095,7 +1095,7 @@ namespace Assignment3_LHISGroup
         {
             List<Wedding> returnList = new List<Wedding>();
 
-            _db.Open();
+            this.openDb();
 
             SqlDataReader myReader = null;
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Wedding", _db);
@@ -1188,7 +1188,7 @@ namespace Assignment3_LHISGroup
 
                 returnList.Add(w);
             }
-            _db.Close();
+            this.closeDb();
 
             return returnList;
         }
@@ -1209,7 +1209,7 @@ namespace Assignment3_LHISGroup
                "SELECT id FROM Staff WHERE firstname = '" + s.FirstName + "' AND surname = '" +
                s.Surname + "' AND phone = '" + s.Phone + "'", _db);
 
-            _db.Open();
+            this.openDb();
             int id = -1;
             try
             {
@@ -1222,7 +1222,7 @@ namespace Assignment3_LHISGroup
             }
             catch (Exception) { }
 
-            _db.Close();
+            this.closeDb();
             return id;
         }
 
@@ -1236,7 +1236,7 @@ namespace Assignment3_LHISGroup
                "SELECT Id FROM Task WHERE name = '" + t.TaskName +
                     "' AND description = '" + t.Description + "'", _db);
 
-            _db.Open();
+            this.openDb();
             int id = -1;
             try
             {
@@ -1246,11 +1246,11 @@ namespace Assignment3_LHISGroup
                 {
                     id = Convert.ToInt32(myReader["Id"].ToString());
                 }
-                _db.Close();
+                this.closeDb();
             }
             catch (Exception) { }
 
-            _db.Close();
+            this.closeDb();
 
             return id;
             
@@ -1265,7 +1265,7 @@ namespace Assignment3_LHISGroup
             SqlCommand testTask = new SqlCommand(
                "SELECT Id FROM Client WHERE firstname = '" + c.Firstname +
                     "' AND surname = '" + c.Surname + "' AND homePhone ='" + c.HomePhone + "'", _db);
-            _db.Open();
+            this.openDb();
 
             int key = -1;
 
@@ -1280,7 +1280,7 @@ namespace Assignment3_LHISGroup
             }
             catch (Exception) { }
 
-            _db.Close();
+            this.closeDb();
 
            
 
@@ -1293,7 +1293,7 @@ namespace Assignment3_LHISGroup
             SqlCommand testTask = new SqlCommand(
                "SELECT Id FROM Wedding WHERE title = '" + w.Title +
                     "' AND client_1_FK = '" + w.Client1.ToString() + "'", _db);
-            _db.Open();
+            this.openDb();
 
             int key = -1;
             try
@@ -1307,7 +1307,7 @@ namespace Assignment3_LHISGroup
             }
             catch (Exception) { }
 
-            _db.Close();
+            this.closeDb();
 
             return key;
         }
@@ -1317,10 +1317,10 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT from Staff ";
             query += @"WHERE id='@id'";
-            _db.Open();
+            this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
-            _db.Close();
+            this.closeDb();
             return myReader;
         }
 
@@ -1339,10 +1339,10 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT from Client ";
             query += @"WHERE id=@'id'";
-            _db.Open();
+            this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
-            _db.Close();
+            this.closeDb();
             return myReader;
         }
 
@@ -1350,10 +1350,10 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT from Wedding ";
             query += @"WHERE id=@'id'";
-            _db.Open();
+            this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
-            _db.Close();
+            this.closeDb();
             return myReader;
         }
 
@@ -1361,10 +1361,10 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT from Client ";
             query += @"WHERE id=@'id'";
-            _db.Open();
+            this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
-            _db.Close();
+            this.closeDb();
             return myReader;
         }
 
@@ -1372,10 +1372,10 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT firstname, surname FROM Client";
             query += @"WHERE id='@id'";
-            _db.Open();
+            this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
             SqlDataReader myReader = myCommand.ExecuteReader();
-            _db.Close();
+            this.closeDb();
             return (myReader["firstname"].ToString() + " " + myReader["surname"].ToString());
         }
 
@@ -1426,7 +1426,7 @@ namespace Assignment3_LHISGroup
         {
             try
             {
-                _db.Open();
+                this.openDb();
 
                 SqlDataReader myReader = null;
                 SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers", _db);
@@ -1441,10 +1441,47 @@ namespace Assignment3_LHISGroup
                     Console.Write(myReader["ContactPerson"].ToString() + "\n");
                 }
 
-                _db.Close();
+                this.closeDb();
             }
             catch (Exception e) { e.GetHashCode(); }
 
+        }
+
+        /**
+         *   Opens a connection to Database. 
+         *   Throws Exceptions when open is called on an already open
+         *   SqlConnection or when transaction errors occur.
+         */
+        private void openDb()
+        {
+            try
+            {
+                _db.Open();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new Exception("Error: Connection already open or Data Source Missing");
+            }
+            catch (SqlException)
+            {
+                throw new Exception("An error occurred whilst connecting with the database;");
+            }
+        }
+
+        /**
+         *   Closes a connection to Database. 
+         *   Throws Exception when transaction errors occur.
+         */
+        private void closeDb()
+        {
+            try
+            {
+                _db.Close();
+            }
+            catch (SqlException)
+            {
+                throw new Exception("An error occurred whilst disconnecting with the database;");
+            }
         }
     }
 }
