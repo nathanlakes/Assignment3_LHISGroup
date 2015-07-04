@@ -564,7 +564,7 @@ namespace Assignment3_LHISGroup
          */
         public bool DeleteSupplier(int id)
         {
-            string query = @"DELETE FROM Suppliers ";
+            string query = @"DELETE Suppliers ";   // RM 'FROM' keyword????
             query += "WHERE Id='@id'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
