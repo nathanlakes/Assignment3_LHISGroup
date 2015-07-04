@@ -121,8 +121,18 @@ namespace Assignment3_LHISGroup.UI
 
                 try
                 {
-                    bool x = db.UpdateSupplier(id, s);
+                    //bool x = db.UpdateSupplier(id, s);
+                    db.UpdateSupplier(id, s);
                     mainWin.ManageSuppliersWindow.UpdateForm();
+
+                    if (!mainWin.ManageSuppliersWindow.Visible)
+                    {
+                        mainWin.ManageSuppliersWindow.Visible = true;
+                    }
+                    else
+                    {
+                        mainWin.ManageSuppliersWindow.Focus();
+                    }
                     //this.Hide();
                 }
                 catch (Exception)

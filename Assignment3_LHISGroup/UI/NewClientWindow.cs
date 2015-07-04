@@ -126,21 +126,16 @@ namespace Assignment3_LHISGroup.UI
                     ClearForm();
                     mainWin.ManageClientsWindow.UpdateForm();
 
-                    List<Support_Classes.Client> Clients = db.GetAllClients();
-
-                    if (Clients.IndexOf(client2) <= -1)
+                    db.AddClient(client2);
+                    if (!mainWin.UpdateClientWindow.Visible)
                     {
-                        db.AddClient(client2);
-                        if (!mainWin.UpdateClientWindow.Visible)
-                        {
-                            mainWin.UpdateClientWindow.Visible = true;
-                            mainWin.UpdateClientWindow.PopulateForm(client2);
-                        }
-                        else
-                        {
-                            mainWin.UpdateClientWindow.Focus();
-                            mainWin.UpdateClientWindow.PopulateForm(client2);
-                        }
+                        mainWin.UpdateClientWindow.Visible = true;
+                        mainWin.UpdateClientWindow.PopulateForm(client2);
+                    }
+                    else
+                    {
+                        mainWin.UpdateClientWindow.Focus();
+                        mainWin.UpdateClientWindow.PopulateForm(client2);
                     }
 
                 }
