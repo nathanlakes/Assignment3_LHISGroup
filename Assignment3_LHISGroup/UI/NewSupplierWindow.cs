@@ -83,11 +83,11 @@ namespace Assignment3_LHISGroup.UI
                 String phone = PhoneTextBox.Text;
                 String address = AddressTextBox.Text;
 
-                Support_Classes.Supplier s = new Support_Classes.Supplier(name, address, contact, email, phone, 0);
+                Support_Classes.Supplier supplier = new Support_Classes.Supplier(name, address, contact, email, phone, 0);
 
                 try
                 {
-                    db.AddSupplier(s);
+                    db.AddSupplier(supplier);
                     ClearWindow();
                     mainWin.ManageSuppliersWindow.UpdateForm();
                     if (!mainWin.ManageSuppliersWindow.Visible)

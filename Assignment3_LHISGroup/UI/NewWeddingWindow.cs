@@ -117,7 +117,7 @@ namespace Assignment3_LHISGroup.UI
                 MessageBox.Show("Need name");
                 return false;
             }
-            else if (ClientComboBox.SelectedValue == null)
+            else if (ClientComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Need client");
 
@@ -131,7 +131,7 @@ namespace Assignment3_LHISGroup.UI
                 }                
                 return false;
             }
-            else if (EngagedComboBox.SelectedValue == null)
+            else if (EngagedComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Need engaged to");
 
@@ -167,8 +167,11 @@ namespace Assignment3_LHISGroup.UI
             }
             else
             {
-                //int client_id = Convert.ToInt32(ClientComboBox.SelectedValue.ToString());
-                //int engaged_id = Convert.ToInt32(EngagedComboBox.SelectedValue.ToString());
+                // TODO if there is more time, add extra code for validation
+                // TODO code to check that the two clients are actually engaged to each other
+                // TODO the start date is before the event date
+                // TODO the start date is not before the current date
+                // TODO the event date is not the current date
 
                 return true;
             }
@@ -184,44 +187,56 @@ namespace Assignment3_LHISGroup.UI
         {
             if (this.ValidateForm() == true)
             {
+                // text boxes
+
                 String title = NameTextBox.Text;
+                String desc = DescriptionTextBox.Text;
 
-                string clientId = ClientComboBox.SelectedItem.ToString();
-                MessageBox.Show(clientId);
-                string engagedId = EngagedComboBox.SelectedItem.ToString();
-                MessageBox.Show(engagedId);
+                // objects from combo boxes
 
-                string desc = DescriptionTextBox.Text;
+                int client_id = ((KeyValuePair<int, string>)this.ClientComboBox.SelectedItem).Key;
+                Support_Classes.Client client = db.FindClient(client_id);
+
+                int engaged_id = ((KeyValuePair<int, string>)this.EngagedComboBox.SelectedItem).Key;
+                Support_Classes.Client engaged = db.FindClient(engaged_id);
+
+                int staff_id = ((KeyValuePair<int, string>)this.StaffComboBox.SelectedItem).Key;
+                Support_Classes.Staff staff = db.FindStaff(staff_id);
+
+
+                // datetime
+
+                DateTime startDate = StartDateTimePicker.Value;
+                DateTime eventDate = EventDateTimePicker.Value;
 
                 
-                
-
-                string staff = StaffComboBox.SelectedItem.ToString();
-
-                EventDateTimePicker.ResetText();
-                StartDateTimePicker.ResetText();
-
-
-                //Support_Classes.Wedding wedding = new Support_Classes.Wedding();
+                Support_Classes.Wedding wedding = new Support_Classes.Wedding(title, desc, client, engaged, staff, startDate, eventDate);
 
                 try
                 {
-                    //db.AddWedding(wedding);
-
+                    db.AddWedding(wedding);
+                    ClearForm();
+                    mainWin.ManageWeddingsWindow.UpdateForm();
+                    if (!mainWin.ManageWeddingsWindow.Visible)
+                    {
+                        mainWin.ManageWeddingsWindow.Visible = true;
+                    }
+                    else
+                    {
+                        mainWin.ManageWeddingsWindow.Focus();
+                    }
 
                 }
-                catch
+                catch (Exception)
                 {
-
-
+                    MessageBox.Show("Exception thrown");
                 }
-                //MessageBox.Show("Successfully Validated!");
             }
             else
             {
-
+                MessageBox.Show("No row selected");
             }
-            //RefreshData();
+            
         }
 
         private void NewWeddingWindow_FormClosing(object sender, FormClosingEventArgs e)
