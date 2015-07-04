@@ -848,6 +848,29 @@ namespace Assignment3_LHISGroup
             return s;
         }
 
+        /**
+         *   Finds Staff based on composite key of
+         *   firstname, surname and email
+         */
+        public Staff FindStaff(Staff s)
+        {
+            this.openDb();
+
+            string query = @"SELECT * FROM Staff ";
+            query += @"WHERE firstname='@firstname' AND surname='@surname' AND email='@email'";
+            SqlCommand myCommand = new SqlCommand(query, _db);
+            myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
+            myCommand.Parameters.AddWithValue("@surname", s.Surname);
+            myCommand.Parameters.AddWithValue("@email", s.Email);
+
+            SqlDataReader myReader = myCommand.ExecuteReader();
+
+            this.closeDb();
+
+            Staff returnStaff = makeStaff(myReader);
+            return returnStaff;
+        }
+
 
         /**
          *   Returns a List<Staff> who are currently
