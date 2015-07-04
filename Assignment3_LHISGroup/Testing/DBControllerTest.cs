@@ -31,7 +31,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             Console.WriteLine("AddStaffTest1");
             Staff testStaff = new Staff("Jimmy", "Bastiras", "email", "05231", "note", Staff.Active.active);
             testController.AddStaff(testStaff);
-            Assert.AreEqual(testStaff, testController.FindStaff(testStaff));
+            Assert.AreEqual(testStaff, testController.FindStaff(4));
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }
 
@@ -233,11 +233,28 @@ namespace Assignment3_LHISGroup.Support_Classes
         [Test]
         public void DeleteWeddingTest()
         {
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("DeleteWeddingTest");
+            
             Boolean result = testController.DeleteWedding(1);
             Assert.AreEqual(true, result);
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }
+
+        [Test]
+        public void ChangeStaffActiveStatusTest()
+        {
+           Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+           Console.WriteLine("ChangeStaffActiveStatusTest");
+           Boolean result = testController.ChangeStaffActiveStatus(4, Staff.Active.inactive);
+           Assert.AreEqual(true, result);
+           Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+        }
+        [Test]
+        public void AllActiveStaffTest()
+        {
+            List<Staff> testList = testController.AllActiveStaff();
+            int result = testList.Count;
+            Assert.AreEqual(6, result);
+        }
+
     }
 }
