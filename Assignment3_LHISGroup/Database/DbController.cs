@@ -319,7 +319,6 @@ namespace Assignment3_LHISGroup
         {
             SqlDataReader myReader = getClientDetails(id);
             Client c = makeClient(myReader);
-            c.ID = Convert.ToInt32(myReader["Id"].ToString());
             return c;
         }
 
