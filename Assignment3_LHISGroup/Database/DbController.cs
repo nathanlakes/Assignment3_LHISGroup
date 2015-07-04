@@ -533,14 +533,12 @@ namespace Assignment3_LHISGroup
             if (wedPlanner == -1) throw new Exception("Wedding Planner must exist in Staff Table.");
             myCommand.Parameters.AddWithValue("@weddingPlanner", wedPlanner);
 
-            int res = 0;
-
             this.openDb();
-            res = myCommand.ExecuteNonQuery();
+            myCommand.ExecuteNonQuery();
             this.closeDb();
 
-            if (res == 1) return true;
-            return false;
+            return true;
+
         }
 
         /**
