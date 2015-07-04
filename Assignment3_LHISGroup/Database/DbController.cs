@@ -1068,7 +1068,6 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@email", s.Email);
 
             SqlDataReader myReader = myCommand.ExecuteReader();
-            this.closeDb();
 
             string firstname = myReader["firstname"].ToString();
             string surname = myReader["surname"].ToString();
@@ -1093,6 +1092,7 @@ namespace Assignment3_LHISGroup
                 Console.WriteLine(e.ToString());
             }
 
+            this.closeDb();
 
             return returnStaff;
         }
