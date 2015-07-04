@@ -735,10 +735,11 @@ namespace Assignment3_LHISGroup
 
             string query = @"SELECT * FROM Staff WHERE Id=@id";
             SqlCommand myCommand = new SqlCommand(query, _db);
+            
             myCommand.Parameters.AddWithValue("@id", id);            
             myReader = myCommand.ExecuteReader();
 
-            Staff s = makeStaff(myReader);
+            Staff s = makeStaff(ref myReader);
 
             this.closeDb();
 
@@ -761,7 +762,7 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@email", s.Email);
 
             SqlDataReader myReader = myCommand.ExecuteReader();
-            Staff returnStaff = makeStaff(myReader);
+            Staff returnStaff = makeStaff(ref myReader);
 
             this.closeDb();
 
@@ -787,7 +788,7 @@ namespace Assignment3_LHISGroup
 
             while (myReader.Read())
             {
-                Staff s = makeStaff(myReader); 
+                Staff s = makeStaff(ref myReader); 
                 returnList.Add(s);
             }
             this.closeDb();
@@ -837,7 +838,7 @@ namespace Assignment3_LHISGroup
 
             while (myReader.Read())
             {
-                Staff s = makeStaff(myReader);
+                Staff s = makeStaff(ref myReader);
                 s.ID = Convert.ToInt32(myReader["Id"].ToString());
                 returnList.Add(s);
             }
@@ -1397,6 +1398,33 @@ namespace Assignment3_LHISGroup
 
             return s;
         }
+        private Staff makeStaff(ref SqlDataReader myReader)  ///// DEBUG
+        {
+            string firstname = myReader["firstname"].ToString();
+            string surname = myReader["surname"].ToString();
+            string email = myReader["email"].ToString();
+            string phone = myReader["phone"].ToString();
+            string notes = myReader["notes"].ToString();
+            string status = myReader["status"].ToString();
+
+            Staff.Active stat = Staff.Active.inactive;
+            if (Staff.Active.active.ToString() == status)
+            {
+                stat = Staff.Active.active;
+            }
+
+            Staff s = new Staff(firstname, surname, email, phone, notes, stat);
+            try
+            {
+                s.ID = Convert.ToInt32(myReader["Id"].ToString());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return s;
+        }
 
         private Wedding makeWedding(SqlDataReader myReader)
         {
@@ -1426,7 +1454,7 @@ namespace Assignment3_LHISGroup
 
             // Create Staff Object
             SqlDataReader staffReader = getStaffDetails(Convert.ToInt32(myReader["weddingPlanner_FK"].ToString()));
-            Staff weddPlann = makeStaff(staffReader);
+            Staff weddPlann = makeStaff(ref staffReader);
 
             Wedding returnWedding = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
 
@@ -1473,7 +1501,7 @@ namespace Assignment3_LHISGroup
             SqlDataReader staffReader = getStaffDetails(staffId);
             Staff weddingPlanner;
             {
-                weddingPlanner = makeStaff(staffReader);
+                weddingPlanner = makeStaff(ref staffReader);
                 weddingPlanner.ID = Convert.ToInt32(staffReader["Id"].ToString());
             }
 
@@ -1512,7 +1540,7 @@ namespace Assignment3_LHISGroup
 
                 // Create Staff Object
                 SqlDataReader stf = getStaffDetails(Convert.ToInt32(weddReader["weddingPlanner_FK"].ToString()));
-                Staff weddPlann = makeStaff(stf);
+                Staff weddPlann = makeStaff(ref stf);
 
                 wedding = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
                 wedding.ID = Convert.ToInt32(weddReader["ID"].ToString());
