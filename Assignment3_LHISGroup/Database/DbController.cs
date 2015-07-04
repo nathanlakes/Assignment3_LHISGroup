@@ -1182,7 +1182,7 @@ namespace Assignment3_LHISGroup
 
         private SqlDataReader getClientsDetails(int id)
         {
-            string query = @"SELECT from Client ";
+            string query = @"SELECT * from Client ";
             query += @"WHERE Id=@id";
             this.openDb();
             SqlCommand myCommand = new SqlCommand(query, _db);
@@ -1360,7 +1360,7 @@ namespace Assignment3_LHISGroup
                 );
             try
             {
-                client.ID = Convert.ToInt32(cr["Id"].ToString());
+                client.ID = Convert.ToInt32( cr["Id"].ToString() );
             }
             catch (Exception e)
             {
