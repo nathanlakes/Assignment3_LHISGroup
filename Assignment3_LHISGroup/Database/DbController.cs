@@ -591,7 +591,7 @@ namespace Assignment3_LHISGroup
             string query = @"UPDATE Suppliers ";
             query += @"SET CompanyName='@companyname', Address='@address', ContactPerson='@contactPerson', ";
             query += @"Email='@email', PhoneNumber='@phonenumber', CreditTerms='@creditterms'";
-            query += @"WHERE Id='@id'";
+            query += @"WHERE Id=@id";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@companyname", s.CompanyName);
