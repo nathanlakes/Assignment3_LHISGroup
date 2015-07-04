@@ -116,5 +116,12 @@ namespace Assignment3_LHISGroup.Support_Classes
             Boolean result = testController.DeleteClient(1);
             Assert.AreEqual(true, result);
         }
+
+        [Test]
+        public void DeleteSupplierTest()
+        {
+            Boolean result = testController.DeleteSupplier(1);
+            Assert.AreEqual(true, result);
+        }
     }
 }
