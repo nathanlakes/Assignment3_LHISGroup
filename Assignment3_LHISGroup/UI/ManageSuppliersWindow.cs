@@ -34,6 +34,26 @@ namespace Assignment3_LHISGroup.UI
             
         }
 
+        private Support_Classes.Supplier ExtractSelectedRow()
+        {
+            if (SuppliersDataGridView.SelectedRows.Count > 0 && SuppliersDataGridView.SelectedRows[0].Cells[0].Value != null)
+            {
+                int id = (int)SuppliersDataGridView.SelectedRows[0].Cells[0].Value;
+
+                string companyName = (string)SuppliersDataGridView.SelectedRows[0].Cells[1].Value;
+                string address = (string)SuppliersDataGridView.SelectedRows[0].Cells[2].Value;
+                string contactPerson = (string)SuppliersDataGridView.SelectedRows[0].Cells[3].Value;
+                string email = (string)SuppliersDataGridView.SelectedRows[0].Cells[4].Value;
+                string phoneNumber = (string)SuppliersDataGridView.SelectedRows[0].Cells[5].Value;
+                int creditTerms = (int)SuppliersDataGridView.SelectedRows[0].Cells[6].Value;
+
+                Support_Classes.Supplier s = new Support_Classes.Supplier(companyName, address, contactPerson, email, phoneNumber, creditTerms);
+            }
+
+            return null;
+        }
+
+
         private void UpdateSupplierbutton_Click(object sender, EventArgs e)
         {
             if (SuppliersDataGridView.SelectedRows.Count > 0 && SuppliersDataGridView.SelectedRows[0].Cells[0].Value != null)
