@@ -344,10 +344,10 @@ namespace Assignment3_LHISGroup
             List<Client> returnList = new List<Client>();
 
             string query = "SELECT * FROM Clients ";
-            query += "WHERE firstname LIKE '%@fn%' OR surname LIKE '%@sn%'";
+            query += "WHERE firstname LIKE '@fn' OR surname LIKE '@sn'";
             SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@fn", name);
-            myCommand.Parameters.AddWithValue("@sn", name);
+            myCommand.Parameters.AddWithValue("@fn", "%" + name + "%");
+            myCommand.Parameters.AddWithValue("@sn", "%" + name + "%");
 
             this.openDb();
             SqlDataReader myReader = myCommand.ExecuteReader();
