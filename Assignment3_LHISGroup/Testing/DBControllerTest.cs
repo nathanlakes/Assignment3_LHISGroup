@@ -118,9 +118,43 @@ namespace Assignment3_LHISGroup.Support_Classes
         }
 
         [Test]
+        public void UpdateClientTest()
+        {
+            Client testClient1 = new Client("NOTJANE", "Smith", "Jane Smith", "26 Oak Avenue", "23441212", "12098776", "jan@gmail.com", "John", "John");
+            Boolean result = testController.UpdateClient(1, testClient1);
+            Assert.AreEqual(true, result);
+
+        }
+
+        [Test]
+        public void UpdateSupplierTest()
+        {
+            Client testClient1 = new Client("NOTJANE", "Smith", "Jane Smith", "26 Oak Avenue", "23441212", "12098776", "jan@gmail.com", "John", "John");
+            Boolean result = testController.UpdateClient(1, testClient1);
+            Assert.AreEqual(true, result);
+
+        }
+
+        [Test]
         public void DeleteSupplierTest()
         {
+            Supplier testSupplier = new Supplier("Jim Bastiras", "22 adress treet", "sasfasfa", "asdasd", "12214", 200);
+            testController.AddSupplier(testSupplier);
             Boolean result = testController.DeleteSupplier(1);
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void DeleteTaskTest()
+        {
+            Boolean result = testController.DeleteTask(1);
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void DeleteWeddingTest()
+        {
+            Boolean result = testController.DeleteWedding(1);
             Assert.AreEqual(true, result);
         }
     }
