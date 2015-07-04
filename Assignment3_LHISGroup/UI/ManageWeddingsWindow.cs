@@ -45,10 +45,12 @@ namespace Assignment3_LHISGroup.UI
                 int c1_fk = Convert.ToInt32(client1_fk);
                 int c2_fk = Convert.ToInt32(client2_fk);
                 DateTime start = db.convertStringToDateTime(startDate);
-                DateTime wedding = db.convertStringToDateTime(eventDate);
+                DateTime date = db.convertStringToDateTime(eventDate);
                 int st_fk = Convert.ToInt32(staff_fk);
 
-                return new Support_Classes.Wedding(title,description, db.FindClient(c1_fk), db.FindClient(c2_fk),db.FindStaff(st_fk), start, wedding);
+                Support_Classes.Wedding wedding =  new Support_Classes.Wedding(title,description, db.FindClient(c1_fk), db.FindClient(c2_fk),db.FindStaff(st_fk), start, date);
+                wedding.ID = id;
+                return wedding;
             }
             else
             {
