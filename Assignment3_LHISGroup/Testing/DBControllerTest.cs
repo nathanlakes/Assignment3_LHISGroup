@@ -145,8 +145,8 @@ namespace Assignment3_LHISGroup.Support_Classes
         [Test]
         public void UpdateSupplierTest()
         {
-            Client testClient1 = new Client("NOTJANE", "Smith", "Jane Smith", "26 Oak Avenue", "23441212", "12098776", "jan@gmail.com", "John", "John");
-            Boolean result = testController.UpdateClient(1, testClient1);
+            Supplier testSupplier = new Supplier("Jim NOT Bastiras", "22 adress treet", "sasfasfa", "asdasd", "12214", 200);
+            Boolean result = testController.UpdateSupplier(3, testSupplier);
             Assert.AreEqual(true, result);
 
         }
