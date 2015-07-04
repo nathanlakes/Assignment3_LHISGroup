@@ -589,7 +589,7 @@ namespace Assignment3_LHISGroup
 
             string query = @"UPDATE Suppliers ";
             query += @"SET CompanyName='@companyname', Address='@address', ContactPerson='@contactPerson', ";
-            query += @"Email='@email', PhoneNumber='@phonenumber', CreditTerms='@creditterms'";
+            query += @"Email='@email', PhoneNumber='@phonenumber', CreditTerms=@creditterms";
             query += @"WHERE Id=@id";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
