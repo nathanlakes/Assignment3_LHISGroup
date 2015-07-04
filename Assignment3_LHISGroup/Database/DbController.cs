@@ -626,7 +626,7 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@name", "%" + name + "%");
 
             this.openDb();
-            SqlDataReader myReader = myReader = myCommand.ExecuteReader();
+            SqlDataReader myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
                 string coname = myReader["CompanyName"].ToString();
