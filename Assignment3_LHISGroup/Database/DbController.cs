@@ -1413,14 +1413,14 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             var myReader = myCommand.ExecuteReader();
-            this.closeDb();
+            
 
             int id = -1;
             if ( myReader.HasRows )
             {
                 id = Convert.ToInt32( myReader["Id"].ToString() );
             }
-
+            this.closeDb();
             return id;
         }
 
@@ -1437,7 +1437,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
             
             var myReader = testTask.ExecuteReader();
-            this.closeDb();
+            
 
             int id = -1;
             try
@@ -1448,7 +1448,7 @@ namespace Assignment3_LHISGroup
             {
                 Console.WriteLine(e.ToString());
             }
-
+            this.closeDb();
             return id;            
         }   
 
@@ -1497,7 +1497,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             var myReader = testTask.ExecuteReader();
-            this.closeDb();
+            ;
 
             int id = -1;
             try
@@ -1508,7 +1508,7 @@ namespace Assignment3_LHISGroup
             {
                 Console.WriteLine(e.ToString());
             }            
-
+            this.closeDb()
             return id;
         }
 
