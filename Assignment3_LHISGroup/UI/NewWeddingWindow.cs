@@ -29,6 +29,7 @@ namespace Assignment3_LHISGroup.UI
             foreach (Support_Classes.Client client in ClientList)
             {
                 KeyValuePair<int,string> keyValue = new KeyValuePair<int,string>(client.ID, client.Firstname + " " + client.Surname);
+                MessageBox.Show(keyValue.ToString());
                 ClientComboBox.Items.Add(keyValue);
                 EngagedComboBox.Items.Add(keyValue);
             }
@@ -161,7 +162,36 @@ namespace Assignment3_LHISGroup.UI
         {
             if (this.ValidateForm() == true)
             {
-                MessageBox.Show("Successfully Validated!");
+                String title = NameTextBox.Text;
+
+                string clientId = ClientComboBox.SelectedItem.ToString();
+                MessageBox.Show(clientId);
+                string engagedId = EngagedComboBox.SelectedItem.ToString();
+                MessageBox.Show(engagedId);
+
+                string desc = DescriptionTextBox.Text;
+
+                EventDateTimePicker.ResetText();
+                StartDateTimePicker.ResetText();
+                StaffComboBox.ValueMember = "";
+
+
+
+
+                //Support_Classes.Wedding wedding = new Support_Classes.Wedding();
+
+                try
+                {
+                    //db.AddWedding(wedding);
+
+
+                }
+                catch
+                {
+
+
+                }
+                //MessageBox.Show("Successfully Validated!");
             }
             else
             {
