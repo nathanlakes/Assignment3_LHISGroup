@@ -1099,13 +1099,13 @@ namespace Assignment3_LHISGroup
         private int getClientId(Client c)
         {
             string query = @"SELECT * FROM Client ";
-            query += "WHERE firstname='@firstname' AND surname='@surname' AND homePhone='@phone'";
+            query += "WHERE firstname='@firstname' AND surname='@surname' AND email='@email'";
 
             SqlCommand myCommand = new SqlCommand(query, _db);
 
             myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
             myCommand.Parameters.AddWithValue("@surname", c.Surname);
-            myCommand.Parameters.AddWithValue("@phone", c.HomePhone);
+            myCommand.Parameters.AddWithValue("@email", c.Email);
             
             this.openDb();
 
@@ -1115,7 +1115,6 @@ namespace Assignment3_LHISGroup
             
             try
             {
-                myReader.Read();
                 id = Convert.ToInt32( myReader["Id"].ToString() );
             }
             catch (Exception e)
@@ -1124,7 +1123,7 @@ namespace Assignment3_LHISGroup
             }
             this.closeDb();          
 
-            return id;            
+            return id;
         }
 
         
