@@ -353,9 +353,29 @@ namespace Assignment3_LHISGroup
             SqlDataReader myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
-                Client c = makeClient(myReader);
-                c.ID = Convert.ToInt32(myReader["id"].ToString());
-                returnList.Add(c);
+                // TODO:: -- Try makeClient() later. But move close after ExecuteReader();
+                
+                Client client = new Client(
+                                    myReader["firstname"].ToString(),
+                                    myReader["surname"].ToString(),
+                                    myReader["contactPerson"].ToString(),
+                                    myReader["address"].ToString(),
+                                    myReader["mobile"].ToString(),
+                                    myReader["homePhone"].ToString(),
+                                    myReader["email"].ToString(),
+                                    myReader["engagedTo_firstname"].ToString(),
+                                    myReader["engagedTo_surname"].ToString()
+                                );
+                try
+                {
+                    client.ID = Convert.ToInt32(myReader["Id"].ToString());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
+
+                returnList.Add(client);
             }
             this.closeDb();
 
@@ -469,8 +489,8 @@ namespace Assignment3_LHISGroup
 
             this.openDb();
             SqlDataReader myReader = myCommand.ExecuteReader();
-            Wedding wed = makeWedding(myReader);
             this.closeDb();
+            Wedding wed = makeWedding(myReader);
             
             return wed;
         }
@@ -494,9 +514,8 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@eventdate", formatDateForDbInput(w.EventDate));
 
             SqlDataReader myReader = myCommand.ExecuteReader();
-            Wedding wed = makeWedding(myReader);
-
             this.closeDb();
+            Wedding wed = makeWedding(myReader);
 
             return wed;
         }
@@ -517,14 +536,14 @@ namespace Assignment3_LHISGroup
 
             this.openDb();
             SqlDataReader myReader = myCommand.ExecuteReader();
+            this.closeDb();
+
             while (myReader.Read())
             {
-                Wedding wedd = makeWedding(myReader);
-                wedd.ID = Convert.ToInt32(myReader["Id"].ToString());
-
-                returnList.Add(wedd);
+                Wedding w = makeWedding(myReader);
+                returnList.Add(w);
             }
-            this.closeDb();
+
 
             return returnList;
         }
@@ -738,10 +757,10 @@ namespace Assignment3_LHISGroup
             
             myCommand.Parameters.AddWithValue("@id", id);            
             myReader = myCommand.ExecuteReader();
-
-            Staff s = makeStaff(ref myReader);
-
             this.closeDb();
+
+            Staff s = makeStaff(myReader);
+
 
             return s;
         }
@@ -762,9 +781,10 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@email", s.Email);
 
             SqlDataReader myReader = myCommand.ExecuteReader();
-            Staff returnStaff = makeStaff(ref myReader);
-
             this.closeDb();
+
+            Staff returnStaff = makeStaff(myReader);
+
 
             return returnStaff;
         }
@@ -785,13 +805,13 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand(query, _db);
 
             myReader = myCommand.ExecuteReader();
+            this.closeDb();
 
             while (myReader.Read())
             {
-                Staff s = makeStaff(ref myReader); 
+                Staff s = makeStaff(myReader); 
                 returnList.Add(s);
             }
-            this.closeDb();
 
             return returnList;
         }
@@ -810,6 +830,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Client", _db);
 
             myReader = myCommand.ExecuteReader();
+            this.closeDb();
 
             Client c;
             while (myReader.Read())
@@ -817,7 +838,6 @@ namespace Assignment3_LHISGroup
                 c = makeClient(myReader);
                 returnList.Add(c);
             }
-            this.closeDb();
 
             return returnList;
         }
@@ -835,14 +855,14 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Staff", _db);
 
             myReader = myCommand.ExecuteReader();
+            this.closeDb();
 
             while (myReader.Read())
             {
-                Staff s = makeStaff(ref myReader);
+                Staff s = makeStaff(myReader);
                 s.ID = Convert.ToInt32(myReader["Id"].ToString());
                 returnList.Add(s);
             }
-            this.closeDb();
 
             return returnList;
         }
@@ -860,6 +880,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Suppliers", _db);
 
             myReader = myCommand.ExecuteReader();
+            this.closeDb();
 
             while (myReader.Read())
             {
@@ -875,7 +896,6 @@ namespace Assignment3_LHISGroup
 
                 returnList.Add(s);
             }
-            this.closeDb();
 
             return returnList;
         }
@@ -893,6 +913,7 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Task", _db);
 
             taskReader = myCommand.ExecuteReader();
+            this.closeDb();
 
             while (taskReader.Read())
             {
@@ -1002,8 +1023,6 @@ namespace Assignment3_LHISGroup
                 returnList.Add( t );
             }
 
-            this.closeDb();
-
             return returnList;
         }
 
@@ -1020,13 +1039,13 @@ namespace Assignment3_LHISGroup
             SqlCommand myCommand = new SqlCommand("SELECT * FROM Wedding", _db);
 
             myReader = myCommand.ExecuteReader();
+            this.closeDb();
 
             while (myReader.Read())
             {
                 Wedding w = makeWedding(myReader);
                 returnList.Add(w);
             }
-            this.closeDb();
 
             return returnList;
         }
@@ -1055,14 +1074,14 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             var myReader = myCommand.ExecuteReader();
-            
+            this.closeDb();
+
             int id = -1;
             if ( myReader.HasRows )
             {
                 id = Convert.ToInt32( myReader["Id"].ToString() );
             }
 
-            this.closeDb();
             return id;
         }
 
@@ -1079,7 +1098,8 @@ namespace Assignment3_LHISGroup
             this.openDb();
             
             var myReader = testTask.ExecuteReader();
-            
+            this.closeDb();
+
             int id = -1;
             try
             {
@@ -1089,7 +1109,6 @@ namespace Assignment3_LHISGroup
             {
                 Console.WriteLine(e.ToString());
             }
-            this.closeDb();
 
             return id;            
         }   
@@ -1112,6 +1131,7 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             SqlDataReader myReader = myCommand.ExecuteReader();
+            this.closeDb();          
 
             int id = -1;
             
@@ -1123,7 +1143,6 @@ namespace Assignment3_LHISGroup
             {
                 Console.WriteLine(e.ToString());
             }
-            this.closeDb();          
 
             return id;
         }
@@ -1139,7 +1158,8 @@ namespace Assignment3_LHISGroup
             this.openDb();
 
             var myReader = testTask.ExecuteReader();
-            
+            this.closeDb();
+
             int id = -1;
             try
             {
@@ -1149,7 +1169,6 @@ namespace Assignment3_LHISGroup
             {
                 Console.WriteLine(e.ToString());
             }            
-            this.closeDb();
 
             return id;
         }
@@ -1203,11 +1222,15 @@ namespace Assignment3_LHISGroup
         {
             string query = @"SELECT * FROM Client ";
             query += @"WHERE Id=@id";
+            
             this.openDb();
+
             SqlCommand myCommand = new SqlCommand(query, _db);
             myCommand.Parameters.AddWithValue("@id", id);
             SqlDataReader myReader = myCommand.ExecuteReader();
+
             this.closeDb();
+
             return myReader;
         }
 
@@ -1344,6 +1367,7 @@ namespace Assignment3_LHISGroup
          */
         private Client makeClient(SqlDataReader cr)
         {
+
             Client client = new Client(
                     cr["firstname"].ToString(),
                     cr["surname"].ToString(),
@@ -1398,33 +1422,8 @@ namespace Assignment3_LHISGroup
 
             return s;
         }
-        private Staff makeStaff(ref SqlDataReader myReader)  ///// DEBUG
-        {
-            string firstname = myReader["firstname"].ToString();
-            string surname = myReader["surname"].ToString();
-            string email = myReader["email"].ToString();
-            string phone = myReader["phone"].ToString();
-            string notes = myReader["notes"].ToString();
-            string status = myReader["status"].ToString();
+        
 
-            Staff.Active stat = Staff.Active.inactive;
-            if (Staff.Active.active.ToString() == status)
-            {
-                stat = Staff.Active.active;
-            }
-
-            Staff s = new Staff(firstname, surname, email, phone, notes, stat);
-            try
-            {
-                s.ID = Convert.ToInt32(myReader["Id"].ToString());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-
-            return s;
-        }
 
         private Wedding makeWedding(SqlDataReader myReader)
         {
@@ -1454,7 +1453,7 @@ namespace Assignment3_LHISGroup
 
             // Create Staff Object
             SqlDataReader staffReader = getStaffDetails(Convert.ToInt32(myReader["weddingPlanner_FK"].ToString()));
-            Staff weddPlann = makeStaff(ref staffReader);
+            Staff weddPlann = makeStaff(staffReader);
 
             Wedding returnWedding = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
 
@@ -1501,7 +1500,7 @@ namespace Assignment3_LHISGroup
             SqlDataReader staffReader = getStaffDetails(staffId);
             Staff weddingPlanner;
             {
-                weddingPlanner = makeStaff(ref staffReader);
+                weddingPlanner = makeStaff(staffReader);
                 weddingPlanner.ID = Convert.ToInt32(staffReader["Id"].ToString());
             }
 
@@ -1540,7 +1539,7 @@ namespace Assignment3_LHISGroup
 
                 // Create Staff Object
                 SqlDataReader stf = getStaffDetails(Convert.ToInt32(weddReader["weddingPlanner_FK"].ToString()));
-                Staff weddPlann = makeStaff(ref stf);
+                Staff weddPlann = makeStaff(stf);
 
                 wedding = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
                 wedding.ID = Convert.ToInt32(weddReader["ID"].ToString());
