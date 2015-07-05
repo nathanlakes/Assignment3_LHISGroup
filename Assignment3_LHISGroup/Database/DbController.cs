@@ -1789,12 +1789,20 @@ namespace Assignment3_LHISGroup
                 _db.Open();
 
                 string query = @"SELECT COUNT(Id) As Count FROM Client ";
-                query += @"WHERE firstname=@firstname AND surname=@surname AND contactPerson=@contact;";
+                query += @"WHERE firstname=@firstname AND surname=@surname AND contactPerson=@contact AND ";
+                query += @"address=@address AND mobile=@mobile AND homePhone=@homephone AND ";
+                query += @"email=@email AND engagedTo_firstname=@engfn AND engagedTo_surname=@engsn";
 
                 SqlCommand myCommand = new SqlCommand(query, _db);
                 myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
                 myCommand.Parameters.AddWithValue("@surname", c.Surname);
                 myCommand.Parameters.AddWithValue("@contact", c.ContactPerson);
+                myCommand.Parameters.AddWithValue("@address", c.Address);
+                myCommand.Parameters.AddWithValue("@mobile", c.Mobile);
+                myCommand.Parameters.AddWithValue("@homephone", c.HomePhone);
+                myCommand.Parameters.AddWithValue("@email", c.Email);
+                myCommand.Parameters.AddWithValue("@engfn", c.EngagedTo_fn);
+                myCommand.Parameters.AddWithValue("@engsn", c.EngagedTo_sn);
 
                 using (SqlDataReader myReader = myCommand.ExecuteReader())
                 {

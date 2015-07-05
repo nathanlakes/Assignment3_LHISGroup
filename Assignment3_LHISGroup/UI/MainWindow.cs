@@ -264,7 +264,7 @@ namespace Assignment3_LHISGroup
 
         private void nathanDebug()
         {
-
+      
         }
     }
 }
