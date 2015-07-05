@@ -221,6 +221,52 @@ namespace Assignment3_LHISGroup.Support_Classes
         }
 
         [Test]
+        public void UpdateTaskTest1()
+        {
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("UpdateTaskTest1");
+            Client testClient1 = new Client("Jane", "Smith", "Jane Smith", "26 Oak Avenue", "23441212", "12098776", "jan@gmail.com", "John", "John");
+            Client testClient2 = new Client("Jim", "Deer", "Jim Deer", "861 Downtown St", "0437233892", "87323236", "bj@hotmail.com", "Bobbie", "Wright");
+            Staff testStaff = new Staff("Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "cant work sundays", Staff.Active.active);
+            testController.AddClient(testClient1);
+            testController.AddClient(testClient2);
+            testController.AddStaff(testStaff);
+            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
+            testController.AddWedding(testWedding);
+            Task testTask = new Task("Shit", "description", Task.Priority.high, new DateTime(), testStaff, testWedding);
+            testController.AddTask(testTask);
+
+            Task testTask2 = new Task("Better Name", "description", Task.Priority.high, new DateTime(), testStaff, testWedding);
+            Boolean i = testController.UpdateTask(10, testTask2);
+            Assert.AreEqual(true, i);
+
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+        }
+
+        [Test]
+        public void UpdatePersonOnTaskTest1()
+        {
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("UpdatePersonOnTaskTest1");
+
+            Client testClient1 = new Client("Jane", "Smith", "Jane Smith", "26 Oak Avenue", "23441212", "12098776", "jan@gmail.com", "John", "John");
+            Client testClient2 = new Client("Jim", "Deer", "Jim Deer", "861 Downtown St", "0437233892", "87323236", "bj@hotmail.com", "Bobbie", "Wright");
+            Staff testStaff = new Staff("Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "cant work sundays", Staff.Active.active);
+            Staff testStaff2 = new Staff("Not Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "cant work sundays", Staff.Active.active);
+            testController.AddClient(testClient1);
+            testController.AddClient(testClient2);
+            testController.AddStaff(testStaff);
+            testController.AddStaff(testStaff2);
+            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
+            testController.AddWedding(testWedding);
+            Task testTask = new Task("Shit", "description", Task.Priority.high, new DateTime(), testStaff, testWedding);
+            testController.AddTask(testTask);
+            Boolean result = testController.UpdatePersonOnTask(testTask, testStaff2);
+            Assert.AreEqual(true, result);
+
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+        }
+        [Test]
         public void UpdateClientTest()
         {
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
@@ -269,7 +315,8 @@ namespace Assignment3_LHISGroup.Support_Classes
         [Test]
         public void DeleteWeddingTest()
         {
-            
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("DeleteWeddingTest");
             Boolean result = testController.DeleteWedding(1);
             Assert.AreEqual(true, result);
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
@@ -287,9 +334,12 @@ namespace Assignment3_LHISGroup.Support_Classes
         [Test]
         public void AllActiveStaffTest()
         {
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("AllActiveStaffTest");
             List<Staff> testList = testController.AllActiveStaff();
             int result = testList.Count;
             Assert.AreEqual(1, result);
+            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }
 
     }
