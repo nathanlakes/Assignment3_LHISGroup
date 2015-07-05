@@ -79,7 +79,6 @@ namespace Assignment3_LHISGroup
                     {
                         myCommand.Parameters.AddWithValue("@actualComplete", formatDateForDbInput(t.CompletionDate));
                     }
-
                 }
                 catch (Exception) { }  
 
@@ -369,15 +368,22 @@ namespace Assignment3_LHISGroup
                             Console.WriteLine(ex.ToString());
                         }
 
-                        // Assign Completion Date, if not null
-                        string actComp = taskReader["actualCompletionDate"].ToString();
-
-                        if (!(actComp == null) || !(actComp == ""))
+                        // Assign Actual Complete Date, if any.
+                        try
                         {
-                            temp = taskReader["actualCompletionDate"].ToString();
-                            date = splitStringDate(temp);
-                            t.CompletionDate = new DateTime(date[0], date[1], date[2]);
+                            string acd = taskReader["actualCompletionDate"].ToString();
+                            if (acd == DateTime.MinValue.ToString())
+                            {
+                                t.CompletionDate = null;
+                            }
+                            else
+                            {
+                                int[] dates = splitStringDate(acd);
+                                t.CompletionDate = new DateTime(dates[2], dates[1], dates[0]);
+                            }
+
                         }
+                        catch (Exception) { }
                     }
                 }
                 _db.Close();
