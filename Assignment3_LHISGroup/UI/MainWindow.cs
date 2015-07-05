@@ -183,7 +183,7 @@ namespace Assignment3_LHISGroup
                 {
                     output += v.ToString() + "\n";
                 }
-                MessageBox.Show(output);
+                //MessageBox.Show(output);
             }
 
             {
@@ -193,7 +193,7 @@ namespace Assignment3_LHISGroup
                 {
                     output += v.ToString() + "\n";
                 }
-                MessageBox.Show(output);
+                //MessageBox.Show(output);
             }
 
             {
@@ -203,7 +203,7 @@ namespace Assignment3_LHISGroup
                 {
                     output += v.ToString() + "\n";
                 }
-                MessageBox.Show(output);
+                //MessageBox.Show(output);
             }
 
             {
@@ -213,7 +213,7 @@ namespace Assignment3_LHISGroup
                 {
                     output += v.ToString() + "\n";
                 }
-                MessageBox.Show(output);
+                //MessageBox.Show(output);
             }
 
             {
@@ -223,8 +223,17 @@ namespace Assignment3_LHISGroup
                 {
                     output += v.ToString() + "\n";
                 }
-                MessageBox.Show(output);
+                //MessageBox.Show(output);
             }
+
+            //
+            //  Test Find by ID
+            //
+            {
+                Client c = db.FindClient(1);
+                MessageBox.Show(c.ToString());
+            }
+
 
         }
 
