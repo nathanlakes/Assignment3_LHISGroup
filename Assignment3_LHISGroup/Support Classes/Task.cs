@@ -102,5 +102,16 @@ namespace Assignment3_LHISGroup.Support_Classes
             set { wedding = value; }
         }
 
+        public override string ToString()
+        {
+            string res = "===Task==========\n";
+            res += ("[task]" + taskName + " [desc]" + description + " [priority]" + priority.ToString() +
+                " [completeBy]" + completeByDate.ToShortDateString() +
+                " [competionDate]" + this.CompletionDate + " [assignedTo]" + assignedTo.FirstName +
+                " " + assignedTo.Surname + " [wedding]" + wedding.Title);
+
+            return res;
+        }
+
     }
 }

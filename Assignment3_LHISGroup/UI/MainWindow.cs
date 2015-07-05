@@ -196,6 +196,26 @@ namespace Assignment3_LHISGroup
                 MessageBox.Show(output);
             }
 
+            {
+                var res = db.GetAllSuppliers();
+                var output = "";
+                foreach (var v in res)
+                {
+                    output += v.ToString() + "\n";
+                }
+                MessageBox.Show(output);
+            }
+
+            {
+                var res = db.GetAllTasks();
+                var output = "";
+                foreach (var v in res)
+                {
+                    output += v.ToString() + "\n";
+                }
+                MessageBox.Show(output);
+            }
+
         }
 
 

@@ -84,6 +84,16 @@ namespace Assignment3_LHISGroup.Support_Classes
                     }
                 }
             }
+
+            public override string ToString()
+            {
+                string res = "===Supplier==========\n";
+                res += ("[company]" + companyName + " [address]" + address + " [conactPerson]" + contactPerson +
+                    " [email]" + email +
+                    " [phoneNumber]" + phoneNumber + " [creditTerms]" + creditTerms.ToString());
+
+                return res;
+            }
      
         }
 }
