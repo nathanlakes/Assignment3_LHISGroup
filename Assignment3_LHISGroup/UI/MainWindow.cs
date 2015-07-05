@@ -227,25 +227,57 @@ namespace Assignment3_LHISGroup
             }
 
             //
-            //  Test Find by ID
+            //  Test Find on Clients
             //
             {
                 // Find Client ID = 1 (Wendy)
                 Client c1 = db.FindClient(1);
-                MessageBox.Show(c1.ToString(), "Find Wendy?");
+                //MessageBox.Show(c1.ToString(), "Find Wendy?");
 
                 // Find Stan
                 Client c2 = db.FindClient(stan);
-                MessageBox.Show(c2.ToString(), "Find Stan?");
+                //MessageBox.Show(c2.ToString(), "Find Stan?");
 
                 // Find Stan via partial match
                 List<Client> c3 = db.FindClients("Wen");
                 foreach (var i in c3)
                 {
-                    MessageBox.Show(i.ToString(), "Searching 'Wen', matches:");
+                    //MessageBox.Show(i.ToString(), "Searching 'Wen', matches:");
                 }
             }
 
+            //
+            //   Test Find on Suppliers
+            //
+            {
+                List<Supplier> s = db.FindSupplier("Nat");
+                foreach (var i in s)
+                {
+                    //MessageBox.Show(i.ToString(), "Suppliers matching 'Nat'");
+                }
+
+                Supplier s2 = db.FindSupplier(2);
+                //MessageBox.Show(s2.ToString(), "Supplier #2 is:");
+            }
+
+            //
+            //   Test Find on Tasks
+            //
+            {
+                Support_Classes.Task t = db.FindTask(8);
+                //MessageBox.Show(t.ToString(), "Task #8 is:");
+
+                Support_Classes.Task t2 = db.FindTask(t);
+                //MessageBox.Show(t.ToString(), "Task 't' returns");
+            }
+
+            //
+            //
+            //
+            {
+                Staff s = db.FindStaff(4);
+
+            }
 
         }
 

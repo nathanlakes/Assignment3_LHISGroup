@@ -182,78 +182,83 @@ namespace Assignment3_LHISGroup
          */
         public Support_Classes.Task FindTask(int id)
         {
-            string query = @"SELECT * from Task ";
-            query += @"WHERE Id=@id;";
-            
-            this.openDb();
-
-            SqlCommand myCommand = new SqlCommand(query, _db);
-
             Support_Classes.Task t = new Support_Classes.Task();
 
-            using( SqlDataReader taskReader = myCommand.ExecuteReader() )
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                while (taskReader.Read())
+                _db.Open();
+                
+                string query = @"SELECT * from Task ";
+                query += @"WHERE Id=@id;";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@id", id);
+
+                using (SqlDataReader taskReader = myCommand.ExecuteReader())
                 {
-                    string taskname = taskReader["name"].ToString();
-                    string descr = taskReader["description"].ToString();
-                    string pr = taskReader["priority"].ToString();
-
-                    // Assign Priority
-                    Support_Classes.Task.Priority prior = Support_Classes.Task.Priority.low;
-                    if (pr == Support_Classes.Task.Priority.med.ToString())
+                    while (taskReader.Read())
                     {
-                        prior = Support_Classes.Task.Priority.med;
-                    }
-                    else
-                    {
-                        prior = Support_Classes.Task.Priority.high;
-                    }
+                        string taskname = taskReader["name"].ToString();
+                        string descr = taskReader["description"].ToString();
+                        string pr = taskReader["priority"].ToString();
 
-                    // Assign Deadline Date
-                    string temp = taskReader["completeBy"].ToString();
-                    int[] date = splitStringDate(temp);
-                    DateTime completeBy = new DateTime(date[0], date[1], date[2]);
+                        // Assign Priority
+                        Support_Classes.Task.Priority prior = Support_Classes.Task.Priority.low;
+                        if (pr == Support_Classes.Task.Priority.med.ToString())
+                        {
+                            prior = Support_Classes.Task.Priority.med;
+                        }
+                        else
+                        {
+                            prior = Support_Classes.Task.Priority.high;
+                        }
 
-                    //
-                    // Create Wedding Planner
-                    //
-                    int staffId = Convert.ToInt32(taskReader["staffOnJob_FK"].ToString());
-                    Staff weddingPlanner = getStaffDetails(staffId);
+                        // Assign Deadline Date
+                        string temp = taskReader["completeByDate"].ToString();
+                        int[] date = splitStringDate(temp);
+                        DateTime completeBy = new DateTime(date[2], date[1], date[0]);
 
-                    //
-                    // Create Wedding
-                    //
-                    int weddId = Convert.ToInt32(taskReader["weddingID_FK"].ToString());
-                    Wedding wedding = getWeddingDetails(weddId);
+                        //
+                        // Create Wedding Planner
+                        //
+                        int staffId = Convert.ToInt32(taskReader["staffOnJob_FK"].ToString());
+                        Staff weddingPlanner = getStaffDetails(staffId);
 
-                    //
-                    //  Make Actual Task
-                    //
-                    t = new Support_Classes.Task(
-                        taskname, descr, prior, completeBy, weddingPlanner, wedding);
+                        //
+                        // Create Wedding
+                        //
+                        int weddId = Convert.ToInt32(taskReader["weddingID_FK"].ToString());
+                        Wedding wedding = getWeddingDetails(weddId);
 
-                    try
-                    {
-                        t.ID = Convert.ToInt32(taskReader["Id"].ToString());
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.ToString());
-                    }
+                        //
+                        //  Make Actual Task
+                        //
+                        t = new Support_Classes.Task(
+                            taskname, descr, prior, completeBy, weddingPlanner, wedding);
 
-                    // Assign Completion Date, if not null
-                    string actComp = taskReader["actualCompletionDate"].ToString();
+                        try
+                        {
+                            t.ID = Convert.ToInt32(taskReader["Id"].ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                        }
 
-                    if (!(actComp == null) || !(actComp == ""))
-                    {
+                        // Assign Completion Date, if not null
+                        // TODO:  Fix write/read of DateTime.MinValue
+                        string acd = taskReader["actualCompletionDate"].ToString();
+
                         temp = taskReader["actualCompletionDate"].ToString();
                         date = splitStringDate(temp);
-                        t.CompletionDate = new DateTime(date[0], date[1], date[2]);
-                    } 
-                }               
+                        DateTime actComp = new DateTime(date[2], date[1], date[0]);
+                        if ( DateTime.Compare(actComp, DateTime.MinValue) != 0 )
+                        {      
+                            t.CompletionDate = actComp;
+                        }
+                    }
+                }
+                _db.Close();
             }
-            this.closeDb();
             return t;
         }
 
@@ -265,86 +270,90 @@ namespace Assignment3_LHISGroup
          */
         public Support_Classes.Task FindTask(Support_Classes.Task task)
         {
-            this.openDb();
-
-            string query = @"SELECT * FROM Task ";
-            query += @"WHERE name='@name' AND completeByDate='@completeByDate' AND staffOnJob_FK=@staffOnJob;";
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            
-            myCommand.Parameters.AddWithValue("@name", task.TaskName);
-            myCommand.Parameters.AddWithValue("@completeByDate", task.TaskName);            
-            
-            int staffID = getStaffId(task.AssignedTo);
-            if (staffID == -1) throw new Exception("Staff Member Not Found in Staff Table");         
-            myCommand.Parameters.AddWithValue("@staffOnJob", staffID);
-
-            SqlDataReader taskReader = myCommand.ExecuteReader();
-
             Support_Classes.Task t = new Support_Classes.Task();
-            while (taskReader.Read())  
+
+            using(SqlConnection _db = new SqlConnection(connStr))
             {
-                string taskname = taskReader["name"].ToString();
-                string descr = taskReader["description"].ToString();
-                string pr = taskReader["priority"].ToString();
+                _db.Open();
 
-                // Assign Priority
-                Support_Classes.Task.Priority prior = Support_Classes.Task.Priority.low;
-                if (pr == Support_Classes.Task.Priority.med.ToString())
+                string query = @"SELECT * FROM Task ";
+                query += @"WHERE name=@name AND completeByDate=@completeByDate AND staffOnJob_FK=@staffOnJob;";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+
+                myCommand.Parameters.AddWithValue("@name", task.TaskName);
+                myCommand.Parameters.AddWithValue("@completeByDate", formatDateForDbInput(task.CompleteBy));
+
+                int staffID = getStaffId(task.AssignedTo);
+                if (staffID == -1) throw new Exception("Staff Member Not Found in Staff Table");
+                myCommand.Parameters.AddWithValue("@staffOnJob", staffID);
+
+
+                using (SqlDataReader taskReader = myCommand.ExecuteReader())
                 {
-                    prior = Support_Classes.Task.Priority.med;
+                    while (taskReader.Read())
+                    {
+                        string taskname = taskReader["name"].ToString();
+                        string descr = taskReader["description"].ToString();
+                        string pr = taskReader["priority"].ToString();
+
+                        // Assign Priority
+                        Support_Classes.Task.Priority prior = Support_Classes.Task.Priority.low;
+                        if (pr == Support_Classes.Task.Priority.med.ToString())
+                        {
+                            prior = Support_Classes.Task.Priority.med;
+                        }
+                        else
+                        {
+                            prior = Support_Classes.Task.Priority.high;
+                        }
+
+                        // Assign Deadline Date
+                        string temp = taskReader["completeBy"].ToString();
+                        int[] date = splitStringDate(temp);
+                        DateTime completeBy = new DateTime(date[2], date[1], date[0]);
+
+                        //
+                        // Create Wedding Planner
+                        //
+                        int staffId = Convert.ToInt32(taskReader["staffOnJob_FK"].ToString());
+                        Staff weddingPlanner = getStaffDetails(staffId);
+
+
+                        //
+                        // Create Wedding
+                        //
+                        int weddId = Convert.ToInt32(taskReader["weddingID_FK"].ToString());
+                        Wedding wedding = getWeddingDetails(weddId);
+
+
+                        //
+                        //  Make Actual Task
+                        //
+                        t = new Support_Classes.Task(
+                            taskname, descr, prior, completeBy, weddingPlanner, wedding);
+
+                        try
+                        {
+                            t.ID = Convert.ToInt32(taskReader["Id"].ToString());
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                        }
+
+                        // Assign Completion Date, if not null
+                        string actComp = taskReader["actualCompletionDate"].ToString();
+
+                        if (!(actComp == null) || !(actComp == ""))
+                        {
+                            temp = taskReader["actualCompletionDate"].ToString();
+                            date = splitStringDate(temp);
+                            t.CompletionDate = new DateTime(date[0], date[1], date[2]);
+                        }
+                    }
                 }
-                else
-                {
-                    prior = Support_Classes.Task.Priority.high;
-                }
-
-                // Assign Deadline Date
-                string temp = taskReader["completeBy"].ToString();
-                int[] date = splitStringDate(temp);
-                DateTime completeBy = new DateTime(date[0], date[1], date[2]);
-
-                //
-                // Create Wedding Planner
-                //
-                int staffId = Convert.ToInt32(taskReader["staffOnJob_FK"].ToString());
-                Staff weddingPlanner = getStaffDetails(staffId);
-                
-
-                //
-                // Create Wedding
-                //
-                int weddId = Convert.ToInt32(taskReader["weddingID_FK"].ToString());
-                Wedding wedding = getWeddingDetails(weddId);
-
-
-                //
-                //  Make Actual Task
-                //
-                t = new Support_Classes.Task(
-                    taskname, descr, prior, completeBy, weddingPlanner, wedding);
-
-                try
-                {
-                    t.ID = Convert.ToInt32(taskReader["Id"].ToString());
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-
-                // Assign Completion Date, if not null
-                string actComp = taskReader["actualCompletionDate"].ToString();
-
-                if (!(actComp == null) || !(actComp == ""))
-                {
-                    temp = taskReader["actualCompletionDate"].ToString();
-                    date = splitStringDate(temp);
-                    t.CompletionDate = new DateTime(date[0], date[1], date[2]);
-                }
-            }
-
-            this.closeDb();
-
+                _db.Close();
+            }                
             return t;
         }
 
@@ -874,6 +883,46 @@ namespace Assignment3_LHISGroup
             return false;
         }
 
+
+        /**
+         *   Finds all suppliers matching the given id.
+         *   @Param  name: The supplier id
+         *   returns: A Supplier Object
+         */
+        public Supplier FindSupplier(int id)
+        {
+            Supplier s = new Supplier();
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+
+                string query = "SELECT * FROM Suppliers ";
+                query += "WHERE Id = @id;";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@id", id);
+
+                using (var myReader = myCommand.ExecuteReader())
+                {
+                    while (myReader.Read())
+                    {
+                        string coname = myReader["CompanyName"].ToString();
+                        string address = myReader["Address"].ToString();
+                        string contact = myReader["ContactPerson"].ToString();
+                        string email = myReader["Email"].ToString();
+                        string phone = myReader["PhoneNumber"].ToString();
+                        int credterm = Convert.ToInt32(myReader["CreditTerms"].ToString());
+
+                        s = new Supplier(coname, address, contact, email, phone, credterm);
+                        s.ID = Convert.ToInt32(myReader["Id"].ToString());
+                    }
+                }
+                _db.Close();
+            }
+            return s;
+        }
+
+
         /**
          *   Finds all suppliers matching the given name.
          *   @Param  name: The supplier name to find matches
@@ -881,34 +930,37 @@ namespace Assignment3_LHISGroup
          */
         public List<Supplier> FindSupplier(string name)
         {
-            SqlDataReader myReader = null;
             List<Supplier> returnList = new List<Supplier>();
 
-            string query = "SELECT * FROM Suppliers ";
-            query += "WHERE CompanyName = @name;";
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@name", name);
-
-            this.openDb();
-
-            myReader = myCommand.ExecuteReader();
-            
-            Supplier s = new Supplier();
-            while (myReader.Read())
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                string coname = myReader["CompanyName"].ToString();
-                string address = myReader["Address"].ToString();
-                string contact = myReader["ContactPerson"].ToString();
-                string email = myReader["Email"].ToString();
-                string phone = myReader["PhoneNumber"].ToString();
-                int credterm = Convert.ToInt32(myReader["CreditTerms"].ToString());
-                Console.WriteLine("TESTING: " + coname);
-                s = new Supplier(coname, address, contact, email, phone, credterm);
-                returnList.Add(s);
-            }
-                     
+                _db.Open();
 
-            this.closeDb();
+                string query = "SELECT * FROM Suppliers ";
+                query += "WHERE CompanyName LIKE @name;";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@name", "%" + name + "%");
+
+                using (var myReader = myCommand.ExecuteReader() )
+                {
+                    Supplier s = new Supplier();
+                    while (myReader.Read())
+                    {
+                        string coname = myReader["CompanyName"].ToString();
+                        string address = myReader["Address"].ToString();
+                        string contact = myReader["ContactPerson"].ToString();
+                        string email = myReader["Email"].ToString();
+                        string phone = myReader["PhoneNumber"].ToString();
+                        int credterm = Convert.ToInt32(myReader["CreditTerms"].ToString());
+
+                        s = new Supplier(coname, address, contact, email, phone, credterm);
+                        s.ID = Convert.ToInt32(myReader["Id"].ToString());
+
+                        returnList.Add(s);
+                    }
+                }
+                _db.Close();
+            }
 
             return returnList;
         }

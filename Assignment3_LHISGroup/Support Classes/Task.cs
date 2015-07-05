@@ -82,11 +82,11 @@ namespace Assignment3_LHISGroup.Support_Classes
         }
 
         /**
-         *    Need to test if equal to MinValue
+         *    Have to test whether returns DateTime.MinValue at user end.
          */
         public Nullable<DateTime> CompletionDate
         {
-            get { return completionDate; }           
+            get { return completionDate; }
             set { completionDate = value; }
         }
 
@@ -104,11 +104,16 @@ namespace Assignment3_LHISGroup.Support_Classes
 
         public override string ToString()
         {
-            string res = "===Task==========\n";
-            res += ("[task]" + taskName + " [desc]" + description + " [priority]" + priority.ToString() +
-                " [completeBy]" + completeByDate.ToShortDateString() +
-                " [competionDate]" + this.CompletionDate + " [assignedTo]" + assignedTo.FirstName +
-                " " + assignedTo.Surname + " [wedding]" + wedding.Title);
+            string res = "";
+            try
+            {
+                res += "===Task==========\n";
+                res += ("[task]" + taskName + " [desc]" + description + " [priority]" + priority.ToString() +
+                    " [completeBy]" + completeByDate.ToShortDateString() +
+                    " [competionDate]" + completionDate + " [assignedTo]" + assignedTo.FirstName +
+                    " " + assignedTo.Surname + " [wedding]" + wedding.Title);
+            }
+            catch (Exception) { }
 
             return res;
         }
