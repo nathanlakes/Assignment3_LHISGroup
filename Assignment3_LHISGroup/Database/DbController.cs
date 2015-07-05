@@ -1170,42 +1170,44 @@ namespace Assignment3_LHISGroup
         {
             List<Staff> returnList = new List<Staff>();
 
-            this.openDb();
-
-            SqlDataReader myReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT * FROM Staff;", _db);
-
-            myReader = myCommand.ExecuteReader();
-            
-
-            while (myReader.Read())
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                string firstname = myReader["firstname"].ToString();
-                string surname = myReader["surname"].ToString();
-                string email = myReader["email"].ToString();
-                string phone = myReader["phone"].ToString();
-                string notes = myReader["notes"].ToString();
-                string status = myReader["status"].ToString();
+                _db.Open();
+                SqlCommand myCommand = new SqlCommand("SELECT * FROM Staff;", _db);
 
-                Staff.Active stat = Staff.Active.inactive;
-                if (Staff.Active.active.ToString() == status)
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
                 {
-                    stat = Staff.Active.active;
-                }
+                    while (myReader.Read())
+                    {
+                        string firstname = myReader["firstname"].ToString();
+                        string surname = myReader["surname"].ToString();
+                        string email = myReader["email"].ToString();
+                        string phone = myReader["phone"].ToString();
+                        string notes = myReader["notes"].ToString();
+                        string status = myReader["status"].ToString();
 
-                Staff s = new Staff(firstname, surname, email, phone, notes, stat);
-                try
-                {
-                    s.ID = Convert.ToInt32(myReader["Id"].ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+                        Staff.Active stat = Staff.Active.inactive;
+                        if (Staff.Active.active.ToString() == status)
+                        {
+                            stat = Staff.Active.active;
+                        }
 
-                returnList.Add(s);
+                        Staff s = new Staff(firstname, surname, email, phone, notes, stat);
+                        try
+                        {
+                            s.ID = Convert.ToInt32(myReader["Id"].ToString());
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.ToString());
+                        }
+
+                        returnList.Add(s);
+                    }
+                }
+                _db.Close();
             }
-            this.closeDb();
+
             return returnList;
         }
 

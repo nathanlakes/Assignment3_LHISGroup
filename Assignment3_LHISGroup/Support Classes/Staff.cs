@@ -85,5 +85,14 @@ namespace Assignment3_LHISGroup.Support_Classes
             else return "active";
         }
 
+        public override string ToString()
+        {
+            string res = "===Staff=============\n";
+            res += ("[fn]" + firstname + " [sn]" + surname + " [email]" + email + " [phone]" + phone +
+                " [notes]" + notes + " [active]" + active.ToString());
+
+            return res;
+        }
+
     }
 }

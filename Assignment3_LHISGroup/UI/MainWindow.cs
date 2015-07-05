@@ -121,13 +121,16 @@ namespace Assignment3_LHISGroup
 
         private void nathanDebug()
         {
+            //
+            // Test Add
+            //
             Supplier flowers = new Supplier("Flowers Are Us", "21 Louloudi St", "Glenda Smithe",
                 "glenda@flowersrus.com.au", "08 8335 4121", 30);
 
             db.AddSupplier(flowers);
 
 
-            Staff nate = new Staff("Nathan", "Lakes", "nate@weddingsRUs.com", "0401745241", "Bitter and Divorced", 
+            Staff nate = new Staff("Nathan", "Lakes", "nate@weddingsRUs.com", "0401745241", "Bitter and Divorced",
                 Staff.Active.active);
 
             db.AddStaff(nate);
@@ -152,9 +155,9 @@ namespace Assignment3_LHISGroup
             }
             catch (Exception e)
             {
-                MessageBox.Show("AddWedding(Wedding) >> " + e.ToString() );
+                MessageBox.Show("AddWedding(Wedding) >> " + e.ToString());
             }
-            
+
 
             DateTime completeBy = new DateTime(2015, 12, 18);
 
@@ -170,14 +173,28 @@ namespace Assignment3_LHISGroup
                 MessageBox.Show("AddTask(Task) >> " + e.ToString());
             }
 
+            //
             // Test Get Alls
-            var res = db.GetAllClients();
-            string output = "";
-            foreach (var v in res)
+            //
             {
-                output += v.ToString() + "\n";
+                var res = db.GetAllClients();
+                string output = "";
+                foreach (var v in res)
+                {
+                    output += v.ToString() + "\n";
+                }
+                MessageBox.Show(output);
             }
-            MessageBox.Show(output);
+
+            {
+                var res = db.GetAllStaff();
+                var output = "";
+                foreach (var v in res)
+                {
+                    output += v.ToString() + "\n";
+                }
+                MessageBox.Show(output);
+            }
 
         }
 
