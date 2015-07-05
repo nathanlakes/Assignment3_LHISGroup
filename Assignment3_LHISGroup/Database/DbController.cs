@@ -875,27 +875,27 @@ namespace Assignment3_LHISGroup
         public bool UpdateSupplier(int id, Supplier s)
         {
 
-            string query = @"UPDATE Suppliers ";
-            query += @"SET CompanyName='@companyname', Address='@address', ContactPerson='@contactPerson', ";
-            query += @"Email='@email', PhoneNumber='@phonenumber', CreditTerms=@creditterms ";
-            query += @"WHERE Id=@id;";
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                string query = @"UPDATE Suppliers ";
+                query += @"SET CompanyName=@companyname, Address=@address, ContactPerson=@contactPerson, ";
+                query += @"Email=@email, PhoneNumber=@phonenumber, CreditTerms=@creditterms ";
+                query += @"WHERE Id=@id;";
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@companyname", s.CompanyName);
-            myCommand.Parameters.AddWithValue("@address", s.Address);
-            myCommand.Parameters.AddWithValue("@contactPerson", s.ContactPerson);
-            myCommand.Parameters.AddWithValue("@email", s.Email);
-            myCommand.Parameters.AddWithValue("@phonenumber", s.PhoneNumber);
-            myCommand.Parameters.AddWithValue("@creditterms", s.CreditTerms);
-            myCommand.Parameters.AddWithValue("@id", id);
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@companyname", s.CompanyName);
+                myCommand.Parameters.AddWithValue("@address", s.Address);
+                myCommand.Parameters.AddWithValue("@contactPerson", s.ContactPerson);
+                myCommand.Parameters.AddWithValue("@email", s.Email);
+                myCommand.Parameters.AddWithValue("@phonenumber", s.PhoneNumber);
+                myCommand.Parameters.AddWithValue("@creditterms", s.CreditTerms);
+                myCommand.Parameters.AddWithValue("@id", id);
 
-            int res = 0;
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();
-            this.closeDb();
-
-            if (res == 1) return true;
-            return false;
+                _db.Open();
+                myCommand.ExecuteNonQuery();
+                _db.Close();
+            }                     
+            return true;
         }
 
 
@@ -916,6 +916,45 @@ namespace Assignment3_LHISGroup
                 query += "WHERE Id = @id;";
                 SqlCommand myCommand = new SqlCommand(query, _db);
                 myCommand.Parameters.AddWithValue("@id", id);
+
+                using (var myReader = myCommand.ExecuteReader())
+                {
+                    while (myReader.Read())
+                    {
+                        string coname = myReader["CompanyName"].ToString();
+                        string address = myReader["Address"].ToString();
+                        string contact = myReader["ContactPerson"].ToString();
+                        string email = myReader["Email"].ToString();
+                        string phone = myReader["PhoneNumber"].ToString();
+                        int credterm = Convert.ToInt32(myReader["CreditTerms"].ToString());
+
+                        s = new Supplier(coname, address, contact, email, phone, credterm);
+                        s.ID = Convert.ToInt32(myReader["Id"].ToString());
+                    }
+                }
+                _db.Close();
+            }
+            return s;
+        }
+
+        /**
+         *   Finds all suppliers matching the given Supplier.
+         *   @Param  s: Supplier
+         *   returns: The Corresponding Supplier
+         */
+        public Supplier FindSupplier(Supplier find)
+        {
+            Supplier s = new Supplier();
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+
+                string query = "SELECT * FROM Suppliers ";
+                query += "WHERE CompanyName=@coname AND Email=@email";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@coname", find.CompanyName);
+                myCommand.Parameters.AddWithValue("@email", find.Email);
 
                 using (var myReader = myCommand.ExecuteReader())
                 {
@@ -1502,6 +1541,39 @@ namespace Assignment3_LHISGroup
             
             return id;
         }
+
+        /**
+         *   Checks the Supplier table and returns the Supplier ID number if they exist.
+         *   Returns -1 if the staff member does not exist.
+         */
+        public int getSupplierId(Supplier s)
+        {
+            int id = -1;
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+
+                string query = @"SELECT id FROM Suppliers WHERE CompanyName=@coname AND Email=@email";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@coname", s.CompanyName);
+                myCommand.Parameters.AddWithValue("@email", s.Email);
+
+
+                using (var myReader = myCommand.ExecuteReader())
+                {
+                    while (myReader.Read())
+                    {
+                        id = Convert.ToInt32(myReader["Id"].ToString());
+                    }
+                }
+
+                _db.Close();
+            }
+
+            return id;
+        }
+
 
         /**
          *   Checks the Task table and returns the Task Id number if it exists.

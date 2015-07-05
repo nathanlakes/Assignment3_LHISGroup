@@ -258,6 +258,9 @@ namespace Assignment3_LHISGroup
 
                 Supplier s2 = db.FindSupplier(2);
                 //MessageBox.Show(s2.ToString(), "Supplier #2 is:");
+
+                Supplier s3 = db.FindSupplier(flowers);
+                //MessageBox.Show(s3.ToString(), "Supplier 'flowers' is:");
             }
 
             //
@@ -325,8 +328,9 @@ namespace Assignment3_LHISGroup
 
                 //MessageBox.Show(db.FindTask(6).ToString(), "UPDATED TASK");
 
-
+                //
                 // Update Person on Task.
+                //
                 Staff jim = new Staff("Jim", "Fish", "jfish@weddrus.com", "0883354545", "Pagan Weddings",
                     Staff.Active.inactive);
 
@@ -347,7 +351,7 @@ namespace Assignment3_LHISGroup
                 temp.Surname = "Harlson";
                 temp.EngagedTo_sn = "marsh";
                 db.UpdateClient(db.getClientId(wendy), temp);
-                MessageBox.Show(db.FindClient(temp).ToString(), "Has Wendy been updated?");
+                //MessageBox.Show(db.FindClient(temp).ToString(), "Has Wendy been updated?");
             }
 
 
@@ -359,7 +363,19 @@ namespace Assignment3_LHISGroup
                 wedd.Title = "Wedding of Some People";
                 wedd.EventDate = new DateTime(2017, 12, 12);
                 db.UpdateWedding(db.getWeddingId(w), wedd);
-                MessageBox.Show(db.FindWedding(wedd).ToString(), "Have Wedding Details been changed?");
+                //MessageBox.Show(db.FindWedding(wedd).ToString(), "Have Wedding Details been changed?");
+
+            }
+
+            //
+            //   Update Supplier
+            //
+            {
+                Supplier supp = db.FindSupplier(flowers);
+                supp.CompanyName = "Flowers By Irene";
+                db.UpdateSupplier(db.getSupplierId(flowers), supp);
+                MessageBox.Show(db.FindSupplier(supp).ToString(), "Have Supplier Details been changed?");
+
 
             }
         }
