@@ -642,12 +642,12 @@ namespace Assignment3_LHISGroup
                         // Generate DateTime for start date.
                         string temp = myReader["startDate"].ToString();
                         int[] dateArray = splitStringDate(temp);
-                        DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+                        DateTime startDate = new DateTime(dateArray[2], dateArray[1], dateArray[0]);
 
                         // Generate DateTime for event date.
                         temp = myReader["eventDate"].ToString();
                         dateArray = splitStringDate(temp);
-                        DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+                        DateTime eventDate = new DateTime(dateArray[2], dateArray[1], dateArray[0]);
 
                         // Create Staff Object
                         int wedPlanId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
@@ -1865,7 +1865,7 @@ namespace Assignment3_LHISGroup
         public int[] splitStringDate(string d)
         {
             string trimDate = Regex.Match(d, "^[^ ]+").Value;
-            char[] delimChars = { '/', '\\', };
+            char[] delimChars = { '/', '\\' };
             string[] date = new string[2];
 
             date = trimDate.Split(delimChars);

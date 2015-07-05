@@ -291,7 +291,7 @@ namespace Assignment3_LHISGroup
             //
             {
                 Wedding wedd = db.FindWedding(1);
-                //MessageBox.Show(wedd.ToString(), "Find Wedding #1");
+                MessageBox.Show(wedd.ToString(), "Find Wedding #1");
 
                 Wedding wedd1 = db.FindWedding(w);
                 //MessageBox.Show(wedd1.ToString(), "Find on Wedding obj 'w'");
@@ -385,7 +385,7 @@ namespace Assignment3_LHISGroup
                 s.FirstName = "Nathaniel";
                 s.Surname = "Theodoroulakis";
                 db.UpdateStaff(db.getStaffId(nate), s);
-                MessageBox.Show(db.FindStaff(s).ToString(), "Have Staff Details been changed?");
+                //MessageBox.Show(db.FindStaff(s).ToString(), "Have Staff Details been changed?");
             }
         }
 
