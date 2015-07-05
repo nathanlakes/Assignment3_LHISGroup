@@ -34,6 +34,7 @@
             this.Tasks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaskCompleteBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ActiveStaffListLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TasksView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,14 +43,14 @@
             this.StaffListBox.FormattingEnabled = true;
             this.StaffListBox.Location = new System.Drawing.Point(12, 44);
             this.StaffListBox.Name = "StaffListBox";
-            this.StaffListBox.Size = new System.Drawing.Size(175, 134);
+            this.StaffListBox.Size = new System.Drawing.Size(121, 381);
             this.StaffListBox.TabIndex = 0;
             this.StaffListBox.SelectedIndexChanged += new System.EventHandler(this.StaffListBox_SelectedIndexChanged);
             // 
             // StaffListLabel
             // 
             this.StaffListLabel.AutoSize = true;
-            this.StaffListLabel.Location = new System.Drawing.Point(13, 25);
+            this.StaffListLabel.Location = new System.Drawing.Point(32, 28);
             this.StaffListLabel.Name = "StaffListLabel";
             this.StaffListLabel.Size = new System.Drawing.Size(81, 13);
             this.StaffListLabel.TabIndex = 1;
@@ -57,14 +58,17 @@
             // 
             // TasksView
             // 
-            this.TasksView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TasksView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.TasksView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.TasksView.ColumnHeadersHeight = 20;
             this.TasksView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tasks,
             this.Description,
             this.TaskCompleteBy});
-            this.TasksView.Location = new System.Drawing.Point(251, 44);
+            this.TasksView.Location = new System.Drawing.Point(168, 44);
             this.TasksView.Name = "TasksView";
-            this.TasksView.Size = new System.Drawing.Size(378, 347);
+            this.TasksView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TasksView.Size = new System.Drawing.Size(685, 377);
             this.TasksView.TabIndex = 2;
             this.TasksView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TasksView_CellContentClick);
             // 
@@ -73,30 +77,41 @@
             this.Tasks.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Tasks.HeaderText = "Tasks Required";
             this.Tasks.Name = "Tasks";
-            this.Tasks.Width = 98;
+            this.Tasks.Width = 107;
             // 
             // Description
             // 
             this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Description.HeaderText = "Task Description";
             this.Description.Name = "Description";
-            this.Description.Width = 103;
+            this.Description.Width = 112;
             // 
             // TaskCompleteBy
             // 
             this.TaskCompleteBy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TaskCompleteBy.HeaderText = "Task Completion Date";
             this.TaskCompleteBy.Name = "TaskCompleteBy";
-            this.TaskCompleteBy.Width = 125;
+            this.TaskCompleteBy.Width = 137;
+            // 
+            // ActiveStaffListLabel
+            // 
+            this.ActiveStaffListLabel.AutoSize = true;
+            this.ActiveStaffListLabel.Location = new System.Drawing.Point(439, 28);
+            this.ActiveStaffListLabel.Name = "ActiveStaffListLabel";
+            this.ActiveStaffListLabel.Size = new System.Drawing.Size(81, 13);
+            this.ActiveStaffListLabel.TabIndex = 3;
+            this.ActiveStaffListLabel.Text = "Active Staff List";
             // 
             // StaffReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 433);
+            this.ClientSize = new System.Drawing.Size(880, 451);
+            this.Controls.Add(this.ActiveStaffListLabel);
             this.Controls.Add(this.TasksView);
             this.Controls.Add(this.StaffListLabel);
             this.Controls.Add(this.StaffListBox);
+            this.DoubleBuffered = true;
             this.Name = "StaffReport";
             this.Text = "StaffReport";
             this.Load += new System.EventHandler(this.StaffReport_Load);
@@ -114,5 +129,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tasks;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn TaskCompleteBy;
+        private System.Windows.Forms.Label ActiveStaffListLabel;
     }
 }
