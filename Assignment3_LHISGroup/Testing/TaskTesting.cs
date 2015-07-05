@@ -41,7 +41,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         {
             Wedding testWedding = new Wedding("Gay Rites", "notacakewalk", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22));
             Task testTask = new Task("testing", "does things", testPrio, new DateTime(), testStaff, testWedding);
-            DateTime result = testTask.CompletionDate;
+            //DateTime result = testTask.CompletionDate;
         }
 
         [Test]

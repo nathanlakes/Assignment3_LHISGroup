@@ -178,7 +178,7 @@ namespace Assignment3_LHISGroup
                     file.Write("\"" + t.CompleteBy.ToShortDateString() + "\",");
                     try
                     {
-                        file.Write("\"" + t.CompletionDate.ToShortDateString() + "\",");
+                        file.Write("\"" + t.CompletionDate.Value.ToShortDateString() + "\",");
                     } catch(Exception)
                     {
                         file.Write("\"\",");

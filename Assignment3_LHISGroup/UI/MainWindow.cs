@@ -43,7 +43,8 @@ namespace Assignment3_LHISGroup
         {
             InitializeComponent();
             db = new DbController();        // Creates a DB controller to be used by the UI classes. 
-            
+            this.nathanDebug();                  // Code to debug Db in dev. cycle.
+
             // create windows and hide them for later use
             // this saves on CPU by not recreating them every time they are needed
             EventReportWindow = new UI.EventReportWindow(this, db);
@@ -96,9 +97,8 @@ namespace Assignment3_LHISGroup
 
 
 
-            this.nathanDebug();                  // Code to debug Db in dev. cycle.
 
-            this.danielTest();   // Code for Daniel to test reports
+            //this.danielTest();   // Code for Daniel to test reports
         }
 
         private void louiseTestDataPopulate()
@@ -121,25 +121,49 @@ namespace Assignment3_LHISGroup
 
         private void nathanDebug()
         {
+            
+            Staff nate = new Staff("Nathan", "Lakes", "nate@weddingsRUs.com", "0401745241", "Bitter and Divorced", 
+                Staff.Active.active);
 
-            //Staff s1 = new Staff("Louise", "Lawrence", "llawrence@wedplan.com", "8321254", "cant work sundays",
-            //    Staff.Active.active);
+            db.AddStaff(nate);
 
-            //Support_Classes.Task t1 = new Support_Classes.Task("Set table at venue", "Set 12 tables",
-            //    Support_Classes.Task.Priority.high, new DateTime(2015, 12, 12), s1);
+            Client wendy = new Client("Wendy", "Testaburger", "Wendy Testaburger", "100 Smith Street", "040444555",
+                "0883321454", "wendy@wendymail.com", "Stan", "Marsh");
 
-            //db.ShowData();   // Test the select statement. 
+            Client stan = new Client("Stan", "Marsh", "Kyle", "101 Smith Street", "0404533222",
+                "0883324454", "stan@stanmail.com", "Wendy", "Testaburger");
 
-            //try
-            //{
-            //    bool result = db.AddStaff(s1);
-            //    db.AddTask(t1);
-            //    Console.WriteLine("s1 Added to Staff?  " + result);
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine(e.ToString());
-            //}    
+            db.AddClient(wendy);
+            db.AddClient(stan);
+
+            DateTime start = new DateTime(2015, 11, 10);
+            DateTime eventDate = new DateTime(2015, 12, 20);
+
+            Wedding w = new Wedding("Wedding of Stan and Wendy", "Beach theme", stan, wendy, nate, start, eventDate);
+
+            try
+            {
+                db.AddWedding(w);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("AddWedding(Wedding) >> " + e.ToString() );
+            }
+            
+
+            DateTime completeBy = new DateTime(2015, 12, 18);
+
+            Support_Classes.Task t1 = new Support_Classes.Task("Set Tables", "Add table cloth to 20 tables",
+                Support_Classes.Task.Priority.high, completeBy, nate, w);
+
+            try
+            {
+                db.AddTask(t1);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("AddTask(Task) >> " + e.ToString());
+            }
 
         }
 

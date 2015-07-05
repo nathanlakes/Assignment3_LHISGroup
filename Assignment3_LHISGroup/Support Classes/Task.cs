@@ -15,7 +15,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         private string description;
         private Priority priority;
         private DateTime completeByDate;
-        private DateTime completionDate;
+        private Nullable<DateTime> completionDate = null;
         private Staff assignedTo;
         private Wedding wedding;
 
@@ -82,37 +82,12 @@ namespace Assignment3_LHISGroup.Support_Classes
         }
 
         /**
-         *    TODO: Possible conflict, as DateTime does not allow null 
-         *    cannot test if not been set like Java. 
-         *    Find work around, if needed. Existing method may well perform
-         *    sufficiently, although it's not pretty.
-         *    -- Nathan
+         *    Need to test if equal to MinValue
          */
-        public DateTime CompletionDate
+        public Nullable<DateTime> CompletionDate
         {
-            get 
-            {   
-                int v = DateTime.Compare(new DateTime(), completionDate);
-                if (v == 0)
-                {
-                    throw new Exception("No Completion Date has been set");
-                }
-                return completionDate.Date; 
-            }
-            set
-            {
-                DateTime today = DateTime.Now.Date;
-
-                int v = DateTime.Compare(value.Date, today);
-                if (v < 0)
-                {
-                    throw new Exception("Cannot Mark Job as completed earlier than today.");
-                }
-                else
-                {
-                    completionDate = value.Date;
-                }
-            }
+            get { return completionDate; }           
+            set { completionDate = value; }
         }
 
         public Staff AssignedTo

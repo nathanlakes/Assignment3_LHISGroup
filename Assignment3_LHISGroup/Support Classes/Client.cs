@@ -25,12 +25,12 @@ namespace Assignment3_LHISGroup.Support_Classes
             surname = null;
         }
 
-        public Client(string name, string surname, string contact, string address, string mobile,
+        public Client(string name, string surname, string contactPerson, string address, string mobile,
             string homeph, string email, string engagedTo_fn, string engagedTo_sn)
         {
             this.firstname = name;
             this.surname = surname;
-            this.contactPerson = contact;
+            this.contactPerson = contactPerson;
             this.address = address;
             this.mobile = mobile;
             this.homePhone = homeph;

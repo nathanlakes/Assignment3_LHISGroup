@@ -19,20 +19,20 @@ namespace Assignment3_LHISGroup
     public class DbController
     {
 
-        SqlConnection _db;
+        SqlConnection _db;   // Remove, use the using SqlConn method
         string connStr = "Data Source=(LocalDB)\\v11.0;" +
                     "AttachDbFilename=|DataDirectory|\\Database\\Model.mdf;" +
                     "Integrated Security=True";
 
         public DbController()
         {
-            _db = new SqlConnection(connStr);
+            //_db = new SqlConnection(connStr);
         }
 
         public DbController(string myConnection)
         {
             connStr = myConnection;
-            _db = new SqlConnection(connStr);
+            //_db = new SqlConnection(connStr);
         }
 
         /**
@@ -42,53 +42,41 @@ namespace Assignment3_LHISGroup
          */
         public bool AddTask(Support_Classes.Task t)
         {
-
-            // Check that staff exists in the database. Phone number used for cases where
-            // Staff with the same name work together. They won't have the same phone ext. 
-            // though. 
-            Staff s = t.AssignedTo;
-            int staffId = getStaffId(s);
-            if (staffId == -1) throw new Exception("Staff must exist in Db.Staff, before being assigned to a task:");
-
-            try
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                this.openDb();
+                _db.Open();
+
+                // Check that staff exists in the database. Phone number used for cases where
+                // Staff with the same name work together. They won't have the same phone ext. 
+                // though. 
+                Staff s = t.AssignedTo;
+                int staffId = getStaffId(s);
+                if (staffId == -1) throw new Exception("Staff must exist in Table \'Staff\', before being assigned to a task:");
+
+                
+                String query = @"INSERT INTO Task (name, description, priority, completeByDate, ";
+                query += "actualCompletionDate, staffOnJob_FK, weddingID_FK)";
+                query += @" VALUES(@taskname, @description, @priority, @completeByDate, @actualComplete,";
+                query += @" @staffOnJob, @weddingID);";
+
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@taskname", t.TaskName);
+                myCommand.Parameters.AddWithValue("@description", t.Description);
+                myCommand.Parameters.AddWithValue("@priority", t.TaskPriority.ToString());
+                myCommand.Parameters.AddWithValue("@completeByDate", formatDateForDbInput(t.CompleteBy));                
+                myCommand.Parameters.AddWithValue("@actualComplete", formatDateForDbInput(t.CompletionDate) );
+                myCommand.Parameters.AddWithValue("@staffOnJob", staffId);
+
+                int weddId = getWeddingId( t.Wedding );
+                if (weddId == -1) throw new Exception("Task must be associated to an existing Wedding.");
+                myCommand.Parameters.AddWithValue("@weddingID", weddId);
+
+                myCommand.ExecuteNonQuery();
+
+                _db.Close();
             }
-            catch (Exception) { }
 
-            String query = @"INSERT INTO Task(name, description, priority, completeByDate, ";
-            query += "actualCompletionDate, staffOnJob_FK, weddingID_FK)";
-            query += @" VALUES(@taskname, @description, @priority, @completeByDate, @actualComplete,";
-            query += @" @staffOnJob, @weddingID);";
-
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@taskname", t.TaskName);
-            myCommand.Parameters.AddWithValue("@description", t.Description);
-            myCommand.Parameters.AddWithValue("@priority", t.TaskPriority.ToString());
-            myCommand.Parameters.AddWithValue("@completeByDate", formatDateForDbInput(t.CompleteBy));
-            try
-            {
-                DateTime compDate = t.CompletionDate;
-                myCommand.Parameters.AddWithValue("@actualComplete", formatDateForDbInput(t.CompletionDate));
-            }
-            catch (Exception)
-            {
-                myCommand.Parameters.AddWithValue("@actualComplete", null);
-            }
-
-            myCommand.Parameters.AddWithValue("@staffOnJob", staffId);
-
-            int weddId = getWeddingId(t.Wedding);
-            if (weddId == -1) throw new Exception("Task must be associated to an existing Wedding.");
-
-            myCommand.Parameters.AddWithValue("@weddingID", weddId);
-
-            int res = myCommand.ExecuteNonQuery();
-
-            this.closeDb();
-
-            if (res == 1) return true;
-            return false;
+            return true;
         }
 
 
@@ -113,10 +101,10 @@ namespace Assignment3_LHISGroup
             myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
             myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString());
 
-            try
+            try  /// NL TO FIX!!!!
             {
-                string date = t.CompletionDate.ToShortDateString();
-                myCommand.Parameters.AddWithValue("@actualCompDate", formatDateForDbInput(date));
+                //string date = t.CompletionDate.ToShortDateString();
+                //myCommand.Parameters.AddWithValue("@actualCompDate", formatDateForDbInput(date));
             }
             catch (Exception)
             {
@@ -366,32 +354,32 @@ namespace Assignment3_LHISGroup
          */
         public bool AddClient(Client c)
         {
-            this.openDb();
-            String query = @"INSERT into Client (firstname, surname, contactPerson, address, ";
-            query += @"mobile, homePhone, email, engagedTo_firstname, engagedTo_surname)";
-            query += @" VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, ";
-            query += @"@email, @engFn, @engSn);";
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
+                String query = @"INSERT into Client (firstname, surname, contactPerson, address, ";
+                query += @"mobile, homePhone, email, engagedTo_firstname, engagedTo_surname)";
+                query += @" VALUES (@firstname, @surname, @contactPerson, @address, @mobile, @homePhone, ";
+                query += @"@email, @engFn, @engSn);";
 
-            myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
-            myCommand.Parameters.AddWithValue("@surname", c.Surname);
-            myCommand.Parameters.AddWithValue("@contactPerson", c.ContactPerson);
-            myCommand.Parameters.AddWithValue("@address", c.Address);
-            myCommand.Parameters.AddWithValue("@mobile", c.Mobile);
-            myCommand.Parameters.AddWithValue("@homePhone", c.HomePhone);
-            myCommand.Parameters.AddWithValue("@email", c.Email);
-            myCommand.Parameters.AddWithValue("@engFn", c.EngagedTo_fn);
-            myCommand.Parameters.AddWithValue("@engSn", c.EngagedTo_sn);
+                SqlCommand myCommand = new SqlCommand(query, _db);
 
+                myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
+                myCommand.Parameters.AddWithValue("@surname", c.Surname);
+                myCommand.Parameters.AddWithValue("@contactPerson", c.ContactPerson);
+                myCommand.Parameters.AddWithValue("@address", c.Address);
+                myCommand.Parameters.AddWithValue("@mobile", c.Mobile);
+                myCommand.Parameters.AddWithValue("@homePhone", c.HomePhone);
+                myCommand.Parameters.AddWithValue("@email", c.Email);
+                myCommand.Parameters.AddWithValue("@engFn", c.EngagedTo_fn);
+                myCommand.Parameters.AddWithValue("@engSn", c.EngagedTo_sn);
 
-            int res = 0;
-            
-            res = myCommand.ExecuteNonQuery();
-            this.closeDb();
+                myCommand.ExecuteNonQuery();
 
-            if (res == 1) return true;
-            else return false;
+                _db.Close();
+            }
+            return true;
         }
 
         /**
@@ -506,40 +494,46 @@ namespace Assignment3_LHISGroup
          */
         public bool AddWedding(Wedding w)
         {
-            string query = @"INSERT into Wedding ";
-            query += @"(title, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK, description)";
-            query += @"VALUES(@title, @client1, @client2, @startDate, @eventDate, @weddingPlanner, @desc);";
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
+                string query = @"INSERT into Wedding ";
+                query += @"(title, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK, description)";
+                query += @"VALUES(@title, @client1, @client2, @startDate, @eventDate, @weddingPlanner, @desc);";
 
-            myCommand.Parameters.AddWithValue("@title", w.Title);
-            myCommand.Parameters.AddWithValue("@desc", w.Description);
+                SqlCommand myCommand = new SqlCommand(query, _db);
 
+                myCommand.Parameters.AddWithValue("@title", w.Title);
+                myCommand.Parameters.AddWithValue("@desc", w.Description);
 
-            int clientOneFk;
-            int clientTwoFk;
- 
-            clientOneFk = getClientId(w.Client1);
-            if (clientOneFk == -1) throw new Exception("Client must be in database before adding wedding.");
+                //
+                //  Get Client FK details
+                // 
+                int clientOneFk;
+                int clientTwoFk;
 
-            clientTwoFk = getClientId(w.Client2);
-            if (clientTwoFk == -1) throw new Exception("Client must be in database before adding wedding.");
+                clientOneFk = getClientId(w.Client1);
+                if (clientOneFk == -1) throw new Exception("Client must be in database before adding wedding.");
 
-            myCommand.Parameters.AddWithValue("@client1", clientOneFk);
-            myCommand.Parameters.AddWithValue("@client2", clientTwoFk);
-            myCommand.Parameters.AddWithValue("@startDate", formatDateForDbInput(w.StartDate) );
-            myCommand.Parameters.AddWithValue("@eventDate", formatDateForDbInput(w.EventDate) );
-            
-            int wedPlanner = getStaffId(w.WeddingPlanner);
-            if (wedPlanner == -1) throw new Exception("Wedding Planner must exist in Staff Table.");
-            myCommand.Parameters.AddWithValue("@weddingPlanner", wedPlanner);
+                clientTwoFk = getClientId(w.Client2);
+                if (clientTwoFk == -1) throw new Exception("Client must be in database before adding wedding.");
 
-            this.openDb();
-            myCommand.ExecuteNonQuery();
-            this.closeDb();
+                myCommand.Parameters.AddWithValue("@client1", clientOneFk);
+                myCommand.Parameters.AddWithValue("@client2", clientTwoFk);
+                myCommand.Parameters.AddWithValue("@startDate", formatDateForDbInput(w.StartDate));
+                myCommand.Parameters.AddWithValue("@eventDate", formatDateForDbInput(w.EventDate));
+
+                int wedPlanner = getStaffId(w.WeddingPlanner);
+                if (wedPlanner == -1) throw new Exception("Wedding Planner must exist in Staff Table.");
+                myCommand.Parameters.AddWithValue("@weddingPlanner", wedPlanner);
+
+                myCommand.ExecuteNonQuery();
+
+                _db.Close();
+            }
 
             return true;
-
         }
 
         /**
@@ -918,27 +912,27 @@ namespace Assignment3_LHISGroup
 
         public bool AddStaff(Staff s)
         {
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+                String query = @"INSERT into Staff (firstname, surname, email, phone, notes, status)";
+                query += @" VALUES (@_firstname, @_surname, @_email, @_phone, @_notes, @_status);";
 
-            String query = @"INSERT into Staff (firstname, surname, email, phone, notes, status)";
-            query += @" VALUES (@_firstname, @_surname, @_email, @_phone, @_notes, @_status);";
+                SqlCommand myCommand = new SqlCommand(query, _db);
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@_firstname", s.FirstName);
+                myCommand.Parameters.AddWithValue("@_surname", s.Surname);
+                myCommand.Parameters.AddWithValue("@_email", s.Email);
+                myCommand.Parameters.AddWithValue("@_phone", s.Phone);
+                myCommand.Parameters.AddWithValue("@_notes", s.Notes);
+                myCommand.Parameters.AddWithValue("@_status", s.StatusToString());
 
-            myCommand.Parameters.AddWithValue("@_firstname", s.FirstName);
-            myCommand.Parameters.AddWithValue("@_surname", s.Surname);
-            myCommand.Parameters.AddWithValue("@_email", s.Email);
-            myCommand.Parameters.AddWithValue("@_phone", s.Phone);
-            myCommand.Parameters.AddWithValue("@_notes", s.Notes);
-            myCommand.Parameters.AddWithValue("@_status", s.StatusToString());
+                myCommand.ExecuteNonQuery();   // Run the statement.
 
-            int res = 0;
+                _db.Close();
+            }
 
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();   // Run the statement.
-            this.closeDb();           
-
-            if (res == 1) return true;           // Should only update one row.
-            else return false;
+            return true;
         }
 
         /**
@@ -1387,26 +1381,28 @@ namespace Assignment3_LHISGroup
          */
         private int getStaffId(Staff s)
         {
-            string query = @"SELECT id FROM Staff WHERE firstname=@firstname AND surname=@surname";
-            query += @" AND phone=@phone;";
-
-
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
-            myCommand.Parameters.AddWithValue("@surname", s.Surname);
-            myCommand.Parameters.AddWithValue("@phone", s.Phone);
-
-            this.openDb();
             int id = -1;
 
-            using (var myReader = myCommand.ExecuteReader())
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                while (myReader.Read())
+                _db.Open();
+
+                string query = @"SELECT id FROM Staff WHERE firstname=@firstname AND surname=@surname";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
+                myCommand.Parameters.AddWithValue("@surname", s.Surname);
+
+
+                using (var myReader = myCommand.ExecuteReader())
                 {
-                    id = Convert.ToInt32(myReader["Id"].ToString());
+                    while (myReader.Read())
+                    {
+                        id = Convert.ToInt32(myReader["Id"].ToString());
+                    }
                 }
-                this.closeDb();
-            }
+
+                _db.Close();
+            }            
             
             return id;
         }
@@ -1445,59 +1441,75 @@ namespace Assignment3_LHISGroup
          */
         private int getClientId(Client c)
         {
-            this.openDb();
-
-            string query = @"SELECT id FROM Client ";
-            query += "WHERE firstname=@firstname AND surname=@surname;";
-
-            SqlCommand myCommand = new SqlCommand(query, _db);
-
-            myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
-            myCommand.Parameters.AddWithValue("@surname", c.Surname);         
-
             int id = -1;
-            using ( SqlDataReader myReader = myCommand.ExecuteReader() )
+
+            using(SqlConnection _db = new SqlConnection(connStr))
             {
-                while (myReader.Read())
+                _db.Open();
+                
+                string query = @"SELECT id FROM Client ";
+                query += "WHERE firstname=@firstname AND surname=@surname;";
+
+                SqlCommand myCommand = new SqlCommand(query, _db);
+
+                myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
+                myCommand.Parameters.AddWithValue("@surname", c.Surname);
+
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
                 {
-                    try
+                    while (myReader.Read())
                     {
-                        id = Convert.ToInt32(myReader["Id"].ToString());
+                        try
+                        {
+                            id = Convert.ToInt32(myReader["Id"].ToString());
+                        }
+                        catch (Exception e)
+                        {
+                            System.Windows.Forms.MessageBox.Show("getClientId(Client) >> " + e.ToString());
+                        }
                     }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.ToString());
-                    }
-                }                
+                }
+
             }
             
-            this.closeDb();
+            
             return id;
         }
 
         
         private int getWeddingId(Wedding w)
         {
-            string query = @"SELECT Id FROM Wedding WHERE title=@title AND client_1_FK=@client1;";
-            SqlCommand testTask = new SqlCommand(query, _db);
-            testTask.Parameters.AddWithValue("@title", w.Title);
-            testTask.Parameters.AddWithValue("@client1", getClientId(w.Client1));
-
-            this.openDb();
-
-            var myReader = testTask.ExecuteReader();
-            ;
-
             int id = -1;
-            try
+            
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                id = Convert.ToInt32(myReader["Id"].ToString());
+                _db.Open();
+
+                string query = @"SELECT Id FROM Wedding WHERE title=@title AND (";
+                query += @"(client_1_FK=@client1 OR client_2_FK=@client1) OR ";
+                query += @"(client_1_FK=@client2 OR client_2_FK=@client2) )";
+                
+                SqlCommand testTask = new SqlCommand(query, _db);
+                testTask.Parameters.AddWithValue("@title", w.Title);
+                testTask.Parameters.AddWithValue("@client1", getClientId(w.Client1));
+                testTask.Parameters.AddWithValue("@client2", getClientId(w.Client2));
+
+                using ( SqlDataReader myReader = testTask.ExecuteReader() )
+                {
+                    while (myReader.Read())
+                    {
+                        try
+                        {
+                            id = Convert.ToInt32(myReader["Id"].ToString());
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.ToString());
+                        }
+                    }                
+                }
+                _db.Close();
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            this.closeDb();
             return id;
         }
 
@@ -1686,7 +1698,23 @@ namespace Assignment3_LHISGroup
         private string formatDateForDbInput(DateTime dt)
         {
             string format = "yyyy-MM-dd HH:MM:ss";
-            return dt.ToString(format);
+            string d = dt.ToString(format);
+            System.Windows.Forms.MessageBox.Show("Date Conversion:  " + d);
+            return d;
+        }
+
+        private string formatDateForDbInput(Nullable<DateTime> dt)
+        {
+            if (dt != null)
+            {
+                DateTime temp = new DateTime(dt.Value.Year, dt.Value.Month, dt.Value.Day);
+                string format = "yyyy-MM-dd HH:MM:ss";
+                string d = temp.ToString(format);
+                System.Windows.Forms.MessageBox.Show("Date Conversion:  " + d);
+                return d;
+            }
+            return null;
+            
         }
 
         private string formatDateForDbInput(string date)
@@ -1694,7 +1722,9 @@ namespace Assignment3_LHISGroup
             int[] temp = splitStringDate(date);
             DateTime dt = new DateTime(temp[0], temp[1], temp[2]);
             string format = "yyyy-MM-dd HH:MM:ss";
-            return dt.ToString(format);
+            string d = dt.ToString(format);
+            System.Windows.Forms.MessageBox.Show("Date Conversion:  " + d);
+            return d;
         }
 
         /**
@@ -1708,7 +1738,7 @@ namespace Assignment3_LHISGroup
         }
 
 
-        /**
+        /**                                                             
          *   Opens a connection to Database. 
          *   Throws Exceptions when open is called on an already open
          *   SqlConnection or when transaction errors occur.

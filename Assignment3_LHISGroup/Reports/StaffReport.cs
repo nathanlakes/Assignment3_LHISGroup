@@ -93,7 +93,7 @@ namespace Assignment3_LHISGroup.Reports
             {
                 if (task.AssignedTo.ID == curStaff.ID)
                 {
-                    DateTime date = task.CompletionDate;
+                    //DateTime date = task.CompletionDate;
                     assignedTaskList.Add(task);
                 }
             }
