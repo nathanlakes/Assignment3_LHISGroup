@@ -44,8 +44,6 @@ namespace Assignment3_LHISGroup
             InitializeComponent();
             db = new DbController();        // Creates a DB controller to be used by the UI classes. 
             
-            new Database.DbTests();         // Code to debug Db in dev. cycle.
-
             // create windows and hide them for later use
             // this saves on CPU by not recreating them every time they are needed
             EventReportWindow = new UI.EventReportWindow(this, db);
