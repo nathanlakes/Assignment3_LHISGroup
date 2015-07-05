@@ -468,25 +468,27 @@ namespace Assignment3_LHISGroup
         {
             List<Client> returnList = new List<Client>();
 
-            this.openDb();
-            string query = "SELECT * FROM Client WHERE firstname = @fn;";
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@fn", name);
-           
-            using (SqlDataReader myReader = myCommand.ExecuteReader() )
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                Client client = new Client();
-                while (myReader.Read())
+                _db.Open();
+                string query = "SELECT * FROM Client WHERE firstname LIKE @fn OR surname LIKE @fn ";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@fn", "%" + name + "%");
+                
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
                 {
-
-                    client = getClientsDetails(Convert.ToInt32(myReader["Id"].ToString()));
-                    returnList.Add(client);
+                    Client client = new Client();
+                    while (myReader.Read())
+                    {
+                        client = getClientsDetails(Convert.ToInt32(myReader["Id"].ToString()));
+                        returnList.Add(client);
+                    }
                 }
+                _db.Close();
             }
-            
-            this.closeDb(); 
 
             return returnList;
+
         }
 
         /**

@@ -230,8 +230,20 @@ namespace Assignment3_LHISGroup
             //  Test Find by ID
             //
             {
-                Client c = db.FindClient(1);
-                MessageBox.Show(c.ToString());
+                // Find Client ID = 1 (Wendy)
+                Client c1 = db.FindClient(1);
+                MessageBox.Show(c1.ToString(), "Find Wendy?");
+
+                // Find Stan
+                Client c2 = db.FindClient(stan);
+                MessageBox.Show(c2.ToString(), "Find Stan?");
+
+                // Find Stan via partial match
+                List<Client> c3 = db.FindClients("Wen");
+                foreach (var i in c3)
+                {
+                    MessageBox.Show(i.ToString(), "Searching 'Wen', matches:");
+                }
             }
 
 
