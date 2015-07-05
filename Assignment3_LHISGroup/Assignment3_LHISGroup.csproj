@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DbTests.cs" />
     <Compile Include="Reports\CSVWriter.cs" />
     <Compile Include="Database\DbController.cs" />
     <Compile Include="ModelDataSet.Designer.cs">

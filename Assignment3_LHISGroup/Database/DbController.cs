@@ -198,69 +198,76 @@ namespace Assignment3_LHISGroup
                 SqlCommand myCommand = new SqlCommand(query, _db);
                 myCommand.Parameters.AddWithValue("@id", id);
 
-                using (SqlDataReader taskReader = myCommand.ExecuteReader())
+                try
                 {
-                    while (taskReader.Read())
+                    using (SqlDataReader taskReader = myCommand.ExecuteReader())
                     {
-                        string taskname = taskReader["name"].ToString();
-                        string descr = taskReader["description"].ToString();
-                        string pr = taskReader["priority"].ToString();
-
-                        // Assign Priority
-                        Support_Classes.Task.Priority prior = Support_Classes.Task.Priority.low;
-                        if (pr == Support_Classes.Task.Priority.med.ToString())
+                        while (taskReader.Read())
                         {
-                            prior = Support_Classes.Task.Priority.med;
-                        }
-                        else
-                        {
-                            prior = Support_Classes.Task.Priority.high;
-                        }
+                            string taskname = taskReader["name"].ToString();
+                            string descr = taskReader["description"].ToString();
+                            string pr = taskReader["priority"].ToString();
 
-                        // Assign Deadline Date
-                        string temp = taskReader["completeByDate"].ToString();
-                        int[] date = splitStringDate(temp);
-                        DateTime completeBy = new DateTime(date[2], date[1], date[0]);
+                            // Assign Priority
+                            Support_Classes.Task.Priority prior = Support_Classes.Task.Priority.low;
+                            if (pr == Support_Classes.Task.Priority.med.ToString())
+                            {
+                                prior = Support_Classes.Task.Priority.med;
+                            }
+                            else
+                            {
+                                prior = Support_Classes.Task.Priority.high;
+                            }
 
-                        //
-                        // Create Wedding Planner
-                        //
-                        int staffId = Convert.ToInt32(taskReader["staffOnJob_FK"].ToString());
-                        Staff weddingPlanner = getStaffDetails(staffId);
+                            // Assign Deadline Date
+                            string temp = taskReader["completeByDate"].ToString();
+                            int[] date = splitStringDate(temp);
+                            DateTime completeBy = new DateTime(date[2], date[1], date[0]);
 
-                        //
-                        // Create Wedding
-                        //
-                        int weddId = Convert.ToInt32(taskReader["weddingID_FK"].ToString());
-                        Wedding wedding = getWeddingDetails(weddId);
+                            //
+                            // Create Wedding Planner
+                            //
+                            int staffId = Convert.ToInt32(taskReader["staffOnJob_FK"].ToString());
+                            Staff weddingPlanner = getStaffDetails(staffId);
 
-                        //
-                        //  Make Actual Task
-                        //
-                        t = new Support_Classes.Task(
-                            taskname, descr, prior, completeBy, weddingPlanner, wedding);
+                            //
+                            // Create Wedding
+                            //
+                            int weddId = Convert.ToInt32(taskReader["weddingID_FK"].ToString());
+                            Wedding wedding = getWeddingDetails(weddId);
 
-                        try
-                        {
-                            t.ID = Convert.ToInt32(taskReader["Id"].ToString());
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.ToString());
-                        }
+                            //
+                            //  Make Actual Task
+                            //
+                            t = new Support_Classes.Task(
+                                taskname, descr, prior, completeBy, weddingPlanner, wedding);
 
-                        // Assign Completion Date, if not null
-                        // TODO:  Fix write/read of DateTime.MinValue
-                        string acd = taskReader["actualCompletionDate"].ToString();
+                            try
+                            {
+                                t.ID = Convert.ToInt32(taskReader["Id"].ToString());
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
 
-                        temp = taskReader["actualCompletionDate"].ToString();
-                        date = splitStringDate(temp);
-                        DateTime actComp = new DateTime(date[2], date[1], date[0]);
-                        if ( DateTime.Compare(actComp, DateTime.MinValue) != 0 )
-                        {      
-                            t.CompletionDate = actComp;
+                            // Assign Completion Date, if not null
+                            // TODO:  Fix write/read of DateTime.MinValue
+                            string acd = taskReader["actualCompletionDate"].ToString();
+
+                            temp = taskReader["actualCompletionDate"].ToString();
+                            date = splitStringDate(temp);
+                            DateTime actComp = new DateTime(date[2], date[1], date[0]);
+                            if (DateTime.Compare(actComp, DateTime.MinValue) != 0)
+                            {
+                                t.CompletionDate = actComp;
+                            }
                         }
                     }
+                }
+                catch (Exception e)
+                {
+                    System.Windows.Forms.MessageBox.Show(e.ToString(), "Exception in FindTask(int)");
                 }
                 _db.Close();
             }
