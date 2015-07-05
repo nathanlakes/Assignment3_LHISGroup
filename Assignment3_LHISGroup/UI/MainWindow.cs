@@ -272,11 +272,14 @@ namespace Assignment3_LHISGroup
             }
 
             //
-            //
+            //   Test Find Staff
             //
             {
                 Staff s = db.FindStaff(4);
+                MessageBox.Show( s.ToString(), "Test Find Staff on id #4" );
 
+                Staff s2 = db.FindStaff(nate);
+                MessageBox.Show(s2.ToString(), "Try to find 'nate' from obj.");
             }
 
         }

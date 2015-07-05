@@ -1051,42 +1051,46 @@ namespace Assignment3_LHISGroup
          */
         public Staff FindStaff(int id)
         {
-            this.openDb();
-
-            SqlDataReader myReader = null;
-
-            string query = "SELECT * FROM Staff WHERE Id=@id;";
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            
-            myCommand.Parameters.AddWithValue("@id", id);            
-            myReader = myCommand.ExecuteReader();
             Staff s = new Staff();
-            while (myReader.Read())
+
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                string firstname = myReader["firstname"].ToString();
-                string surname = myReader["surname"].ToString();
-                string email = myReader["email"].ToString();
-                string phone = myReader["phone"].ToString();
-                string notes = myReader["notes"].ToString();
-                string status = myReader["status"].ToString();
+                _db.Open();
 
-                Staff.Active stat = Staff.Active.inactive;
-                if (Staff.Active.active.ToString() == status)
-                {
-                    stat = Staff.Active.active;
-                }
+                string query = "SELECT * FROM Staff WHERE Id=@id;";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@id", id);
 
-                s = new Staff(firstname, surname, email, phone, notes, stat);
-                try
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
                 {
-                    s.ID = Convert.ToInt32(myReader["Id"].ToString());
+                    while (myReader.Read())
+                    {
+                        string firstname = myReader["firstname"].ToString();
+                        string surname = myReader["surname"].ToString();
+                        string email = myReader["email"].ToString();
+                        string phone = myReader["phone"].ToString();
+                        string notes = myReader["notes"].ToString();
+                        string status = myReader["status"].ToString();
+
+                        Staff.Active stat = Staff.Active.inactive;
+                        if (Staff.Active.active.ToString() == status)
+                        {
+                            stat = Staff.Active.active;
+                        }
+
+                        s = new Staff(firstname, surname, email, phone, notes, stat);
+                        try
+                        {
+                            s.ID = Convert.ToInt32(myReader["Id"].ToString());
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.ToString());
+                        }
+                    }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
+                _db.Close();
             }
-            this.closeDb();
             return s;
         }
 
@@ -1096,26 +1100,30 @@ namespace Assignment3_LHISGroup
          */
         public Staff FindStaff(Staff s)
         {
-            this.openDb();
-
-            string query = @"SELECT * FROM Staff ";
-            query += @"WHERE firstname=@firstname AND surname=@surname;";
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
-            myCommand.Parameters.AddWithValue("@surname", s.Surname);
-
             Staff returnStaff = new Staff();
-            using( SqlDataReader myReader = myCommand.ExecuteReader() ) 
+
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                while (myReader.Read())
+                _db.Open();
+
+                string query = @"SELECT * FROM Staff ";
+                query += @"WHERE firstname=@firstname AND surname=@surname;";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
+                myCommand.Parameters.AddWithValue("@surname", s.Surname);
+                
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
                 {
-                    returnStaff = getStaffDetails(Convert.ToInt32(myReader["Id"].ToString()));
+                    while (myReader.Read())
+                    {
+                        returnStaff = getStaffDetails(Convert.ToInt32(myReader["Id"].ToString()));
+                    }
                 }
-            }            
 
-            this.closeDb();
-
+                _db.Close();
+            }
             return returnStaff;
+              
         }
 
 
@@ -1616,6 +1624,7 @@ namespace Assignment3_LHISGroup
                         }
 
                         s = new Staff(firstname, surname, email, phone, notes, stat);
+                        s.ID = Convert.ToInt32(staffReader["Id"].ToString());
                     }
                     _db.Close();
                 }
