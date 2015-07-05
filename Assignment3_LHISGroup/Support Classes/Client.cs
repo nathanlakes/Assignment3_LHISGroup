@@ -19,6 +19,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         private string engagedTo_firstName;
         private string engagedTo_surname;
 
+
         public Client()
         {
             firstname = null;
@@ -99,6 +100,15 @@ namespace Assignment3_LHISGroup.Support_Classes
             get { return engagedTo_surname; }
             set { engagedTo_surname = value; }
         }
-    
+
+        public override string ToString()   
+        {
+            string res = "===Client============\n";
+                res += ("[fn]" + firstname + " [sn]" + surname + " [cont]" + contactPerson + " [addr]" + address + " [mob]" +
+                mobile + " [ph]" + homePhone + " [email]" + email + " [partner]" + engagedTo_firstName + " "
+                + engagedTo_surname);
+            return res;
+        }
+
     }
 }

@@ -795,26 +795,27 @@ namespace Assignment3_LHISGroup
          */
         public bool AddSupplier(Supplier s)
         {
-            String query = @"INSERT into Suppliers (CompanyName, Address, ContactPerson, Email, PhoneNumber, CreditTerms)";
-            query += @" VALUES (@companyName, @address, @contactPerson, @email, @phonenumber, @creditterms);";
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
 
-            myCommand.Parameters.AddWithValue("@companyName", s.CompanyName);
-            myCommand.Parameters.AddWithValue("@address", s.Address);
-            myCommand.Parameters.AddWithValue("@contactPerson", s.ContactPerson);
-            myCommand.Parameters.AddWithValue("@email", s.Email);
-            myCommand.Parameters.AddWithValue("@phonenumber", s.PhoneNumber);
-            myCommand.Parameters.AddWithValue("@creditterms", s.CreditTerms);
+                String query = @"INSERT into Suppliers (CompanyName, Address, ContactPerson, Email, PhoneNumber, CreditTerms)";
+                query += @" VALUES (@companyName, @address, @contactPerson, @email, @phonenumber, @creditterms);";
 
-            int res = 0;
+                SqlCommand myCommand = new SqlCommand(query, _db);
 
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();   // Run the statement.
-            this.closeDb();            
+                myCommand.Parameters.AddWithValue("@companyName", s.CompanyName);
+                myCommand.Parameters.AddWithValue("@address", s.Address);
+                myCommand.Parameters.AddWithValue("@contactPerson", s.ContactPerson);
+                myCommand.Parameters.AddWithValue("@email", s.Email);
+                myCommand.Parameters.AddWithValue("@phonenumber", s.PhoneNumber);
+                myCommand.Parameters.AddWithValue("@creditterms", s.CreditTerms);
 
-            if (res == 1) return true;           // Should only update one row.
-            else return false;
+                myCommand.ExecuteNonQuery();   // Run the statement.
+                _db.Close();
+            }
+            return true;
         }
 
         /**
@@ -1118,39 +1119,47 @@ namespace Assignment3_LHISGroup
         {
             List<Client> returnList = new List<Client>();
             
-            this.openDb();
-
-            SqlDataReader myReader = null;
-            SqlCommand myCommand = new SqlCommand("SELECT * FROM Client;", _db);
-
-            myReader = myCommand.ExecuteReader();
-            
-
-            Client c;
-            while (myReader.Read())
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                c = new Client(
-                    myReader["firstname"].ToString(),
-                    myReader["surname"].ToString(),
-                    myReader["contactPerson"].ToString(),
-                    myReader["address"].ToString(),
-                    myReader["mobile"].ToString(),
-                    myReader["homePhone"].ToString(),
-                    myReader["email"].ToString(),
-                    myReader["engagedTo_firstname"].ToString(),
-                    myReader["engagedTo_surname"].ToString()
-                );
-                try
+                _db.Open();
+
+                SqlCommand myCommand = new SqlCommand("SELECT * FROM Client;", _db);
+
+                using (var myReader = myCommand.ExecuteReader() )
                 {
-                    c.ID = Convert.ToInt32(myReader["Id"].ToString());
+                    Client c = new Client();
+
+                    while (myReader.Read())
+                    {
+                        c = new Client(
+                            myReader["firstname"].ToString(),
+                            myReader["surname"].ToString(),
+                            myReader["contactPerson"].ToString(),
+                            myReader["address"].ToString(),
+                            myReader["mobile"].ToString(),
+                            myReader["homePhone"].ToString(),
+                            myReader["email"].ToString(),
+                            myReader["engagedTo_firstname"].ToString(),
+                            myReader["engagedTo_surname"].ToString()
+                        );
+
+                        try
+                        {
+                            c.ID = Convert.ToInt32(myReader["Id"].ToString());
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.ToString());
+                        }
+                        returnList.Add(c);
+                
+                    }                         
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.ToString());
-                }
-                    returnList.Add(c);
+
+                _db.Close();
+
             }
-            this.closeDb();
+            
             return returnList;
         }
 
@@ -1698,9 +1707,7 @@ namespace Assignment3_LHISGroup
         private string formatDateForDbInput(DateTime dt)
         {
             string format = "yyyy-MM-dd HH:MM:ss";
-            string d = dt.ToString(format);
-            System.Windows.Forms.MessageBox.Show("Date Conversion:  " + d);
-            return d;
+            return dt.ToString(format);
         }
 
         private string formatDateForDbInput(Nullable<DateTime> dt)
@@ -1709,9 +1716,7 @@ namespace Assignment3_LHISGroup
             {
                 DateTime temp = new DateTime(dt.Value.Year, dt.Value.Month, dt.Value.Day);
                 string format = "yyyy-MM-dd HH:MM:ss";
-                string d = temp.ToString(format);
-                System.Windows.Forms.MessageBox.Show("Date Conversion:  " + d);
-                return d;
+                return temp.ToString(format);;
             }
             return null;
             
@@ -1722,9 +1727,7 @@ namespace Assignment3_LHISGroup
             int[] temp = splitStringDate(date);
             DateTime dt = new DateTime(temp[0], temp[1], temp[2]);
             string format = "yyyy-MM-dd HH:MM:ss";
-            string d = dt.ToString(format);
-            System.Windows.Forms.MessageBox.Show("Date Conversion:  " + d);
-            return d;
+            return dt.ToString(format);
         }
 
         /**
