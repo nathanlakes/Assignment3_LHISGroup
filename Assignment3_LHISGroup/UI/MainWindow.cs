@@ -374,9 +374,18 @@ namespace Assignment3_LHISGroup
                 Supplier supp = db.FindSupplier(flowers);
                 supp.CompanyName = "Flowers By Irene";
                 db.UpdateSupplier(db.getSupplierId(flowers), supp);
-                MessageBox.Show(db.FindSupplier(supp).ToString(), "Have Supplier Details been changed?");
+                //MessageBox.Show(db.FindSupplier(supp).ToString(), "Have Supplier Details been changed?");
+            }
 
-
+            //
+            //   Update Staff
+            //
+            {
+                Staff s = db.FindStaff(nate);
+                s.FirstName = "Nathaniel";
+                s.Surname = "Theodoroulakis";
+                db.UpdateStaff(db.getStaffId(nate), s);
+                MessageBox.Show(db.FindStaff(s).ToString(), "Have Staff Details been changed?");
             }
         }
 

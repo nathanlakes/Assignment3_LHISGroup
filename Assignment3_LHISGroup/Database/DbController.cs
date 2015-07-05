@@ -1052,27 +1052,28 @@ namespace Assignment3_LHISGroup
          */
         public bool UpdateStaff(int id, Staff s)
         {
-            string query = @"UPDATE Staff";
-            query += @"SET firstname='@firstname', surname='@surname', email='@email', ";
-            query += @"phone='@phone', notes='@notes', status='@status'";
-            query += @"WHERE Id=@id;";
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                string query = @"UPDATE Staff ";
+                query += @"SET firstname=@firstname, surname=@surname, email=@email, ";
+                query += @"phone=@phone, notes=@notes, status=@status ";
+                query += @"WHERE Id=@id;";
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
-            myCommand.Parameters.AddWithValue("@surname", s.Surname);
-            myCommand.Parameters.AddWithValue("@email", s.Email);
-            myCommand.Parameters.AddWithValue("@phone", s.Phone);
-            myCommand.Parameters.AddWithValue("@notes", s.Notes);
-            myCommand.Parameters.AddWithValue("@status", s.StatusToString());
-            myCommand.Parameters.AddWithValue("@id", id);
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@firstname", s.FirstName );
+                myCommand.Parameters.AddWithValue("@surname", s.Surname);
+                myCommand.Parameters.AddWithValue("@email", s.Email);
+                myCommand.Parameters.AddWithValue("@phone", s.Phone);
+                myCommand.Parameters.AddWithValue("@notes", s.Notes);
+                myCommand.Parameters.AddWithValue("@status", s.StatusToString());
+                myCommand.Parameters.AddWithValue("@id", id);
 
-            int res = 0;
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();
-            this.closeDb();
+                _db.Open();
+                myCommand.ExecuteNonQuery();
+                _db.Close();
+            }
 
-            if (res == 1) return true;
-            return false;
+            return true;
         }
 
         /**
