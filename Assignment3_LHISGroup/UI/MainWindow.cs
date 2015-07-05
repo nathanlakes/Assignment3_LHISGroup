@@ -324,6 +324,20 @@ namespace Assignment3_LHISGroup
                 db.UpdateTask(6, t2);
 
                 MessageBox.Show(db.FindTask(6).ToString(), "UPDATED TASK");
+
+
+                // Update Person on Task.
+                Staff jim = new Staff("Jim", "Fish", "jfish@weddrus.com", "0883354545", "Pagan Weddings",
+                    Staff.Active.inactive);
+
+                db.AddStaff(jim);
+
+                db.UpdatePersonOnTask(db.FindTask(6), jim);
+
+                MessageBox.Show(db.FindTask(6).ToString(), "Person on Task was Nate, should now be Jim");
+
+
+
             }
         }
 

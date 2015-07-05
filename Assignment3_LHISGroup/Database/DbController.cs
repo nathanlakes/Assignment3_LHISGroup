@@ -145,19 +145,18 @@ namespace Assignment3_LHISGroup
             int taskId = getTaskId(t);
             if (taskId == -1) throw new Exception("Task does not exist.");
 
-            int res = 0;
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                String query = "UPDATE Task SET staffOnJob_FK=@staffId WHERE Id=@taskId;";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@staffId", staffId);
+                myCommand.Parameters.AddWithValue("@taskId", taskId);
 
-            String query = "UPDATE Task SET staffOnJob_FK='@staffId' WHERE Id=@taskId;";
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@staffId", staffId);
-            myCommand.Parameters.AddWithValue("@taskId", taskId);
-
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();
-            this.closeDb();
-
-            if (res == 1) return true;
-            else return false;
+                _db.Open();
+                myCommand.ExecuteNonQuery();
+                _db.Close();
+            }
+            return true;
         }
 
         /**
@@ -1509,25 +1508,33 @@ namespace Assignment3_LHISGroup
          */
         private int getTaskId(Support_Classes.Task t)
         {
-            SqlCommand testTask = new SqlCommand(
+            int id = -1;
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+
+                SqlCommand testTask = new SqlCommand(
                "SELECT Id FROM Task WHERE name = '" + t.TaskName +
                     "' AND description = '" + t.Description + "'", _db);
 
-            this.openDb();
-            
-            var myReader = testTask.ExecuteReader();
-            
-
-            int id = -1;
-            try
-            {
-                id = Convert.ToInt32(myReader["Id"].ToString());
+                using (var myReader = testTask.ExecuteReader())
+                {
+                    while (myReader.Read())
+                    {
+                        try
+                        {
+                            id = Convert.ToInt32(myReader["Id"].ToString());
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.ToString());
+                        }
+                        this.closeDb();
+                    }
+                    
+                }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            this.closeDb();
             return id;            
         }   
 
