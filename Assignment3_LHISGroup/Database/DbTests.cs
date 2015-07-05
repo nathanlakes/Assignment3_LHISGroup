@@ -252,7 +252,7 @@ namespace Assignment3_LHISGroup.Database
                 temp.ContactPerson = "Arson East";
                 temp.Surname = "Harlson";
                 temp.EngagedTo_sn = "marsh";
-                db.UpdateClient(db.getClientId(wendy), temp);
+                db.UpdateClient(db.GetClientId(wendy), temp);
                 MessageBox.Show(db.FindClient(temp).ToString(), "Has Wendy been updated?");
             }
 
@@ -264,7 +264,7 @@ namespace Assignment3_LHISGroup.Database
                 Wedding wedd = db.FindWedding(w);
                 wedd.Title = "Wedding of Some People";
                 wedd.EventDate = new DateTime(2017, 12, 12);
-                db.UpdateWedding(db.getWeddingId(w), wedd);
+                db.UpdateWedding(db.GetWeddingId(w), wedd);
                 MessageBox.Show(db.FindWedding(wedd).ToString(), "Have Wedding Details been changed?");
 
             }
@@ -275,7 +275,7 @@ namespace Assignment3_LHISGroup.Database
             {
                 Supplier supp = db.FindSupplier(flowers);
                 supp.CompanyName = "Flowers By Irene";
-                db.UpdateSupplier(db.getSupplierId(flowers), supp);
+                db.UpdateSupplier(db.GetSupplierId(flowers), supp);
                 MessageBox.Show(db.FindSupplier(supp).ToString(), "Have Supplier Details been changed?");
             }
 
@@ -286,7 +286,7 @@ namespace Assignment3_LHISGroup.Database
                 Staff s = db.FindStaff(nate);
                 s.FirstName = "Nathaniel";
                 s.Surname = "Theodoroulakis";
-                db.UpdateStaff(db.getStaffId(nate), s);
+                db.UpdateStaff(db.GetStaffId(nate), s);
                 MessageBox.Show(db.FindStaff(s).ToString(), "Have Staff Details been changed?");
             }
 
@@ -297,10 +297,86 @@ namespace Assignment3_LHISGroup.Database
                 Staff.Active.active);
 
             db.AddStaff(harry);
-            int pk = db.getStaffId(harry);
+            int pk = db.GetStaffId(harry);
 
             db.ChangeStaffActiveStatus(pk, Staff.Active.inactive);
             MessageBox.Show(db.FindStaff(pk).ToString(), "Is Harry now Inactive?");
+
+            //
+            //   Test Delete Task
+            //
+            //Support_Classes.Task tempTask = db.FindTask(6);
+            //db.DeleteTask(6);
+            //try
+            //{
+            //    Support_Classes.Task tempTask2 = db.FindTask(6);
+            //    MessageBox.Show(tempTask2.ToString(), "Try to display deleted task");
+            //}
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show(e.ToString());
+            //}
+
+
+            //
+            //   Test Delete Wedding
+            //
+            {
+                Staff paul = new Staff("Paul", "Lincoln", "paul@weddingsRUs.com", "0401745241", "Way too happy",
+                Staff.Active.active);
+
+                db.AddStaff(paul);
+
+                Client vern = new Client("Vern", "Gordge", "Vern", "10 Test st", "04155434", "08", "i@me.com", "Burn", "Hauly");
+                Client burn = new Client("Burn", "Hauly", "Burn", "10 Test st", "04155432", "08", "me@i.com", "Vern", "Gordge");
+
+                db.AddClient(vern);
+                db.AddClient(burn);
+
+                Wedding testWed = new Wedding("Wedding of a and b", "blah", vern, burn, paul,
+                    new DateTime(2016, 5, 5), new DateTime(2015, 5, 10));
+
+                db.AddWedding(testWed);
+
+                Support_Classes.Task t3 = new Support_Classes.Task("Hire Dancing Bear", "Can we get those?",
+                    Support_Classes.Task.Priority.high, completeBy, paul, db.FindWedding(2));
+
+                db.AddTask(t3);
+
+                    Support_Classes.Task t4 = new Support_Classes.Task("Set More Tables", "Add table cloth to 20 tables",
+                        Support_Classes.Task.Priority.high, completeBy, paul, db.FindWedding(1));
+
+                    db.AddTask(t4);
+
+                // Show all weddings and tasks, all task/wedd relating to stan and wendy should be gone
+                db.DeleteWedding(1);
+
+                List<Support_Classes.Task> tlist = db.GetAllTasks();
+                foreach (var t in tlist)
+                {
+                    MessageBox.Show(t.ToString(), "Remaining Tasks");
+                }
+                List<Wedding> wlist = db.GetAllWeddings();
+                foreach (var t in wlist)
+                {
+                    MessageBox.Show(t.ToString(), "Remaining Weddings");
+                }
+            }
+      
+            //
+            //   Test Delete Supplier
+            //
+            db.DeleteSupplier(1); // Delete NathanCorp
+            List<Supplier> slist = db.GetAllSuppliers();
+            foreach (var s in slist)
+            {
+                MessageBox.Show(s.ToString(), "Remaining Suppliers after deleting NatoCorp");
+            }
+
+            //
+            //   Test Delete ...
+            //
+
         }
     }
 }

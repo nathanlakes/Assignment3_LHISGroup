@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 
 using Assignment3_LHISGroup.Support_Classes;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Assignment3_LHISGroup
 {
@@ -20,7 +21,6 @@ namespace Assignment3_LHISGroup
     public class DbController
     {
 
-        SqlConnection _db;   // Remove, use the using SqlConn method
         string connStr = "Data Source=(LocalDB)\\v11.0;" +
                     "AttachDbFilename=|DataDirectory|\\Database\\Model.mdf;" +
                     "Integrated Security=True";
@@ -51,7 +51,7 @@ namespace Assignment3_LHISGroup
                 // Staff with the same name work together. They won't have the same phone ext. 
                 // though. 
                 Staff s = t.AssignedTo;
-                int staffId = getStaffId(s);
+                int staffId = GetStaffId(s);
                 if (staffId == -1) throw new Exception("Staff must exist in Table \'Staff\', before being assigned to a task:");
 
                 
@@ -85,7 +85,7 @@ namespace Assignment3_LHISGroup
 
                 myCommand.Parameters.AddWithValue("@staffOnJob", staffId);
 
-                int weddId = getWeddingId( t.Wedding );
+                int weddId = GetWeddingId( t.Wedding );
                 if (weddId == -1) throw new Exception("Task must be associated to an existing Wedding.");
                 myCommand.Parameters.AddWithValue("@weddingID", weddId);
 
@@ -107,8 +107,8 @@ namespace Assignment3_LHISGroup
         {
             using (SqlConnection _db = new SqlConnection(connStr))
             {
-                int staffID = getStaffId(t.AssignedTo);
-                int weddId = getWeddingId(t.Wedding);
+                int staffID = GetStaffId(t.AssignedTo);
+                int weddId = GetWeddingId(t.Wedding);
 
                 string query = @"UPDATE Task ";
                 query += @"SET name=@name, description =@description, priority=@priority, ";
@@ -155,11 +155,11 @@ namespace Assignment3_LHISGroup
         public bool UpdatePersonOnTask(Support_Classes.Task t, Staff s)
         {
             // Find ID number of staff.
-            int staffId = getStaffId(s);
+            int staffId = GetStaffId(s);
             if (staffId == -1) throw new Exception("Staff must exist in Db.Staff, before being assigned to a task:");
 
             // Find ID of Task
-            int taskId = getTaskId(t);
+            int taskId = GetTaskId(t);
             if (taskId == -1) throw new Exception("Task does not exist.");
 
             using (SqlConnection _db = new SqlConnection(connStr))
@@ -182,20 +182,17 @@ namespace Assignment3_LHISGroup
          */
         public bool DeleteTask(int id)
         {
-            int res = 0;
-
-            this.openDb();
-
-            String query = "DELETE FROM Task WHERE Id=@idnum;";
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@idnum", id);
-
-            res = myCommand.ExecuteNonQuery();
-
-            this.closeDb();
-
-            if (res == 1) return true;
-            return false;
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+                String query = "DELETE FROM Task WHERE Id=@idnum;";
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@idnum", id);
+                
+                myCommand.ExecuteNonQuery();
+                _db.Close();
+            }
+            return true;
         }
 
         /**
@@ -310,7 +307,7 @@ namespace Assignment3_LHISGroup
                 myCommand.Parameters.AddWithValue("@name", task.TaskName);
                 myCommand.Parameters.AddWithValue("@completeByDate", formatDateForDbInput(task.CompleteBy));
 
-                int staffID = getStaffId(task.AssignedTo);
+                int staffID = GetStaffId(task.AssignedTo);
                 if (staffID == -1) throw new Exception("Staff Member Not Found in Staff Table");
                 myCommand.Parameters.AddWithValue("@staffOnJob", staffID);
 
@@ -461,25 +458,6 @@ namespace Assignment3_LHISGroup
             return true;
         }
 
-        /**
-         *   Deletes a client from the database
-         *   @Param  id:  the client to delete
-         */
-        public bool DeleteClient(int id)
-        {
-            string query = @"DELETE FROM Client ";
-            query += @"WHERE Id=@id;";
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@id", id);
-
-            int res = 0;
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();
-            this.closeDb();
-
-            if (res == 1) return true;
-            return false;
-        }
 
         /**
          *   Finds a client matching the given ID.
@@ -498,7 +476,7 @@ namespace Assignment3_LHISGroup
          */
         public Client FindClient(Client c)
         {
-            int id = getClientId(c);
+            int id = GetClientId(c);
             Client returnClient = getClientsDetails( id );
             return returnClient;
         }
@@ -559,10 +537,10 @@ namespace Assignment3_LHISGroup
                 int clientOneFk;
                 int clientTwoFk;
 
-                clientOneFk = getClientId(w.Client1);
+                clientOneFk = GetClientId(w.Client1);
                 if (clientOneFk == -1) throw new Exception("Client must be in database before adding wedding.");
 
-                clientTwoFk = getClientId(w.Client2);
+                clientTwoFk = GetClientId(w.Client2);
                 if (clientTwoFk == -1) throw new Exception("Client must be in database before adding wedding.");
 
                 myCommand.Parameters.AddWithValue("@client1", clientOneFk);
@@ -570,7 +548,7 @@ namespace Assignment3_LHISGroup
                 myCommand.Parameters.AddWithValue("@startDate", formatDateForDbInput(w.StartDate));
                 myCommand.Parameters.AddWithValue("@eventDate", formatDateForDbInput(w.EventDate));
 
-                int wedPlanner = getStaffId(w.WeddingPlanner);
+                int wedPlanner = GetStaffId(w.WeddingPlanner);
                 if (wedPlanner == -1) throw new Exception("Wedding Planner must exist in Staff Table.");
                 myCommand.Parameters.AddWithValue("@weddingPlanner", wedPlanner);
 
@@ -599,11 +577,11 @@ namespace Assignment3_LHISGroup
                 SqlCommand myCommand = new SqlCommand(query, _db);
                 myCommand.Parameters.AddWithValue("@title", w.Title);
                 myCommand.Parameters.AddWithValue("@desc", w.Description);
-                myCommand.Parameters.AddWithValue("@client1", getClientId(w.Client1));
-                myCommand.Parameters.AddWithValue("@client2", getClientId(w.Client2));
+                myCommand.Parameters.AddWithValue("@client1", GetClientId(w.Client1));
+                myCommand.Parameters.AddWithValue("@client2", GetClientId(w.Client2));
                 myCommand.Parameters.AddWithValue("@startDate", formatDateForDbInput(w.StartDate) );
                 myCommand.Parameters.AddWithValue("@eventDate", formatDateForDbInput(w.EventDate) );
-                myCommand.Parameters.AddWithValue("@weddingPlanner_FK", getStaffId(w.WeddingPlanner));
+                myCommand.Parameters.AddWithValue("@weddingPlanner_FK", GetStaffId(w.WeddingPlanner));
                 myCommand.Parameters.AddWithValue("@id", id);
 
                 _db.Open();
@@ -615,24 +593,52 @@ namespace Assignment3_LHISGroup
         }
 
         /**
-         *   Deletes a Wedding from the database
+         *   USE WITH EXTREME CAUTION!
+         *   Deletes a Wedding from the database as well as
+         *   all associated tasks to the wedding.
          *   @Param  id: The wedding to remove
          */
         public bool DeleteWedding(int id)
         {
-            string query = @"DELETE FROM Wedding ";
-            query += @"WHERE Id=@id;";
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@id", id);
+            string msg = "All Tasks associated with the given wedding will be deleted, proceed?\n";
+            msg += "NB. The effects cannot be reversed.";
+            DialogResult dialogResult = MessageBox.Show(msg, "WARNING", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+            {
+                
+                using (SqlConnection _db = new SqlConnection(connStr))
+                {
+                    _db.Open();
+                    // Delete Tasks
+                    {
+                        string query = @"DELETE FROM Task ";
+                        query += @"WHERE weddingID_FK=@id";
 
-            int res = 0;
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();
-            this.closeDb();
+                        SqlCommand myCommand = new SqlCommand(query, _db);
+                        myCommand.Parameters.AddWithValue("@id", id);
+                        myCommand.ExecuteNonQuery();   
+                    }
 
-            if (res == 1) return true;
-            return false;
+                    // Delete Wedding
+                    {
+                        string query = @"DELETE FROM Wedding ";
+                        query += @"WHERE Id=@id;";
+
+                        SqlCommand myCommand = new SqlCommand(query, _db);
+                        myCommand.Parameters.AddWithValue("@id", id);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    _db.Close();
+                }
+
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /**
@@ -880,19 +886,19 @@ namespace Assignment3_LHISGroup
          */
         public bool DeleteSupplier(int id)
         {
-            string query = @"DELETE Suppliers ";   // RM 'FROM' keyword????
-            query += "WHERE Id=@id;";
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                string query = @"DELETE FROM Suppliers ";
+                query += "WHERE Id=@id;";
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@id", id);
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@id", id);
 
-            int res = 0;
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();
-            this.closeDb();
-
-            if (res == 1) return true;
-            return false;
+                _db.Open();
+                myCommand.ExecuteNonQuery();
+                _db.Close();
+            }
+            return true;
         }
 
 
@@ -1127,8 +1133,7 @@ namespace Assignment3_LHISGroup
                 _db.Close();
 
                 return true;
-            }
-            
+            }           
         }
 
 
@@ -1545,16 +1550,11 @@ namespace Assignment3_LHISGroup
         }
 
 
-
-        //\\//\\//\\//\\//\\//\\//\\//\\
-        //   PRIVATE HELPER METHODS   \\
-        //\\//\\//\\//\\//\\//\\//\\//\\
-
         /**
          *   Checks the Staff table and returns the staff ID number if they exist.
          *   Returns -1 if the staff member does not exist.
          */
-        public int getStaffId(Staff s)
+        public int GetStaffId(Staff s)
         {
             int id = -1;
 
@@ -1586,7 +1586,7 @@ namespace Assignment3_LHISGroup
          *   Checks the Supplier table and returns the Supplier ID number if they exist.
          *   Returns -1 if the staff member does not exist.
          */
-        public int getSupplierId(Supplier s)
+        public int GetSupplierId(Supplier s)
         {
             int id = -1;
 
@@ -1619,7 +1619,7 @@ namespace Assignment3_LHISGroup
          *   Checks the Task table and returns the Task Id number if it exists.
          *   Returns -1 if the Task does not exist.
          */
-        public int getTaskId(Support_Classes.Task t)
+        public int GetTaskId(Support_Classes.Task t)
         {
             int id = -1;
 
@@ -1654,7 +1654,7 @@ namespace Assignment3_LHISGroup
          *   Checks the Client table and returns the Client ID number if it exists.
          *   Returns -1 if the Client does not exsit
          */
-        public int getClientId(Client c)
+        public int GetClientId(Client c)
         {
             int id = -1;
 
@@ -1692,7 +1692,7 @@ namespace Assignment3_LHISGroup
         }
 
         
-        public int getWeddingId(Wedding w)
+        public int GetWeddingId(Wedding w)
         {
             int id = -1;
             
@@ -1706,8 +1706,8 @@ namespace Assignment3_LHISGroup
                 
                 SqlCommand testTask = new SqlCommand(query, _db);
                 testTask.Parameters.AddWithValue("@title", w.Title);
-                testTask.Parameters.AddWithValue("@client1", getClientId(w.Client1));
-                testTask.Parameters.AddWithValue("@client2", getClientId(w.Client2));
+                testTask.Parameters.AddWithValue("@client1", GetClientId(w.Client1));
+                testTask.Parameters.AddWithValue("@client2", GetClientId(w.Client2));
 
                 using ( SqlDataReader myReader = testTask.ExecuteReader() )
                 {
@@ -1727,6 +1727,55 @@ namespace Assignment3_LHISGroup
             }
             return id;
         }
+
+
+        /**
+         *   Takes a string of dd/mm/yyyy and returns an
+         *   int array of { dd, mm, yyyy };
+         */
+        public int[] splitStringDate(string d)
+        {
+            int[] returnDate = new int[10];
+            returnDate[0] = 1;
+            returnDate[1] = 01;
+            returnDate[2] = 01;
+
+            try
+            {
+                string trimDate = Regex.Match(d, "^[^ ]+").Value;
+                char[] delimChars = { '/', '\\' };
+                string[] date = new string[2];
+
+                date = trimDate.Split(delimChars);
+
+                for (int i = 0; i < 3; i++)
+                {
+                    returnDate[i] = Convert.ToInt32(date[i]);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return returnDate;
+        }
+
+
+        /**
+         *   Takes a string of the format dd/mm/YYYY
+         *   and returns a DateTime object
+         */
+        public DateTime convertStringToDateTime(string date)
+        {
+            int[] temp = splitStringDate(date);
+            return new DateTime(temp[2], temp[1], temp[0]);
+        }
+
+
+        //\\//\\//\\//\\//\\//\\//\\//\\
+        //   PRIVATE HELPER METHODS   \\
+        //\\//\\//\\//\\//\\//\\//\\//\\
 
 
         private Staff getStaffDetails(int id)
@@ -1879,56 +1928,6 @@ namespace Assignment3_LHISGroup
             return w;
         }
 
-
-
-        private string getClientsFullName(int id)
-        {
-            string query = @"SELECT firstname, surname FROM Client ";
-            query += @"WHERE Id=@id;";
-            this.openDb();
-            SqlCommand myCommand = new SqlCommand(query, _db);
-
-            string returnString = "";
-            using (SqlDataReader myReader = myCommand.ExecuteReader())
-            {
-                returnString = myReader["firstname"].ToString() + " " + myReader["surname"].ToString();
-            }
-            this.closeDb();
-            return returnString;
-        }
-
-        /**
-         *   Takes a string of dd/mm/yyyy and returns an
-         *   int array of { dd, mm, yyyy };
-         */
-        public int[] splitStringDate(string d)
-        {
-            int[] returnDate = new int[10];
-            returnDate[0] = 1;
-            returnDate[1] = 01;
-            returnDate[2] = 01;
-
-            try
-            {
-                string trimDate = Regex.Match(d, "^[^ ]+").Value;
-                char[] delimChars = { '/', '\\' };
-                string[] date = new string[2];
-
-                date = trimDate.Split(delimChars);
-
-                for (int i = 0; i < 3; i++)
-                {
-                    returnDate[i] = Convert.ToInt32(date[i]);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-
-            return returnDate;
-        }
-
         /**
          *   Formats .NET DateTime to SQLServer friendly format
          */ 
@@ -1957,54 +1956,5 @@ namespace Assignment3_LHISGroup
             string format = "yyyy-MM-dd HH:MM:ss";
             return dt.ToString(format);
         }
-
-        /**
-         *   Takes a string of the format dd/mm/YYYY
-         *   and returns a DateTime object
-         */
-        public DateTime convertStringToDateTime(string date)
-        {
-            int[] temp = splitStringDate(date);
-            return new DateTime(temp[0], temp[1], temp[2]);
-        }
-
-
-        /**                                                             
-         *   Opens a connection to Database. 
-         *   Throws Exceptions when open is called on an already open
-         *   SqlConnection or when transaction errors occur.
-         */
-        private void openDb()
-        {
-            try
-            {
-                _db.Open();
-            }
-            catch (InvalidOperationException)
-            {
-                Console.WriteLine("The Database is already open.");
-            }
-            catch (SqlException)
-            {
-                throw new Exception("An error occurred whilst connecting with the database;");
-            }
-        }
-
-        /**
-         *   Closes a connection to Database. 
-         *   Throws Exception when transaction errors occur.
-         */
-        private void closeDb()
-        {
-            try
-            {
-                _db.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-        }
-
     }
 }
