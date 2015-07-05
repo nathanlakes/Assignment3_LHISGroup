@@ -75,7 +75,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
             testController.AddWedding(testWedding);
             List<Wedding> testList = testController.FindWedding(testWedding.Title);
-            Assert.AreEqual(testWedding.Title, testList.First());
+            Assert.AreEqual(testWedding.Title, testList.First().Title);
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }
 
