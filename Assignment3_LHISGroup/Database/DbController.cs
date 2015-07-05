@@ -242,14 +242,7 @@ namespace Assignment3_LHISGroup
                             t = new Support_Classes.Task(
                                 taskname, descr, prior, completeBy, weddingPlanner, wedding);
 
-                            try
-                            {
-                                t.ID = Convert.ToInt32(taskReader["Id"].ToString());
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.ToString());
-                            }
+                            t.ID = Convert.ToInt32(taskReader["Id"].ToString());
 
                             // Assign Completion Date, if not null
                             // TODO:  Fix write/read of DateTime.MinValue
