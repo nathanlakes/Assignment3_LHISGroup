@@ -88,39 +88,45 @@ namespace Assignment3_LHISGroup
         */
         public bool UpdateTask(int id, Support_Classes.Task t)
         {
-            int staffID = getStaffId(t.AssignedTo);
-
-            string query = @"UPDATE Task ";
-            query += @"SET name='@name', description ='@description', priority='@priority', ";
-            query += @"completeByDate='@completeByDate', actualCompletionDate='@actualCompDate,";
-            query += @"staffOnJob_FK='@staffOnJob";
-            query += @"WHERE id=@id;";
-
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@name", t.TaskName);
-            myCommand.Parameters.AddWithValue("@description", t.Description);
-            myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
-            myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString());
-
-            try  /// NL TO FIX!!!!
+            using (SqlConnection _db = new SqlConnection(connStr))
             {
-                //string date = t.CompletionDate.ToShortDateString();
-                //myCommand.Parameters.AddWithValue("@actualCompDate", formatDateForDbInput(date));
+                int staffID = getStaffId(t.AssignedTo);
+                int weddId = getWeddingId(t.Wedding);
+
+                string query = @"UPDATE Task ";
+                query += @"SET name=@name, description =@description, priority=@priority, ";
+                query += @"completeByDate=@completeByDate, actualCompletionDate=@actualCompDate, ";
+                query += @"staffOnJob_FK=@staffOnJob, weddingID_FK=@weddId ";
+                query += @"WHERE id=@id;";
+
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@name", t.TaskName);
+                myCommand.Parameters.AddWithValue("@description", t.Description);
+                myCommand.Parameters.AddWithValue("@priority", t.TaskPriority);
+                myCommand.Parameters.AddWithValue("@completeByDate", t.CompleteBy.ToShortDateString());
+                
+                try
+                {
+                    string date = t.CompletionDate.Value.ToShortDateString();
+                    myCommand.Parameters.AddWithValue("@actualCompDate", formatDateForDbInput(date));
+                }
+                catch (Exception)
+                {
+                    myCommand.Parameters.AddWithValue("@actualCompDate", null);
+                }
+
+                myCommand.Parameters.AddWithValue("@staffOnJob", staffID);
+                myCommand.Parameters.AddWithValue("@weddId", weddId);
+
+                myCommand.Parameters.AddWithValue("@id", id);
+
+                _db.Open();
+
+                myCommand.ExecuteNonQuery();
+
+                _db.Close();
             }
-            catch (Exception)
-            {
-                myCommand.Parameters.AddWithValue("@actualCompDate", null);
-            }
-
-            myCommand.Parameters.AddWithValue("@staffOnJob", staffID);
-            myCommand.Parameters.AddWithValue("@id", id);
-
-            this.openDb();
-            int res = myCommand.ExecuteNonQuery();
-            this.closeDb();
-
-            if (res == 1) return true;
-            return false;
+            return true;
         }
 
 

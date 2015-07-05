@@ -307,8 +307,23 @@ namespace Assignment3_LHISGroup
                 List<Staff> allAct = db.AllActiveStaff();
                 foreach (var s in allAct)
                 {
-                    MessageBox.Show(s.ToString(), "All Active Staff");
+                    //MessageBox.Show(s.ToString(), "All Active Staff");
                 }
+            }
+
+
+            //
+            //   Test Updates
+            //
+            {
+                MessageBox.Show(t1.ToString(), "OLD TASK");
+
+                Support_Classes.Task t2 = new Support_Classes.Task("Hang Paintings", "Art", 
+                    Support_Classes.Task.Priority.high, new DateTime(2017, 5, 5), nate, w);
+
+                db.UpdateTask(6, t2);
+
+                MessageBox.Show(db.FindTask(6).ToString(), "UPDATED TASK");
             }
         }
 
