@@ -81,24 +81,12 @@ namespace Assignment3_LHISGroup.Reports
                 }
 
             }
-
+            
         }
 
-        private List<Support_Classes.Task> FindTasksAssignedTo(Staff curStaff)
+        private void populateTaskListForSelectedStaff(Staff selStaff)
         {
 
-            List<Support_Classes.Task> allTaskList = new List<Support_Classes.Task>();
-            allTaskList = dbController.GetAllTasks();
-            foreach (Support_Classes.Task task in allTaskList)
-            {
-                if (task.AssignedTo.ID == curStaff.ID)
-                {
-                    //DateTime date = task.CompletionDate;
-                    assignedTaskList.Add(task);
-                }
-            }
-            return assignedTaskList;
-      
         }
 
 
@@ -111,19 +99,8 @@ namespace Assignment3_LHISGroup.Reports
         private void StaffListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            int curItemID = (int)(StaffListBox.SelectedItem.ToString()[0]);
-            List<Staff> allStaff = dbController.GetAllStaff();
-            List<Support_Classes.Task> assignedTasks = new List<Support_Classes.Task>();
-
-            foreach (Staff staff in allStaff)
-            {
-                if(staff.ID == curItemID)
-                {
-                    assignedTasks = FindTasksAssignedTo(staff);
-                }
-                
-            }
-            populateTasksGridView(assignedTasks);
+            
+            
             
             
         }
@@ -133,7 +110,7 @@ namespace Assignment3_LHISGroup.Reports
             foreach(Support_Classes.Task task in assignedTasks)
             {
                 DataGridViewRow row = new DataGridViewRow();
-
+                
                 row.Cells[0].Value = task.TaskName;
                 row.Cells[1].Value = task.Description;
                 row.Cells[2].Value = task.CompleteBy;
