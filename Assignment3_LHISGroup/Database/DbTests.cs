@@ -289,6 +289,18 @@ namespace Assignment3_LHISGroup.Database
                 db.UpdateStaff(db.getStaffId(nate), s);
                 MessageBox.Show(db.FindStaff(s).ToString(), "Have Staff Details been changed?");
             }
+
+            //
+            //   Change Staff Active Status
+            //
+            Staff harry = new Staff("Harry", "Lloyd", "hazza@weddingsRUs.com", "045245454", "Works Wednesday",
+                Staff.Active.active);
+
+            db.AddStaff(harry);
+            int pk = db.getStaffId(harry);
+
+            db.ChangeStaffActiveStatus(pk, Staff.Active.inactive);
+            MessageBox.Show(db.FindStaff(pk).ToString(), "Is Harry now Inactive?");
         }
     }
 }

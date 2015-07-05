@@ -1112,21 +1112,23 @@ namespace Assignment3_LHISGroup
          */
         public bool ChangeStaffActiveStatus(int id, Staff.Active a)
         {
-            string query = @"UPDATE Staff";
-            query += @"SET status='@status'";
-            query += @"WHERE Id=@id;";
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                string query =  @"UPDATE Staff ";
+                query +=        @"SET status=@status ";
+                query +=        @"WHERE Id=@id;";
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@status", a);
-            myCommand.Parameters.AddWithValue("@id", id);
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@status", a);
+                myCommand.Parameters.AddWithValue("@id", id);
 
-            int res = 0;
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();
-            this.closeDb();
+                _db.Open();
+                myCommand.ExecuteNonQuery();
+                _db.Close();
 
-            if (res == 1) return true;
-            return false;
+                return true;
+            }
+            
         }
 
 
