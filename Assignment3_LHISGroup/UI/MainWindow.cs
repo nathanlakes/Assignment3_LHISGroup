@@ -316,14 +316,14 @@ namespace Assignment3_LHISGroup
             //   Test Updates
             //
             {
-                MessageBox.Show(t1.ToString(), "OLD TASK");
+                //MessageBox.Show(t1.ToString(), "OLD TASK");
 
                 Support_Classes.Task t2 = new Support_Classes.Task("Hang Paintings", "Art", 
                     Support_Classes.Task.Priority.high, new DateTime(2017, 5, 5), nate, w);
 
                 db.UpdateTask(6, t2);
 
-                MessageBox.Show(db.FindTask(6).ToString(), "UPDATED TASK");
+                //MessageBox.Show(db.FindTask(6).ToString(), "UPDATED TASK");
 
 
                 // Update Person on Task.
@@ -334,10 +334,18 @@ namespace Assignment3_LHISGroup
 
                 db.UpdatePersonOnTask(db.FindTask(6), jim);
 
-                MessageBox.Show(db.FindTask(6).ToString(), "Person on Task was Nate, should now be Jim");
+                //MessageBox.Show(db.FindTask(6).ToString(), "Person on Task was Nate, should now be Jim");
+            }
 
 
-
+            //
+            //   Update Client
+            //
+            {
+                Client temp = db.FindClient(wendy);
+                temp.ContactPerson = "Arson East";
+                db.UpdateClient(db.getClientId(wendy), temp);
+                MessageBox.Show(db.FindClient(temp).ToString(), "Has Wendy been updated?");
             }
         }
 

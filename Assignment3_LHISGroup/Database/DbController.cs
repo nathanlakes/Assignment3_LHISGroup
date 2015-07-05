@@ -404,32 +404,32 @@ namespace Assignment3_LHISGroup
          */
         public bool UpdateClient(int id, Client c)
         {
-            string query = @"UPDATE Client ";
-            query += @"SET firstname='@firstname', surname='@surname', contactPerson='@contactPerson', ";
-            query += @"address='@address', mobile=@'mobile', homePhone='@homePhone', email='@email', ";
-            query += @"engagedTo_firstname='@engFn', engagedTo_surname='@engSn'";
-            query += @"WHERE Id=@id;";
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                
+                string query = @"UPDATE Client ";
+                query += @"SET firstname=@firstname, surname=@surname, contactPerson=@contactPerson, ";
+                query += @"address=@address, mobile=@mobile, homePhone=@homePhone, email=@email, ";
+                query += @"engagedTo_firstname=@engFn, engagedTo_surname=@engSn ";
+                query += @"WHERE Id=@id;";
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
+                myCommand.Parameters.AddWithValue("@surname", c.Surname);
+                myCommand.Parameters.AddWithValue("@contactPerson", c.ContactPerson);
+                myCommand.Parameters.AddWithValue("@address", c.Address);
+                myCommand.Parameters.AddWithValue("@mobile", c.Mobile);
+                myCommand.Parameters.AddWithValue("@homePhone", c.HomePhone);
+                myCommand.Parameters.AddWithValue("@email", c.Email);
+                myCommand.Parameters.AddWithValue("@engFn", c.EngagedTo_fn);
+                myCommand.Parameters.AddWithValue("@engSn", c.EngagedTo_sn);
+                myCommand.Parameters.AddWithValue("@id", id);
 
-            myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
-            myCommand.Parameters.AddWithValue("@surname", c.Surname);
-            myCommand.Parameters.AddWithValue("@contactPerson", c.ContactPerson);
-            myCommand.Parameters.AddWithValue("@address", c.Address);
-            myCommand.Parameters.AddWithValue("@mobile", c.Mobile);
-            myCommand.Parameters.AddWithValue("@homePhone", c.HomePhone);
-            myCommand.Parameters.AddWithValue("@email", c.Email);
-            myCommand.Parameters.AddWithValue("@engFn", c.EngagedTo_fn);
-            myCommand.Parameters.AddWithValue("@engSn", c.EngagedTo_sn);
-            myCommand.Parameters.AddWithValue("@id", id);
-
-            int res = 0;
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();
-            this.closeDb();
-
-            if (res == 1) return true;
-            else return false;
+                _db.Open();
+                myCommand.ExecuteNonQuery();
+                _db.Close();
+            }
+            return true;
         }
 
         /**
@@ -1474,7 +1474,7 @@ namespace Assignment3_LHISGroup
          *   Checks the Staff table and returns the staff ID number if they exist.
          *   Returns -1 if the staff member does not exist.
          */
-        private int getStaffId(Staff s)
+        public int getStaffId(Staff s)
         {
             int id = -1;
 
@@ -1506,7 +1506,7 @@ namespace Assignment3_LHISGroup
          *   Checks the Task table and returns the Task Id number if it exists.
          *   Returns -1 if the Task does not exist.
          */
-        private int getTaskId(Support_Classes.Task t)
+        public int getTaskId(Support_Classes.Task t)
         {
             int id = -1;
 
@@ -1542,7 +1542,7 @@ namespace Assignment3_LHISGroup
          *   Checks the Client table and returns the Client ID number if it exists.
          *   Returns -1 if the Client does not exsit
          */
-        private int getClientId(Client c)
+        public int getClientId(Client c)
         {
             int id = -1;
 
@@ -1580,7 +1580,7 @@ namespace Assignment3_LHISGroup
         }
 
         
-        private int getWeddingId(Wedding w)
+        public int getWeddingId(Wedding w)
         {
             int id = -1;
             
