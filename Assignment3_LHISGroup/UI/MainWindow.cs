@@ -276,12 +276,40 @@ namespace Assignment3_LHISGroup
             //
             {
                 Staff s = db.FindStaff(4);
-                MessageBox.Show( s.ToString(), "Test Find Staff on id #4" );
+                //MessageBox.Show( s.ToString(), "Test Find Staff on id #4" );
 
                 Staff s2 = db.FindStaff(nate);
-                MessageBox.Show(s2.ToString(), "Try to find 'nate' from obj.");
+                //MessageBox.Show(s2.ToString(), "Try to find 'nate' from obj.");
             }
 
+
+            //
+            //   Test Find Wedding
+            //
+            {
+                Wedding wedd = db.FindWedding(1);
+                //MessageBox.Show(wedd.ToString(), "Find Wedding #1");
+
+                Wedding wedd1 = db.FindWedding(w);
+                //MessageBox.Show(wedd1.ToString(), "Find on Wedding obj 'w'");
+
+                List<Wedding> wedd2 = db.FindWedding("Wend");
+                foreach (var z in wedd2)
+                {
+                    //MessageBox.Show(z.ToString(), "Weddings matching title 'Wend'");
+                }
+            }
+
+            //
+            //   Test All Active Staff
+            //
+            {
+                List<Staff> allAct = db.AllActiveStaff();
+                foreach (var s in allAct)
+                {
+                    MessageBox.Show(s.ToString(), "All Active Staff");
+                }
+            }
         }
 
 
