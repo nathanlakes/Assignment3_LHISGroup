@@ -24,6 +24,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             title = null;
         }
 
+
         public Wedding(string title, string description, Client c1, Client c2, 
             Staff staff, DateTime startDate, DateTime eventDate)
         {
@@ -81,6 +82,18 @@ namespace Assignment3_LHISGroup.Support_Classes
         {
             get { return weddingPlanner; }
             set { weddingPlanner = value; }
+        }
+
+        public override string ToString()
+        {
+            string res = "===Wedding=======\n";
+            res += ("[title]" + title + " [desc]" + description + " [client1]" + client1.Firstname + " " + client1.Surname +
+                " [client2]" + client2.Firstname + " " + client2.Surname +
+                " [startDate]" + startDate.ToShortDateString() + " [eventDate]" + eventDate.ToShortDateString() +
+                " [staff]" + weddingPlanner.FirstName + " " + weddingPlanner.Surname);
+
+
+            return res;
         }
     }
 }
