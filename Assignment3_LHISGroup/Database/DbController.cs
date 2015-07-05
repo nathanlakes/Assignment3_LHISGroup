@@ -1864,18 +1864,26 @@ namespace Assignment3_LHISGroup
          */
         public int[] splitStringDate(string d)
         {
-            string trimDate = Regex.Match(d, "^[^ ]+").Value;
-            char[] delimChars = { '/', '\\' };
-            string[] date = new string[2];
-
-            date = trimDate.Split(delimChars);
-
-            int i = 0;
-            int[] returnDate = new int[5];
-            foreach (string s in date)
+            int[] returnDate = new int[10];
+            try
             {
-                returnDate[i] = Convert.ToInt32(s);
-                i++;
+                string trimDate = Regex.Match(d, "^[^ ]+").Value;
+                char[] delimChars = { '/', '\\' };
+                string[] date = new string[2];
+
+                date = trimDate.Split(delimChars);
+
+                int i = 0;
+                
+                foreach (string s in date)
+                {
+                    returnDate[i] = Convert.ToInt32(s);
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
 
             return returnDate;
