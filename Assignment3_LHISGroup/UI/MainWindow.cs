@@ -344,8 +344,23 @@ namespace Assignment3_LHISGroup
             {
                 Client temp = db.FindClient(wendy);
                 temp.ContactPerson = "Arson East";
+                temp.Surname = "Harlson";
+                temp.EngagedTo_sn = "marsh";
                 db.UpdateClient(db.getClientId(wendy), temp);
                 MessageBox.Show(db.FindClient(temp).ToString(), "Has Wendy been updated?");
+            }
+
+
+            //
+            //   Update Wedding
+            //
+            {
+                Wedding wedd = db.FindWedding(w);
+                wedd.Title = "Wedding of Some People";
+                wedd.EventDate = new DateTime(2017, 12, 12);
+                db.UpdateWedding(db.getWeddingId(w), wedd);
+                MessageBox.Show(db.FindWedding(wedd).ToString(), "Have Wedding Details been changed?");
+
             }
         }
 

@@ -560,28 +560,29 @@ namespace Assignment3_LHISGroup
          */
         public bool UpdateWedding(int id, Wedding w)
         {
-            string query = @"UPDATE Wedding ";
-            query += @"SET title='@title', description='@desc', client_1_FK='@client1', client_2_FK='@client2', ";
-            query += @"startDate='@startDate', eventDate='@eventDate', weddingPlanner_FK='@weddingPlanner_FK'";
-            query += @"WHERE Id=@id;";
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                string query = @"UPDATE Wedding ";
+                query += @"SET title=@title, description=@desc, client_1_FK=@client1, client_2_FK=@client2, ";
+                query += @"startDate=@startDate, eventDate=@eventDate, weddingPlanner_FK=@weddingPlanner_FK ";
+                query += @"WHERE Id=@id;";
 
-            SqlCommand myCommand = new SqlCommand(query, _db);
-            myCommand.Parameters.AddWithValue("@title", w.Title);
-            myCommand.Parameters.AddWithValue("@desc", w.Description);
-            myCommand.Parameters.AddWithValue("@client1", w.Client1.Firstname + " " + w.Client1.Surname);
-            myCommand.Parameters.AddWithValue("@client2", w.Client2.Firstname + " " + w.Client2.Surname);
-            myCommand.Parameters.AddWithValue("@startDate", w.StartDate.ToShortDateString());
-            myCommand.Parameters.AddWithValue("@eventDate", w.EventDate.ToShortDateString());
-            myCommand.Parameters.AddWithValue("@weddingPlanner_FK", getStaffId(w.WeddingPlanner));
-            myCommand.Parameters.AddWithValue("@id", id);
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@title", w.Title);
+                myCommand.Parameters.AddWithValue("@desc", w.Description);
+                myCommand.Parameters.AddWithValue("@client1", getClientId(w.Client1));
+                myCommand.Parameters.AddWithValue("@client2", getClientId(w.Client2));
+                myCommand.Parameters.AddWithValue("@startDate", formatDateForDbInput(w.StartDate) );
+                myCommand.Parameters.AddWithValue("@eventDate", formatDateForDbInput(w.EventDate) );
+                myCommand.Parameters.AddWithValue("@weddingPlanner_FK", getStaffId(w.WeddingPlanner));
+                myCommand.Parameters.AddWithValue("@id", id);
 
-            int res = 0;
-            this.openDb();
-            res = myCommand.ExecuteNonQuery();
-            this.closeDb();
+                _db.Open();
+                myCommand.ExecuteNonQuery();
+                _db.Close();
+            }
 
-            if (res == 1) return true;
-            return false;
+            return true;            
         }
 
         /**
@@ -715,12 +716,12 @@ namespace Assignment3_LHISGroup
                         // Generate DateTime for start date.
                         string temp = myReader["startDate"].ToString();
                         int[] dateArray = splitStringDate(temp);
-                        DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+                        DateTime startDate = new DateTime(dateArray[2], dateArray[1], dateArray[0]);
 
                         // Generate DateTime for event date.
                         temp = myReader["eventDate"].ToString();
                         dateArray = splitStringDate(temp);
-                        DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+                        DateTime eventDate = new DateTime(dateArray[2], dateArray[1], dateArray[0]);
 
                         // Create Staff Object
                         int staffId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
