@@ -1603,10 +1603,9 @@ namespace Assignment3_LHISGroup
                         {
                             Console.WriteLine(e.ToString());
                         }
-                        this.closeDb();
                     }
-                    
                 }
+                _db.Close();
             }
             return id;            
         }   
