@@ -16,7 +16,6 @@ namespace Assignment3_LHISGroup
     {
 
         public DbController db;
-
         // windows accessed from the main window
         public UI.ManageClientsWindow ManageClientsWindow;
         public UI.ManageStaffWindow ManageStaffWindow;
@@ -43,7 +42,8 @@ namespace Assignment3_LHISGroup
         {
             InitializeComponent();
             db = new DbController();        // Creates a DB controller to be used by the UI classes. 
-            
+            this.nathanDebug();
+
             // create windows and hide them for later use
             // this saves on CPU by not recreating them every time they are needed
             EventReportWindow = new UI.EventReportWindow(this, db);
@@ -260,6 +260,11 @@ namespace Assignment3_LHISGroup
             UpdateTaskWindow.Dispose();
             UpdateWeddingWindow.Dispose();
             this.Dispose();
+        }
+
+        private void nathanDebug()
+        {
+
         }
     }
 }

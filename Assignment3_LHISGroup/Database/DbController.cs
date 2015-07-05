@@ -395,6 +395,9 @@ namespace Assignment3_LHISGroup
          */
         public bool AddClient(Client c)
         {
+            bool hasDuplicate = containsDuplicateRecord(c);
+            if (hasDuplicate) return false;
+
             using (SqlConnection _db = new SqlConnection(connStr))
             {
                 _db.Open();
@@ -1777,6 +1780,36 @@ namespace Assignment3_LHISGroup
         //   PRIVATE HELPER METHODS   \\
         //\\//\\//\\//\\//\\//\\//\\//\\
 
+        private bool containsDuplicateRecord(Client c)
+        {
+            int count = -1;
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+
+                string query = @"SELECT COUNT(Id) As Count FROM Client ";
+                query += @"WHERE firstname=@firstname AND surname=@surname AND contactPerson=@contact;";
+
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@firstname", c.Firstname);
+                myCommand.Parameters.AddWithValue("@surname", c.Surname);
+                myCommand.Parameters.AddWithValue("@contact", c.ContactPerson);
+
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
+                {
+                    while (myReader.Read())
+                    {
+                        count = Convert.ToInt32(myReader["Count"].ToString());
+                    }
+                }
+                _db.Close();
+            }
+
+            if (count == 0) return false;
+            else return true;
+        }
+
 
         private Staff getStaffDetails(int id)
         {
@@ -1814,7 +1847,7 @@ namespace Assignment3_LHISGroup
                     }
                     _db.Close();
                 }
-
+                    
             }
             return s;
         }

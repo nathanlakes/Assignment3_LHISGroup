@@ -378,8 +378,25 @@ namespace Assignment3_LHISGroup.Database
             }
 
             //
-            //   Test Delete ...
+            //   Test Duplicate Add
             //
+            {
+                Client nathan = new Client("Nathan", "Lakes", "Gary", "100 Smith St", "040343433", "088332141",
+                    "Nate@natemail.com", "My", "Cat");
+
+                bool firstAdd = db.AddClient(nathan);
+                bool secondAdd = db.AddClient(nathan);
+
+                MessageBox.Show("firstAdd= " + firstAdd + "\n" + "secondAdd= " + secondAdd);
+
+                List<Client> clist = db.GetAllClients();
+                foreach (var v in clist)
+                {
+                    int i = 1;
+                    MessageBox.Show(v.ToString(), "Client's in Database " + i);
+                    i++;
+                }
+            }
 
         }
     }
