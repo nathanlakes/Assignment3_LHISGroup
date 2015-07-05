@@ -86,7 +86,7 @@ namespace Assignment3_LHISGroup.Support_Classes
          */
         public Nullable<DateTime> CompletionDate
         {
-            get { return completionDate; }
+            get { return completionDate.Value.Date; }
             set { completionDate = value; }
         }
 

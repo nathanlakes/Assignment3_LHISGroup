@@ -64,8 +64,26 @@ namespace Assignment3_LHISGroup
                 myCommand.Parameters.AddWithValue("@taskname", t.TaskName);
                 myCommand.Parameters.AddWithValue("@description", t.Description);
                 myCommand.Parameters.AddWithValue("@priority", t.TaskPriority.ToString());
-                myCommand.Parameters.AddWithValue("@completeByDate", formatDateForDbInput(t.CompleteBy));                
-                myCommand.Parameters.AddWithValue("@actualComplete", formatDateForDbInput(t.CompletionDate) );
+                myCommand.Parameters.AddWithValue("@completeByDate", formatDateForDbInput(t.CompleteBy));
+
+
+                // Assign Actual Complete Date, if any.
+                try
+                {
+                    string acd = t.CompletionDate.ToString();
+                    if (acd == DateTime.MinValue.ToString())
+                    {
+                        myCommand.Parameters.AddWithValue("@actualComplete", formatDateForDbInput(DateTime.MinValue) );
+                    }
+                    else
+                    {
+                        myCommand.Parameters.AddWithValue("@actualComplete", formatDateForDbInput(t.CompletionDate));
+                    }
+
+                }
+                catch (Exception) { }  
+
+
                 myCommand.Parameters.AddWithValue("@staffOnJob", staffId);
 
                 int weddId = getWeddingId( t.Wedding );
@@ -244,17 +262,22 @@ namespace Assignment3_LHISGroup
 
                             t.ID = Convert.ToInt32(taskReader["Id"].ToString());
 
-                            // Assign Completion Date, if not null
-                            // TODO:  Fix write/read of DateTime.MinValue
-                            string acd = taskReader["actualCompletionDate"].ToString();
-
-                            temp = taskReader["actualCompletionDate"].ToString();
-                            date = splitStringDate(temp);
-                            DateTime actComp = new DateTime(date[2], date[1], date[0]);
-                            if (DateTime.Compare(actComp, DateTime.MinValue) != 0)
+                            // Assign Actual Complete Date, if any.
+                            try
                             {
-                                t.CompletionDate = actComp;
+                                string acd = taskReader["actualCompletionDate"].ToString();
+                                if (acd == DateTime.MinValue.ToString())
+                                {
+                                    t.CompletionDate = null;
+                                }
+                                else
+                                {
+                                    int[] dates = splitStringDate(acd);
+                                    t.CompletionDate = new DateTime(dates[2], dates[1], dates[0]);
+                                }
+
                             }
+                            catch (Exception) { }
                         }
                     }
                 }
@@ -786,12 +809,12 @@ namespace Assignment3_LHISGroup
                             // Generate DateTime for start date.
                             string temp = myReader["startDate"].ToString();
                             int[] dateArray = splitStringDate(temp);
-                            DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+                            DateTime startDate = new DateTime(dateArray[2], dateArray[1], dateArray[0]);
 
                             // Generate DateTime for event date.
                             temp = myReader["eventDate"].ToString();
                             dateArray = splitStringDate(temp);
-                            DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+                            DateTime eventDate = new DateTime(dateArray[2], dateArray[1], dateArray[0]);
 
                             // Create Staff Object
                             int stfId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
@@ -1423,9 +1446,17 @@ namespace Assignment3_LHISGroup
                         // Assign Actual Complete Date, if any.
                         try
                         {
-                            temp = splitStringDate(taskReader["completeByDate"].ToString());
-                            completeBy = new DateTime(temp[2], temp[1], temp[0]);
-                            t.CompleteBy = completeBy;
+                            string acd = taskReader["actualCompletionDate"].ToString();
+                            if (acd == DateTime.MinValue.ToString())
+                            {
+                                t.CompletionDate = null;
+                            }
+                            else
+                            {
+                                int[] dates = splitStringDate(acd);
+                                t.CompletionDate = new DateTime(dates[2], dates[1], dates[0]);
+                            }
+
                         }
                         catch (Exception) { }
 
@@ -1812,12 +1843,12 @@ namespace Assignment3_LHISGroup
                         // Generate DateTime for start date.
                         string temp = myReader["startDate"].ToString();
                         int[] dateArray = splitStringDate(temp);
-                        DateTime startDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+                        DateTime startDate = new DateTime(dateArray[2], dateArray[1], dateArray[0]);   // TODO:: was 0 1 2
 
                         // Generate DateTime for event date.
                         temp = myReader["eventDate"].ToString();
                         dateArray = splitStringDate(temp);
-                        DateTime eventDate = new DateTime(dateArray[0], dateArray[1], dateArray[2]);
+                        DateTime eventDate = new DateTime(dateArray[2], dateArray[1], dateArray[0]);   // TODO:: was 0 1 2
 
                         // Create Staff Object
                         int index = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());

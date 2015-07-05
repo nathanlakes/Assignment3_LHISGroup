@@ -64,6 +64,8 @@ namespace Assignment3_LHISGroup.Database
             Support_Classes.Task t1 = new Support_Classes.Task("Set Tables", "Add table cloth to 20 tables",
                 Support_Classes.Task.Priority.high, completeBy, nate, w);
 
+            //t1.CompletionDate = new DateTime(2015, 07, 5);  // Set the completion date, test GetAllTasks()
+
             try
             {
                 db.AddTask(t1);
@@ -83,7 +85,7 @@ namespace Assignment3_LHISGroup.Database
                 {
                     output += v.ToString() + "\n";
                 }
-                MessageBox.Show(output);
+                MessageBox.Show(output, "GetAllClients()");
             }
 
             {
@@ -93,7 +95,7 @@ namespace Assignment3_LHISGroup.Database
                 {
                     output += v.ToString() + "\n";
                 }
-                MessageBox.Show(output);
+                MessageBox.Show(output, "GetAllStaff()");
             }
 
             {
@@ -103,7 +105,7 @@ namespace Assignment3_LHISGroup.Database
                 {
                     output += v.ToString() + "\n";
                 }
-                MessageBox.Show(output);
+                MessageBox.Show(output, "GetAllSuppliers()");
             }
 
             {
@@ -113,7 +115,7 @@ namespace Assignment3_LHISGroup.Database
                 {
                     output += v.ToString() + "\n";
                 }
-                MessageBox.Show(output);
+                MessageBox.Show(output, "GetAllTasks()");
             }
 
             {
@@ -168,7 +170,7 @@ namespace Assignment3_LHISGroup.Database
             //
             {
                 Support_Classes.Task t = db.FindTask(6);
-                MessageBox.Show(t.ToString(), "Task #6 is:");
+                MessageBox.Show(t.ToString(), "Task #6 is:");  // Show empty for comp date.??
 
                 Support_Classes.Task t2 = db.FindTask(t);
                 MessageBox.Show(t.ToString(), "Task 't' returns");
