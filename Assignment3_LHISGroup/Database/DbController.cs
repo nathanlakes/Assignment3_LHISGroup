@@ -1865,6 +1865,10 @@ namespace Assignment3_LHISGroup
         public int[] splitStringDate(string d)
         {
             int[] returnDate = new int[10];
+            returnDate[0] = 1;
+            returnDate[1] = 01;
+            returnDate[2] = 01;
+
             try
             {
                 string trimDate = Regex.Match(d, "^[^ ]+").Value;
@@ -1873,12 +1877,9 @@ namespace Assignment3_LHISGroup
 
                 date = trimDate.Split(delimChars);
 
-                int i = 0;
-                
-                foreach (string s in date)
+                for (int i = 0; i < 3; i++)
                 {
-                    returnDate[i] = Convert.ToInt32(s);
-                    i++;
+                    returnDate[i] = Convert.ToInt32(date[i]);
                 }
             }
             catch (Exception ex)
