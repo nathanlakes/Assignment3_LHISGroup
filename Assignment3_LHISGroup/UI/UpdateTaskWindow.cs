@@ -17,6 +17,9 @@ namespace Assignment3_LHISGroup.UI
 
         List<Support_Classes.Staff> StaffList;
         List<Support_Classes.Wedding> WeddingList;
+
+        Support_Classes.Task task;
+        int id;
         
         public UpdateTaskWindow(MainWindow w, DbController d)
         {
@@ -43,6 +46,40 @@ namespace Assignment3_LHISGroup.UI
                 WeddingComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
             }
 
+        }
+
+        public void PopuluateDataFields(Support_Classes.Task t)
+        {
+            task = t;
+            id = t.ID;
+
+
+
+            NameTextBox.Text = t.TaskName;
+            DescriptionTextBox.Text = t.Description;
+
+
+            int staff_id = t.AssignedTo.ID;
+            string staff_name = t.AssignedTo.FirstName + " " + t.AssignedTo.Surname;
+            StaffComboBox.SelectedItem = StaffComboBox.Equals(new KeyValuePair<int, string>(staff_id, staff_name));
+
+            int wedding_id = t.Wedding.ID;
+            string wedding_name = t.Wedding.Title;
+
+            WeddingComboBox.SelectedItem = WeddingComboBox.Equals(new KeyValuePair<int, string>(wedding_id, wedding_name));            
+
+            CompleteByDateTimePicker.Value = t.CompleteBy;
+
+            if (t.CompletionDate != null)
+            {
+                CompletionDateTimePicker.Value = (DateTime)t.CompletionDate;
+            }
+            else
+            {
+                CompletionDateTimePicker.Value = DateTime.Now;
+            }
+
+            
         }
 
         private bool ValidateForm()

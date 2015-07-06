@@ -157,9 +157,7 @@ namespace Assignment3_LHISGroup.UI
                 {
                     MessageBox.Show("Exception thrown");
                 }
-
             }
-            
         }
     }
 }
