@@ -44,9 +44,9 @@
             this.DeleteWeddingButton = new System.Windows.Forms.Button();
             this.weddingTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.WeddingTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.GraphButton = new System.Windows.Forms.Button();
             this.ReportButton = new System.Windows.Forms.Button();
             this.ProgressButton = new System.Windows.Forms.Button();
-            this.GraphButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.WeddingsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weddingBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).BeginInit();
@@ -77,7 +77,7 @@
             this.WeddingsDataGridView.ReadOnly = true;
             this.WeddingsDataGridView.RowTemplate.Height = 28;
             this.WeddingsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WeddingsDataGridView.Size = new System.Drawing.Size(1480, 317);
+            this.WeddingsDataGridView.Size = new System.Drawing.Size(945, 339);
             this.WeddingsDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -185,15 +185,25 @@
             this.panel1.Controls.Add(this.DeleteWeddingButton);
             this.panel1.Controls.Add(this.UpdateWeddingButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 317);
+            this.panel1.Location = new System.Drawing.Point(0, 339);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1480, 93);
+            this.panel1.Size = new System.Drawing.Size(945, 142);
             this.panel1.TabIndex = 4;
+            // 
+            // GraphButton
+            // 
+            this.GraphButton.BackColor = System.Drawing.Color.White;
+            this.GraphButton.Location = new System.Drawing.Point(38, 89);
+            this.GraphButton.Name = "GraphButton";
+            this.GraphButton.Size = new System.Drawing.Size(148, 41);
+            this.GraphButton.TabIndex = 9;
+            this.GraphButton.Text = "Progress Graph";
+            this.GraphButton.UseVisualStyleBackColor = false;
             // 
             // ReportButton
             // 
             this.ReportButton.BackColor = System.Drawing.Color.White;
-            this.ReportButton.Location = new System.Drawing.Point(1279, 23);
+            this.ReportButton.Location = new System.Drawing.Point(466, 89);
             this.ReportButton.Name = "ReportButton";
             this.ReportButton.Size = new System.Drawing.Size(165, 41);
             this.ReportButton.TabIndex = 8;
@@ -203,29 +213,19 @@
             // ProgressButton
             // 
             this.ProgressButton.BackColor = System.Drawing.Color.White;
-            this.ProgressButton.Location = new System.Drawing.Point(1097, 22);
+            this.ProgressButton.Location = new System.Drawing.Point(259, 89);
             this.ProgressButton.Name = "ProgressButton";
             this.ProgressButton.Size = new System.Drawing.Size(162, 41);
             this.ProgressButton.TabIndex = 7;
             this.ProgressButton.Text = "Progress Printout";
             this.ProgressButton.UseVisualStyleBackColor = false;
             // 
-            // GraphButton
-            // 
-            this.GraphButton.BackColor = System.Drawing.Color.White;
-            this.GraphButton.Location = new System.Drawing.Point(918, 23);
-            this.GraphButton.Name = "GraphButton";
-            this.GraphButton.Size = new System.Drawing.Size(148, 41);
-            this.GraphButton.TabIndex = 9;
-            this.GraphButton.Text = "Progress Graph";
-            this.GraphButton.UseVisualStyleBackColor = false;
-            // 
             // ManageWeddingsWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1480, 410);
+            this.ClientSize = new System.Drawing.Size(945, 481);
             this.Controls.Add(this.WeddingsDataGridView);
             this.Controls.Add(this.panel1);
             this.Name = "ManageWeddingsWindow";

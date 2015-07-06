@@ -80,6 +80,22 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateWeddingButton_Click(object sender, EventArgs e)
         {
+            Support_Classes.Wedding wedding = ExtractSelectedRow();
+            if (wedding != null)
+            {
+                if (!mainWin.UpdateWeddingWindow.Visible)
+                {
+                    mainWin.UpdateWeddingWindow.Visible = true;
+                    mainWin.UpdateWeddingWindow.PopulateDataFields(wedding);
+                }
+                else
+                {
+                    mainWin.UpdateWeddingWindow.PopulateDataFields(wedding);
+                    mainWin.UpdateWeddingWindow.Focus();
+                }
+
+            }
+
             if (WeddingsDataGridView.SelectedRows.Count > 0 && WeddingsDataGridView.SelectedRows[0].Cells[0] != null)
             {
                 int id = (int) WeddingsDataGridView.SelectedRows[0].Cells[0].Value;
@@ -95,7 +111,7 @@ namespace Assignment3_LHISGroup.UI
             }
             else
             {
-
+                MessageBox.Show("No row selected");
             }
 
             

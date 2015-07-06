@@ -45,15 +45,13 @@
             this.DeleteWeddingButton = new System.Windows.Forms.Button();
             this.taskTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.TaskTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.MarkCompleteButton = new System.Windows.Forms.Button();
-            this.ExportButton = new System.Windows.Forms.Button();
             this.PrintButton = new System.Windows.Forms.Button();
+            this.ExportButton = new System.Windows.Forms.Button();
+            this.MarkCompleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TasksDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TasksDataGridView
@@ -81,7 +79,7 @@
             this.TasksDataGridView.ReadOnly = true;
             this.TasksDataGridView.RowTemplate.Height = 28;
             this.TasksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TasksDataGridView.Size = new System.Drawing.Size(1493, 433);
+            this.TasksDataGridView.Size = new System.Drawing.Size(992, 570);
             this.TasksDataGridView.TabIndex = 0;
             this.TasksDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TasksDataGridView_CellContentClick);
             // 
@@ -154,7 +152,7 @@
             // AddTaskButton
             // 
             this.AddTaskButton.BackColor = System.Drawing.Color.White;
-            this.AddTaskButton.Location = new System.Drawing.Point(27, 17);
+            this.AddTaskButton.Location = new System.Drawing.Point(43, 22);
             this.AddTaskButton.Name = "AddTaskButton";
             this.AddTaskButton.Size = new System.Drawing.Size(108, 43);
             this.AddTaskButton.TabIndex = 1;
@@ -165,7 +163,7 @@
             // UpdateTaskButton
             // 
             this.UpdateTaskButton.BackColor = System.Drawing.Color.White;
-            this.UpdateTaskButton.Location = new System.Drawing.Point(334, 16);
+            this.UpdateTaskButton.Location = new System.Drawing.Point(329, 22);
             this.UpdateTaskButton.Name = "UpdateTaskButton";
             this.UpdateTaskButton.Size = new System.Drawing.Size(131, 43);
             this.UpdateTaskButton.TabIndex = 2;
@@ -176,7 +174,7 @@
             // DeleteWeddingButton
             // 
             this.DeleteWeddingButton.BackColor = System.Drawing.Color.White;
-            this.DeleteWeddingButton.Location = new System.Drawing.Point(169, 16);
+            this.DeleteWeddingButton.Location = new System.Drawing.Point(176, 22);
             this.DeleteWeddingButton.Name = "DeleteWeddingButton";
             this.DeleteWeddingButton.Size = new System.Drawing.Size(131, 43);
             this.DeleteWeddingButton.TabIndex = 3;
@@ -190,63 +188,54 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.UpdateTaskButton);
+            this.panel1.Controls.Add(this.DeleteWeddingButton);
+            this.panel1.Controls.Add(this.AddTaskButton);
+            this.panel1.Controls.Add(this.MarkCompleteButton);
+            this.panel1.Controls.Add(this.ExportButton);
+            this.panel1.Controls.Add(this.PrintButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 358);
+            this.panel1.Location = new System.Drawing.Point(0, 422);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1493, 75);
+            this.panel1.Size = new System.Drawing.Size(992, 148);
             this.panel1.TabIndex = 4;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.PrintButton);
-            this.panel2.Controls.Add(this.ExportButton);
-            this.panel2.Controls.Add(this.MarkCompleteButton);
-            this.panel2.Controls.Add(this.AddTaskButton);
-            this.panel2.Controls.Add(this.DeleteWeddingButton);
-            this.panel2.Controls.Add(this.UpdateTaskButton);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1493, 75);
-            this.panel2.TabIndex = 4;
-            // 
-            // MarkCompleteButton
-            // 
-            this.MarkCompleteButton.BackColor = System.Drawing.Color.White;
-            this.MarkCompleteButton.Location = new System.Drawing.Point(723, 17);
-            this.MarkCompleteButton.Name = "MarkCompleteButton";
-            this.MarkCompleteButton.Size = new System.Drawing.Size(202, 42);
-            this.MarkCompleteButton.TabIndex = 4;
-            this.MarkCompleteButton.Text = "Mark As Complete";
-            this.MarkCompleteButton.UseVisualStyleBackColor = false;
-            // 
-            // ExportButton
-            // 
-            this.ExportButton.BackColor = System.Drawing.Color.White;
-            this.ExportButton.Location = new System.Drawing.Point(947, 17);
-            this.ExportButton.Name = "ExportButton";
-            this.ExportButton.Size = new System.Drawing.Size(208, 41);
-            this.ExportButton.TabIndex = 5;
-            this.ExportButton.Text = "Export To CSV";
-            this.ExportButton.UseVisualStyleBackColor = false;
             // 
             // PrintButton
             // 
             this.PrintButton.BackColor = System.Drawing.Color.White;
-            this.PrintButton.Location = new System.Drawing.Point(1229, 17);
+            this.PrintButton.Location = new System.Drawing.Point(511, 83);
             this.PrintButton.Name = "PrintButton";
             this.PrintButton.Size = new System.Drawing.Size(211, 41);
             this.PrintButton.TabIndex = 6;
             this.PrintButton.Text = "Print Report";
             this.PrintButton.UseVisualStyleBackColor = false;
             // 
+            // ExportButton
+            // 
+            this.ExportButton.BackColor = System.Drawing.Color.White;
+            this.ExportButton.Location = new System.Drawing.Point(268, 83);
+            this.ExportButton.Name = "ExportButton";
+            this.ExportButton.Size = new System.Drawing.Size(208, 41);
+            this.ExportButton.TabIndex = 5;
+            this.ExportButton.Text = "Export To CSV";
+            this.ExportButton.UseVisualStyleBackColor = false;
+            // 
+            // MarkCompleteButton
+            // 
+            this.MarkCompleteButton.BackColor = System.Drawing.Color.White;
+            this.MarkCompleteButton.Location = new System.Drawing.Point(43, 83);
+            this.MarkCompleteButton.Name = "MarkCompleteButton";
+            this.MarkCompleteButton.Size = new System.Drawing.Size(202, 42);
+            this.MarkCompleteButton.TabIndex = 4;
+            this.MarkCompleteButton.Text = "Mark As Complete";
+            this.MarkCompleteButton.UseVisualStyleBackColor = false;
+            // 
             // ManageTasksWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1493, 433);
+            this.ClientSize = new System.Drawing.Size(992, 570);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TasksDataGridView);
             this.Name = "ManageTasksWindow";
@@ -257,7 +246,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -280,7 +268,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn staffOnJobFKDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn weddingIDFKDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button MarkCompleteButton;
         private System.Windows.Forms.Button ExportButton;
         private System.Windows.Forms.Button PrintButton;

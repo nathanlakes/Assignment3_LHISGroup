@@ -103,6 +103,19 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateTaskButton_Click(object sender, EventArgs e)
         {
+            Support_Classes.Task task = ExtractSelectedRow();
+            if (task != null)
+            {
+                if (!mainWin.UpdateTaskWindow.Visible)
+                {
+                    mainWin.UpdateTaskWindow.Visible = true;
+                    
+
+                } 
+            }
+
+
+
             if (!mainWin.UpdateTaskWindow.Visible)
             {
                 mainWin.UpdateTaskWindow.Visible = true;

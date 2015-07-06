@@ -184,7 +184,7 @@
             // ReportButton
             // 
             this.ReportButton.BackColor = System.Drawing.Color.White;
-            this.ReportButton.Location = new System.Drawing.Point(623, 15);
+            this.ReportButton.Location = new System.Drawing.Point(515, 19);
             this.ReportButton.Name = "ReportButton";
             this.ReportButton.Size = new System.Drawing.Size(214, 41);
             this.ReportButton.TabIndex = 3;
