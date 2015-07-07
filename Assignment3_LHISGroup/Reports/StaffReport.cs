@@ -88,7 +88,8 @@ namespace Assignment3_LHISGroup.Reports
 
         private void assignedTasksListForSelectedStaff()
         {
-
+            List<Support_Classes.Task> assignedTasksList = new List<Support_Classes.Task>();
+            List<Support_Classes.Task> allTaskList = dbController.GetAllTasks();
             int selStaffID = -10;
             String selStaff = StaffListBox.SelectedItem.ToString();
             try
@@ -100,8 +101,7 @@ namespace Assignment3_LHISGroup.Reports
                 Console.WriteLine("Failed to convert Staff ID");
             }
           
-            List<Support_Classes.Task> assignedTasksList = new List<Support_Classes.Task>();
-            List<Support_Classes.Task> allTaskList = dbController.GetAllTasks();
+            
             foreach (Support_Classes.Task task in allTaskList)
             {
                 
