@@ -35,6 +35,8 @@
             this.CompleteBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompletionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Assignedto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WeddingListLabel = new System.Windows.Forms.Label();
+            this.WeddingTasksLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.WeddingDetailsGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,17 +95,38 @@
             this.Assignedto.Name = "Assignedto";
             this.Assignedto.Width = 109;
             // 
+            // WeddingListLabel
+            // 
+            this.WeddingListLabel.AutoSize = true;
+            this.WeddingListLabel.Location = new System.Drawing.Point(13, 11);
+            this.WeddingListLabel.Name = "WeddingListLabel";
+            this.WeddingListLabel.Size = new System.Drawing.Size(69, 13);
+            this.WeddingListLabel.TabIndex = 2;
+            this.WeddingListLabel.Text = "Wedding List";
+            // 
+            // WeddingTasksLabel
+            // 
+            this.WeddingTasksLabel.AutoSize = true;
+            this.WeddingTasksLabel.Location = new System.Drawing.Point(456, 9);
+            this.WeddingTasksLabel.Name = "WeddingTasksLabel";
+            this.WeddingTasksLabel.Size = new System.Drawing.Size(82, 13);
+            this.WeddingTasksLabel.TabIndex = 3;
+            this.WeddingTasksLabel.Text = "Wedding Tasks";
+            // 
             // EventReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(955, 394);
+            this.Controls.Add(this.WeddingTasksLabel);
+            this.Controls.Add(this.WeddingListLabel);
             this.Controls.Add(this.WeddingDetailsGridView);
             this.Controls.Add(this.EventListBox);
             this.Name = "EventReport";
             this.Text = "EventReport";
             ((System.ComponentModel.ISupportInitialize)(this.WeddingDetailsGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -116,5 +139,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CompleteBy;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompletionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Assignedto;
+        private System.Windows.Forms.Label WeddingListLabel;
+        private System.Windows.Forms.Label WeddingTasksLabel;
     }
 }

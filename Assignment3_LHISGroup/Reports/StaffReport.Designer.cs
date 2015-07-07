@@ -58,6 +58,7 @@
             // 
             // TasksView
             // 
+            this.TasksView.AllowUserToDeleteRows = false;
             this.TasksView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.TasksView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.TasksView.ColumnHeadersHeight = 20;
@@ -65,9 +66,11 @@
             this.Tasks,
             this.Description,
             this.TaskCompleteBy});
+            this.TasksView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.TasksView.Location = new System.Drawing.Point(168, 44);
             this.TasksView.Name = "TasksView";
             this.TasksView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TasksView.ShowEditingIcon = false;
             this.TasksView.Size = new System.Drawing.Size(685, 377);
             this.TasksView.TabIndex = 2;
             this.TasksView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TasksView_CellContentClick);
