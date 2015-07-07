@@ -45,9 +45,14 @@
             this.DeleteWeddingButton = new System.Windows.Forms.Button();
             this.taskTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.TaskTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.PrintButton = new System.Windows.Forms.Button();
-            this.ExportButton = new System.Windows.Forms.Button();
             this.MarkCompleteButton = new System.Windows.Forms.Button();
+            this.ExportButton = new System.Windows.Forms.Button();
+            this.PrintButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ClearFilterButton = new System.Windows.Forms.Button();
+            this.WeddingComboBox = new System.Windows.Forms.ComboBox();
+            this.StaffComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.TasksDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).BeginInit();
@@ -79,7 +84,7 @@
             this.TasksDataGridView.ReadOnly = true;
             this.TasksDataGridView.RowTemplate.Height = 28;
             this.TasksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TasksDataGridView.Size = new System.Drawing.Size(992, 570);
+            this.TasksDataGridView.Size = new System.Drawing.Size(992, 628);
             this.TasksDataGridView.TabIndex = 0;
             this.TasksDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TasksDataGridView_CellContentClick);
             // 
@@ -188,6 +193,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.StaffComboBox);
+            this.panel1.Controls.Add(this.WeddingComboBox);
+            this.panel1.Controls.Add(this.ClearFilterButton);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.UpdateTaskButton);
             this.panel1.Controls.Add(this.DeleteWeddingButton);
             this.panel1.Controls.Add(this.AddTaskButton);
@@ -195,47 +205,91 @@
             this.panel1.Controls.Add(this.ExportButton);
             this.panel1.Controls.Add(this.PrintButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 422);
+            this.panel1.Location = new System.Drawing.Point(0, 412);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(992, 148);
+            this.panel1.Size = new System.Drawing.Size(992, 216);
             this.panel1.TabIndex = 4;
-            // 
-            // PrintButton
-            // 
-            this.PrintButton.BackColor = System.Drawing.Color.White;
-            this.PrintButton.Location = new System.Drawing.Point(511, 83);
-            this.PrintButton.Name = "PrintButton";
-            this.PrintButton.Size = new System.Drawing.Size(211, 41);
-            this.PrintButton.TabIndex = 6;
-            this.PrintButton.Text = "Print Report";
-            this.PrintButton.UseVisualStyleBackColor = false;
-            // 
-            // ExportButton
-            // 
-            this.ExportButton.BackColor = System.Drawing.Color.White;
-            this.ExportButton.Location = new System.Drawing.Point(268, 83);
-            this.ExportButton.Name = "ExportButton";
-            this.ExportButton.Size = new System.Drawing.Size(208, 41);
-            this.ExportButton.TabIndex = 5;
-            this.ExportButton.Text = "Export To CSV";
-            this.ExportButton.UseVisualStyleBackColor = false;
             // 
             // MarkCompleteButton
             // 
             this.MarkCompleteButton.BackColor = System.Drawing.Color.White;
-            this.MarkCompleteButton.Location = new System.Drawing.Point(43, 83);
+            this.MarkCompleteButton.Location = new System.Drawing.Point(549, 22);
             this.MarkCompleteButton.Name = "MarkCompleteButton";
             this.MarkCompleteButton.Size = new System.Drawing.Size(202, 42);
             this.MarkCompleteButton.TabIndex = 4;
             this.MarkCompleteButton.Text = "Mark As Complete";
             this.MarkCompleteButton.UseVisualStyleBackColor = false;
             // 
+            // ExportButton
+            // 
+            this.ExportButton.BackColor = System.Drawing.Color.White;
+            this.ExportButton.Location = new System.Drawing.Point(549, 90);
+            this.ExportButton.Name = "ExportButton";
+            this.ExportButton.Size = new System.Drawing.Size(208, 41);
+            this.ExportButton.TabIndex = 5;
+            this.ExportButton.Text = "Export To CSV";
+            this.ExportButton.UseVisualStyleBackColor = false;
+            // 
+            // PrintButton
+            // 
+            this.PrintButton.BackColor = System.Drawing.Color.White;
+            this.PrintButton.Location = new System.Drawing.Point(546, 145);
+            this.PrintButton.Name = "PrintButton";
+            this.PrintButton.Size = new System.Drawing.Size(211, 41);
+            this.PrintButton.TabIndex = 6;
+            this.PrintButton.Text = "Print Report";
+            this.PrintButton.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(43, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Filter By Staff";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(43, 155);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(133, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Filter By Wedding";
+            // 
+            // ClearFilterButton
+            // 
+            this.ClearFilterButton.BackColor = System.Drawing.Color.White;
+            this.ClearFilterButton.Location = new System.Drawing.Point(438, 98);
+            this.ClearFilterButton.Name = "ClearFilterButton";
+            this.ClearFilterButton.Size = new System.Drawing.Size(75, 67);
+            this.ClearFilterButton.TabIndex = 9;
+            this.ClearFilterButton.Text = "Clear Filters";
+            this.ClearFilterButton.UseVisualStyleBackColor = false;
+            // 
+            // WeddingComboBox
+            // 
+            this.WeddingComboBox.FormattingEnabled = true;
+            this.WeddingComboBox.Location = new System.Drawing.Point(191, 152);
+            this.WeddingComboBox.Name = "WeddingComboBox";
+            this.WeddingComboBox.Size = new System.Drawing.Size(211, 28);
+            this.WeddingComboBox.TabIndex = 10;
+            // 
+            // StaffComboBox
+            // 
+            this.StaffComboBox.FormattingEnabled = true;
+            this.StaffComboBox.Location = new System.Drawing.Point(191, 90);
+            this.StaffComboBox.Name = "StaffComboBox";
+            this.StaffComboBox.Size = new System.Drawing.Size(208, 28);
+            this.StaffComboBox.TabIndex = 11;
+            // 
             // ManageTasksWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(992, 570);
+            this.ClientSize = new System.Drawing.Size(992, 628);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TasksDataGridView);
             this.Name = "ManageTasksWindow";
@@ -246,6 +300,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -271,5 +326,10 @@
         private System.Windows.Forms.Button MarkCompleteButton;
         private System.Windows.Forms.Button ExportButton;
         private System.Windows.Forms.Button PrintButton;
+        private System.Windows.Forms.ComboBox StaffComboBox;
+        private System.Windows.Forms.ComboBox WeddingComboBox;
+        private System.Windows.Forms.Button ClearFilterButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

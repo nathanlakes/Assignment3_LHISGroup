@@ -29,6 +29,35 @@ namespace Assignment3_LHISGroup.UI
             this.Refresh();
         }
 
+        public void RefreshComboBoxes()
+        {
+
+        }
+
+        private void ClearFilters()
+        {
+            
+        }
+
+        private void SelectTasksForStaff(int id)
+        {
+
+        }
+
+        private void SelectTasksForStaff(Support_Classes.Staff staff)
+        {
+            SelectTasksForStaff(staff.ID);
+        }
+
+        private void SelectTasksForWedding(int id)
+        {
+            
+        }
+
+        private void SelectTasksForWedding(Support_Classes.Wedding wedding) {
+            SelectTasksForWedding(wedding.ID);
+        }
+
         private Support_Classes.Task ExtractSelectedRow()
         {
             if (TasksDataGridView.SelectedRows.Count > 0 && TasksDataGridView.SelectedRows[0].Cells[0].Value != null)
