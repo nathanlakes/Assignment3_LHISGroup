@@ -102,6 +102,21 @@ namespace Assignment3_LHISGroup
             //this.danielTest();   // Code for Daniel to test reports
         }
 
+        public void RefreshAllWindow()
+        {
+
+            UpdateTaskWindow.RefreshData();
+
+            UpdateWeddingWindow.RefreshData();
+            
+            ManageTasksWindow.RefreshData();
+
+            NewTaskWindow.RefreshData();
+
+            NewWeddingWindow.RefreshData();
+
+        }
+
         private void louiseTestDataPopulate()
         {
             

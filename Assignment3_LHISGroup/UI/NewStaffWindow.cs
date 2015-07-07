@@ -89,6 +89,7 @@ namespace Assignment3_LHISGroup.UI
                     db.AddStaff(staff);
                     clearNewStaffForm();
                     mainWin.ManageStaffWindow.UpdateForm();
+                    mainWin.RefreshAllWindow();
                 } catch(Exception){
                     MessageBox.Show("Exception thrown");
                 }               

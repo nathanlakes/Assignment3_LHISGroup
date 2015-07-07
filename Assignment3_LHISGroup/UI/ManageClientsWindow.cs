@@ -81,15 +81,14 @@ namespace Assignment3_LHISGroup.UI
             Support_Classes.Client client = ExtractSelectedRow();
             if (client != null)
             {
+                mainWin.UpdateClientWindow.PopulateForm(client);
                 if (!mainWin.UpdateClientWindow.Visible)
                 {
                     mainWin.UpdateClientWindow.Visible = true;
-                    mainWin.UpdateClientWindow.PopulateForm(client);
                 }
                 else
                 {
                     mainWin.UpdateClientWindow.Focus();
-                    mainWin.UpdateClientWindow.PopulateForm(client);
                 }
             }
             else

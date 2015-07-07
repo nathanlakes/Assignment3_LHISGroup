@@ -64,14 +64,13 @@ namespace Assignment3_LHISGroup.UI
             Support_Classes.Supplier supplier = ExtractSelectedRow();
             if (supplier != null)
             {
+                mainWin.UpdateSupplierWindow.PopulateDataFields(supplier);
                 if (!mainWin.UpdateSupplierWindow.Visible)
                 {
                     mainWin.UpdateSupplierWindow.Visible = true;
-                    mainWin.UpdateSupplierWindow.PopulateDataFields(supplier);
                 }
                 else
                 {
-                    mainWin.UpdateSupplierWindow.PopulateDataFields(supplier);
                     mainWin.UpdateSupplierWindow.Focus();
                 }
             }

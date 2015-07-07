@@ -98,6 +98,7 @@ namespace Assignment3_LHISGroup.UI
                     {
                         mainWin.ManageSuppliersWindow.Focus();
                     }
+                    mainWin.RefreshAllWindow();
                 }
                 catch (Exception)
                 {

@@ -14,11 +14,70 @@ namespace Assignment3_LHISGroup.UI
     {
         MainWindow mainWin;
         DbController db;
+
+        List<Support_Classes.Staff> StaffList;
+        List<Support_Classes.Wedding> WeddingList;
+
         public ManageTasksWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
             mainWin = w;
             db = d;
+
+            StaffList = db.GetAllStaff();
+            foreach (Support_Classes.Staff staff in StaffList)
+            {
+                if (staff.StatusToString().Equals("active"))
+                {
+                    int keyValue = staff.ID;
+                    string name = staff.FirstName + " " + staff.Surname;
+                    StaffComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
+                }
+            }
+
+            WeddingList = db.GetAllWeddings();
+            foreach (Support_Classes.Wedding wedding in WeddingList)
+            {
+                int keyValue = wedding.ID;
+                string name = wedding.Title;
+                WeddingComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
+            }
+
+            StaffComboBox.DisplayMember = "Value";
+            StaffComboBox.ValueMember = "Key";
+
+            WeddingComboBox.DisplayMember = "Value";
+            WeddingComboBox.ValueMember = "Key";
+        }
+
+        public void RefreshData()
+        {
+            StaffList = db.GetAllStaff();
+            foreach (Support_Classes.Staff staff in StaffList)
+            {
+                if (staff.StatusToString().Equals("active"))
+                {
+                    int keyValue = staff.ID;
+                    string name = staff.FirstName + " " + staff.Surname;
+                    StaffComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
+                }
+            }
+
+            WeddingList = db.GetAllWeddings();
+            foreach (Support_Classes.Wedding wedding in WeddingList)
+            {
+                int keyValue = wedding.ID;
+                string name = wedding.Title;
+                WeddingComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
+            }
+
+            WeddingList = db.GetAllWeddings();
+            foreach (Support_Classes.Wedding wedding in WeddingList)
+            {
+                int keyValue = wedding.ID;
+                string name = wedding.Title;
+                WeddingComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
+            }
         }
 
         public void UpdateForm()
@@ -31,17 +90,28 @@ namespace Assignment3_LHISGroup.UI
 
         public void RefreshComboBoxes()
         {
-
+            
         }
 
         private void ClearFilters()
         {
-            
+            foreach (DataGridViewRow row in TasksDataGridView.Rows)
+            {
+                row.Visible = true;
+            }
         }
 
         private void SelectTasksForStaff(int id)
         {
-
+            foreach (DataGridViewRow row in TasksDataGridView.Rows)
+            {
+                int index = TasksDataGridView.ColumnCount - 2;
+                if (row.Cells[index].Value.ToString().Equals(""+id)){
+                    row.Visible = true;
+                } else {
+                    row.Visible = false;
+                }
+            }
         }
 
         private void SelectTasksForStaff(Support_Classes.Staff staff)
@@ -51,7 +121,18 @@ namespace Assignment3_LHISGroup.UI
 
         private void SelectTasksForWedding(int id)
         {
-            
+            foreach (DataGridViewRow row in TasksDataGridView.Rows)
+            {
+                int index = TasksDataGridView.ColumnCount - 1;
+                if (row.Cells[index].Value.ToString().Equals("" + id))
+                {
+                    row.Visible = true;
+                }
+                else
+                {
+                    row.Visible = false;
+                }
+            }
         }
 
         private void SelectTasksForWedding(Support_Classes.Wedding wedding) {
@@ -136,23 +217,19 @@ namespace Assignment3_LHISGroup.UI
             Support_Classes.Task task = ExtractSelectedRow();
             if (task != null)
             {
+                mainWin.UpdateTaskWindow.PopuluateDataFields(task);
                 if (!mainWin.UpdateTaskWindow.Visible)
                 {
                     mainWin.UpdateTaskWindow.Visible = true;
-                    
-
-                } 
-            }
-
-
-
-            if (!mainWin.UpdateTaskWindow.Visible)
-            {
-                mainWin.UpdateTaskWindow.Visible = true;
+                }
+                else
+                {
+                    mainWin.UpdateTaskWindow.Focus();
+                }
             }
             else
             {
-                mainWin.UpdateTaskWindow.Focus();
+                MessageBox.Show("No row selected");
             }
             
         }
@@ -162,9 +239,33 @@ namespace Assignment3_LHISGroup.UI
 
         }
 
-        private void TasksDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ClearFilterButton_Click(object sender, EventArgs e)
         {
+            this.ClearFilters();
+        }
 
+        private void StaffComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = ((KeyValuePair<int,string>)StaffComboBox.SelectedItem).Key;
+            this.SelectTasksForStaff(id);
+        }
+
+        private void WeddingComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = ((KeyValuePair<int, string>)WeddingComboBox.SelectedItem).Key;
+            this.SelectTasksForWedding(id);
+        }
+
+        private void FilterStaffButton_Click(object sender, EventArgs e)
+        {
+            int id = ((KeyValuePair<int, string>)StaffComboBox.SelectedItem).Key;
+            this.SelectTasksForStaff(id);
+        }
+
+        private void FilterWeddingButton_Click(object sender, EventArgs e)
+        {
+            int id = ((KeyValuePair<int, string>)WeddingComboBox.SelectedItem).Key;
+            this.SelectTasksForWedding(id);
         }
     }
 }

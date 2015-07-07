@@ -45,14 +45,16 @@
             this.DeleteWeddingButton = new System.Windows.Forms.Button();
             this.taskTableAdapter = new Assignment3_LHISGroup.ModelDataSetTableAdapters.TaskTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.StaffComboBox = new System.Windows.Forms.ComboBox();
+            this.WeddingComboBox = new System.Windows.Forms.ComboBox();
+            this.ClearFilterButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.MarkCompleteButton = new System.Windows.Forms.Button();
             this.ExportButton = new System.Windows.Forms.Button();
             this.PrintButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ClearFilterButton = new System.Windows.Forms.Button();
-            this.WeddingComboBox = new System.Windows.Forms.ComboBox();
-            this.StaffComboBox = new System.Windows.Forms.ComboBox();
+            this.FilterStaffButton = new System.Windows.Forms.Button();
+            this.FilterWeddingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TasksDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taskBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modelDataSet)).BeginInit();
@@ -86,7 +88,6 @@
             this.TasksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TasksDataGridView.Size = new System.Drawing.Size(992, 628);
             this.TasksDataGridView.TabIndex = 0;
-            this.TasksDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TasksDataGridView_CellContentClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -193,6 +194,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.FilterWeddingButton);
+            this.panel1.Controls.Add(this.FilterStaffButton);
             this.panel1.Controls.Add(this.StaffComboBox);
             this.panel1.Controls.Add(this.WeddingComboBox);
             this.panel1.Controls.Add(this.ClearFilterButton);
@@ -209,6 +212,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(992, 216);
             this.panel1.TabIndex = 4;
+            // 
+            // StaffComboBox
+            // 
+            this.StaffComboBox.FormattingEnabled = true;
+            this.StaffComboBox.Location = new System.Drawing.Point(208, 90);
+            this.StaffComboBox.Name = "StaffComboBox";
+            this.StaffComboBox.Size = new System.Drawing.Size(208, 28);
+            this.StaffComboBox.TabIndex = 11;
+            // 
+            // WeddingComboBox
+            // 
+            this.WeddingComboBox.FormattingEnabled = true;
+            this.WeddingComboBox.Location = new System.Drawing.Point(205, 152);
+            this.WeddingComboBox.Name = "WeddingComboBox";
+            this.WeddingComboBox.Size = new System.Drawing.Size(211, 28);
+            this.WeddingComboBox.TabIndex = 10;
+            // 
+            // ClearFilterButton
+            // 
+            this.ClearFilterButton.BackColor = System.Drawing.Color.White;
+            this.ClearFilterButton.Location = new System.Drawing.Point(438, 98);
+            this.ClearFilterButton.Name = "ClearFilterButton";
+            this.ClearFilterButton.Size = new System.Drawing.Size(75, 67);
+            this.ClearFilterButton.TabIndex = 9;
+            this.ClearFilterButton.Text = "Clear Filters";
+            this.ClearFilterButton.UseVisualStyleBackColor = false;
+            this.ClearFilterButton.Click += new System.EventHandler(this.ClearFilterButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(812, 152);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(133, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Filter By Wedding";
             // 
             // MarkCompleteButton
             // 
@@ -243,46 +282,33 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 98);
+            this.label1.Location = new System.Drawing.Point(812, 111);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 20);
             this.label1.TabIndex = 7;
             this.label1.Text = "Filter By Staff";
             // 
-            // label2
+            // FilterStaffButton
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 155);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 20);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Filter By Wedding";
+            this.FilterStaffButton.BackColor = System.Drawing.Color.White;
+            this.FilterStaffButton.Location = new System.Drawing.Point(32, 90);
+            this.FilterStaffButton.Name = "FilterStaffButton";
+            this.FilterStaffButton.Size = new System.Drawing.Size(153, 41);
+            this.FilterStaffButton.TabIndex = 12;
+            this.FilterStaffButton.Text = "Filter By Staff";
+            this.FilterStaffButton.UseVisualStyleBackColor = false;
+            this.FilterStaffButton.Click += new System.EventHandler(this.FilterStaffButton_Click);
             // 
-            // ClearFilterButton
+            // FilterWeddingButton
             // 
-            this.ClearFilterButton.BackColor = System.Drawing.Color.White;
-            this.ClearFilterButton.Location = new System.Drawing.Point(438, 98);
-            this.ClearFilterButton.Name = "ClearFilterButton";
-            this.ClearFilterButton.Size = new System.Drawing.Size(75, 67);
-            this.ClearFilterButton.TabIndex = 9;
-            this.ClearFilterButton.Text = "Clear Filters";
-            this.ClearFilterButton.UseVisualStyleBackColor = false;
-            // 
-            // WeddingComboBox
-            // 
-            this.WeddingComboBox.FormattingEnabled = true;
-            this.WeddingComboBox.Location = new System.Drawing.Point(191, 152);
-            this.WeddingComboBox.Name = "WeddingComboBox";
-            this.WeddingComboBox.Size = new System.Drawing.Size(211, 28);
-            this.WeddingComboBox.TabIndex = 10;
-            // 
-            // StaffComboBox
-            // 
-            this.StaffComboBox.FormattingEnabled = true;
-            this.StaffComboBox.Location = new System.Drawing.Point(191, 90);
-            this.StaffComboBox.Name = "StaffComboBox";
-            this.StaffComboBox.Size = new System.Drawing.Size(208, 28);
-            this.StaffComboBox.TabIndex = 11;
+            this.FilterWeddingButton.BackColor = System.Drawing.Color.White;
+            this.FilterWeddingButton.Location = new System.Drawing.Point(32, 145);
+            this.FilterWeddingButton.Name = "FilterWeddingButton";
+            this.FilterWeddingButton.Size = new System.Drawing.Size(153, 40);
+            this.FilterWeddingButton.TabIndex = 13;
+            this.FilterWeddingButton.Text = "Filter By Wedding";
+            this.FilterWeddingButton.UseVisualStyleBackColor = false;
+            this.FilterWeddingButton.Click += new System.EventHandler(this.FilterWeddingButton_Click);
             // 
             // ManageTasksWindow
             // 
@@ -331,5 +357,7 @@
         private System.Windows.Forms.Button ClearFilterButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button FilterStaffButton;
+        private System.Windows.Forms.Button FilterWeddingButton;
     }
 }

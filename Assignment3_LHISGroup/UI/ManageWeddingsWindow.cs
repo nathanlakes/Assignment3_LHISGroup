@@ -85,23 +85,7 @@ namespace Assignment3_LHISGroup.UI
             Support_Classes.Wedding wedding = ExtractSelectedRow();
             if (wedding != null)
             {
-                if (!mainWin.UpdateWeddingWindow.Visible)
-                {
-                    mainWin.UpdateWeddingWindow.Visible = true;
-                    mainWin.UpdateWeddingWindow.PopulateDataFields(wedding);
-                }
-                else
-                {
-                    mainWin.UpdateWeddingWindow.PopulateDataFields(wedding);
-                    mainWin.UpdateWeddingWindow.Focus();
-                }
-
-            }
-
-            if (WeddingsDataGridView.SelectedRows.Count > 0 && WeddingsDataGridView.SelectedRows[0].Cells[0] != null)
-            {
-                int id = (int) WeddingsDataGridView.SelectedRows[0].Cells[0].Value;
-
+                mainWin.UpdateWeddingWindow.PopulateDataFields(wedding);
                 if (!mainWin.UpdateWeddingWindow.Visible)
                 {
                     mainWin.UpdateWeddingWindow.Visible = true;

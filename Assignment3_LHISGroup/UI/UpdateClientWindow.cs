@@ -140,6 +140,7 @@ namespace Assignment3_LHISGroup.UI
                 {
                     db.UpdateClient(this.id, c);
                     mainWin.ManageClientsWindow.UpdateForm();
+                    mainWin.RefreshAllWindow();
                 }
                 catch (Exception)
                 {

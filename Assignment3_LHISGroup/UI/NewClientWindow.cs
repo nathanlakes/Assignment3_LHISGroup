@@ -127,17 +127,16 @@ namespace Assignment3_LHISGroup.UI
                     mainWin.ManageClientsWindow.UpdateForm();
 
                     db.AddClient(client2);
+                    mainWin.UpdateClientWindow.PopulateForm(client2);
                     if (!mainWin.UpdateClientWindow.Visible)
                     {
                         mainWin.UpdateClientWindow.Visible = true;
-                        mainWin.UpdateClientWindow.PopulateForm(client2);
                     }
                     else
                     {
                         mainWin.UpdateClientWindow.Focus();
-                        mainWin.UpdateClientWindow.PopulateForm(client2);
                     }
-
+                    mainWin.RefreshAllWindow();
                 }
                 catch (Exception)
                 {

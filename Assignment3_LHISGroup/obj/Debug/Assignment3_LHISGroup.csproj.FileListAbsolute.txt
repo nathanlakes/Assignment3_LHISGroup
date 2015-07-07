@@ -85,3 +85,4 @@ C:\Users\Nathan\Documents\GitHub\Assignment3_LHISGroup\Assignment3_LHISGroup\obj
 C:\Users\Nathan\Documents\GitHub\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.UI.UpdateWeddingWindow.resources
 C:\Users\Nathan\Documents\GitHub\Assignment3_LHISGroup\Assignment3_LHISGroup\obj\Debug\Assignment3_LHISGroup.csproj.GenerateResource.Cache
 C:\Users\Nathan\Documents\GitHub\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\nunit.framework.dll
+C:\Users\Louise\Documents\Agile\AgileAssign3\Assignment3_LHISGroup\Assignment3_LHISGroup\bin\Debug\Assignment3_LHISGroup.exe.config

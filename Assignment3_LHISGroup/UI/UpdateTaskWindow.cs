@@ -20,12 +20,14 @@ namespace Assignment3_LHISGroup.UI
 
         Support_Classes.Task task;
         int id;
+        bool IsCompleted; // to check if the task is completed
         
         public UpdateTaskWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
             this.db = d;
             this.mainWin = w;
+            this.IsCompleted = false;
 
             StaffList = db.GetAllStaff();
             foreach (Support_Classes.Staff staff in StaffList)
@@ -46,6 +48,11 @@ namespace Assignment3_LHISGroup.UI
                 WeddingComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
             }
 
+            StaffComboBox.DisplayMember = "Value";
+            StaffComboBox.ValueMember = "Key";
+
+            WeddingComboBox.DisplayMember = "Value";
+            WeddingComboBox.ValueMember = "Key";
         }
 
         public void PopuluateDataFields(Support_Classes.Task t)
@@ -53,31 +60,60 @@ namespace Assignment3_LHISGroup.UI
             task = t;
             id = t.ID;
 
-
-
             NameTextBox.Text = t.TaskName;
             DescriptionTextBox.Text = t.Description;
 
 
             int staff_id = t.AssignedTo.ID;
-            string staff_name = t.AssignedTo.FirstName + " " + t.AssignedTo.Surname;
-            StaffComboBox.SelectedItem = StaffComboBox.Equals(new KeyValuePair<int, string>(staff_id, staff_name));
+            //string staff_name = t.AssignedTo.FirstName + " " + t.AssignedTo.Surname;
+            //StaffComboBox.SelectedItem = StaffComboBox.Equals(new KeyValuePair<int, string>(staff_id, staff_name));
+            Support_Classes.Staff staff = db.FindStaff(staff_id);
+            string staff_name = staff.FirstName + " " + staff.Surname;
+            StaffComboBox.SelectedIndex = StaffComboBox.Items.IndexOf(new KeyValuePair<int, string>(staff_id, staff_name));
+
 
             int wedding_id = t.Wedding.ID;
-            string wedding_name = t.Wedding.Title;
+            //string wedding_name = t.Wedding.Title;
+            //WeddingComboBox.SelectedItem = WeddingComboBox.Equals(new KeyValuePair<int, string>(wedding_id, wedding_name));            
+            Support_Classes.Wedding wedding = db.FindWedding(wedding_id);
+            string wedding_name = wedding.Title;
+            WeddingComboBox.SelectedIndex = WeddingComboBox.Items.IndexOf(new KeyValuePair<int, string>(wedding_id, wedding_name));
 
-            WeddingComboBox.SelectedItem = WeddingComboBox.Equals(new KeyValuePair<int, string>(wedding_id, wedding_name));            
 
-            CompleteByDateTimePicker.Value = t.CompleteBy;
+            Support_Classes.Task.Priority priority = t.TaskPriority;
+            if (priority.Equals(Support_Classes.Task.Priority.high)) {
+                HighRadioButton.Checked = true;
+                MediumRadioButton.Checked = false;
+                LowRadioButton.Checked = false;
+            } else if (priority.Equals(Support_Classes.Task.Priority.med)) {
+                HighRadioButton.Checked = false;
+                MediumRadioButton.Checked = true;
+                LowRadioButton.Checked = false;
+            } else if (priority.Equals(Support_Classes.Task.Priority.low)) {
+                HighRadioButton.Checked = false;
+                MediumRadioButton.Checked = false;
+                LowRadioButton.Checked = true;
+            }
 
-            if (t.CompletionDate != null)
+            if (t.CompleteBy != null)
             {
-                CompletionDateTimePicker.Value = (DateTime)t.CompletionDate;
+                CompleteByDateTimePicker.Value = t.CompleteBy;
             }
             else
             {
-                CompletionDateTimePicker.Value = DateTime.Now;
+                CompleteByDateTimePicker.Value = t.CompleteBy;
             }
+
+            // Commented out code causing errors galore
+//            if (t.CompletionDate != null)
+//            {
+//                CompletionDateTimePicker.Value = (DateTime)t.CompletionDate;
+//                IsCompleted = true;
+//            }
+//            else
+//            {
+//                CompletionDateTimePicker.Value = DateTime.Now;
+//            }
 
             
         }
@@ -135,6 +171,12 @@ namespace Assignment3_LHISGroup.UI
                 string name = wedding.Title;
                 WeddingComboBox.Items.Add(new KeyValuePair<int, string>(keyValue, name));
             }
+
+            StaffComboBox.DisplayMember = "Value";
+            StaffComboBox.ValueMember = "Key";
+
+            WeddingComboBox.DisplayMember = "Value";
+            WeddingComboBox.ValueMember = "Key";
         }
 
         private void UpdateTaskWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -145,12 +187,56 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            
+            if (ValidateForm() == true)
+            {
+                string title = NameTextBox.Text;
+                string desc = DescriptionTextBox.Text;
+                int wedding_id = ((KeyValuePair<int, string>)WeddingComboBox.SelectedItem).Key;
+                Support_Classes.Wedding wedding = db.FindWedding(wedding_id);
+                int staff_id = ((KeyValuePair<int, string>)StaffComboBox.SelectedItem).Key;
+                Support_Classes.Staff staff = db.FindStaff(staff_id);
+
+                DateTime completeBy = CompleteByDateTimePicker.Value;
+                DateTime completion = CompletionDateTimePicker.Value;
+
+                Support_Classes.Task.Priority priority = Support_Classes.Task.Priority.low;
+                if (MediumRadioButton.Checked)
+                {
+                    priority = Support_Classes.Task.Priority.med;
+                }
+                else if (HighRadioButton.Checked)
+                {
+                    priority = Support_Classes.Task.Priority.high;
+                }
+
+                Support_Classes.Task task = new Support_Classes.Task(title, desc, priority, completeBy, staff, wedding);
+
+                try
+                {
+                    db.AddTask(task);
+                    mainWin.ManageTasksWindow.UpdateForm();
+                    this.Visible = false;
+                    if (!mainWin.ManageTasksWindow.Visible)
+                    {
+                        mainWin.ManageTasksWindow.Visible = true;
+
+                    }
+                    else
+                    {
+                        mainWin.ManageTasksWindow.Focus();
+                    }
+                    mainWin.RefreshAllWindow();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Exception thrown");
+                }
+            }
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-
+            this.PopuluateDataFields(this.task);
         }
     }
 }

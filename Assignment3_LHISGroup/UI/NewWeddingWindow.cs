@@ -226,7 +226,7 @@ namespace Assignment3_LHISGroup.UI
                     {
                         mainWin.ManageWeddingsWindow.Focus();
                     }
-
+                    mainWin.RefreshAllWindow();
                 }
                 catch (Exception)
                 {

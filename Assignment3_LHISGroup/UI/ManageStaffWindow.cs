@@ -70,15 +70,14 @@ namespace Assignment3_LHISGroup.UI
             Support_Classes.Staff staff = ExtractSelectedRow();
             if (staff != null)
             {
+                mainWin.UpdateStaffWindow.PopulateForm(staff);
                 if (!mainWin.UpdateStaffWindow.Visible)
                 {
                     mainWin.UpdateStaffWindow.Visible = true;
-                    mainWin.UpdateStaffWindow.PopulateForm(staff);
                 }
                 else
                 {
                     mainWin.UpdateStaffWindow.Focus();
-                    mainWin.UpdateStaffWindow.PopulateForm(staff);
                 }
             }
             else

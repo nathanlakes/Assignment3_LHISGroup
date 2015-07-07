@@ -134,6 +134,7 @@ namespace Assignment3_LHISGroup.UI
                         mainWin.ManageSuppliersWindow.Focus();
                     }
                     //this.Hide();
+                    mainWin.RefreshAllWindow();
                 }
                 catch (Exception)
                 {
