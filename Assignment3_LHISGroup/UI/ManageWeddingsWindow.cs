@@ -35,22 +35,24 @@ namespace Assignment3_LHISGroup.UI
             {
                 int id = (int) WeddingsDataGridView.SelectedRows[0].Cells[0].Value;
 
-                string title = (string) WeddingsDataGridView.SelectedRows[0].Cells[1].Value;
-                string description = (string)WeddingsDataGridView.SelectedRows[0].Cells[2].Value;
-                string client1_fk = (string)WeddingsDataGridView.SelectedRows[0].Cells[3].Value;
-                string client2_fk = (string)WeddingsDataGridView.SelectedRows[0].Cells[4].Value;
-                string startDate = (string) WeddingsDataGridView.SelectedRows[0].Cells[5].Value;
-                string eventDate = (string)WeddingsDataGridView.SelectedRows[0].Cells[6].Value;
-                string staff_fk = (string)WeddingsDataGridView.SelectedRows[0].Cells[7].Value;
-                int c1_fk = Convert.ToInt32(client1_fk);
-                int c2_fk = Convert.ToInt32(client2_fk);
-                DateTime start = db.convertStringToDateTime(startDate);
-                DateTime date = db.convertStringToDateTime(eventDate);
-                int st_fk = Convert.ToInt32(staff_fk);
+//                string title = (string) WeddingsDataGridView.SelectedRows[0].Cells[1].Value;
+//                string description = (string)WeddingsDataGridView.SelectedRows[0].Cells[2].Value;
+//                string client1_fk = (string)WeddingsDataGridView.SelectedRows[0].Cells[3].Value;
+//                string client2_fk = (string)WeddingsDataGridView.SelectedRows[0].Cells[4].Value;
+//                string startDate = (string) WeddingsDataGridView.SelectedRows[0].Cells[5].Value;
+//                string eventDate = (string)WeddingsDataGridView.SelectedRows[0].Cells[6].Value;
+//                string staff_fk = (string)WeddingsDataGridView.SelectedRows[0].Cells[7].Value;
+//                int c1_fk = Convert.ToInt32(client1_fk);
+//                int c2_fk = Convert.ToInt32(client2_fk);
+//                DateTime start = db.convertStringToDateTime(startDate);
+//                DateTime date = db.convertStringToDateTime(eventDate);
+//                int st_fk = Convert.ToInt32(staff_fk);
 
-                Support_Classes.Wedding wedding =  new Support_Classes.Wedding(title,description, db.FindClient(c1_fk), db.FindClient(c2_fk),db.FindStaff(st_fk), start, date);
-                wedding.ID = id;
-                return wedding;
+//                Support_Classes.Wedding wedding =  new Support_Classes.Wedding(title,description, db.FindClient(c1_fk), db.FindClient(c2_fk),db.FindStaff(st_fk), start, date);
+//                wedding.ID = id;
+//                return wedding;
+
+                return db.FindWedding(id);
             }
             else
             {

@@ -54,19 +54,21 @@ namespace Assignment3_LHISGroup.UI
             {
                 int id = (int)ClientsDataGridView.SelectedRows[0].Cells[0].Value;
 
-                string firstname = (string)ClientsDataGridView.SelectedRows[0].Cells[1].Value;
-                string surname = (string)ClientsDataGridView.SelectedRows[0].Cells[2].Value;
-                string contactPerson = (string)ClientsDataGridView.SelectedRows[0].Cells[3].Value;
-                string address = (string)ClientsDataGridView.SelectedRows[0].Cells[4].Value;
-                string mobile = (string)ClientsDataGridView.SelectedRows[0].Cells[5].Value;
-                string homePhone = (string)ClientsDataGridView.SelectedRows[0].Cells[6].Value;
-                string email = (string)ClientsDataGridView.SelectedRows[0].Cells[7].Value;
-                string engagedTo_firstName = (string)ClientsDataGridView.SelectedRows[0].Cells[8].Value;
-                string engagedTo_surname = (string)ClientsDataGridView.SelectedRows[0].Cells[9].Value;
+//                string firstname = (string)ClientsDataGridView.SelectedRows[0].Cells[1].Value;
+//                string surname = (string)ClientsDataGridView.SelectedRows[0].Cells[2].Value;
+//                string contactPerson = (string)ClientsDataGridView.SelectedRows[0].Cells[3].Value;
+//                string address = (string)ClientsDataGridView.SelectedRows[0].Cells[4].Value;
+//                string mobile = (string)ClientsDataGridView.SelectedRows[0].Cells[5].Value;
+//                string homePhone = (string)ClientsDataGridView.SelectedRows[0].Cells[6].Value;
+//                string email = (string)ClientsDataGridView.SelectedRows[0].Cells[7].Value;
+//                string engagedTo_firstName = (string)ClientsDataGridView.SelectedRows[0].Cells[8].Value;
+//                string engagedTo_surname = (string)ClientsDataGridView.SelectedRows[0].Cells[9].Value;
 
-                Support_Classes.Client client = new Support_Classes.Client(firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo_firstName, engagedTo_surname);
-                client.ID = id;
-                return client;
+//                Support_Classes.Client client = new Support_Classes.Client(firstname, surname, contactPerson, address, mobile, homePhone, email, engagedTo_firstName, engagedTo_surname);
+//                client.ID = id;
+//                return client;
+                return db.FindClient(id);
+
             }
             else
             {

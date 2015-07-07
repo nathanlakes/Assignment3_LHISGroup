@@ -39,22 +39,24 @@ namespace Assignment3_LHISGroup.UI
             {
                 int id = (int)StaffDataGridView.SelectedRows[0].Cells[0].Value;
 
-                string fn = (string)StaffDataGridView.SelectedRows[0].Cells[1].Value;
-                string sn = (string)StaffDataGridView.SelectedRows[0].Cells[2].Value;
-                string email = (string)StaffDataGridView.SelectedRows[0].Cells[3].Value;
-                string phone = (string)StaffDataGridView.SelectedRows[0].Cells[4].Value;
-                string notes = (string)StaffDataGridView.SelectedRows[0].Cells[5].Value;
-                string status = (string)StaffDataGridView.SelectedRows[0].Cells[6].Value;
+//                string fn = (string)StaffDataGridView.SelectedRows[0].Cells[1].Value;
+//                string sn = (string)StaffDataGridView.SelectedRows[0].Cells[2].Value;
+//                string email = (string)StaffDataGridView.SelectedRows[0].Cells[3].Value;
+//                string phone = (string)StaffDataGridView.SelectedRows[0].Cells[4].Value;
+//                string notes = (string)StaffDataGridView.SelectedRows[0].Cells[5].Value;
+//                string status = (string)StaffDataGridView.SelectedRows[0].Cells[6].Value;
 
-                Support_Classes.Staff.Active active = Support_Classes.Staff.Active.active;
-                if (active.ToString().ToLower().Contains("f"))
-                {
-                    active = Support_Classes.Staff.Active.inactive;
-                }
+//                Support_Classes.Staff.Active active = Support_Classes.Staff.Active.active;
+//                if (active.ToString().ToLower().Contains("f"))
+//                {
+//                    active = Support_Classes.Staff.Active.inactive;
+//                }
 
-                Support_Classes.Staff staff = new Support_Classes.Staff(fn, sn, email, phone, notes, active);
-                staff.ID = id;
-                return staff;
+//               Support_Classes.Staff staff = new Support_Classes.Staff(fn, sn, email, phone, notes, active);
+//                staff.ID = id;
+//                return staff;
+
+                return db.FindStaff(id);
             }
             else
             {

@@ -40,16 +40,17 @@ namespace Assignment3_LHISGroup.UI
             {
                 int id = (int)SuppliersDataGridView.SelectedRows[0].Cells[0].Value;
 
-                string companyName = (string)SuppliersDataGridView.SelectedRows[0].Cells[1].Value;
-                string address = (string)SuppliersDataGridView.SelectedRows[0].Cells[2].Value;
-                string contactPerson = (string)SuppliersDataGridView.SelectedRows[0].Cells[3].Value;
-                string email = (string)SuppliersDataGridView.SelectedRows[0].Cells[4].Value;
-                string phoneNumber = (string)SuppliersDataGridView.SelectedRows[0].Cells[5].Value;
-                int creditTerms = (int)SuppliersDataGridView.SelectedRows[0].Cells[6].Value;
+//                string companyName = (string)SuppliersDataGridView.SelectedRows[0].Cells[1].Value;
+//                string address = (string)SuppliersDataGridView.SelectedRows[0].Cells[2].Value;
+//                string contactPerson = (string)SuppliersDataGridView.SelectedRows[0].Cells[3].Value;
+//                string email = (string)SuppliersDataGridView.SelectedRows[0].Cells[4].Value;
+//                string phoneNumber = (string)SuppliersDataGridView.SelectedRows[0].Cells[5].Value;
+//                int creditTerms = (int)SuppliersDataGridView.SelectedRows[0].Cells[6].Value;
 
-                Support_Classes.Supplier supplier = new Support_Classes.Supplier(companyName, address, contactPerson, email, phoneNumber, creditTerms);
-                supplier.ID = id;
-                return supplier;
+//                Support_Classes.Supplier supplier = new Support_Classes.Supplier(companyName, address, contactPerson, email, phoneNumber, creditTerms);
+//                supplier.ID = id;
+//               return supplier;
+                return db.FindSupplier(id);
             }
             else
             {
