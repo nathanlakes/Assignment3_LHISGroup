@@ -72,7 +72,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             testController.AddClient(testClient1);
             testController.AddClient(testClient2);
             testController.AddStaff(testStaff);
-            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
+            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime(), Wedding.Status.InPreparation);
             testController.AddWedding(testWedding);
             List<Wedding> testList = testController.FindWedding(testWedding.Title);
             Assert.AreEqual(testWedding.Title, testList.First().Title);
@@ -90,7 +90,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             testController.AddClient(testClient1);
             testController.AddClient(testClient2);
             testController.AddStaff(testStaff);
-            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
+            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime(), Wedding.Status.InPreparation);
             testController.AddWedding(testWedding);
             Wedding returnWedding = testController.FindWedding(1);
             Assert.AreEqual(testWedding.Title, returnWedding.Title);
@@ -108,7 +108,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             testController.AddClient(testClient1);
             testController.AddClient(testClient2);
             testController.AddStaff(testStaff);
-            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
+            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime(), Wedding.Status.InPreparation);
             testController.AddWedding(testWedding);
             Wedding returnWedding = testController.FindWedding(testWedding);
             Assert.AreEqual(testWedding.Title, returnWedding.Title);
@@ -126,7 +126,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             testController.AddClient(testClient1);
             testController.AddClient(testClient2);
             testController.AddStaff(testStaff);
-            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
+            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime(), Wedding.Status.InPreparation);
             testController.AddWedding(testWedding);
             Task testTask = new Task("Shit", "description", Task.Priority.high, new DateTime(), testStaff, testWedding);
             Boolean i = testController.AddTask(testTask);
@@ -200,23 +200,13 @@ namespace Assignment3_LHISGroup.Support_Classes
             testController.AddClient(testClient1);
             testController.AddClient(testClient2);
             testController.AddStaff(testStaff);
-            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
+            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime(), Wedding.Status.InPreparation);
             testController.AddWedding(testWedding);
             Task testTask = new Task("Shit", "description", Task.Priority.high, new DateTime(), testStaff, testWedding);
             Boolean i = testController.AddTask(testTask);
             List<Task> testList = testController.GetAllTasks();
             int i2 = testList.Count();
             Assert.AreEqual(1, i2);
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
-        }
-
-        [Test]
-        public void DeleteClientTest()
-        {
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("DeleteClientTest");
-            Boolean result = testController.DeleteClient(1);
-            Assert.AreEqual(true, result);
             Console.WriteLine("----------------------------------------------------------------------------------------------------------");
         }
 
@@ -231,7 +221,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             testController.AddClient(testClient1);
             testController.AddClient(testClient2);
             testController.AddStaff(testStaff);
-            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
+            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime(), Wedding.Status.InPreparation);
             testController.AddWedding(testWedding);
             Task testTask = new Task("Shit", "description", Task.Priority.high, new DateTime(), testStaff, testWedding);
             testController.AddTask(testTask);
@@ -257,7 +247,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             testController.AddClient(testClient2);
             testController.AddStaff(testStaff);
             testController.AddStaff(testStaff2);
-            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime());
+            Wedding testWedding = new Wedding("THIS WEDDING", "descreption", testClient1, testClient2, testStaff, new DateTime(), new DateTime(), Wedding.Status.InPreparation);
             testController.AddWedding(testWedding);
             Task testTask = new Task("Shit", "description", Task.Priority.high, new DateTime(), testStaff, testWedding);
             testController.AddTask(testTask);
