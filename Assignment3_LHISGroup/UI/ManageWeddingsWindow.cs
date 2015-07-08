@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Assignment3_LHISGroup.Reports;
 
 namespace Assignment3_LHISGroup.UI
 {
@@ -114,6 +115,24 @@ namespace Assignment3_LHISGroup.UI
             // TODO: This line of code loads data into the 'modelDataSet.Wedding' table. You can move, or remove it, as needed.
             this.weddingTableAdapter.Fill(this.modelDataSet.Wedding);
 
+        }
+
+        private void GraphButton_Click(object sender, EventArgs e)
+        {
+            EventProgressGraph graphReport = new EventProgressGraph(this);
+            graphReport.Show();
+        }
+
+        private void ProgressButton_Click(object sender, EventArgs e)
+        {
+            EventProgressReport progReport = new EventProgressReport(this);
+            progReport.Show();
+        }
+
+        private void ReportButton_Click(object sender, EventArgs e)
+        {
+            EventReport eventReport = new EventReport();
+            eventReport.Show();
         }
 
     }

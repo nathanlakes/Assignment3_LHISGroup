@@ -267,5 +267,11 @@ namespace Assignment3_LHISGroup.UI
             int id = ((KeyValuePair<int, string>)WeddingComboBox.SelectedItem).Key;
             this.SelectTasksForWedding(id);
         }
+
+        private void PrintButton_Click(object sender, EventArgs e)
+        {
+            Reports.EventTaskReport tasksReport = new Reports.EventTaskReport();
+            tasksReport.Show();
+        }
     }
 }

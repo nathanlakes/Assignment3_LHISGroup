@@ -13,9 +13,12 @@ namespace Assignment3_LHISGroup.Reports
 {
     public partial class EventProgressGraph : Form
     {
+        Form myParent;
         DbController dbController = new DbController();
-        public EventProgressGraph()
+        public EventProgressGraph(Form parent)
         {
+            myParent = parent;
+            parent.Visible = false;
             InitializeComponent();
         }
 
@@ -112,6 +115,13 @@ namespace Assignment3_LHISGroup.Reports
         private void SaveToFilebtn_Click_1(object sender, EventArgs e)
         {
             saveGraphToFile();
+        }
+
+        private void EventProgressGraph_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            myParent.Visible = true;
+            this.Dispose();
+
         }
     }
 }

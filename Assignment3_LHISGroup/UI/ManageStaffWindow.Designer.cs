@@ -72,12 +72,13 @@
             this.StaffDataGridView.DataSource = this.staffBindingSource;
             this.StaffDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StaffDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.StaffDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StaffDataGridView.MultiSelect = false;
             this.StaffDataGridView.Name = "StaffDataGridView";
             this.StaffDataGridView.ReadOnly = true;
             this.StaffDataGridView.RowTemplate.Height = 28;
             this.StaffDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.StaffDataGridView.Size = new System.Drawing.Size(997, 290);
+            this.StaffDataGridView.Size = new System.Drawing.Size(665, 188);
             this.StaffDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -147,9 +148,10 @@
             // AddStaffButton
             // 
             this.AddStaffButton.BackColor = System.Drawing.Color.White;
-            this.AddStaffButton.Location = new System.Drawing.Point(30, 14);
+            this.AddStaffButton.Location = new System.Drawing.Point(20, 9);
+            this.AddStaffButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddStaffButton.Name = "AddStaffButton";
-            this.AddStaffButton.Size = new System.Drawing.Size(173, 42);
+            this.AddStaffButton.Size = new System.Drawing.Size(115, 27);
             this.AddStaffButton.TabIndex = 1;
             this.AddStaffButton.Text = "Add Staff";
             this.AddStaffButton.UseVisualStyleBackColor = false;
@@ -158,9 +160,10 @@
             // UpdateStaffButton
             // 
             this.UpdateStaffButton.BackColor = System.Drawing.Color.White;
-            this.UpdateStaffButton.Location = new System.Drawing.Point(242, 15);
+            this.UpdateStaffButton.Location = new System.Drawing.Point(161, 10);
+            this.UpdateStaffButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UpdateStaffButton.Name = "UpdateStaffButton";
-            this.UpdateStaffButton.Size = new System.Drawing.Size(174, 41);
+            this.UpdateStaffButton.Size = new System.Drawing.Size(116, 27);
             this.UpdateStaffButton.TabIndex = 2;
             this.UpdateStaffButton.Text = "Update Staff";
             this.UpdateStaffButton.UseVisualStyleBackColor = false;
@@ -176,29 +179,33 @@
             this.panel1.Controls.Add(this.UpdateStaffButton);
             this.panel1.Controls.Add(this.AddStaffButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 290);
+            this.panel1.Location = new System.Drawing.Point(0, 188);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(997, 72);
+            this.panel1.Size = new System.Drawing.Size(665, 47);
             this.panel1.TabIndex = 3;
             // 
             // ReportButton
             // 
             this.ReportButton.BackColor = System.Drawing.Color.White;
-            this.ReportButton.Location = new System.Drawing.Point(515, 19);
+            this.ReportButton.Location = new System.Drawing.Point(307, 9);
+            this.ReportButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ReportButton.Name = "ReportButton";
-            this.ReportButton.Size = new System.Drawing.Size(214, 41);
+            this.ReportButton.Size = new System.Drawing.Size(143, 27);
             this.ReportButton.TabIndex = 3;
-            this.ReportButton.Text = "Report for Selected Staff";
+            this.ReportButton.Text = "Staff Report";
             this.ReportButton.UseVisualStyleBackColor = false;
+            this.ReportButton.Click += new System.EventHandler(this.ReportButton_Click);
             // 
             // ManageStaffWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(997, 362);
+            this.ClientSize = new System.Drawing.Size(665, 235);
             this.Controls.Add(this.StaffDataGridView);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ManageStaffWindow";
             this.Text = "Manage Staff";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageStaffWindow_FormClosing);

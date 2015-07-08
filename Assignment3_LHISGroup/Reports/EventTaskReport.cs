@@ -57,5 +57,12 @@ namespace Assignment3_LHISGroup.Reports
             TaskDetailsView.Rows.Clear();
             populateTaskDetailsView();
         }
+
+        private void GenerateReportButton_Click(object sender, EventArgs e)
+        {
+            CSVWriter report = new CSVWriter("EventTaskReport");
+            report.WriteTasksToFile(dbController.GetAllTasks());
+            MessageBox.Show("Event Task Report created Sucessfully");
+        }
     }
 }

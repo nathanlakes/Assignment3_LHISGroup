@@ -18,9 +18,11 @@ namespace Assignment3_LHISGroup.Reports
         List<Wedding> allWeddingList;
         List<Support_Classes.Task> allTasksList;
         List<Support_Classes.Task> currentWeddingTasks = new List<Support_Classes.Task>();
-        public EventProgressReport()
+        Form myParent;
+
+        public EventProgressReport(Form parent)
         {
-            
+            myParent = parent;
             InitializeComponent();
 
             dbController = new DbController();
