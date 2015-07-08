@@ -408,6 +408,22 @@ namespace Assignment3_LHISGroup.Database
                 //
                 //  Add Duplicate Supplier
                 //
+                Supplier supp = new Supplier("Bomboniere R Us", "234 Port Road", "Giuseppina", "gp@bombon.com",
+                    "08 83321414", 30);
+
+                bool firstAdd = db.AddSupplier(supp);
+                bool secondAdd = db.AddSupplier(supp);
+
+                MessageBox.Show("firstAdd= " + firstAdd + "\n" + "secondAdd= " + secondAdd,
+                    "Test 2nd Add False for AddSupplier()");
+
+                List<Supplier> suppList = db.GetAllSuppliers();
+                int i = 1;
+                foreach (var v in suppList)
+                {
+                    MessageBox.Show(v.ToString(), "Suppliers in Database " + i);
+                    i++;
+                }
             }
 
         }
