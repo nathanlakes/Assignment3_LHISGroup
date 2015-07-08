@@ -873,6 +873,8 @@ namespace Assignment3_LHISGroup
          */
         public bool AddSupplier(Supplier s)
         {
+            bool hasDuplicate = containsDuplicateRecord(s);
+            if (hasDuplicate) return false;
 
             using (SqlConnection _db = new SqlConnection(connStr))
             {
@@ -1883,6 +1885,47 @@ namespace Assignment3_LHISGroup
             if (count == 0) return false;
             else return true;
         }
+
+
+        /**
+         *  Ensures that [db].[Suppliers] does not contain a duplicate 
+         *  client
+         */
+        private bool containsDuplicateRecord(Supplier s)
+        {
+            int count = -1;
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+
+                string query = @"SELECT COUNT(Id) As Count FROM Suppliers ";
+                query += @"WHERE companyName=@companyname AND Address=@address AND contactPerson=@contact AND ";
+                query += @"Email=@email AND PhoneNumber=@phone AND CreditTerms=@credit";
+
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@companyname", s.CompanyName);
+                myCommand.Parameters.AddWithValue("@address", s.Address);
+                myCommand.Parameters.AddWithValue("@contact", s.ContactPerson);
+                myCommand.Parameters.AddWithValue("@email", s.Email);
+                myCommand.Parameters.AddWithValue("@phone", s.PhoneNumber);
+                myCommand.Parameters.AddWithValue("@credit", s.CreditTerms);
+
+
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
+                {
+                    while (myReader.Read())
+                    {
+                        count = Convert.ToInt32(myReader["Count"].ToString());
+                    }
+                }
+                _db.Close();
+            }
+
+            if (count == 0) return false;
+            else return true;
+        }
+
 
 
         private Staff getStaffDetails(int id)
