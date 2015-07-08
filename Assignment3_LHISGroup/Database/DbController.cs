@@ -396,7 +396,13 @@ namespace Assignment3_LHISGroup
         public bool AddClient(Client c)
         {
             bool hasDuplicate = containsDuplicateRecord(c);
-            if (hasDuplicate) return false;
+            if (hasDuplicate)
+            {
+                string msg = "The record you tried to enter already exists and has not been entered into the database.";
+                MessageBox.Show(msg, "Warning");
+                return false;
+            }
+            
 
             using (SqlConnection _db = new SqlConnection(connStr))
             {
@@ -873,6 +879,13 @@ namespace Assignment3_LHISGroup
          */
         public bool AddSupplier(Supplier s)
         {
+            bool hasDuplicate = containsDuplicateRecord(s);
+            if (hasDuplicate)
+            {
+                string msg = "The record you tried to enter already exists and has not been entered into the database.";
+                MessageBox.Show(msg, "Warning");
+                return false;
+            }
 
             using (SqlConnection _db = new SqlConnection(connStr))
             {
@@ -1070,9 +1083,19 @@ namespace Assignment3_LHISGroup
             return returnList;
         }
 
-
+        /**
+         *   Adds a given staff member to [dbo].[Staff]
+         */
         public bool AddStaff(Staff s)
         {
+            bool hasDuplicate = containsDuplicateRecord(s);
+            if (hasDuplicate)
+            {
+                string msg = "The record you tried to enter already exists and has not been entered into the database.";
+                MessageBox.Show(msg, "Warning");
+                return false;
+            }
+
             using (SqlConnection _db = new SqlConnection(connStr))
             {
                 _db.Open();
@@ -1229,8 +1252,7 @@ namespace Assignment3_LHISGroup
 
                 _db.Close();
             }
-            return returnStaff;
-              
+            return returnStaff;              
         }
 
 
@@ -1876,6 +1898,47 @@ namespace Assignment3_LHISGroup
             if (count == 0) return false;
             else return true;
         }
+
+
+        /**
+         *  Ensures that [db].[Suppliers] does not contain a duplicate 
+         *  client
+         */
+        private bool containsDuplicateRecord(Supplier s)
+        {
+            int count = -1;
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+
+                string query = @"SELECT COUNT(Id) As Count FROM Suppliers ";
+                query += @"WHERE companyName=@companyname AND Address=@address AND contactPerson=@contact AND ";
+                query += @"Email=@email AND PhoneNumber=@phone AND CreditTerms=@credit";
+
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@companyname", s.CompanyName);
+                myCommand.Parameters.AddWithValue("@address", s.Address);
+                myCommand.Parameters.AddWithValue("@contact", s.ContactPerson);
+                myCommand.Parameters.AddWithValue("@email", s.Email);
+                myCommand.Parameters.AddWithValue("@phone", s.PhoneNumber);
+                myCommand.Parameters.AddWithValue("@credit", s.CreditTerms);
+
+
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
+                {
+                    while (myReader.Read())
+                    {
+                        count = Convert.ToInt32(myReader["Count"].ToString());
+                    }
+                }
+                _db.Close();
+            }
+
+            if (count == 0) return false;
+            else return true;
+        }
+
 
 
         private Staff getStaffDetails(int id)

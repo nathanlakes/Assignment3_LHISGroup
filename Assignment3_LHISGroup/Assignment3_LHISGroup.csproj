@@ -73,11 +73,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\EventProgress.cs">
+    <Compile Include="Reports\EventProgressGraph.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\EventProgress.Designer.cs">
-      <DependentUpon>EventProgress.cs</DependentUpon>
+    <Compile Include="Reports\EventProgressGraph.Designer.cs">
+      <DependentUpon>EventProgressGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\EventProgressReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\EventProgressReport.Designer.cs">
+      <DependentUpon>EventProgressReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\EventReport.cs">
       <SubType>Form</SubType>
@@ -207,6 +213,12 @@
     <Compile Include="UI\UpdateWeddingWindow.Designer.cs">
       <DependentUpon>UpdateWeddingWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\EventProgressGraph.resx">
+      <DependentUpon>EventProgressGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\EventProgressReport.resx">
+      <DependentUpon>EventProgressReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\StaffReport.resx">
       <DependentUpon>StaffReport.cs</DependentUpon>
     </EmbeddedResource>
