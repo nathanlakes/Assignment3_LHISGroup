@@ -51,7 +51,8 @@ namespace Assignment3_LHISGroup.Database
             DateTime start = new DateTime(2015, 11, 10);
             DateTime eventDate = new DateTime(2015, 12, 20);
 
-            Wedding w = new Wedding("Wedding of Stan and Wendy", "Beach theme", stan, wendy, nate, start, eventDate);
+            Wedding w = new Wedding("Wedding of Stan and Wendy", "Beach theme", stan, wendy, nate, start, eventDate, 
+                Wedding.Status.InPreparation);
 
             try
             {
@@ -338,7 +339,7 @@ namespace Assignment3_LHISGroup.Database
                 db.AddClient(burn);
 
                 Wedding testWed = new Wedding("Wedding of a and b", "blah", vern, burn, paul,
-                    new DateTime(2016, 5, 5), new DateTime(2015, 5, 10));
+                    new DateTime(2016, 5, 5), new DateTime(2015, 5, 10), Wedding.Status.OnHold);
 
                 db.AddWedding(testWed);
 
