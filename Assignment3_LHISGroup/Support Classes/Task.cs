@@ -92,7 +92,8 @@ namespace Assignment3_LHISGroup.Support_Classes
                 {
                     return completionDate.Value.Date;
                 }
-                return DateTime.MinValue; }
+                return DateTime.MinValue; 
+            }
             set { completionDate = value; }
         }
 

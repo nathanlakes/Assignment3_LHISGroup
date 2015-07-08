@@ -526,13 +526,14 @@ namespace Assignment3_LHISGroup
                 _db.Open();
 
                 string query = @"INSERT into Wedding ";
-                query += @"(title, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK, description)";
-                query += @"VALUES(@title, @client1, @client2, @startDate, @eventDate, @weddingPlanner, @desc);";
+                query += @"(title, client_1_FK, client_2_FK, startDate, EventDate, weddingPlanner_FK, description, status)";
+                query += @"VALUES(@title, @client1, @client2, @startDate, @eventDate, @weddingPlanner, @desc, @status);";
 
                 SqlCommand myCommand = new SqlCommand(query, _db);
 
                 myCommand.Parameters.AddWithValue("@title", w.Title);
                 myCommand.Parameters.AddWithValue("@desc", w.Description);
+                myCommand.Parameters.AddWithValue("@status", getWeddingStatusAsInt( w.WeddingStatus.ToString() ) );
 
                 //
                 //  Get Client FK details
@@ -574,7 +575,8 @@ namespace Assignment3_LHISGroup
             {
                 string query = @"UPDATE Wedding ";
                 query += @"SET title=@title, description=@desc, client_1_FK=@client1, client_2_FK=@client2, ";
-                query += @"startDate=@startDate, eventDate=@eventDate, weddingPlanner_FK=@weddingPlanner_FK ";
+                query += @"startDate=@startDate, eventDate=@eventDate, weddingPlanner_FK=@weddingPlanner_FK, ";
+                query += @"status=@status ";
                 query += @"WHERE Id=@id;";
 
                 SqlCommand myCommand = new SqlCommand(query, _db);
@@ -585,6 +587,8 @@ namespace Assignment3_LHISGroup
                 myCommand.Parameters.AddWithValue("@startDate", formatDateForDbInput(w.StartDate) );
                 myCommand.Parameters.AddWithValue("@eventDate", formatDateForDbInput(w.EventDate) );
                 myCommand.Parameters.AddWithValue("@weddingPlanner_FK", GetStaffId(w.WeddingPlanner));
+                myCommand.Parameters.AddWithValue("@status", getWeddingStatusAsInt(w.WeddingStatus.ToString()));
+
                 myCommand.Parameters.AddWithValue("@id", id);
 
                 _db.Open();
@@ -691,8 +695,11 @@ namespace Assignment3_LHISGroup
                         int wedPlanId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
                         Staff weddPlann = getStaffDetails(wedPlanId);
 
+                        // Set the Status
+                        Wedding.Status status = getWeddingStatusFromInt(Convert.ToInt32(myReader["status"].ToString()));
 
-                        wed = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
+
+                        wed = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate, status);
 
                         try
                         {
@@ -765,7 +772,10 @@ namespace Assignment3_LHISGroup
                         int staffId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
                         Staff weddPlann = getStaffDetails(staffId);
 
-                        wed = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
+                        // Create Status
+                        Wedding.Status status = getWeddingStatusFromInt(Convert.ToInt32(myReader["status"].ToString()));
+
+                        wed = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate, status);
 
                         try
                         {
@@ -835,7 +845,10 @@ namespace Assignment3_LHISGroup
                             int stfId = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
                             Staff weddPlann = getStaffDetails(stfId);
 
-                            w = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
+                            // Create Status
+                            Wedding.Status status = getWeddingStatusFromInt(Convert.ToInt32(myReader["status"].ToString()));
+
+                            w = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate, status);
 
                             try
                             {
@@ -1532,8 +1545,10 @@ namespace Assignment3_LHISGroup
                             int index = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
                             Staff weddPlann = getStaffDetails(index);
 
+                            // Create Status
+                            Wedding.Status status = getWeddingStatusFromInt(Convert.ToInt32(myReader["status"].ToString()));
 
-                            w = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
+                            w = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate, status);
 
                             try
                             {
@@ -1952,7 +1967,12 @@ namespace Assignment3_LHISGroup
                         int index = Convert.ToInt32(myReader["weddingPlanner_FK"].ToString());
                         Staff weddPlann = getStaffDetails(index);
 
-                        w = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate);
+                        // Implement Status
+                        Wedding.Status status;
+                        status = getWeddingStatusFromInt(Convert.ToInt32(myReader["status"].ToString()));
+ 
+
+                        w = new Wedding(weddTitle, desc, client1, client2, weddPlann, startDate, eventDate, status);
 
                         try
                         {
@@ -1996,6 +2016,32 @@ namespace Assignment3_LHISGroup
             DateTime dt = new DateTime(temp[0], temp[1], temp[2]);
             string format = "yyyy-MM-dd HH:MM:ss";
             return dt.ToString(format);
+        }
+        
+        /**
+         *  Takes the Enum Status as a String and returns an int to
+         *  write to the database
+         */
+        private int getWeddingStatusAsInt(string compare)
+        {
+            if (compare == "Underway") return 1;
+            else if (compare == "Finished") return 2;
+            else if (compare == "OnHold") return 3;
+            else if (compare == "Cancelled") return 4;
+            else return 5;
+        }
+
+        /**
+         *  Takes the int Status from the DB and returns an Enum
+         *  for a Wedding Object.
+         */
+        private Wedding.Status getWeddingStatusFromInt(int i)
+        {
+            if (i == 1) return Wedding.Status.Underway;
+            else if (i == 2) return Wedding.Status.Finished;
+            else if (i == 3) return Wedding.Status.OnHold;
+            else if (i == 4) return Wedding.Status.Cancelled;
+            else return Wedding.Status.InPreparation;
         }
     }
 }

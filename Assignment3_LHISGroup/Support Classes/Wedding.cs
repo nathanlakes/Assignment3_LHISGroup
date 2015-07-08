@@ -18,6 +18,7 @@ namespace Assignment3_LHISGroup.Support_Classes
         private DateTime startDate;
         private DateTime eventDate;
         private Staff weddingPlanner;
+        private Status status;
 
         public Wedding()
         {
@@ -26,7 +27,7 @@ namespace Assignment3_LHISGroup.Support_Classes
 
 
         public Wedding(string title, string description, Client c1, Client c2, 
-            Staff staff, DateTime startDate, DateTime eventDate)
+            Staff staff, DateTime startDate, DateTime eventDate, Status status)
         {
             this.title = title;
             this.description = description;
@@ -35,6 +36,7 @@ namespace Assignment3_LHISGroup.Support_Classes
             this.weddingPlanner = staff;
             this.startDate = startDate;
             this.eventDate = eventDate;
+            this.status = status;
         }
 
         public int ID
@@ -84,13 +86,19 @@ namespace Assignment3_LHISGroup.Support_Classes
             set { weddingPlanner = value; }
         }
 
+        public Status WeddingStatus
+        {
+            get { return status; }
+            set { this.status = value; }
+        }
+
         public override string ToString()
         {
             string res = "===Wedding=======\n";
             res += ("[title]" + title + " [desc]" + description + " [client1]" + client1.Firstname + " " + client1.Surname +
                 " [client2]" + client2.Firstname + " " + client2.Surname +
                 " [startDate]" + startDate.ToShortDateString() + " [eventDate]" + eventDate.ToShortDateString() +
-                " [staff]" + weddingPlanner.FirstName + " " + weddingPlanner.Surname);
+                " [staff]" + weddingPlanner.FirstName + " " + weddingPlanner.Surname + " [status]" + status.ToString());
 
 
             return res;
