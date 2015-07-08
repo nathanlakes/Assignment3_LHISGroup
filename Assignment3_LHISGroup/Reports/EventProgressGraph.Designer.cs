@@ -1,6 +1,6 @@
 ﻿namespace Assignment3_LHISGroup.Reports
 {
-    partial class EventProgress
+    partial class EventProgressGraph
     {
         /// <summary>
         /// Required designer variable.

@@ -11,10 +11,10 @@ using Assignment3_LHISGroup.Support_Classes;
 
 namespace Assignment3_LHISGroup.Reports
 {
-    public partial class EventProgress : Form
+    public partial class EventProgressGraph : Form
     {
         DbController dbController = new DbController();
-        public EventProgress()
+        public EventProgressGraph()
         {
             InitializeComponent();
         }

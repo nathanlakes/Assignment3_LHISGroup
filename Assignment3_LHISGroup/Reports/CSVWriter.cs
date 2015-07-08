@@ -235,6 +235,47 @@ namespace Assignment3_LHISGroup
             }
         }
 
+        public void WriteEventProgressReportTasksToFile(List<Support_Classes.Task> outputTask)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true))
+            {
+                string[] titles = getEventProgressReportTaskHeadings();
+                file.WriteLine("-----Event Tasks-----");
+                // Write the headings to output file.
+                for (int i = 0; i < titles.Length; i++)
+                {
+                    if (i < titles.Length - 1)
+                    {
+                        file.Write(titles[i] + ",");
+                    }
+                    else
+                    {
+                        file.WriteLine(titles[i]);
+                    }
+                }
+
+                // Write the data to the outfile.
+                // Quotations " " prevent commas in text fields from breaking
+                // CSV formatting
+                foreach (Task t in outputTask)
+                {
+                    file.Write("\"" + t.TaskName + "\",");
+                    file.Write("\"" + t.TaskPriority.ToString() + "\",");
+                    file.Write("\"" + t.CompleteBy.ToShortDateString() + "\",");
+                    try
+                    {
+                        file.Write("\"" + t.CompletionDate.Value.ToShortDateString() + "\",");
+                    }
+                    catch (Exception)
+                    {
+                        file.Write("\"\",");
+                    }
+
+                    file.WriteLine();
+                }
+            }
+        }
+
         /*
          *   Takes a List<Wedding> and writes them to a CSV output file.
          */
@@ -273,7 +314,38 @@ namespace Assignment3_LHISGroup
             }
         }
 
+        public void WriteEventProgressReportWeddingToFile(List<Wedding> outputWedding)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, false))
+            {
+                string[] titles = getEventProgressReportWeddingHeadings();
 
+                // Write the headings to output file.
+                for (int i = 0; i < titles.Length; i++)
+                {
+                    if (i < titles.Length - 1)
+                    {
+                        file.Write(titles[i] + ",");
+                    }
+                    else
+                    {
+                        file.WriteLine(titles[i]);
+                    }
+                }
+
+                // Write the data to the outfile.
+                // Quotations " " prevent commas in text fields from breaking
+                // CSV formatting
+                foreach (Wedding w in outputWedding)
+                {
+                    file.Write("\"" + w.Title + "\",");
+                    
+                    file.Write("\"" + w.StartDate.ToShortDateString() + "\",");
+                    file.Write("\"" + w.EventDate.ToShortDateString() + "\",");
+                    file.WriteLine();
+                }
+            }
+        }
 
         /*
          *  Generates headings for Client Records
@@ -366,7 +438,18 @@ namespace Assignment3_LHISGroup
             return titles;
         }
 
+        private string[] getEventProgressReportTaskHeadings()
+        {
+            string[] titles = new string[]{
+                    "taskName", 
+                    "priority",
+                    "completeByDate",
+                    "completionDate"
+                    
+            };
 
+            return titles;
+        }
 
         /*
          *  Generates headings for Wedding Records
@@ -380,6 +463,18 @@ namespace Assignment3_LHISGroup
                     "startDate",
                     "eventDate",
                     "weddingPlanner"
+            };
+
+            return titles;
+        }
+
+        private string[] getEventProgressReportWeddingHeadings()
+        {
+            string[] titles = new string[]{
+                    "title", 
+                    "startDate",
+                    "eventDate"
+                    
             };
 
             return titles;
