@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.TaskDetailsView = new System.Windows.Forms.DataGridView();
-            this.AllTaskDetailsLabel = new System.Windows.Forms.Label();
             this.TaskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaskDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TaskPriority = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,6 +36,8 @@
             this.CompletionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AssignedTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeddingAssignedTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AllTaskDetailsLabel = new System.Windows.Forms.Label();
+            this.GenerateReportButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TaskDetailsView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,20 +64,11 @@
             this.TaskDetailsView.TabIndex = 0;
             this.TaskDetailsView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TaskDetailsView_CellContentClick);
             // 
-            // AllTaskDetailsLabel
-            // 
-            this.AllTaskDetailsLabel.AutoSize = true;
-            this.AllTaskDetailsLabel.Location = new System.Drawing.Point(442, 28);
-            this.AllTaskDetailsLabel.Name = "AllTaskDetailsLabel";
-            this.AllTaskDetailsLabel.Size = new System.Drawing.Size(80, 13);
-            this.AllTaskDetailsLabel.TabIndex = 1;
-            this.AllTaskDetailsLabel.Text = "All Task Details";
-            // 
             // TaskName
             // 
             this.TaskName.HeaderText = "Task Name";
             this.TaskName.Name = "TaskName";
-            this.TaskName.Width = 87;
+            this.TaskName.Width = 80;
             // 
             // TaskDescription
             // 
@@ -114,11 +106,31 @@
             this.WeddingAssignedTo.Name = "WeddingAssignedTo";
             this.WeddingAssignedTo.Width = 114;
             // 
+            // AllTaskDetailsLabel
+            // 
+            this.AllTaskDetailsLabel.AutoSize = true;
+            this.AllTaskDetailsLabel.Location = new System.Drawing.Point(442, 28);
+            this.AllTaskDetailsLabel.Name = "AllTaskDetailsLabel";
+            this.AllTaskDetailsLabel.Size = new System.Drawing.Size(80, 13);
+            this.AllTaskDetailsLabel.TabIndex = 1;
+            this.AllTaskDetailsLabel.Text = "All Task Details";
+            // 
+            // GenerateReportButton
+            // 
+            this.GenerateReportButton.Location = new System.Drawing.Point(12, 480);
+            this.GenerateReportButton.Name = "GenerateReportButton";
+            this.GenerateReportButton.Size = new System.Drawing.Size(106, 38);
+            this.GenerateReportButton.TabIndex = 2;
+            this.GenerateReportButton.Text = "Generate Report";
+            this.GenerateReportButton.UseVisualStyleBackColor = true;
+            this.GenerateReportButton.Click += new System.EventHandler(this.GenerateReportButton_Click);
+            // 
             // EventTaskReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 486);
+            this.ClientSize = new System.Drawing.Size(993, 530);
+            this.Controls.Add(this.GenerateReportButton);
             this.Controls.Add(this.AllTaskDetailsLabel);
             this.Controls.Add(this.TaskDetailsView);
             this.Name = "EventTaskReport";
@@ -140,5 +152,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CompletionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn AssignedTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn WeddingAssignedTo;
+        private System.Windows.Forms.Button GenerateReportButton;
     }
 }

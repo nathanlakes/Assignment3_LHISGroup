@@ -74,6 +74,7 @@ namespace Assignment3_LHISGroup
          */
         public void WriteStaffToFile(List<Staff> outputStaff)
         {
+            
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, false))
             {
                 string[] titles = getStaffHeadings();
@@ -148,7 +149,7 @@ namespace Assignment3_LHISGroup
         /*
          *   Takes a List<Task> and writes them to a CSV output file.
          */
-        public void WriteSupplierToFile(List<Support_Classes.Task> outputTask)
+        public void WriteTasksToFile(List<Support_Classes.Task> outputTask)
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, false))
             {
