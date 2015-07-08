@@ -400,14 +400,14 @@ namespace Assignment3_LHISGroup.Database
                 int i = 1;
                 foreach (var v in clist)
                 {                    
-                    MessageBox.Show(v.ToString(), "Client's in Database " + i);
+                    MessageBox.Show(v.ToString(), "Clients in Database " + i);
                     i++;
                 }
             }
 
             {
                 //
-                //  Add Duplicate Supplier
+                //  Add Duplicate Staff
                 //
                 Staff myStaff1 = new Staff("Henry", "Kissinger", "Hkiss@NixonMail.com", "911",
                     "Do not trust", Staff.Active.inactive);
@@ -423,6 +423,28 @@ namespace Assignment3_LHISGroup.Database
                 foreach (var v in stfList)
                 {
                     MessageBox.Show(v.ToString(), "Staff in Database " + i);
+                    i++;
+                }
+            }
+
+            {
+                //
+                //  Add Duplicate Supplier
+                //
+                Supplier supp = new Supplier("Bomboniere R Us", "234 Port Road", "Giuseppina", "gp@bombon.com",
+                    "08 83321414", 30);
+
+                bool firstAdd = db.AddSupplier(supp);
+                bool secondAdd = db.AddSupplier(supp);
+
+                MessageBox.Show("firstAdd= " + firstAdd + "\n" + "secondAdd= " + secondAdd,
+                    "Test 2nd Add False for AddSupplier()");
+
+                List<Supplier> suppList = db.GetAllSuppliers();
+                int i = 1;
+                foreach (var v in suppList)
+                {
+                    MessageBox.Show(v.ToString(), "Suppliers in Database " + i);
                     i++;
                 }
             }
