@@ -40,15 +40,12 @@ namespace Assignment3_LHISGroup
 
         public MainWindow()
         {
-            new Database.DbTests();         // Run Nathan's Controller Tests.
-
+            //new Database.DbTests();         // Run Nathan's Controller Tests.
 
             InitializeComponent();
             db = new DbController();        // Creates a DB controller to be used by the UI classes. 
 
             this.louiseTestDataPopulate();
-            this.nathanDebug();
-
 
             // create windows and hide them for later use
             // this saves on CPU by not recreating them every time they are needed
@@ -331,9 +328,5 @@ namespace Assignment3_LHISGroup
             this.Dispose();
         }
 
-        private void nathanDebug()
-        {
-      
-        }
     }
 }
