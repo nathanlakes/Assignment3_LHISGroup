@@ -40,9 +40,6 @@ namespace Assignment3_LHISGroup
 
         public MainWindow()
         {
-            new Database.DbTests();         // Run Nathan's Controller Tests.
-
-
             InitializeComponent();
             db = new DbController();        // Creates a DB controller to be used by the UI classes. 
 
