@@ -236,7 +236,16 @@ namespace Assignment3_LHISGroup.UI
 
         private void DeleteWeddingButton_Click(object sender, EventArgs e)
         {
-
+            Support_Classes.Task delete = ExtractSelectedRow();
+            try
+            {
+                db.DeleteTask(delete.ID);
+                MessageBox.Show("Task successfully deleted");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Exception thrown");
+            }
         }
 
         private void ClearFilterButton_Click(object sender, EventArgs e)

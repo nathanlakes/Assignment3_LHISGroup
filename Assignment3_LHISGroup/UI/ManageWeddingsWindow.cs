@@ -107,6 +107,16 @@ namespace Assignment3_LHISGroup.UI
 
         private void DeleteWeddingButton_Click(object sender, EventArgs e)
         {
+            Support_Classes.Wedding delete = ExtractSelectedRow();
+            try
+            {
+                db.DeleteWedding(delete.ID);
+                MessageBox.Show("Wedding delted successfully");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Exception thrown");
+            }
 
         }
 
