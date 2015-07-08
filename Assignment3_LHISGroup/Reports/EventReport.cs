@@ -14,9 +14,10 @@ namespace Assignment3_LHISGroup.Reports
 {
     public partial class EventReport : Form
     {
-        DbController dbController = new DbController();
-        List<Wedding> allWeddingList = new List<Wedding>();
-        List<Support_Classes.Task> allTasksList = new List<Support_Classes.Task>();
+        private DbController dbController = new DbController();
+        private List<Wedding> allWeddingList = new List<Wedding>();
+        private List<Support_Classes.Task> allTasksList = new List<Support_Classes.Task>();
+        private List<Support_Classes.Task> currentWeddingTasks = new List<Support_Classes.Task>();
 
         public EventReport()
         {
@@ -25,6 +26,7 @@ namespace Assignment3_LHISGroup.Reports
             ADDTODBFORTESTING();
 
             populateWeddingList();
+            
         }
 
         private void ADDTODBFORTESTING()
@@ -86,9 +88,10 @@ namespace Assignment3_LHISGroup.Reports
             List<Support_Classes.Task> weddingTasks = new List<Support_Classes.Task>();
             int selWedID = -10;
 
-            String selWed = EventListBox.SelectedItem.ToString();
+            
             try
             {
+                String selWed = EventListBox.SelectedItem.ToString();
                 selWedID = Convert.ToInt32(selWed.Substring(0, selWed.IndexOf(" ")));
             }
             catch (Exception e)
@@ -104,7 +107,7 @@ namespace Assignment3_LHISGroup.Reports
                 }
 
             }
-
+            currentWeddingTasks = weddingTasks;
             foreach (Support_Classes.Task task in weddingTasks)
             {
                 DataGridViewRow row = (DataGridViewRow)WeddingDetailsGridView.Rows[0].Clone();
@@ -140,5 +143,38 @@ namespace Assignment3_LHISGroup.Reports
             WeddingDetailsGridView.Rows.Clear();
             populateWeddingDetailsView();
         }
+        private void generateEventReport()
+        {
+            CSVWriter report = new CSVWriter("EventReport");
+            int selWedID = -10;
+            try
+            {
+                String selWed = EventListBox.SelectedItem.ToString();
+                selWedID = Convert.ToInt32(selWed.Substring(0, selWed.IndexOf(" ")));
+
+                List<Wedding> wedList = new List<Wedding>();
+                wedList.Add(dbController.FindWedding(selWedID));
+                
+                report.WriteWeddingToFile(wedList);
+                if (currentWeddingTasks.Count > 0)
+                {
+                    report.WriteEventReportTasksToFile(currentWeddingTasks);
+                }
+
+                MessageBox.Show("Event Report Generation Successful");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Report Generation Failed");
+            }
+            
+        }
+
+        private void GenerateEventReportButton_Click(object sender, EventArgs e)
+        {
+            generateEventReport();
+        }
+
+        
     }
 }

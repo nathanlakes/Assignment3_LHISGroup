@@ -37,6 +37,7 @@
             this.Assignedto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WeddingListLabel = new System.Windows.Forms.Label();
             this.WeddingTasksLabel = new System.Windows.Forms.Label();
+            this.GenerateEventReportButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.WeddingDetailsGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,11 +114,22 @@
             this.WeddingTasksLabel.TabIndex = 3;
             this.WeddingTasksLabel.Text = "Wedding Tasks";
             // 
+            // GenerateEventReportButton
+            // 
+            this.GenerateEventReportButton.Location = new System.Drawing.Point(7, 389);
+            this.GenerateEventReportButton.Name = "GenerateEventReportButton";
+            this.GenerateEventReportButton.Size = new System.Drawing.Size(143, 29);
+            this.GenerateEventReportButton.TabIndex = 4;
+            this.GenerateEventReportButton.Text = "Generate Event Report";
+            this.GenerateEventReportButton.UseVisualStyleBackColor = true;
+            this.GenerateEventReportButton.Click += new System.EventHandler(this.GenerateEventReportButton_Click);
+            // 
             // EventReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(955, 394);
+            this.ClientSize = new System.Drawing.Size(955, 430);
+            this.Controls.Add(this.GenerateEventReportButton);
             this.Controls.Add(this.WeddingTasksLabel);
             this.Controls.Add(this.WeddingListLabel);
             this.Controls.Add(this.WeddingDetailsGridView);
@@ -141,5 +153,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Assignedto;
         private System.Windows.Forms.Label WeddingListLabel;
         private System.Windows.Forms.Label WeddingTasksLabel;
+        private System.Windows.Forms.Button GenerateEventReportButton;
     }
 }

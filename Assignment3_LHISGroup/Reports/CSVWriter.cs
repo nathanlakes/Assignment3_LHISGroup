@@ -148,7 +148,7 @@ namespace Assignment3_LHISGroup
         /*
          *   Takes a List<Task> and writes them to a CSV output file.
          */
-        public void WriteSupplierToFile(List<Support_Classes.Task> outputTask)
+        public void WriteTasksToFile(List<Support_Classes.Task> outputTask)
         {
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, false))
             {
@@ -190,6 +190,50 @@ namespace Assignment3_LHISGroup
             }
         }
 
+        /*
+         *   Takes a List<Task> and writes them to a CSV output file.
+         */
+        public void WriteEventReportTasksToFile(List<Support_Classes.Task> outputTask)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName, true))
+            {
+                string[] titles = getEventReportTaskHeadings();
+                file.WriteLine("-----Event Tasks-----");
+                // Write the headings to output file.
+                for (int i = 0; i < titles.Length; i++)
+                {
+                    if (i < titles.Length - 1)
+                    {
+                        file.Write(titles[i] + ",");
+                    }
+                    else
+                    {
+                        file.WriteLine(titles[i]);
+                    }
+                }
+
+                // Write the data to the outfile.
+                // Quotations " " prevent commas in text fields from breaking
+                // CSV formatting
+                foreach (Task t in outputTask)
+                {
+                    file.Write("\"" + t.TaskName + "\",");
+                    file.Write("\"" + t.TaskPriority.ToString() + "\",");
+                    file.Write("\"" + t.CompleteBy.ToShortDateString() + "\",");
+                    try
+                    {
+                        file.Write("\"" + t.CompletionDate.Value.ToShortDateString() + "\",");
+                    }
+                    catch (Exception)
+                    {
+                        file.Write("\"\",");
+                    }
+
+                    file.Write("\"[" + t.ID + "] " + t.AssignedTo.FirstName + " " + t.AssignedTo.Surname + "\",");
+                    file.WriteLine();
+                }
+            }
+        }
 
         /*
          *   Takes a List<Wedding> and writes them to a CSV output file.
@@ -304,6 +348,24 @@ namespace Assignment3_LHISGroup
 
             return titles;
         }
+
+
+        /*
+         *  Generates headings for Task Records within Event Report
+         */
+        private string[] getEventReportTaskHeadings()
+        {
+            string[] titles = new string[]{
+                    "taskName", 
+                    "priority",
+                    "completeByDate",
+                    "completionDate",
+                    "assignedTo"
+            };
+
+            return titles;
+        }
+
 
 
         /*
