@@ -1795,6 +1795,10 @@ namespace Assignment3_LHISGroup
         //   PRIVATE HELPER METHODS   \\
         //\\//\\//\\//\\//\\//\\//\\//\\
 
+        /**
+         *  Ensures that [db].[Client] does not contain a duplicate 
+         *  client
+         */
         private bool containsDuplicateRecord(Client c)
         {
             int count = -1;
@@ -1818,6 +1822,46 @@ namespace Assignment3_LHISGroup
                 myCommand.Parameters.AddWithValue("@email", c.Email);
                 myCommand.Parameters.AddWithValue("@engfn", c.EngagedTo_fn);
                 myCommand.Parameters.AddWithValue("@engsn", c.EngagedTo_sn);
+
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
+                {
+                    while (myReader.Read())
+                    {
+                        count = Convert.ToInt32(myReader["Count"].ToString());
+                    }
+                }
+                _db.Close();
+            }
+
+            if (count == 0) return false;
+            else return true;
+        }
+
+
+        /**
+         *  Ensures that [db].[Staff] does not contain a duplicate 
+         *  client
+         */
+        private bool containsDuplicateRecord(Staff s)
+        {
+            int count = -1;
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+
+                string query = @"SELECT COUNT(Id) As Count FROM Staff ";
+                query += @"WHERE firstname=@firstname AND surname=@surname AND email=@email AND ";
+                query += @"phone=@phone AND notes=@notes AND status=@status";
+
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@firstname", s.FirstName);
+                myCommand.Parameters.AddWithValue("@surname", s.Surname);
+                myCommand.Parameters.AddWithValue("@email", s.Email);
+
+                myCommand.Parameters.AddWithValue("@phone", s.Phone);
+                myCommand.Parameters.AddWithValue("@notes", s.Notes);
+                myCommand.Parameters.AddWithValue("@status", s.StatusToString());
 
                 using (SqlDataReader myReader = myCommand.ExecuteReader())
                 {
