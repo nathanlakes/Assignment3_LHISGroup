@@ -1071,8 +1071,15 @@ namespace Assignment3_LHISGroup
         }
 
 
+        /**
+         *   Adds a Staff member to the Staff Table of the 
+         *   Database.
+         */
         public bool AddStaff(Staff s)
         {
+            bool hasDuplicate = containsDuplicateRecord(s);
+            if (hasDuplicate) return false;
+
             using (SqlConnection _db = new SqlConnection(connStr))
             {
                 _db.Open();
