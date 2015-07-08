@@ -214,6 +214,8 @@ namespace Assignment3_LHISGroup.Database
             //   Test All Active Staff
             //
             {
+                Staff dan = new Staff("Daniel", "Stone", "ds@wedmail.com", "123345", "Ginger", Staff.Active.inactive);
+                db.AddStaff(dan);
                 List<Staff> allAct = db.AllActiveStaff();
                 foreach (var s in allAct)
                 {
@@ -310,17 +312,17 @@ namespace Assignment3_LHISGroup.Database
             //
             //   Test Delete Task
             //
-            //Support_Classes.Task tempTask = db.FindTask(6);
-            //db.DeleteTask(6);
-            //try
-            //{
-            //    Support_Classes.Task tempTask2 = db.FindTask(6);
-            //    MessageBox.Show(tempTask2.ToString(), "Try to display deleted task");
-            //}
-            //catch (Exception e)
-            //{
-            //    MessageBox.Show(e.ToString());
-            //}
+            Support_Classes.Task tempTask = db.FindTask(6);
+            db.DeleteTask(6);
+            try
+            {
+                Support_Classes.Task tempTask2 = db.FindTask(6);
+                MessageBox.Show(tempTask2.ToString(), "Try to display deleted task");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
 
 
             //
@@ -379,24 +381,33 @@ namespace Assignment3_LHISGroup.Database
             }
 
             //
-            //   Test Duplicate Add
+            //   Test Duplicate Adds
             //
             {
-                Client nathan = new Client("Nathan", "Lakes", "Gary", "100 Smith St", "040343433", "088332141",
+                //
+                //  Add Duplicate Client
+                //
+                Client hervard = new Client("Hervard", "Brakes", "Gary", "100 Smith St", "040343433", "088332141",
                     "Nate@natemail.com", "My", "Cat");
 
-                bool firstAdd = db.AddClient(nathan);
-                bool secondAdd = db.AddClient(nathan);
+                bool firstAdd = db.AddClient(hervard);
+                bool secondAdd = db.AddClient(hervard);
 
                 MessageBox.Show("firstAdd= " + firstAdd + "\n" + "secondAdd= " + secondAdd);
 
                 List<Client> clist = db.GetAllClients();
+                int i = 1;
                 foreach (var v in clist)
-                {
-                    int i = 1;
+                {                    
                     MessageBox.Show(v.ToString(), "Client's in Database " + i);
                     i++;
                 }
+            }
+
+            {
+                //
+                //  Add Duplicate Supplier
+                //
             }
 
         }
