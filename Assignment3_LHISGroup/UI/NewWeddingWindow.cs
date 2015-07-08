@@ -210,8 +210,8 @@ namespace Assignment3_LHISGroup.UI
                 DateTime startDate = StartDateTimePicker.Value;
                 DateTime eventDate = EventDateTimePicker.Value;
 
-                
-                Support_Classes.Wedding wedding = new Support_Classes.Wedding(title, desc, client, engaged, staff, startDate, eventDate);
+
+                Support_Classes.Wedding wedding = new Support_Classes.Wedding(title, desc, client, engaged, staff, startDate, eventDate, Support_Classes.Wedding.Status.InPreparation);
 
                 try
                 {

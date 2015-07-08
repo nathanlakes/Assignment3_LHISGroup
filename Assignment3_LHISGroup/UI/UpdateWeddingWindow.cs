@@ -251,7 +251,7 @@ namespace Assignment3_LHISGroup.UI
                 DateTime eventDate = EventDateTimePicker.Value;
 
 
-                Support_Classes.Wedding wedding = new Support_Classes.Wedding(title, desc, client, engaged, staff, startDate, eventDate);
+                Support_Classes.Wedding wedding = new Support_Classes.Wedding(title, desc, client, engaged, staff, startDate, eventDate, Support_Classes.Wedding.Status.InPreparation);
                 wedding.ID = id;
 
                 try

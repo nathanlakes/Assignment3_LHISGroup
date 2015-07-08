@@ -40,11 +40,15 @@ namespace Assignment3_LHISGroup
 
         public MainWindow()
         {
+            new Database.DbTests();         // Run Nathan's Controller Tests.
+
+
             InitializeComponent();
             db = new DbController();        // Creates a DB controller to be used by the UI classes. 
 
             this.louiseTestDataPopulate();
             this.nathanDebug();
+
 
             // create windows and hide them for later use
             // this saves on CPU by not recreating them every time they are needed
@@ -134,10 +138,10 @@ namespace Assignment3_LHISGroup
             Client client_2 = new Client("John", "James", "Jane Smith", "82 Pine St", "23342143", "87923423", "jj@jay.com", "Jane", "Smith");
             Client client_3 = new Client("Jim", "Brown", "Jim Brown", "861 Downtown St", "0437233892", "87323236", "bj@hotmail.com", "Belle", "Wright");
             Client client_4 = new Client("Beth", "Wright", "Jim Brown", "43 High St", "02376278", "98238723", "beth@live.com", "Jim", "Brown");
-            
 
-            Wedding wedding_1 = new Wedding("Wright Brown Wedding", "Small garden wedding at the Roundta", client_3, client_4, staff_2, new DateTime(2015, 5, 6), new DateTime(2015, 10, 8));
-            Wedding wedding_2 = new Wedding("Jay & Jay", "Large wedding, with expected guest list of 500", client_1, client_2, staff_5, new DateTime(2015, 3, 14), new DateTime(2015, 11, 22));
+
+            Wedding wedding_1 = new Wedding("Wright Brown Wedding", "Small garden wedding at the Roundta", client_3, client_4, staff_2, new DateTime(2015, 5, 6), new DateTime(2015, 10, 8), Wedding.Status.InPreparation);
+            Wedding wedding_2 = new Wedding("Jay & Jay", "Large wedding, with expected guest list of 500", client_1, client_2, staff_5, new DateTime(2015, 3, 14), new DateTime(2015, 11, 22), Wedding.Status.InPreparation);
 
             Support_Classes.Task task_1 = new Support_Classes.Task("Catering for J & J", "Need supplies from Carter's Caterers", Support_Classes.Task.Priority.med, new DateTime(2015, 10, 3), staff_1, wedding_1);
 
