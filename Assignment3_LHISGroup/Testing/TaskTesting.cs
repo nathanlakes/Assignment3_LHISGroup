@@ -35,13 +35,15 @@ namespace Assignment3_LHISGroup.Support_Classes
             Assert.AreEqual(new DateTime(2015, 12, 18), testTask.CompleteBy);
         }
 
+        
+
         [Test]
-        [ExpectedException(typeof(Exception))]
         public void CompletionDateGetTest1()
         {
             Wedding testWedding = new Wedding("Wedding1", "decription", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22), Wedding.Status.InPreparation);
             Task testTask = new Task("testing", "does things", testPrio, new DateTime(), testStaff, testWedding);
-            //DateTime result = testTask.CompletionDate;
+            DateTime result = (DateTime)testTask.CompletionDate;
+            Assert.AreEqual(result, DateTime.MinValue);
         }
 
         [Test]
@@ -53,22 +55,6 @@ namespace Assignment3_LHISGroup.Support_Classes
             Assert.AreEqual(new DateTime(2015, 07, 18), testTask.CompletionDate);
         }
 
-        [Test]
-        [ExpectedException(typeof(Exception))]
-        public void CompletionSetDateTest2()
-        {
-            Wedding testWedding = new Wedding("Wedding1", "decription", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22), Wedding.Status.InPreparation);
-            Task testTask = new Task("testing", "does things", testPrio, new DateTime(), testStaff, testWedding);
-            testTask.CompletionDate = new DateTime();
-        }
-
-        [Test]
-        [ExpectedException(typeof(Exception))]
-        public void CompletionSetDateTest3()
-        {
-            Wedding testWedding = new Wedding("Wedding1", "decription", testClient1, testClient2, testStaff, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22), Wedding.Status.InPreparation);
-            Task testTask = new Task("testing", "does things", testPrio, new DateTime(), testStaff, testWedding);
-            testTask.CompletionDate = new DateTime(2012, 12, 8);
-        }
+   
     }
 }
