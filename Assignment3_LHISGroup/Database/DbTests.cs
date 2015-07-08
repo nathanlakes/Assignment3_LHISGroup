@@ -393,7 +393,8 @@ namespace Assignment3_LHISGroup.Database
                 bool firstAdd = db.AddClient(hervard);
                 bool secondAdd = db.AddClient(hervard);
 
-                MessageBox.Show("firstAdd= " + firstAdd + "\n" + "secondAdd= " + secondAdd);
+                MessageBox.Show("firstAdd= " + firstAdd + "\n" + "secondAdd= " + secondAdd,
+                    "Test Second Add FALSE for AddClient()");
 
                 List<Client> clist = db.GetAllClients();
                 int i = 1;
@@ -408,6 +409,22 @@ namespace Assignment3_LHISGroup.Database
                 //
                 //  Add Duplicate Supplier
                 //
+                Staff myStaff1 = new Staff("Henry", "Kissinger", "Hkiss@NixonMail.com", "911",
+                    "Do not trust", Staff.Active.inactive);
+
+                bool firstAdd = db.AddStaff(myStaff1);
+                bool secondAdd = db.AddStaff(myStaff1);
+
+                MessageBox.Show("firstAdd= " + firstAdd + "\n" + "secondAdd= " + secondAdd, 
+                    "Test 2nd Add False for AddStaff()");
+
+                List<Staff> stfList = db.GetAllStaff();
+                int i = 1;
+                foreach (var v in stfList)
+                {
+                    MessageBox.Show(v.ToString(), "Staff in Database " + i);
+                    i++;
+                }
             }
 
         }
