@@ -36,14 +36,14 @@ namespace Assignment3_LHISGroup.Reports
             List<Support_Classes.Wedding> allWeddings = dbController.GetAllWeddings();
             if (allWeddings.Count == 0)
             {
-                AllWeddingslbl.Text = "No Weddings In Database!";
+                WeddingsListBox.Items.Add("No Weddings In Database!");
             }
             else
             {
-                AllWeddingslbl.Text = "";
+                WeddingsListBox.Items.Clear();
                 foreach (Support_Classes.Wedding wedding in allWeddings)
                 {
-                    AllWeddingslbl.Text += wedding.Title + "\n";
+                    WeddingsListBox.Items.Add(wedding.Title.ToString());
                 }
             }
         }

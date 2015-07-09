@@ -28,39 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EPChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.GenerateGraphBtn = new System.Windows.Forms.Button();
             this.WeddingNameTxtBx = new System.Windows.Forms.TextBox();
             this.WeddingLabel = new System.Windows.Forms.Label();
-            this.AllWeddingslbl = new System.Windows.Forms.Label();
             this.SaveToFilebtn = new System.Windows.Forms.Button();
+            this.WeddingsListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.EPChart)).BeginInit();
             this.SuspendLayout();
             // 
             // EPChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.EPChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.EPChart.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.EPChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.EPChart.Legends.Add(legend4);
             this.EPChart.Location = new System.Drawing.Point(12, 12);
             this.EPChart.Name = "EPChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "ExpectedOutstanding";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "ActualOutstanding";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            this.EPChart.Series.Add(series1);
-            this.EPChart.Series.Add(series2);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Legend = "Legend1";
+            series7.Name = "ExpectedOutstanding";
+            series7.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Legend = "Legend1";
+            series8.Name = "ActualOutstanding";
+            series8.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+            this.EPChart.Series.Add(series7);
+            this.EPChart.Series.Add(series8);
             this.EPChart.Size = new System.Drawing.Size(499, 368);
             this.EPChart.TabIndex = 0;
             this.EPChart.Text = "chart1";
@@ -92,14 +92,6 @@
             this.WeddingLabel.TabIndex = 3;
             this.WeddingLabel.Text = "Wedding Name";
             // 
-            // AllWeddingslbl
-            // 
-            this.AllWeddingslbl.AutoSize = true;
-            this.AllWeddingslbl.Location = new System.Drawing.Point(533, 23);
-            this.AllWeddingslbl.Name = "AllWeddingslbl";
-            this.AllWeddingslbl.Size = new System.Drawing.Size(0, 13);
-            this.AllWeddingslbl.TabIndex = 4;
-            // 
             // SaveToFilebtn
             // 
             this.SaveToFilebtn.Enabled = false;
@@ -111,13 +103,22 @@
             this.SaveToFilebtn.UseVisualStyleBackColor = true;
             this.SaveToFilebtn.Click += new System.EventHandler(this.SaveToFilebtn_Click_1);
             // 
+            // WeddingsListBox
+            // 
+            this.WeddingsListBox.FormattingEnabled = true;
+            this.WeddingsListBox.Location = new System.Drawing.Point(556, 12);
+            this.WeddingsListBox.Name = "WeddingsListBox";
+            this.WeddingsListBox.ScrollAlwaysVisible = true;
+            this.WeddingsListBox.Size = new System.Drawing.Size(178, 160);
+            this.WeddingsListBox.TabIndex = 6;
+            // 
             // EventProgressGraph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(774, 380);
+            this.Controls.Add(this.WeddingsListBox);
             this.Controls.Add(this.SaveToFilebtn);
-            this.Controls.Add(this.AllWeddingslbl);
             this.Controls.Add(this.WeddingLabel);
             this.Controls.Add(this.WeddingNameTxtBx);
             this.Controls.Add(this.GenerateGraphBtn);
@@ -138,7 +139,7 @@
         private System.Windows.Forms.Button GenerateGraphBtn;
         private System.Windows.Forms.TextBox WeddingNameTxtBx;
         private System.Windows.Forms.Label WeddingLabel;
-        private System.Windows.Forms.Label AllWeddingslbl;
         private System.Windows.Forms.Button SaveToFilebtn;
+        private System.Windows.Forms.ListBox WeddingsListBox;
     }
 }
