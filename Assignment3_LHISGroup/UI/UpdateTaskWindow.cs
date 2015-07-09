@@ -19,6 +19,7 @@ namespace Assignment3_LHISGroup.UI
         List<Support_Classes.Wedding> WeddingList;
 
         Support_Classes.Task task;
+        Support_Classes.Task oldTask;
         int id;
         bool IsCompleted; // to check if the task is completed
         
@@ -57,6 +58,7 @@ namespace Assignment3_LHISGroup.UI
 
         public void PopuluateDataFields(Support_Classes.Task t)
         {
+            oldTask = t;
             task = t;
             id = t.ID;
 
@@ -95,14 +97,27 @@ namespace Assignment3_LHISGroup.UI
                 LowRadioButton.Checked = true;
             }
 
-            if (t.CompleteBy != null)
+            if (DateTime.Compare(t.CompleteBy, DateTime.MinValue) > 0)
             {
-                DateTime d = new DateTime(t.CompleteBy.Year, t.CompleteBy.Month, t.CompleteBy.Day);
-                CompleteByDateTimePicker.Value = d;
+                try
+                {
+                    CompleteByDateTimePicker.Value = t.CompleteBy;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
             }
-            else
+            if (DateTime.Compare(t.CompletionDate.Value, DateTime.MinValue) > 0)
             {
-                CompleteByDateTimePicker.Value = t.CompleteBy;
+                try
+                {
+                    CompletionDateTimePicker.Value = t.CompleteBy;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
             }
 
             // Commented out code causing errors galore
@@ -131,11 +146,11 @@ namespace Assignment3_LHISGroup.UI
                 MessageBox.Show("Need description");
                 return false;
             }
-            else if (StaffComboBox.SelectedValue == null)
-            {
-                MessageBox.Show("Need staff");
-                return false;
-            }
+            //else if (StaffComboBox.SelectedValue == null)
+            //{
+            //    MessageBox.Show("Need staff");
+            //    return false;
+            //}
             else if (WeddingComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Need wedding");
@@ -214,8 +229,10 @@ namespace Assignment3_LHISGroup.UI
 
                 try
                 {
-                    db.AddTask(task);
+                    db.UpdateTask( db.GetTaskId(oldTask), task);
+
                     mainWin.ManageTasksWindow.UpdateForm();
+
                     this.Visible = false;
                     if (!mainWin.ManageTasksWindow.Visible)
                     {
@@ -228,9 +245,10 @@ namespace Assignment3_LHISGroup.UI
                     }
                     mainWin.RefreshAllWindow();
                 }
-                catch (Exception)
+                catch (Exception exc)
                 {
                     MessageBox.Show("Exception thrown");
+                    MessageBox.Show(exc.ToString());
                 }
             }
         }
