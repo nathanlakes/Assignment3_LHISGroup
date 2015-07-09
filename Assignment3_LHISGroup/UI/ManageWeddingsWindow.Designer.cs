@@ -76,13 +76,13 @@
             this.WeddingsDataGridView.DataSource = this.weddingBindingSource;
             this.WeddingsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WeddingsDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.WeddingsDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WeddingsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.WeddingsDataGridView.MultiSelect = false;
             this.WeddingsDataGridView.Name = "WeddingsDataGridView";
             this.WeddingsDataGridView.ReadOnly = true;
             this.WeddingsDataGridView.RowTemplate.Height = 28;
             this.WeddingsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WeddingsDataGridView.Size = new System.Drawing.Size(630, 221);
+            this.WeddingsDataGridView.Size = new System.Drawing.Size(914, 221);
             this.WeddingsDataGridView.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -155,7 +155,7 @@
             // 
             this.AddWeddingButton.BackColor = System.Drawing.Color.White;
             this.AddWeddingButton.Location = new System.Drawing.Point(25, 14);
-            this.AddWeddingButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddWeddingButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddWeddingButton.Name = "AddWeddingButton";
             this.AddWeddingButton.Size = new System.Drawing.Size(103, 27);
             this.AddWeddingButton.TabIndex = 1;
@@ -167,7 +167,7 @@
             // 
             this.UpdateWeddingButton.BackColor = System.Drawing.Color.White;
             this.UpdateWeddingButton.Location = new System.Drawing.Point(311, 15);
-            this.UpdateWeddingButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UpdateWeddingButton.Margin = new System.Windows.Forms.Padding(2);
             this.UpdateWeddingButton.Name = "UpdateWeddingButton";
             this.UpdateWeddingButton.Size = new System.Drawing.Size(105, 27);
             this.UpdateWeddingButton.TabIndex = 2;
@@ -179,7 +179,7 @@
             // 
             this.DeleteWeddingButton.BackColor = System.Drawing.Color.White;
             this.DeleteWeddingButton.Location = new System.Drawing.Point(173, 15);
-            this.DeleteWeddingButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeleteWeddingButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteWeddingButton.Name = "DeleteWeddingButton";
             this.DeleteWeddingButton.Size = new System.Drawing.Size(105, 26);
             this.DeleteWeddingButton.TabIndex = 3;
@@ -201,18 +201,18 @@
             this.panel1.Controls.Add(this.UpdateWeddingButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 221);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(630, 92);
+            this.panel1.Size = new System.Drawing.Size(914, 92);
             this.panel1.TabIndex = 4;
             // 
             // GraphButton
             // 
             this.GraphButton.BackColor = System.Drawing.Color.White;
             this.GraphButton.Location = new System.Drawing.Point(25, 58);
-            this.GraphButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GraphButton.Margin = new System.Windows.Forms.Padding(2);
             this.GraphButton.Name = "GraphButton";
-            this.GraphButton.Size = new System.Drawing.Size(99, 27);
+            this.GraphButton.Size = new System.Drawing.Size(103, 27);
             this.GraphButton.TabIndex = 9;
             this.GraphButton.Text = "Progress Graph";
             this.GraphButton.UseVisualStyleBackColor = false;
@@ -222,9 +222,9 @@
             // 
             this.ReportButton.BackColor = System.Drawing.Color.White;
             this.ReportButton.Location = new System.Drawing.Point(311, 58);
-            this.ReportButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ReportButton.Margin = new System.Windows.Forms.Padding(2);
             this.ReportButton.Name = "ReportButton";
-            this.ReportButton.Size = new System.Drawing.Size(110, 27);
+            this.ReportButton.Size = new System.Drawing.Size(105, 27);
             this.ReportButton.TabIndex = 8;
             this.ReportButton.Text = "Event Report";
             this.ReportButton.UseVisualStyleBackColor = false;
@@ -234,9 +234,9 @@
             // 
             this.ProgressButton.BackColor = System.Drawing.Color.White;
             this.ProgressButton.Location = new System.Drawing.Point(173, 58);
-            this.ProgressButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ProgressButton.Margin = new System.Windows.Forms.Padding(2);
             this.ProgressButton.Name = "ProgressButton";
-            this.ProgressButton.Size = new System.Drawing.Size(108, 27);
+            this.ProgressButton.Size = new System.Drawing.Size(105, 27);
             this.ProgressButton.TabIndex = 7;
             this.ProgressButton.Text = "Progress Printout";
             this.ProgressButton.UseVisualStyleBackColor = false;
@@ -252,10 +252,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(630, 313);
+            this.ClientSize = new System.Drawing.Size(914, 313);
             this.Controls.Add(this.WeddingsDataGridView);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManageWeddingsWindow";
             this.Text = "ManageWeddingsWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageWeddingsWindow_FormClosing);

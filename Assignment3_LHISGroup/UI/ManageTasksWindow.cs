@@ -240,6 +240,7 @@ namespace Assignment3_LHISGroup.UI
             try
             {
                 db.DeleteTask(delete.ID);
+                UpdateForm();
                 MessageBox.Show("Task successfully deleted");
             }
             catch (Exception)

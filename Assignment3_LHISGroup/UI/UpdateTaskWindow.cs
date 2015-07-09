@@ -97,7 +97,8 @@ namespace Assignment3_LHISGroup.UI
 
             if (t.CompleteBy != null)
             {
-                CompleteByDateTimePicker.Value = t.CompleteBy;
+                DateTime d = new DateTime(t.CompleteBy.Year, t.CompleteBy.Month, t.CompleteBy.Day);
+                CompleteByDateTimePicker.Value = d;
             }
             else
             {
