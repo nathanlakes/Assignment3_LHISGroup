@@ -23,7 +23,7 @@ namespace Assignment3_LHISGroup.Reports
         {
             InitializeComponent();
 
-            //ADDTODBFORTESTING();
+           
 
             populateWeddingList();
             
@@ -35,13 +35,17 @@ namespace Assignment3_LHISGroup.Reports
             allWeddingList = dbController.GetAllWeddings();
             if (allWeddingList.Count < 1)
             {
-                throw new Exception("No weddings in Database");
+                MessageBox.Show("No weddings in Database");
             }
-            foreach (Wedding wedding in allWeddingList)
+            else
             {
-                String weddingDetails = wedding.ID + " " + wedding.Title;
-                EventListBox.Items.Add(weddingDetails);
+                foreach (Wedding wedding in allWeddingList)
+                {
+                    String weddingDetails = wedding.ID + " " + wedding.Title;
+                    EventListBox.Items.Add(weddingDetails);
+                }
             }
+            
         }
 
         private void populateWeddingDetailsView()
