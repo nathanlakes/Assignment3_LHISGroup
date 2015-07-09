@@ -108,8 +108,21 @@ namespace Assignment3_LHISGroup.UI
 
         private void DeleteWeddingButton_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             string s = WeddingsDataGridView.Rows[WeddingsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
             int w = Convert.ToInt32( s );
+=======
+            Support_Classes.Wedding delete = ExtractSelectedRow();
+            try
+            {
+                db.DeleteWedding(delete.ID);
+                MessageBox.Show("Wedding delted successfully");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Exception thrown");
+            }
+>>>>>>> 86ee70b527dde414c6b063a73f93a47862d0fd64
 
             db.DeleteWedding(w);
             UpdateForm();

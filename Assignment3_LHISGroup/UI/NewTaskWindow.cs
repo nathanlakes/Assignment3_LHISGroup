@@ -64,7 +64,7 @@ namespace Assignment3_LHISGroup.UI
                 MessageBox.Show("Need description");
                 return false;
             }
-            else if (StaffComboBox.SelectedValue == null)
+            else if (StaffComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Need staff");
                 return false;
