@@ -161,12 +161,12 @@ namespace Assignment3_LHISGroup.UI
 
             if (w.EventDate != null)
             {
-                EventDateTimePicker.Value = w.EventDate;
+                //EventDateTimePicker.Value = w.EventDate.Date;
             }
 
             if (w.StartDate != null)
             {
-                StartDateTimePicker.Value = w.StartDate;
+                //StartDateTimePicker.Value = w.StartDate.Date;
             }
             
             

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Assignment3_LHISGroup.Reports;
+using Assignment3_LHISGroup.Support_Classes;
 
 namespace Assignment3_LHISGroup.UI
 {
@@ -27,23 +28,62 @@ namespace Assignment3_LHISGroup.UI
 
         public void UpdateForm()
         {
-            this.weddingTableAdapter.Fill(this.modelDataSet.Wedding);
-            WeddingsDataGridView.Update();
-            WeddingsDataGridView.Refresh();
-            this.Refresh();
+            PopulateWeddingDGV();
         }
 
-
-        private Support_Classes.Wedding ExtractSelectedRow()
+        //
+        // Populate the DataGridView properly, using the
+        // controller.
+        public void PopulateWeddingDGV()
         {
-            if (WeddingsDataGridView.SelectedRows.Count > 0 && WeddingsDataGridView.SelectedRows[0].Cells[0].Value != null)
+            DataGridView dgv = WeddingsDataGridView;
+            DataTable dt = new DataTable();
             {
-                int id = (int) WeddingsDataGridView.SelectedRows[0].Cells[0].Value;
-                return db.FindWedding(id);
+                string[] titles = new string[]{
+                    "ID", 
+                    "Title",
+                    "Client 1",
+                    "Client 2",
+                    "Start Date",
+                    "Event Date",
+                    "Wedding Planner",
+                    "Status",
+                    "Description"
+                };
+
+                for (int i = 0; i < titles.Length; i++)
+                {
+                    dt.Columns.Add(titles[i], System.Type.GetType("System.String"));
+                }
             }
-            else
+
+            dgv.DataSource = dt;
+
+
+            // Add DataRows
+            try
             {
-                return null;
+                List<Wedding> weddList = db.GetAllWeddings();
+
+                foreach (Wedding wed in weddList)
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["ID"] = wed.ID;
+                    dr["Title"] = wed.Title;
+                    dr["Client 1"] = wed.Client1.Firstname + " " + wed.Client1.Surname;
+                    dr["Client 2"] = wed.Client2.Firstname + " " + wed.Client2.Surname;
+                    dr["Start Date"] = wed.StartDate.ToShortDateString();
+                    dr["Event Date"] = wed.EventDate.ToShortDateString();
+                    dr["Wedding Planner"] = wed.WeddingPlanner.FirstName + " " + wed.WeddingPlanner.Surname;
+                    dr["Status"] = wed.WeddingStatus.ToString();
+                    dr["Description"] = wed.Description;
+
+                    dt.Rows.Add(dr);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
             }
         }
 
@@ -71,12 +111,19 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateWeddingButton_Click(object sender, EventArgs e)
         {
-            Support_Classes.Wedding wedding = ExtractSelectedRow();
-            if (wedding != null)
+
+            string s = WeddingsDataGridView.Rows[WeddingsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
+            int wid = Convert.ToInt32(s);
+
+            Wedding wed = db.FindWedding(wid);
+            UpdateForm();
+
+            if (wed != null)
             {
-                mainWin.UpdateWeddingWindow.PopulateDataFields(wedding);
+
                 if (!mainWin.UpdateWeddingWindow.Visible)
                 {
+                    mainWin.UpdateWeddingWindow.PopulateDataFields(wed);
                     mainWin.UpdateWeddingWindow.Visible = true;
                 }
                 else
@@ -95,17 +142,6 @@ namespace Assignment3_LHISGroup.UI
         {
             string s = WeddingsDataGridView.Rows[WeddingsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
             int w = Convert.ToInt32( s );
-
-            Support_Classes.Wedding delete = ExtractSelectedRow();
-            try
-            {
-                db.DeleteWedding(delete.ID);
-                MessageBox.Show("Wedding delted successfully");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Exception thrown");
-            }
 
             db.DeleteWedding(w);
             UpdateForm();
@@ -138,6 +174,16 @@ namespace Assignment3_LHISGroup.UI
         {
             EventReport eventReport = new EventReport();
             eventReport.Show();
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            PopulateWeddingDGV();
+        }
+
+        private void WindowActivated(object sender, EventArgs e)
+        {
+            PopulateWeddingDGV();
         }
 
     }

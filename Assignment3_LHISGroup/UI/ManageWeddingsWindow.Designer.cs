@@ -30,14 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.WeddingsDataGridView = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.client1FKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.client2FKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eventDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weddingPlannerFKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weddingBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.modelDataSet = new Assignment3_LHISGroup.ModelDataSet();
             this.AddWeddingButton = new System.Windows.Forms.Button();
@@ -60,20 +52,9 @@
             // 
             this.WeddingsDataGridView.AllowUserToAddRows = false;
             this.WeddingsDataGridView.AllowUserToDeleteRows = false;
-            this.WeddingsDataGridView.AutoGenerateColumns = false;
             this.WeddingsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.WeddingsDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.WeddingsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WeddingsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.client1FKDataGridViewTextBoxColumn,
-            this.client2FKDataGridViewTextBoxColumn,
-            this.startDateDataGridViewTextBoxColumn,
-            this.eventDateDataGridViewTextBoxColumn,
-            this.weddingPlannerFKDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
-            this.WeddingsDataGridView.DataSource = this.weddingBindingSource;
             this.WeddingsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WeddingsDataGridView.Location = new System.Drawing.Point(0, 0);
             this.WeddingsDataGridView.Margin = new System.Windows.Forms.Padding(2);
@@ -84,62 +65,6 @@
             this.WeddingsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WeddingsDataGridView.Size = new System.Drawing.Size(914, 221);
             this.WeddingsDataGridView.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "title";
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // client1FKDataGridViewTextBoxColumn
-            // 
-            this.client1FKDataGridViewTextBoxColumn.DataPropertyName = "client_1_FK";
-            this.client1FKDataGridViewTextBoxColumn.HeaderText = "client_1_FK";
-            this.client1FKDataGridViewTextBoxColumn.Name = "client1FKDataGridViewTextBoxColumn";
-            this.client1FKDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // client2FKDataGridViewTextBoxColumn
-            // 
-            this.client2FKDataGridViewTextBoxColumn.DataPropertyName = "client_2_FK";
-            this.client2FKDataGridViewTextBoxColumn.HeaderText = "client_2_FK";
-            this.client2FKDataGridViewTextBoxColumn.Name = "client2FKDataGridViewTextBoxColumn";
-            this.client2FKDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // startDateDataGridViewTextBoxColumn
-            // 
-            this.startDateDataGridViewTextBoxColumn.DataPropertyName = "startDate";
-            this.startDateDataGridViewTextBoxColumn.HeaderText = "startDate";
-            this.startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
-            this.startDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // eventDateDataGridViewTextBoxColumn
-            // 
-            this.eventDateDataGridViewTextBoxColumn.DataPropertyName = "eventDate";
-            this.eventDateDataGridViewTextBoxColumn.HeaderText = "eventDate";
-            this.eventDateDataGridViewTextBoxColumn.Name = "eventDateDataGridViewTextBoxColumn";
-            this.eventDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // weddingPlannerFKDataGridViewTextBoxColumn
-            // 
-            this.weddingPlannerFKDataGridViewTextBoxColumn.DataPropertyName = "weddingPlanner_FK";
-            this.weddingPlannerFKDataGridViewTextBoxColumn.HeaderText = "weddingPlanner_FK";
-            this.weddingPlannerFKDataGridViewTextBoxColumn.Name = "weddingPlannerFKDataGridViewTextBoxColumn";
-            this.weddingPlannerFKDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // weddingBindingSource
             // 
@@ -258,6 +183,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManageWeddingsWindow";
             this.Text = "ManageWeddingsWindow";
+            this.Activated += new System.EventHandler(this.WindowActivated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageWeddingsWindow_FormClosing);
             this.Load += new System.EventHandler(this.ManageWeddingsWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.WeddingsDataGridView)).EndInit();
@@ -282,14 +208,6 @@
         private System.Windows.Forms.Button ReportButton;
         private System.Windows.Forms.Button ProgressButton;
         private System.Windows.Forms.Button GraphButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn client1FKDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn client2FKDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eventDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn weddingPlannerFKDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource weddingBindingSource1;
     }
 }
