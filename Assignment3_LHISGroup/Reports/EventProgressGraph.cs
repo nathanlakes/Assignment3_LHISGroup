@@ -112,9 +112,16 @@ namespace Assignment3_LHISGroup.Reports
                         actualTasks += 1;
                     }
                 }
+
                 // Add points to the EPChart in the form of date on X axis and expected/actual tasks on Y.
-                EPChart.Series["ExpectedOutstanding"].Points.AddXY(date, expectedTasks);
-                EPChart.Series["ActualOutstanding"].Points.AddXY(date, actualTasks);
+                if (expectedTasks != Single.NaN)
+                {
+                    EPChart.Series["ExpectedOutstanding"].Points.AddXY(date, expectedTasks);
+                }
+                if (actualTasks != Single.NaN)
+                {
+                    EPChart.Series["ActualOutstanding"].Points.AddXY(date, actualTasks);
+                }
                 // Reset task variables.
                 expectedTasks = 0;
                 actualTasks = 0;
