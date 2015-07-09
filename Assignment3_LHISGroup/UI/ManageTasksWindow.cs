@@ -143,40 +143,8 @@ namespace Assignment3_LHISGroup.UI
         {
             if (TasksDataGridView.SelectedRows.Count > 0 && TasksDataGridView.SelectedRows[0].Cells[0].Value != null)
             {
-                int id = (int) TasksDataGridView.SelectedRows[0].Cells[0].Value;
-
-//                string taskName = (string) TasksDataGridView.SelectedRows[0].Cells[1].Value;
-//                string description = (string) TasksDataGridView.SelectedRows[0].Cells[2].Value;
-//                string priority = (string) TasksDataGridView.SelectedRows[0].Cells[3].Value;
-//                string completeByDate = (string) TasksDataGridView.SelectedRows[0].Cells[4].Value;
-//                string completionDate = (string) TasksDataGridView.SelectedRows[0].Cells[5].Value;
-//                string staff_fk = (string) TasksDataGridView.SelectedRows[0].Cells[6].Value;
-//                string event_fk = (string) TasksDataGridView.SelectedRows[0].Cells[7].Value;
-
-//                int staff_id = Convert.ToInt32(staff_fk);
-//                int event_id = Convert.ToInt32(event_fk);
-
-
-//                DateTime date = db.convertStringToDateTime(completeByDate); // complete by date
-
-//                Support_Classes.Task.Priority priorityValue = Support_Classes.Task.Priority.low;
-//                if (priority.Contains("m")) {
-//                    priorityValue = Support_Classes.Task.Priority.med;
-//                } else if (priority.Contains("h")) {
-//                    priorityValue = Support_Classes.Task.Priority.high;
-//                }
-
-//                Support_Classes.Task task = new Support_Classes.Task(taskName, description, priorityValue, date, db.FindStaff(staff_id), db.FindWedding(event_id));
-
-//                task.ID = id;
-
-//                if (completionDate != "" || completionDate != null)
-//                {
-//                    task.CompletionDate = db.convertStringToDateTime(completionDate);
-//                }
-
-//                return task;
-
+                string strID = TasksDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                int id = Convert.ToInt16(strID);
                 return db.FindTask(id);
             }
             else
@@ -215,6 +183,7 @@ namespace Assignment3_LHISGroup.UI
         private void UpdateTaskButton_Click(object sender, EventArgs e)
         {
             Support_Classes.Task task = ExtractSelectedRow();
+            
             if (task != null)
             {
                 mainWin.UpdateTaskWindow.PopuluateDataFields(task);
@@ -283,5 +252,6 @@ namespace Assignment3_LHISGroup.UI
             Reports.EventTaskReport tasksReport = new Reports.EventTaskReport();
             tasksReport.Show();
         }
+
     }
 }
