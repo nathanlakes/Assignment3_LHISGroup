@@ -21,19 +21,18 @@ namespace Assignment3_LHISGroup
     public class DbController
     {
 
-        string connStr = "Data Source=(LocalDB)\\v11.0;" +
-                    "AttachDbFilename=|DataDirectory|\\Database\\Model.mdf;" +
-                    "Integrated Security=True";
+        string connStr = "";
 
         public DbController()
         {
-            //_db = new SqlConnection(connStr);
+            connStr = "Data Source=(LocalDB)\\v11.0;" +
+                    "AttachDbFilename=|DataDirectory|\\Database\\Model.mdf;" +
+                    "Integrated Security=True";
         }
 
         public DbController(string myConnection)
         {
             connStr = myConnection;
-            //_db = new SqlConnection(connStr);
         }
 
         /**
@@ -43,6 +42,14 @@ namespace Assignment3_LHISGroup
          */
         public bool AddTask(Support_Classes.Task t)
         {
+            bool hasDuplicate = containsDuplicateRecord(t);
+            if (hasDuplicate)
+            {
+                string msg = "The Task you tried to enter already exists and has not been entered into the database.";
+                MessageBox.Show(msg, "Warning");
+                return false;
+            }
+
             using (SqlConnection _db = new SqlConnection(connStr))
             {
                 _db.Open();
@@ -398,7 +405,7 @@ namespace Assignment3_LHISGroup
             bool hasDuplicate = containsDuplicateRecord(c);
             if (hasDuplicate)
             {
-                string msg = "The record you tried to enter already exists and has not been entered into the database.";
+                string msg = "The Client you tried to enter already exists and has not been entered into the database.";
                 MessageBox.Show(msg, "Warning");
                 return false;
             }
@@ -527,6 +534,14 @@ namespace Assignment3_LHISGroup
          */
         public bool AddWedding(Wedding w)
         {
+            bool hasDuplicate = containsDuplicateRecord(w);
+            if (hasDuplicate)
+            {
+                string msg = "The Wedding you tried to enter already exists and has not been entered into the database.";
+                MessageBox.Show(msg, "Warning");
+                return false;
+            }
+
             using (SqlConnection _db = new SqlConnection(connStr))
             {
                 _db.Open();
@@ -882,7 +897,7 @@ namespace Assignment3_LHISGroup
             bool hasDuplicate = containsDuplicateRecord(s);
             if (hasDuplicate)
             {
-                string msg = "The record you tried to enter already exists and has not been entered into the database.";
+                string msg = "The Supplier you tried to enter already exists and has not been entered into the database.";
                 MessageBox.Show(msg, "Warning");
                 return false;
             }
@@ -1091,7 +1106,7 @@ namespace Assignment3_LHISGroup
             bool hasDuplicate = containsDuplicateRecord(s);
             if (hasDuplicate)
             {
-                string msg = "The record you tried to enter already exists and has not been entered into the database.";
+                string msg = "The Staff Member you tried to enter already exists and has not been entered into the database.";
                 MessageBox.Show(msg, "Warning");
                 return false;
             }
@@ -1939,6 +1954,90 @@ namespace Assignment3_LHISGroup
             else return true;
         }
 
+
+        /**
+         *  Ensures that [db].[Wedding] does not contain a duplicate 
+         *  client
+         */
+        private bool containsDuplicateRecord(Wedding w)
+        {
+            int count = -1;
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+
+                string query = @"SELECT COUNT(Id) As Count FROM Wedding ";
+                query += @"WHERE title=@title AND ";
+                query += @"startDate=@starddate AND eventDate=@eventdate AND  ";
+                query += @"description=@desc AND status=@status";
+
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@title", w.Title);
+                myCommand.Parameters.AddWithValue("@desc", w.Description);
+                myCommand.Parameters.AddWithValue("@status", getWeddingStatusAsInt(w.WeddingStatus.ToString()));
+                myCommand.Parameters.AddWithValue("@starddate", formatDateForDbInput(w.StartDate));
+                myCommand.Parameters.AddWithValue("@eventdate", formatDateForDbInput(w.EventDate));
+
+
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
+                {
+                    if (myReader.HasRows)
+                    {
+                        while (myReader.Read())
+                        {
+                            count = Convert.ToInt32(myReader["Count"].ToString());
+                        }
+                    }
+                }
+                _db.Close();
+            }
+
+            if (count == 0) return false;
+            else return true;
+        }
+
+
+        /**
+         *  Ensures that [db].[Task] does not contain a duplicate 
+         *  client
+         */
+        private bool containsDuplicateRecord(Support_Classes.Task t)
+        {
+            int count = -1;
+
+            using (SqlConnection _db = new SqlConnection(connStr))
+            {
+                _db.Open();
+
+                string query = @"SELECT COUNT(Id) As Count FROM Task ";
+                query += @"WHERE name=@name AND ";
+                query += @"description=@description AND priority=@priority AND ";
+                query += @"completeByDate=@completedate";
+
+                SqlCommand myCommand = new SqlCommand(query, _db);
+                myCommand.Parameters.AddWithValue("@name", t.TaskName);
+                myCommand.Parameters.AddWithValue("@description", t.Description);
+                myCommand.Parameters.AddWithValue("@priority", t.TaskPriority.ToString());
+                myCommand.Parameters.AddWithValue("@completedate", formatDateForDbInput(t.CompleteBy));
+
+
+                using (SqlDataReader myReader = myCommand.ExecuteReader())
+                {
+                    if (myReader.HasRows)
+                    {
+                        while (myReader.Read())
+                        {
+                            count = Convert.ToInt32(myReader["Count"].ToString());
+                        }
+                    }
+                }
+                _db.Close();
+            }
+
+            if (count == 0) return false;
+            else return true;
+        }
 
 
         private Staff getStaffDetails(int id)
