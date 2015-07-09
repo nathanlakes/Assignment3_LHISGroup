@@ -40,6 +40,7 @@
             // 
             // StaffListBox
             // 
+            this.StaffListBox.BackColor = System.Drawing.Color.White;
             this.StaffListBox.FormattingEnabled = true;
             this.StaffListBox.Location = new System.Drawing.Point(12, 44);
             this.StaffListBox.Name = "StaffListBox";
@@ -61,6 +62,7 @@
             this.TasksView.AllowUserToDeleteRows = false;
             this.TasksView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.TasksView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.TasksView.BackgroundColor = System.Drawing.Color.White;
             this.TasksView.ColumnHeadersHeight = 20;
             this.TasksView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tasks,
@@ -73,7 +75,6 @@
             this.TasksView.ShowEditingIcon = false;
             this.TasksView.Size = new System.Drawing.Size(685, 377);
             this.TasksView.TabIndex = 2;
-            this.TasksView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TasksView_CellContentClick);
             // 
             // Tasks
             // 
@@ -109,6 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(880, 451);
             this.Controls.Add(this.ActiveStaffListLabel);
             this.Controls.Add(this.TasksView);
@@ -117,7 +119,6 @@
             this.DoubleBuffered = true;
             this.Name = "StaffReport";
             this.Text = "StaffReport";
-            this.Load += new System.EventHandler(this.StaffReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TasksView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

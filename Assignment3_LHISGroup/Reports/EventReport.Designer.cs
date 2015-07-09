@@ -43,6 +43,7 @@
             // 
             // EventListBox
             // 
+            this.EventListBox.BackColor = System.Drawing.Color.White;
             this.EventListBox.FormattingEnabled = true;
             this.EventListBox.Location = new System.Drawing.Point(12, 30);
             this.EventListBox.Name = "EventListBox";
@@ -54,6 +55,7 @@
             // 
             this.WeddingDetailsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.WeddingDetailsGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.WeddingDetailsGridView.BackgroundColor = System.Drawing.Color.White;
             this.WeddingDetailsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WeddingDetailsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TaskName,
@@ -128,6 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(955, 430);
             this.Controls.Add(this.GenerateEventReportButton);
             this.Controls.Add(this.WeddingTasksLabel);

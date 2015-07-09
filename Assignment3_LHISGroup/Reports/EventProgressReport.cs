@@ -25,8 +25,7 @@ namespace Assignment3_LHISGroup.Reports
             myParent = parent;
             InitializeComponent();
 
-            dbController = new DbController();
-            ADDTODBFORTESTING();
+            dbController = new DbController();  
             populateWeddingDetailsView();
 
             // 
@@ -42,44 +41,7 @@ namespace Assignment3_LHISGroup.Reports
             
             
         }
-        private void ADDTODBFORTESTING()
-        {
-
-
-            Staff testStaff1 = new Staff("Jim", "Bastiras", "email", "00000", "blah blah", Staff.Active.active);
-            Staff testStaff2 = new Staff("Bob", "Bastiras", "email", "00340", "blah blah", Staff.Active.inactive);
-            Staff testStaff3 = new Staff("Lilly", "Bastiras", "email", "10403", "blah blah", Staff.Active.inactive);
-            Staff testStaff4 = new Staff("James", "Bastiras", "email", "15094", "blah blah", Staff.Active.active);
-
-            Support_Classes.Task.Priority testPrio = Support_Classes.Task.Priority.high;
-
-            Client testClient1 = new Client("Jimmy", "Bastiras", "kalfslasf", "aflklsafl", "00000000000", "00340602", "gmail", "Daniel", "Stone");
-            Client testClient2 = new Client("Daniel", "Stone", "kalfslasf", "aflklsafl", "00000000000", "00340602", "gmail", "Jimmy", "Bastiras");
-
-            Wedding testWedding = new Wedding("Gay Rites", "notacakewalk", testClient1, testClient2, testStaff1, new DateTime(2014, 1, 18), new DateTime(2014, 1, 22), Wedding.Status.InPreparation);
-            Support_Classes.Task testTask = new Support_Classes.Task("testing0", "does things", testPrio, new DateTime(2014, 1, 18), testStaff1, testWedding);
-            Support_Classes.Task testTask1 = new Support_Classes.Task("testing1", "WHAT EVEN things", testPrio, new DateTime(2014, 1, 18), testStaff1, testWedding);
-            Support_Classes.Task testTask2 = new Support_Classes.Task("testing2", "does MOREAAAHHH THINGZZZZ things", testPrio, new DateTime(2014, 1, 18), testStaff1, testWedding);
-
-
-
-            dbController.AddStaff(testStaff1);
-            dbController.AddStaff(testStaff2);
-            dbController.AddStaff(testStaff3);
-            dbController.AddStaff(testStaff4);
-
-            dbController.AddClient(testClient1);
-            dbController.AddClient(testClient2);
-
-            dbController.AddWedding(testWedding);
-
-            dbController.AddTask(testTask);
-            dbController.AddTask(testTask1);
-            dbController.AddTask(testTask2);
-
-
-        }
-
+        // Helper Method to populate the Wedding Details Grid View from database.
         private void populateWeddingDetailsView()
         {
             allWeddingList = dbController.GetAllWeddings();
@@ -92,9 +54,10 @@ namespace Assignment3_LHISGroup.Reports
                 WeddingDetailsView.Rows.Add(row);
             }
         }
-
+        // Helper Method to populate the Wedding Tasks Grid View from database.
         private void populateWeddingTasksView()
         {
+            WedTasksView.Rows.Clear();
             Wedding selectedWedding = new Wedding();
             allWeddingList = dbController.GetAllWeddings();
             allTasksList = dbController.GetAllTasks();
@@ -102,7 +65,7 @@ namespace Assignment3_LHISGroup.Reports
             List<Support_Classes.Task> weddingTasks = new List<Support_Classes.Task>();
             int selWedID = -10;
 
-
+            // Selected row is converted into a Wedding object using FindWedding by Title.
             try
             {
                 DataGridViewRow row = WeddingDetailsView.SelectedRows[0];
@@ -117,9 +80,9 @@ namespace Assignment3_LHISGroup.Reports
             }
             catch (Exception e)
             {
-                MessageBox.Show("Failed to Find Wedding");
+                
             }
-
+            // Tasks that have been assigned to the wedding are stored in a list.
             foreach (Support_Classes.Task task in allTasksList)
             {
                 if (task.Wedding.ID == selWedID)
@@ -129,6 +92,7 @@ namespace Assignment3_LHISGroup.Reports
 
             }
             currentWeddingTasks = weddingTasks;
+            // For each assigned task build a grid view row of the required information. 
             foreach (Support_Classes.Task task in weddingTasks)
             {
                 DataGridViewRow row = (DataGridViewRow)WedTasksView.Rows[0].Clone();
@@ -137,7 +101,7 @@ namespace Assignment3_LHISGroup.Reports
                 row.Cells[2].Value = task.CompleteBy;
                 if (task.CompletionDate.HasValue)
                 {
-                    if (task.CompletionDate.Value.Date.Equals(DateTime.MinValue))
+                    if (task.CompletionDate.Value.Date.CompareTo(new DateTime(2015, 1, 1, 0, 0, 0)) < 1)
                     {
                         row.Cells[3].Value = "Not Complete";
                     }
@@ -155,15 +119,15 @@ namespace Assignment3_LHISGroup.Reports
                 WedTasksView.Rows.Add(row);
 
             }
-
-
+            WedTasksView.Refresh();
+            
         }
 
         private void WeddingDetailsView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             WedTasksView.Rows.Clear();
             populateWeddingTasksView();
-           
+            
         }
 
         private void GenerateEventReportButton_Click(object sender, EventArgs e)
@@ -171,6 +135,8 @@ namespace Assignment3_LHISGroup.Reports
             generateEventReport();
         }
 
+        // Generates the CSV equivalent of the report for later viewing. 
+        // Uses the CSVWriter helper class to handle File IO and formatting.
         private void generateEventReport()
         {
             CSVWriter report = new CSVWriter("EventProgressReport");
@@ -201,6 +167,12 @@ namespace Assignment3_LHISGroup.Reports
                 MessageBox.Show("Report Generation Failed");
             }
 
+        }
+
+        private void WeddingDetailsView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            WedTasksView.Rows.Clear();
+            populateWeddingTasksView();
         }
 
 

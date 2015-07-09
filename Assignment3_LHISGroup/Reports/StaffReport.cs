@@ -22,73 +22,80 @@ namespace Assignment3_LHISGroup.Reports
         public StaffReport()
         {
             InitializeComponent();
-   
             populateStaffList();
 
         }
 
-        
-
+        // Helper method that populates a list of all active staff
         private void populateStaffList()
         {
+            // Constructs a list of all staff from database.
             List<Staff> staffList = new List<Staff>();
             staffList = dbController.GetAllStaff();
+            // Checks to ensure staff exist. 
             if (staffList.Count < 1)
             {
-                throw new Exception("No staff in Database");
+                MessageBox.Show("No staff in Database");
             }
-            foreach(Staff item in staffList )
+            else
             {
-                if (item.StaffStatus == Staff.Active.active)
+                // for each staff, only active staff are added to the staffDetails list.
+                foreach (Staff item in staffList)
                 {
-                    String staffDetails = item.ID + " " + item.FirstName + " " + item.Surname;
-                    StaffListBox.Items.Add(staffDetails);
-                }
+                    if (item.StaffStatus == Staff.Active.active)
+                    {
+                        String staffDetails = item.ID + " " + item.FirstName + " " + item.Surname;
+                        StaffListBox.Items.Add(staffDetails);
+                    }
 
+                }
             }
-            
+                      
         }
 
+        // Helper method popualtes assigned Tasks list.
         private void assignedTasksListForSelectedStaff()
         {
+            // Generates the complete staff and task list from database. 
             List<Support_Classes.Task> assignedTasksList = new List<Support_Classes.Task>();
             List<Support_Classes.Task> allTaskList = dbController.GetAllTasks();
+
             int selStaffID = -10;
             String selStaff = StaffListBox.SelectedItem.ToString();
+
+            // Staff ID is retrieved from the substring of the selected listbox row.
             try
             {
                  selStaffID = Convert.ToInt32(selStaff.Substring(0, selStaff.IndexOf(" ")));
             }
             catch(Exception e)
             {
-                Console.WriteLine("Failed to convert Staff ID");
+                
             }
-          
-            
+
             foreach (Support_Classes.Task task in allTaskList)
             {
-                
+                // for each task that is assigned to the current staff member, add it to assigned tasks list. 
                 if(task.AssignedTo.ID == selStaffID)
                 {
                     assignedTasksList.Add(task);
                 }
             }
-           
+            // call to populateTasksview with assignedTasks list just created.  
             populateTasksGridView(assignedTasksList);
             
         }
 
-        private void StaffReport_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void StaffListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             TasksView.Rows.Clear();
             assignedTasksListForSelectedStaff();
         }
-
+        
+        // helper method that converts the assigned task list given into a gridview row with the 
+        // required information. 
         private void populateTasksGridView(List<Support_Classes.Task> assignedTasks)
         {
             foreach(Support_Classes.Task task in assignedTasks)
@@ -102,9 +109,7 @@ namespace Assignment3_LHISGroup.Reports
             
         }
 
-        private void TasksView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
+        
 
     }
 }

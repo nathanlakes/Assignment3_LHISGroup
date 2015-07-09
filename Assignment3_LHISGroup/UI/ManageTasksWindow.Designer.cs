@@ -80,7 +80,7 @@
             this.TasksDataGridView.DataSource = this.taskBindingSource;
             this.TasksDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TasksDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.TasksDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TasksDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.TasksDataGridView.MultiSelect = false;
             this.TasksDataGridView.Name = "TasksDataGridView";
             this.TasksDataGridView.ReadOnly = true;
@@ -159,7 +159,7 @@
             // 
             this.AddTaskButton.BackColor = System.Drawing.Color.White;
             this.AddTaskButton.Location = new System.Drawing.Point(29, 14);
-            this.AddTaskButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddTaskButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddTaskButton.Name = "AddTaskButton";
             this.AddTaskButton.Size = new System.Drawing.Size(72, 28);
             this.AddTaskButton.TabIndex = 1;
@@ -171,7 +171,7 @@
             // 
             this.UpdateTaskButton.BackColor = System.Drawing.Color.White;
             this.UpdateTaskButton.Location = new System.Drawing.Point(219, 14);
-            this.UpdateTaskButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UpdateTaskButton.Margin = new System.Windows.Forms.Padding(2);
             this.UpdateTaskButton.Name = "UpdateTaskButton";
             this.UpdateTaskButton.Size = new System.Drawing.Size(87, 28);
             this.UpdateTaskButton.TabIndex = 2;
@@ -183,7 +183,7 @@
             // 
             this.DeleteWeddingButton.BackColor = System.Drawing.Color.White;
             this.DeleteWeddingButton.Location = new System.Drawing.Point(117, 14);
-            this.DeleteWeddingButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeleteWeddingButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteWeddingButton.Name = "DeleteWeddingButton";
             this.DeleteWeddingButton.Size = new System.Drawing.Size(87, 28);
             this.DeleteWeddingButton.TabIndex = 3;
@@ -211,7 +211,7 @@
             this.panel1.Controls.Add(this.PrintButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 268);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(661, 140);
             this.panel1.TabIndex = 4;
@@ -220,7 +220,7 @@
             // 
             this.FilterWeddingButton.BackColor = System.Drawing.Color.White;
             this.FilterWeddingButton.Location = new System.Drawing.Point(21, 94);
-            this.FilterWeddingButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FilterWeddingButton.Margin = new System.Windows.Forms.Padding(2);
             this.FilterWeddingButton.Name = "FilterWeddingButton";
             this.FilterWeddingButton.Size = new System.Drawing.Size(102, 26);
             this.FilterWeddingButton.TabIndex = 13;
@@ -232,7 +232,7 @@
             // 
             this.FilterStaffButton.BackColor = System.Drawing.Color.White;
             this.FilterStaffButton.Location = new System.Drawing.Point(21, 58);
-            this.FilterStaffButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FilterStaffButton.Margin = new System.Windows.Forms.Padding(2);
             this.FilterStaffButton.Name = "FilterStaffButton";
             this.FilterStaffButton.Size = new System.Drawing.Size(102, 27);
             this.FilterStaffButton.TabIndex = 12;
@@ -244,7 +244,7 @@
             // 
             this.StaffComboBox.FormattingEnabled = true;
             this.StaffComboBox.Location = new System.Drawing.Point(139, 58);
-            this.StaffComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.StaffComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.StaffComboBox.Name = "StaffComboBox";
             this.StaffComboBox.Size = new System.Drawing.Size(140, 21);
             this.StaffComboBox.TabIndex = 11;
@@ -253,7 +253,7 @@
             // 
             this.WeddingComboBox.FormattingEnabled = true;
             this.WeddingComboBox.Location = new System.Drawing.Point(137, 99);
-            this.WeddingComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WeddingComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.WeddingComboBox.Name = "WeddingComboBox";
             this.WeddingComboBox.Size = new System.Drawing.Size(142, 21);
             this.WeddingComboBox.TabIndex = 10;
@@ -262,7 +262,7 @@
             // 
             this.ClearFilterButton.BackColor = System.Drawing.Color.White;
             this.ClearFilterButton.Location = new System.Drawing.Point(292, 64);
-            this.ClearFilterButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClearFilterButton.Margin = new System.Windows.Forms.Padding(2);
             this.ClearFilterButton.Name = "ClearFilterButton";
             this.ClearFilterButton.Size = new System.Drawing.Size(50, 44);
             this.ClearFilterButton.TabIndex = 9;
@@ -294,7 +294,7 @@
             // 
             this.MarkCompleteButton.BackColor = System.Drawing.Color.White;
             this.MarkCompleteButton.Location = new System.Drawing.Point(366, 14);
-            this.MarkCompleteButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MarkCompleteButton.Margin = new System.Windows.Forms.Padding(2);
             this.MarkCompleteButton.Name = "MarkCompleteButton";
             this.MarkCompleteButton.Size = new System.Drawing.Size(135, 27);
             this.MarkCompleteButton.TabIndex = 4;
@@ -304,12 +304,12 @@
             // PrintButton
             // 
             this.PrintButton.BackColor = System.Drawing.Color.White;
-            this.PrintButton.Location = new System.Drawing.Point(366, 73);
-            this.PrintButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PrintButton.Location = new System.Drawing.Point(366, 54);
+            this.PrintButton.Margin = new System.Windows.Forms.Padding(2);
             this.PrintButton.Name = "PrintButton";
-            this.PrintButton.Size = new System.Drawing.Size(141, 27);
+            this.PrintButton.Size = new System.Drawing.Size(135, 27);
             this.PrintButton.TabIndex = 6;
-            this.PrintButton.Text = "Print Report";
+            this.PrintButton.Text = "Generate Task Report";
             this.PrintButton.UseVisualStyleBackColor = false;
             this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
             // 
@@ -321,7 +321,7 @@
             this.ClientSize = new System.Drawing.Size(661, 408);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TasksDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManageTasksWindow";
             this.Text = "Manage Tasks";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageTasksWindow_FormClosing);

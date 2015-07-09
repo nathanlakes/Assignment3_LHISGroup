@@ -19,9 +19,12 @@ namespace Assignment3_LHISGroup.Reports
             dbController = new DbController();
             populateTaskDetailsView();
         }
+        // Helper method to populate the TaskDetailsView
         private void populateTaskDetailsView()
         {
+            // Method simply constructs a list of all tasks from database.
             List<Support_Classes.Task> allTasks = dbController.GetAllTasks();
+            // For each task a gridview row is created with the required information. 
             foreach (Support_Classes.Task task in allTasks)
             {
                 DataGridViewRow row = (DataGridViewRow)TaskDetailsView.Rows[0].Clone();

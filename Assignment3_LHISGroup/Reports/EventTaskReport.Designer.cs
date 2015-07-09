@@ -47,6 +47,7 @@
             this.TaskDetailsView.AllowUserToOrderColumns = true;
             this.TaskDetailsView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.TaskDetailsView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.TaskDetailsView.BackgroundColor = System.Drawing.Color.White;
             this.TaskDetailsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TaskDetailsView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TaskName,
@@ -60,7 +61,7 @@
             this.TaskDetailsView.Location = new System.Drawing.Point(12, 44);
             this.TaskDetailsView.Name = "TaskDetailsView";
             this.TaskDetailsView.ShowEditingIcon = false;
-            this.TaskDetailsView.Size = new System.Drawing.Size(969, 399);
+            this.TaskDetailsView.Size = new System.Drawing.Size(899, 390);
             this.TaskDetailsView.TabIndex = 0;
             this.TaskDetailsView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TaskDetailsView_CellContentClick);
             // 
@@ -117,9 +118,9 @@
             // 
             // GenerateReportButton
             // 
-            this.GenerateReportButton.Location = new System.Drawing.Point(460, 451);
+            this.GenerateReportButton.Location = new System.Drawing.Point(379, 440);
             this.GenerateReportButton.Name = "GenerateReportButton";
-            this.GenerateReportButton.Size = new System.Drawing.Size(104, 30);
+            this.GenerateReportButton.Size = new System.Drawing.Size(157, 44);
             this.GenerateReportButton.TabIndex = 2;
             this.GenerateReportButton.Text = "Generate Report";
             this.GenerateReportButton.UseVisualStyleBackColor = true;
@@ -129,7 +130,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 486);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.ClientSize = new System.Drawing.Size(922, 496);
             this.Controls.Add(this.GenerateReportButton);
             this.Controls.Add(this.AllTaskDetailsLabel);
             this.Controls.Add(this.TaskDetailsView);

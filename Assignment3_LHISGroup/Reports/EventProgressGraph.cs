@@ -22,11 +22,7 @@ namespace Assignment3_LHISGroup.Reports
             InitializeComponent();
         }
 
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        // Helper method to populate the Wedding Detials view from database. 
         private void populateWeddingDetailsView()
         {
             List<Wedding> allWeddingList = dbController.GetAllWeddings();
@@ -47,6 +43,7 @@ namespace Assignment3_LHISGroup.Reports
             populateWeddingDetailsView();
         }
 
+        // Event handler for GraphBtn that generates the graph after clearing existing points.
         private void GenerateGraphBtn_Click(object sender, EventArgs e)
         {
             SaveToFilebtn.Enabled = true;
@@ -59,10 +56,13 @@ namespace Assignment3_LHISGroup.Reports
 
         }
         
+        // Method responsible for graph creation and rendering. 
         private void generateGraph()
         {
             Wedding selectedWedding = new Wedding();
             int ID = -10;
+
+            // ID is found from selectedRow in weddingDetailsView.
             try
             {
                 DataGridViewRow row = WeddingDetailsView.SelectedRows[0];
@@ -70,56 +70,64 @@ namespace Assignment3_LHISGroup.Reports
                 {
                     MessageBox.Show("Please Select a Wedding");
                 }
+                // ID is cast from the first cell value in the selected row.
                 ID = (int)row.Cells[0].Value;
-                Console.WriteLine("ARE WE GETTING HERE");
                 selectedWedding = dbController.FindWedding(ID);
                 
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.StackTrace);
-                MessageBox.Show("Failed to Find Wedding");
+               MessageBox.Show("Failed to Find Wedding");
             }
             Wedding actualWedding = selectedWedding;
+
             List<Support_Classes.Task> allTasks = dbController.GetAllTasks();
             List<Support_Classes.Task> relatedTasks = new List<Support_Classes.Task>();
             DateTime earliestStartDate = actualWedding.StartDate;
             DateTime latestFinishDate = actualWedding.EventDate;
-            foreach (Support_Classes.Task thing in allTasks)
+
+            // for each Task in all tasks, find tasks related to selected Wedding. 
+            foreach (Support_Classes.Task tasks in allTasks)
             {
-                if (thing.Wedding.ID == ID)
+                if (tasks.Wedding.ID == ID)
                 {
-                    relatedTasks.Add(thing);
+                    relatedTasks.Add(tasks);
                 }
             }
+
+            // Initialize axis variables. 
             int expectedTasks = 0;
             int actualTasks = 0;
             for (DateTime date = earliestStartDate; date.Date <= latestFinishDate.Date; date = date.AddDays(1))
             {
-                foreach (Support_Classes.Task thing in relatedTasks)
+                foreach (Support_Classes.Task task in relatedTasks)
                 {
-                    int i = DateTime.Compare(date, thing.CompleteBy);
+                    int i = DateTime.Compare(date, task.CompleteBy);
                     if (i <= 0)
                     {
                         expectedTasks += 1;
                     }
-                    if (thing.CompletionDate == new DateTime())
+                    if (task.CompletionDate == new DateTime())
                     {
                         actualTasks += 1;
                     }
                 }
+                // Add points to the EPChart in the form of date on X axis and expected/actual tasks on Y.
                 EPChart.Series["ExpectedOutstanding"].Points.AddXY(date, expectedTasks);
                 EPChart.Series["ActualOutstanding"].Points.AddXY(date, actualTasks);
+                // Reset task variables.
                 expectedTasks = 0;
                 actualTasks = 0;
             }
         }
 
+        // Helper method that saves graph to file using the EPChart SaveImage method. 
         private void saveGraphToFile()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string fileName = path + "\\" +  "WeddingGraph.png";
             this.EPChart.SaveImage(fileName, System.Drawing.Imaging.ImageFormat.Png);
+            MessageBox.Show("Event Progress Graph Saved Successfully");
         }
 
         private void SaveToFilebtn_Click_1(object sender, EventArgs e)

@@ -51,7 +51,7 @@
             this.GenerateEventReportButton.Name = "GenerateEventReportButton";
             this.GenerateEventReportButton.Size = new System.Drawing.Size(143, 29);
             this.GenerateEventReportButton.TabIndex = 9;
-            this.GenerateEventReportButton.Text = "Generate Event Report";
+            this.GenerateEventReportButton.Text = "Generate Progress Report";
             this.GenerateEventReportButton.UseVisualStyleBackColor = true;
             this.GenerateEventReportButton.Click += new System.EventHandler(this.GenerateEventReportButton_Click);
             // 
@@ -78,6 +78,7 @@
             this.WedTasksView.AllowUserToDeleteRows = false;
             this.WedTasksView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.WedTasksView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.WedTasksView.BackgroundColor = System.Drawing.Color.White;
             this.WedTasksView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WedTasksView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TaskName,
@@ -86,6 +87,7 @@
             this.CompletionDate});
             this.WedTasksView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.WedTasksView.Location = new System.Drawing.Point(12, 213);
+            this.WedTasksView.MultiSelect = false;
             this.WedTasksView.Name = "WedTasksView";
             this.WedTasksView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WedTasksView.Size = new System.Drawing.Size(698, 209);
@@ -120,6 +122,7 @@
             this.WeddingDetailsView.AllowUserToDeleteRows = false;
             this.WeddingDetailsView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.WeddingDetailsView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.WeddingDetailsView.BackgroundColor = System.Drawing.Color.White;
             this.WeddingDetailsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WeddingDetailsView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.WeddingTitle,
@@ -127,11 +130,13 @@
             this.EventDate});
             this.WeddingDetailsView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.WeddingDetailsView.Location = new System.Drawing.Point(12, 23);
+            this.WeddingDetailsView.MultiSelect = false;
             this.WeddingDetailsView.Name = "WeddingDetailsView";
             this.WeddingDetailsView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WeddingDetailsView.Size = new System.Drawing.Size(698, 171);
             this.WeddingDetailsView.TabIndex = 10;
             this.WeddingDetailsView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WeddingDetailsView_CellContentClick);
+            this.WeddingDetailsView.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.WeddingDetailsView_RowEnter);
             // 
             // WeddingTitle
             // 
@@ -164,6 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(724, 469);
             this.Controls.Add(this.WeddingTasksLabel);
             this.Controls.Add(this.WeddingDetailsView);

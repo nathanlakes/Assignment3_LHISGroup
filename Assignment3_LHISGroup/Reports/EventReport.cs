@@ -22,14 +22,10 @@ namespace Assignment3_LHISGroup.Reports
         public EventReport()
         {
             InitializeComponent();
-
-           
-
             populateWeddingList();
             
         }
-
-        
+        // Populates wedding Title listBox from database.
         private void populateWeddingList()
         {
             allWeddingList = dbController.GetAllWeddings();
@@ -39,6 +35,7 @@ namespace Assignment3_LHISGroup.Reports
             }
             else
             {
+                // Constructs a string to be placed in the list box based on wedding id and title.
                 foreach (Wedding wedding in allWeddingList)
                 {
                     String weddingDetails = wedding.ID + " " + wedding.Title;
@@ -47,7 +44,7 @@ namespace Assignment3_LHISGroup.Reports
             }
             
         }
-
+        // Helper method the populates the wedding details view.
         private void populateWeddingDetailsView()
         {
             allWeddingList = dbController.GetAllWeddings();
@@ -55,8 +52,7 @@ namespace Assignment3_LHISGroup.Reports
 
             List<Support_Classes.Task> weddingTasks = new List<Support_Classes.Task>();
             int selWedID = -10;
-
-            
+            // Wedding ID is found from the the substring of the selected listbox string.
             try
             {
                 String selWed = EventListBox.SelectedItem.ToString();
@@ -64,9 +60,9 @@ namespace Assignment3_LHISGroup.Reports
             }
             catch (Exception e)
             {
-                Console.WriteLine("Failed to convert Wedding ID");
+                
             }
-            
+            // Each corresponding task is added to a weddings task list.
             foreach (Support_Classes.Task task in allTasksList)
             {
                 if(task.Wedding.ID == selWedID)
@@ -75,7 +71,9 @@ namespace Assignment3_LHISGroup.Reports
                 }
 
             }
+            
             currentWeddingTasks = weddingTasks;
+            // Gridview row is created with the required information for each task in wedding Tasks.
             foreach (Support_Classes.Task task in weddingTasks)
             {
                 DataGridViewRow row = (DataGridViewRow)WeddingDetailsGridView.Rows[0].Clone();
@@ -111,8 +109,10 @@ namespace Assignment3_LHISGroup.Reports
             WeddingDetailsGridView.Rows.Clear();
             populateWeddingDetailsView();
         }
+        // Helper method to generate Event Report. 
         private void generateEventReport()
         {
+            // CSVWriter is used as a helper class to handle File IO and formatting. 
             CSVWriter report = new CSVWriter("EventReport");
             int selWedID = -10;
             try
