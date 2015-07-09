@@ -118,7 +118,7 @@ namespace Assignment3_LHISGroup
                 int weddId = GetWeddingId(t.Wedding);
 
                 string query = @"UPDATE Task ";
-                query += @"SET name=@name, description =@description, priority=@priority, ";
+                query += @"SET name=@name, description=@description, priority=@priority, ";
                 query += @"completeByDate=@completeByDate, actualCompletionDate=@actualCompDate, ";
                 query += @"staffOnJob_FK=@staffOnJob, weddingID_FK=@weddId ";
                 query += @"WHERE id=@id;";
@@ -1682,9 +1682,10 @@ namespace Assignment3_LHISGroup
             {
                 _db.Open();
 
-                SqlCommand testTask = new SqlCommand(
-               "SELECT Id FROM Task WHERE name = '" + t.TaskName +
-                    "' AND description = '" + t.Description + "'", _db);
+                string query = "SELECT Id FROM Task WHERE name=@name AND description=@description";
+                SqlCommand testTask = new SqlCommand(query , _db);
+                testTask.Parameters.AddWithValue("@name", t.TaskName);
+                testTask.Parameters.AddWithValue("@description", t.Description);
 
                 using (var myReader = testTask.ExecuteReader())
                 {
