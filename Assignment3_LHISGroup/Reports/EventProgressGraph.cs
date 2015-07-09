@@ -27,63 +27,67 @@ namespace Assignment3_LHISGroup.Reports
 
         }
 
+        private void populateWeddingDetailsView()
+        {
+            List<Wedding> allWeddingList = dbController.GetAllWeddings();
+            foreach (Wedding wed in allWeddingList)
+            {
+                DataGridViewRow row = (DataGridViewRow)WeddingDetailsView.Rows[0].Clone();
+                row.Cells[0].Value = wed.ID;
+                row.Cells[1].Value = wed.Title;
+                row.Cells[2].Value = wed.Client1.ID;
+                row.Cells[3].Value = wed.Client2.ID;
+                WeddingDetailsView.Rows.Add(row);
+            }
+        }
+
         private void EventProgress_Load(object sender, EventArgs e)
         {
-            updateWeddingsList();
+            
+            populateWeddingDetailsView();
         }
-        private void updateWeddingsList()
-        {
-            List<Support_Classes.Wedding> allWeddings = dbController.GetAllWeddings();
-            if (allWeddings.Count == 0)
-            {
-                AllWeddingslbl.Text = "No Weddings In Database!";
-            }
-            else
-            {
-                AllWeddingslbl.Text = "";
-                foreach (Support_Classes.Wedding wedding in allWeddings)
-                {
-                    AllWeddingslbl.Text += wedding.Title + "\n";
-                }
-            }
-        }
+
         private void GenerateGraphBtn_Click(object sender, EventArgs e)
         {
             SaveToFilebtn.Enabled = true;
             EPChart.Series["ExpectedOutstanding"].Points.Clear();
             EPChart.Series["ActualOutstanding"].Points.Clear();
 
-            if (WeddingNameTxtBx.Text == "")
-            {
-                MessageBox.Show("Must enter a string name for wedding");
-                return;
-            }
-            generateGraph(WeddingNameTxtBx.Text);
-            updateWeddingsList();
+ 
+            generateGraph();
+
 
         }
-        private void saveGraphToFile()
+        
+        private void generateGraph()
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string fileName = path + "\\" + WeddingNameTxtBx.Text + ".png";
-            this.EPChart.SaveImage(fileName, System.Drawing.Imaging.ImageFormat.Png);
-        }
-        private void generateGraph(String weddingName)
-        {
-            List<Support_Classes.Wedding> actualWeddingList = dbController.FindWedding(weddingName);
-            if (actualWeddingList.Count == 0)
+            Wedding selectedWedding = new Wedding();
+            int ID = -10;
+            try
             {
-                MessageBox.Show("No wedding found with this title.");
-                return;
+                DataGridViewRow row = WeddingDetailsView.SelectedRows[0];
+                if(row.Cells.Count < 1)
+                {
+                    MessageBox.Show("Please Select a Wedding");
+                }
+                ID = (int)row.Cells[0].Value;
+                Console.WriteLine("ARE WE GETTING HERE");
+                selectedWedding = dbController.FindWedding(ID);
+                
             }
-            Support_Classes.Wedding actualWedding = actualWeddingList.First();
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+                MessageBox.Show("Failed to Find Wedding");
+            }
+            Wedding actualWedding = selectedWedding;
             List<Support_Classes.Task> allTasks = dbController.GetAllTasks();
             List<Support_Classes.Task> relatedTasks = new List<Support_Classes.Task>();
             DateTime earliestStartDate = actualWedding.StartDate;
             DateTime latestFinishDate = actualWedding.EventDate;
             foreach (Support_Classes.Task thing in allTasks)
             {
-                if (thing.Wedding.Title == weddingName)
+                if (thing.Wedding.ID == ID)
                 {
                     relatedTasks.Add(thing);
                 }
@@ -111,6 +115,12 @@ namespace Assignment3_LHISGroup.Reports
             }
         }
 
+        private void saveGraphToFile()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string fileName = path + "\\" +  "WeddingGraph.png";
+            this.EPChart.SaveImage(fileName, System.Drawing.Imaging.ImageFormat.Png);
+        }
 
         private void SaveToFilebtn_Click_1(object sender, EventArgs e)
         {
