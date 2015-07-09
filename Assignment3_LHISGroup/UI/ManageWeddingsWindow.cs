@@ -111,7 +111,6 @@ namespace Assignment3_LHISGroup.UI
 
         private void UpdateWeddingButton_Click(object sender, EventArgs e)
         {
-
             string s = WeddingsDataGridView.Rows[WeddingsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
             int wid = Convert.ToInt32(s);
 
