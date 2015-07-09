@@ -39,8 +39,8 @@ namespace Assignment3_LHISGroup.Support_Classes
         }
         /**
          * Only run this test.
-         * For accurate results due to DB changes
-         * 
+         * For accurate results due to DB changes.
+         * Only returns success if working on an empty DB.
         **/
         [Test]
         public void TestAll()
