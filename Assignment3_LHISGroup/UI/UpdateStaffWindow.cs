@@ -126,5 +126,11 @@ namespace Assignment3_LHISGroup.UI
             this.Visible = false;
             e.Cancel = true; // this cancels the close event
         }
+
+        private void StaffReport_Click(object sender, EventArgs e)
+        {
+            Reports.StaffReport staffReport = new Reports.StaffReport();
+            staffReport.Show();
+        }
     }
 }

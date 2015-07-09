@@ -142,6 +142,7 @@ namespace Assignment3_LHISGroup.UI
                 }
 
             }
+            this.Visible = false;
         }
 
 
