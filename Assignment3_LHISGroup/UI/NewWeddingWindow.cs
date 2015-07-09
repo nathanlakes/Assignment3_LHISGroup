@@ -249,5 +249,11 @@ namespace Assignment3_LHISGroup.UI
             this.clientTableAdapter.Fill(this.modelDataSet.Client);
 
         }
+
+        private void NewClientButton_Click(object sender, EventArgs e)
+        {
+            Form newClientWin = new NewClientWindow(mainWin, db);
+            newClientWin.Show();
+        }
     }
 }

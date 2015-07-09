@@ -56,9 +56,10 @@
             // ClearButton
             // 
             this.ClearButton.BackColor = System.Drawing.Color.White;
-            this.ClearButton.Location = new System.Drawing.Point(204, 451);
+            this.ClearButton.Location = new System.Drawing.Point(199, 293);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(2);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(65, 54);
+            this.ClearButton.Size = new System.Drawing.Size(43, 35);
             this.ClearButton.TabIndex = 45;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = false;
@@ -67,9 +68,10 @@
             // CreateButton
             // 
             this.CreateButton.BackColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(275, 451);
+            this.CreateButton.Location = new System.Drawing.Point(249, 293);
+            this.CreateButton.Margin = new System.Windows.Forms.Padding(2);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(129, 54);
+            this.CreateButton.Size = new System.Drawing.Size(86, 35);
             this.CreateButton.TabIndex = 44;
             this.CreateButton.Text = "CREATE";
             this.CreateButton.UseVisualStyleBackColor = false;
@@ -77,129 +79,145 @@
             // 
             // StartDateTimePicker
             // 
-            this.StartDateTimePicker.Location = new System.Drawing.Point(204, 334);
+            this.StartDateTimePicker.Location = new System.Drawing.Point(136, 217);
+            this.StartDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.StartDateTimePicker.Name = "StartDateTimePicker";
-            this.StartDateTimePicker.Size = new System.Drawing.Size(200, 26);
+            this.StartDateTimePicker.Size = new System.Drawing.Size(199, 20);
             this.StartDateTimePicker.TabIndex = 43;
             // 
             // EventDateTimePicker
             // 
-            this.EventDateTimePicker.Location = new System.Drawing.Point(204, 294);
+            this.EventDateTimePicker.Location = new System.Drawing.Point(136, 191);
+            this.EventDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.EventDateTimePicker.Name = "EventDateTimePicker";
-            this.EventDateTimePicker.Size = new System.Drawing.Size(200, 26);
+            this.EventDateTimePicker.Size = new System.Drawing.Size(199, 20);
             this.EventDateTimePicker.TabIndex = 42;
             // 
             // StaffComboBox
             // 
             this.StaffComboBox.FormattingEnabled = true;
-            this.StaffComboBox.Location = new System.Drawing.Point(204, 384);
+            this.StaffComboBox.Location = new System.Drawing.Point(136, 250);
+            this.StaffComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.StaffComboBox.Name = "StaffComboBox";
-            this.StaffComboBox.Size = new System.Drawing.Size(200, 28);
+            this.StaffComboBox.Size = new System.Drawing.Size(199, 21);
             this.StaffComboBox.TabIndex = 41;
             // 
             // ClientComboBox
             // 
             this.ClientComboBox.FormattingEnabled = true;
-            this.ClientComboBox.Location = new System.Drawing.Point(204, 72);
+            this.ClientComboBox.Location = new System.Drawing.Point(136, 47);
+            this.ClientComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.ClientComboBox.Name = "ClientComboBox";
-            this.ClientComboBox.Size = new System.Drawing.Size(200, 28);
+            this.ClientComboBox.Size = new System.Drawing.Size(199, 21);
             this.ClientComboBox.TabIndex = 40;
             // 
             // DescriptionTextBox
             // 
-            this.DescriptionTextBox.Location = new System.Drawing.Point(204, 183);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(136, 119);
+            this.DescriptionTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(200, 83);
+            this.DescriptionTextBox.Size = new System.Drawing.Size(199, 55);
             this.DescriptionTextBox.TabIndex = 39;
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(204, 32);
+            this.NameTextBox.Location = new System.Drawing.Point(136, 21);
+            this.NameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(200, 26);
+            this.NameTextBox.Size = new System.Drawing.Size(199, 20);
             this.NameTextBox.TabIndex = 38;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 392);
+            this.label6.Location = new System.Drawing.Point(23, 255);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(130, 20);
+            this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 37;
             this.label6.Text = "Wedding Planner";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(34, 80);
+            this.label5.Location = new System.Drawing.Point(23, 52);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 20);
+            this.label5.Size = new System.Drawing.Size(33, 13);
             this.label5.TabIndex = 36;
             this.label5.Text = "Client";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 340);
+            this.label4.Location = new System.Drawing.Point(23, 221);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 20);
+            this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 35;
             this.label4.Text = "Start Date";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 294);
+            this.label3.Location = new System.Drawing.Point(23, 191);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 20);
+            this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 34;
             this.label3.Text = "Wedding Date";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 183);
+            this.label2.Location = new System.Drawing.Point(23, 119);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 20);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 33;
             this.label2.Text = "Description";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 32);
+            this.label1.Location = new System.Drawing.Point(21, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 32;
             this.label1.Text = "Name";
             // 
             // EngagedComboBox
             // 
             this.EngagedComboBox.FormattingEnabled = true;
-            this.EngagedComboBox.Location = new System.Drawing.Point(204, 118);
+            this.EngagedComboBox.Location = new System.Drawing.Point(136, 77);
+            this.EngagedComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.EngagedComboBox.Name = "EngagedComboBox";
-            this.EngagedComboBox.Size = new System.Drawing.Size(200, 28);
+            this.EngagedComboBox.Size = new System.Drawing.Size(199, 21);
             this.EngagedComboBox.TabIndex = 47;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(34, 126);
+            this.label7.Location = new System.Drawing.Point(23, 82);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 20);
+            this.label7.Size = new System.Drawing.Size(66, 13);
             this.label7.TabIndex = 46;
             this.label7.Text = "Engaged To";
             // 
             // NewClientButton
             // 
             this.NewClientButton.BackColor = System.Drawing.Color.White;
-            this.NewClientButton.Location = new System.Drawing.Point(36, 451);
+            this.NewClientButton.Location = new System.Drawing.Point(24, 293);
+            this.NewClientButton.Margin = new System.Windows.Forms.Padding(2);
             this.NewClientButton.Name = "NewClientButton";
-            this.NewClientButton.Size = new System.Drawing.Size(94, 53);
+            this.NewClientButton.Size = new System.Drawing.Size(63, 34);
             this.NewClientButton.TabIndex = 48;
             this.NewClientButton.Text = "Add Client";
             this.NewClientButton.UseVisualStyleBackColor = false;
+            this.NewClientButton.Click += new System.EventHandler(this.NewClientButton_Click);
             // 
             // modelDataSet
             // 
@@ -217,10 +235,10 @@
             // 
             // NewWeddingWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(439, 536);
+            this.ClientSize = new System.Drawing.Size(354, 348);
             this.Controls.Add(this.NewClientButton);
             this.Controls.Add(this.EngagedComboBox);
             this.Controls.Add(this.label7);
@@ -238,6 +256,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "NewWeddingWindow";
             this.Text = "New Wedding";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewWeddingWindow_FormClosing);
