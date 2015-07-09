@@ -134,42 +134,51 @@ namespace Assignment3_LHISGroup.UI
             NameTextBox.Text = w.Title;
 
             int client_id = w.Client1.ID;
-            //string client_name = w.Client1.Firstname + " " + w.Client1.Surname;
-            //ClientComboBox.SelectedItem = ClientComboBox.Equals(new KeyValuePair<int, string>(client_id, client_name));
             Support_Classes.Client client = db.FindClient(client_id);
             string client_name = client.Firstname + " " + client.Surname;
             ClientComboBox.SelectedIndex = ClientComboBox.Items.IndexOf(new KeyValuePair<int, string>(client_id, client_name));
 
 
             int engaged_id = w.Client2.ID;
-            //string engaged_name = w.Client2.Firstname + " " + w.Client2.Surname;
-            //EngagedComboBox.SelectedItem = EngagedComboBox.Equals(new KeyValuePair<int, string>(engaged_id, engaged_name));
             Support_Classes.Client engaged = db.FindClient(engaged_id);
             string engaged_name = engaged.Firstname + " " + engaged.Surname;
             EngagedComboBox.SelectedIndex = EngagedComboBox.Items.IndexOf(new KeyValuePair<int, string>(engaged_id, engaged_name));
 
 
             int staff_id = w.WeddingPlanner.ID;
-            //string staff_name = w.WeddingPlanner.FirstName + " " + w.WeddingPlanner.Surname;
-            //StaffComboBox.SelectedItem = StaffComboBox.Items.IndexOf(new KeyValuePair<int, string>(staff_id, staff_name));
+
             Support_Classes.Staff staff = db.FindStaff(staff_id);
             string staff_name = staff.FirstName + " " + staff.Surname;
             StaffComboBox.SelectedIndex = StaffComboBox.Items.IndexOf(new KeyValuePair<int, string>(staff_id, staff_name));
 
 
+            StatusComboBox.SelectedIndex = StatusComboBox.Items.IndexOf(w.WeddingStatus.ToString());
+
+
             DescriptionTextBox.Text = w.Description;
 
-            if (w.EventDate != null)
+            if (DateTime.Compare(w.StartDate, DateTime.MinValue) > 0)
             {
-                //EventDateTimePicker.Value = w.EventDate.Date;
+                try
+                {
+                    StartDateTimePicker.Value = w.StartDate.Date;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
             }
-
-            if (w.StartDate != null)
+            if (DateTime.Compare(w.EventDate, DateTime.MinValue) > 0)
             {
-                //StartDateTimePicker.Value = w.StartDate.Date;
+                try
+                {
+                    EventDateTimePicker.Value = w.EventDate.Date;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
             }
-            
-            
 
             //StaffComboBox.ValueMember = "";
         }
