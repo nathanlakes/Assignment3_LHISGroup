@@ -11,6 +11,8 @@ namespace Assignment3_LHISGroup.Database
     /**
      *   Tests to check the integrity of the DbController.
      *   Writen in conjunction with development of the class.
+     *   
+     *   Create new DbTest Object in MainWindow constructor to begin.
      */
     class DbTests
     {
