@@ -43,8 +43,8 @@ namespace Assignment3_LHISGroup
             InitializeComponent();
             db = new DbController();        // Creates a DB controller to be used by the UI classes. 
 
-            this.louiseTestDataPopulate();
-            this.nathanDebug();
+            //this.louiseTestDataPopulate();
+            //this.nathanDebug();
 
 
             // create windows and hide them for later use

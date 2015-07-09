@@ -15,6 +15,7 @@ namespace Assignment3_LHISGroup.UI
     {
         MainWindow mainWin;
         DbController db;
+
         public ManageWeddingsWindow(MainWindow w, DbController d)
         {
             InitializeComponent();
@@ -107,7 +108,11 @@ namespace Assignment3_LHISGroup.UI
 
         private void DeleteWeddingButton_Click(object sender, EventArgs e)
         {
+            string s = WeddingsDataGridView.Rows[WeddingsDataGridView.SelectedRows[0].Index].Cells[0].Value.ToString();
+            int w = Convert.ToInt32( s );
 
+            db.DeleteWedding(w);
+            UpdateForm();
         }
 
         private void ManageWeddingsWindow_Load(object sender, EventArgs e)

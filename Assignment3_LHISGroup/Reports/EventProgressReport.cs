@@ -29,7 +29,16 @@ namespace Assignment3_LHISGroup.Reports
             ADDTODBFORTESTING();
             populateWeddingDetailsView();
 
-            
+            // 
+            //   Make DGVs fill width, looks better.
+            // 
+            this.WeddingDetailsView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.WeddingDetailsView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.WeddingDetailsView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            this.WedTasksView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.WedTasksView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.WedTasksView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             
             
         }
